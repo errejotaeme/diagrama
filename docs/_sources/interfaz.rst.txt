@@ -1,0 +1,39 @@
+Paquete interfaz
+================
+
+Contiene a todos los artefactos que componen la interfaz de usuario.
+
+
+.. toctree::
+   :maxdepth: 4
+
+   componentes
+
+Módulo interfaz.ventana
+-----------------------
+
+.. automodule:: interfaz.ventana
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+
+Módulo interfaz.diseño
+----------------------
+
+.. automodule:: interfaz.diseño
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+
+Módulo interfaz.comunes
+-----------------------
+
+Módulo que contiene las estructuras de datos usadas para dar estilo a la aplicación y el diagrama. Además almacena las opciones disponibles en los menús y algunos datos requeridos por el Gestor y el área de edición.
+
+.. automodule:: interfaz.comunes
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:

@@ -1,0 +1,21 @@
+Paquete control
+===============
+
+Contiene a las clases encargadas de operar sobre las tablas y comunicar las distintas partes del programa.
+
+
+.. toctree::
+   :maxdepth: 4
+
+   control.ambitos
+
+
+Módulo control.gestor
+---------------------
+
+.. automodule:: control.gestor
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+

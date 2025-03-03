@@ -1,0 +1,20 @@
+Instalación de Graphviz
+=======================
+
+Windows
+-------
+
+1. **Descargar el instalador** de la página oficial de ``Graphviz``: https://graphviz.org/download/.
+
+2. **Ejecutar el instalador** y seguir las instrucciones. Seleccionar la opción que sugiere agregar al ``PATH``.
+
+3. Para **verificar la instalación**, se debería ver la versión instalada al ejecutar en terminal:
+
+     .. code-block:: bash
+
+        dot -V
+
+Linux
+-----
+
+1. Instalar Graphviz de acuerdo a la distribución utilizada, verificar su instalación y agregarlo al ``PATH``. 

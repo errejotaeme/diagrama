@@ -1,0 +1,50 @@
+Configuración del entorno
+=========================
+
+Antes de iniciar la aplicación, ``Graphviz`` debe estar :doc:`instalado en el sistema <instalacion_graphviz>` y correctamente agregado al ``PATH``. Además se deben instalar algunas librerías externas, necesarias para el funcionamiento del programa:
+
+
+0. Instalar ``Graphviz`` y agregarlo al ``PATH``.
+
+
+1. Abrir una terminal, navegar a una carpeta vacía donde se tenga permisos de escritura y **clonar el proyecto desde el repositorio**:
+
+      .. code-block:: bash
+
+         git clone <URL_repositorio.git>
+
+2. **Crear y activar un entorno virtual** de ``Python``:
+
+   a. Para crearlo, ejecutar en la carpeta actual:
+
+      .. code-block:: bash
+
+         python -m venv nombre_del_entorno  # Válido en Linux y Windows
+
+   b. Para activarlo:
+
+      .. code-block:: bash
+
+         source nombre_del_entorno/bin/activate  # Linux
+         
+         .nombre_del_entorno/Scripts/activate    # Windows
+
+      Para verificar que está activado, el siguiente comando debería retornar la ruta del entorno creado:
+
+      .. code-block:: bash
+
+         which python  # Linux
+
+         where python  # Windows
+
+3. Navegar a la carpeta raíz del proyecto (donde se encuentran los archivos ``dependencias.txt`` y ``main.py``) e **instalar las dependencias**:
+
+      .. code-block:: bash
+
+         pip install -r dependencias.txt  # Linux y Windows
+
+4. Para **iniciar el programa**, ejecutar:
+
+   .. code-block:: bash
+
+      python main.py  # Linux y Windows

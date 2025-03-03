@@ -1,0 +1,470 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>control.ambitos.gestion_texto &mdash; documentación de Diagrama - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Diagrama
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dependencias.html">Configuración del entorno (<cite>Linux</cite>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">Módulos y paquetes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Diagrama</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">control.ambitos.gestion_texto</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para control.ambitos.gestion_texto</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz</span><span class="w"> </span><span class="kn">import</span> <span class="n">comunes</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.documentos</span><span class="w"> </span><span class="kn">import</span> <span class="n">contenido</span><span class="p">,</span> <span class="n">diagrama</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+
+<div class="viewcode-block" id="GestionTexto">
+<a class="viewcode-back" href="../../../control.ambitos.html#control.ambitos.gestion_texto.GestionTexto">[documentos]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">GestionTexto</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Clase encargada de gestionar las operaciones del área de texto.</span>
+
+<span class="sd">    :param gestor: Gestiona la comunicación entre los módulos y la interacción con las tablas.</span>
+<span class="sd">    :type gestor: Gestor </span>
+<span class="sd">    :param proposiciones: Ruta a la tabla de proposiciones.</span>
+<span class="sd">    :type proposiciones: Path</span>
+<span class="sd">    :param nodos: Ruta a la tabla de nodos.</span>
+<span class="sd">    :type nodos: Path</span>
+<span class="sd">    :param vertices: Ruta a la tabla de vértices.</span>
+<span class="sd">    :type vertices: Path</span>
+<span class="sd">    :param prop_nodos: Ruta a la tabla con las propiedades de los nodos.</span>
+<span class="sd">    :type prop_nodos: Path</span>
+<span class="sd">    :param prop_vertices: Ruta a la tabla con las propiedades de los vértices.</span>
+<span class="sd">    :type prop_vertices: Path</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">gestor</span><span class="p">,</span>
+        <span class="n">proposiciones</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+        <span class="n">nodos</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+        <span class="n">vertices</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+        <span class="n">prop_nodos</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+        <span class="n">prop_vertices</span><span class="p">:</span> <span class="n">Path</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span> <span class="o">=</span> <span class="n">gestor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_csv_proposiciones</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">proposiciones</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_csv_nodos</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">nodos</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_csv_vertices</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">vertices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_csv_prop_nodos</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">prop_nodos</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_csv_prop_vertices</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">prop_vertices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ultimo_id_nodo</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ultimo_id_vertice</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># Datos para resolver el registro de la proposición</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id_ent1</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ent1_defecto</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id_ent2</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ent2_defecto</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id_rel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rel_defecto</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+
+                
+<div class="viewcode-block" id="GestionTexto.enlazar_area">
+<a class="viewcode-back" href="../../../control.ambitos.html#control.ambitos.gestion_texto.GestionTexto.enlazar_area">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">enlazar_area</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grafico</span><span class="p">,</span> <span class="n">edicion</span><span class="p">,</span> <span class="n">texto</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conecta la instancia de gestión con las áreas que trabaja.</span>
+
+<span class="sd">        :param grafico: La instancia de la clase que muestra el diagrama.</span>
+<span class="sd">        :type grafico: AreaDeGrafico</span>
+<span class="sd">        :param edicion: La instancia de la clase que permite editar el diagrama.</span>
+<span class="sd">        :type edicion: AreaEdicion</span>
+<span class="sd">        :param texto: La instancia de la clase que permite cargar un texto.</span>
+<span class="sd">        :type texto: AreaDeTexto      </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_grafico</span> <span class="o">=</span> <span class="n">grafico</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_edicion</span> <span class="o">=</span> <span class="n">edicion</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_texto</span> <span class="o">=</span> <span class="n">texto</span></div>
+
+            
+
+<div class="viewcode-block" id="GestionTexto.extraer">
+<a class="viewcode-back" href="../../../control.ambitos.html#control.ambitos.gestion_texto.GestionTexto.extraer">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">extraer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg_ruta</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Instancia al Extractor de contenido, obtiene y retorna el texto</span>
+<span class="sd">        del documento (.txt, .pdf) que recibe como argumento.</span>
+
+<span class="sd">        :param arg_ruta: La ruta al archivo.</span>
+<span class="sd">        :type arg_ruta: str</span>
+<span class="sd">        :return: El texto del documento o &quot;-1&quot;. </span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">res</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">ruta</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">arg_ruta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ruta</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="n">extractor</span> <span class="o">=</span> <span class="n">contenido</span><span class="o">.</span><span class="n">Extractor</span><span class="p">()</span>
+            <span class="n">texto</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="n">extractor</span><span class="o">.</span><span class="n">extraer_contenido</span><span class="p">(</span><span class="n">ruta</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">texto</span> <span class="o">!=</span> <span class="s2">&quot;-1&quot;</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">texto</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="s2">&quot;No se seleccionó un archivo válido.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">cola_avisos</span><span class="o">.</span><span class="n">put</span><span class="p">((</span><span class="s2">&quot;txt&quot;</span><span class="p">,</span> <span class="n">res</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">actualizar</span><span class="o">.</span><span class="n">set</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="GestionTexto.relacionar">
+<a class="viewcode-back" href="../../../control.ambitos.html#control.ambitos.gestion_texto.GestionTexto.relacionar">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">relacionar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg_proposicion</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Verifica y escribe en las tablas la proposición ingresada. Luego</span>
+<span class="sd">        actualiza el gráfico.</span>
+
+<span class="sd">        :param arg_proposicion: La proposición ingresada.</span>
+<span class="sd">        :type arg_proposicion: tuple[list[str]]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Proceso la proposición</span>
+        <span class="n">proposicion</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">arg_proposicion</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">proposicion</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">eliminar_simbolo</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">proposicion</span><span class="p">]</span>
+        <span class="n">proposicion</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">acotar_cadena</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">proposicion</span><span class="p">]</span>
+        <span class="n">proposicion</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestionar_justificado</span><span class="p">(</span><span class="n">proposicion</span><span class="p">)</span>
+        <span class="c1"># Registro nodos y vértices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_registrar_nodos</span><span class="p">(</span><span class="n">proposicion</span><span class="p">)</span>
+        <span class="n">registrar_proposicion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_registrar_vertices</span><span class="p">(</span><span class="n">proposicion</span><span class="p">)</span>         
+        <span class="k">if</span> <span class="n">registrar_proposicion</span><span class="p">:</span>
+            <span class="n">proposicion_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_id_ent1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id_rel</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id_ent2</span><span class="p">,</span> <span class="n">proposicion</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+            <span class="p">]</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_csv_proposiciones</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>
+            <span class="p">)</span> <span class="k">as</span> <span class="n">proposiciones</span><span class="p">:</span>
+                <span class="n">escritor</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">proposiciones</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;§&quot;</span><span class="p">)</span>
+                <span class="n">escritor</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">proposicion_ids</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Si ya existe, restablezco los valores e interrumpo</span>
+            <span class="n">aux_aviso</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Proposición repetida&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">cola_avisos</span><span class="o">.</span><span class="n">put</span><span class="p">((</span><span class="s2">&quot;img&quot;</span><span class="p">,</span><span class="s2">&quot;texto&quot;</span><span class="p">,</span> <span class="n">aux_aviso</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">actualizar</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>            
+            <span class="bp">self</span><span class="o">.</span><span class="n">_id_ent1</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ent1_defecto</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_id_ent2</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ent2_defecto</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_id_rel</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_rel_defecto</span> <span class="o">=</span> <span class="kc">True</span>            
+            <span class="k">return</span>
+        <span class="c1"># Registro los atributos de nodos y vértices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_registrar_propiedades</span><span class="p">(</span><span class="n">proposicion</span><span class="p">)</span>
+        <span class="c1"># Obtengo la ruta al grafo generado y el observador actualiza</span>
+        <span class="n">diagramador</span> <span class="o">=</span> <span class="n">diagrama</span><span class="o">.</span><span class="n">Diagramador</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">ruta_png</span> <span class="o">=</span> <span class="n">diagramador</span><span class="o">.</span><span class="n">crear_grafo</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">cola_avisos</span><span class="o">.</span><span class="n">put</span><span class="p">((</span><span class="s2">&quot;img&quot;</span><span class="p">,</span> <span class="s2">&quot;texto&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
+        <span class="c1"># Restablezco los valores</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id_ent1</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ent1_defecto</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id_ent2</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ent2_defecto</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id_rel</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rel_defecto</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">actualizar</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+        <span class="k">return</span></div>
+
+
+<div class="viewcode-block" id="GestionTexto.actualizar_ultimos_ids">
+<a class="viewcode-back" href="../../../control.ambitos.html#control.ambitos.gestion_texto.GestionTexto.actualizar_ultimos_ids">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">actualizar_ultimos_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Obtiene los últimos ids de nodos y vértices cuando se carga un proyecto.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Obtengo el último id de los nodos</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_csv_nodos</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>
+        <span class="p">)</span> <span class="k">as</span> <span class="n">nodos</span><span class="p">:</span>
+            <span class="n">registros</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">nodos</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;§&quot;</span><span class="p">)</span>
+            <span class="n">filas</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">registros</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">filas</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ultimo_id_nodo</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ultimo_id_nodo</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">filas</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;id&quot;</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span>
+           
+        <span class="c1"># Obtengo el último id de los vertices</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_csv_vertices</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>
+        <span class="p">)</span> <span class="k">as</span> <span class="n">vertices</span><span class="p">:</span>
+            <span class="n">registros</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;§&quot;</span><span class="p">)</span>
+            <span class="n">filas</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">registros</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">filas</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ultimo_id_vertice</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ultimo_id_vertice</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">filas</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;id&quot;</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span></div>
+
+
+<div class="viewcode-block" id="GestionTexto._gestionar_justificado">
+<a class="viewcode-back" href="../../../control.ambitos.html#control.ambitos.gestion_texto.GestionTexto._gestionar_justificado">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_gestionar_justificado</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proposicion</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Escapa y agrega el justificado en las entidades y el vínculo para que</span>
+<span class="sd">        la proposición se escriba sin errores en la tabla.</span>
+
+<span class="sd">        :param proposicion: La proposición ingresada.</span>
+<span class="sd">        :type proposicion: list[str]</span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="n">c_aux</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">justificado</span>
+        <span class="n">c_aux2</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="n">proposicion</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">justificado</span> <span class="o">!=</span> <span class="s2">&quot;n&quot;</span><span class="p">:</span>
+            <span class="n">proposicion</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">e</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">c_aux</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\\</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">justificado</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">+</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\\</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">justificado</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">proposicion</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">proposicion</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">e</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">c_aux</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\\</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">justificado</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">proposicion</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="p">]</span>    
+        <span class="n">proposicion</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c_aux2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">proposicion</span></div>
+
+    
+<div class="viewcode-block" id="GestionTexto._registrar_nodos">
+<a class="viewcode-back" href="../../../control.ambitos.html#control.ambitos.gestion_texto.GestionTexto._registrar_nodos">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_registrar_nodos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proposicion</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Registra las entidades ingresadas en la tabla de nodos.</span>
+<span class="sd">        </span>
+<span class="sd">        :param proposicion: La proposición ingresada.</span>
+<span class="sd">        :type proposicion: list[str]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Verifico si ya están registrados</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_csv_nodos</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">nodos</span><span class="p">:</span>
+            <span class="n">registros</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">nodos</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;§&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">registro</span> <span class="ow">in</span> <span class="n">registros</span><span class="p">:</span>
+                <span class="c1"># Si la entidad1 ya existe, obtengo su id</span>
+                <span class="n">entidad_entrada1</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">eliminar_justificado</span><span class="p">(</span><span class="n">proposicion</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">entidad_entrada2</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">eliminar_justificado</span><span class="p">(</span><span class="n">proposicion</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+                <span class="n">entidad_en_tabla</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">eliminar_justificado</span><span class="p">(</span><span class="n">registro</span><span class="p">[</span><span class="s2">&quot;nodo&quot;</span><span class="p">])</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id_ent1</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">entidad_en_tabla</span> <span class="o">==</span> <span class="n">entidad_entrada1</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_id_ent1</span> <span class="o">=</span> <span class="n">registro</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
+                    <span class="c1"># No se le asigna propiedades por defecto </span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_ent1_defecto</span> <span class="o">=</span> <span class="kc">False</span>                       
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id_ent2</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">entidad_en_tabla</span> <span class="o">==</span> <span class="n">entidad_entrada2</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_id_ent2</span> <span class="o">=</span> <span class="n">registro</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_ent2_defecto</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="c1"># Si ambas tienen id salgo del ciclo</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id_ent1</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id_ent2</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="k">break</span>                
+        <span class="c1"># Si las entidades 1 o 2 no existen las registro en la tabla de nodos        </span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_csv_nodos</span><span class="p">,</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">nodos</span><span class="p">:</span>
+            <span class="n">escritor</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">nodos</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;§&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id_ent1</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">escritor</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_ultimo_id_nodo</span><span class="p">,</span> <span class="n">proposicion</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+                <span class="c1"># Obtengo su id</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_id_ent1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ultimo_id_nodo</span>
+                <span class="c1"># Previene que se registre dos veces la misma entidad</span>
+                <span class="c1"># la primera vez que se escribe</span>
+                <span class="k">if</span> <span class="n">proposicion</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">proposicion</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_id_ent2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id_ent1</span>
+                <span class="c1"># Actualizo ultimo id nodos</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_ultimo_id_nodo</span> <span class="o">+=</span> <span class="mi">1</span>            
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id_ent2</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">escritor</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_ultimo_id_nodo</span><span class="p">,</span> <span class="n">proposicion</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_id_ent2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ultimo_id_nodo</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_ultimo_id_nodo</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+
+<div class="viewcode-block" id="GestionTexto._registrar_vertices">
+<a class="viewcode-back" href="../../../control.ambitos.html#control.ambitos.gestion_texto.GestionTexto._registrar_vertices">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_registrar_vertices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proposicion</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Registra el vínculo ingresado en la tabla de vértices y si la</span>
+<span class="sd">        proposición no existe, la registra en la tabla de proposiciones.</span>
+<span class="sd">        </span>
+<span class="sd">        :param proposicion: La proposición ingresada.</span>
+<span class="sd">        :type proposicion: list[str]</span>
+<span class="sd">        :return: Indicación sobre la existencia de la proposición.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Verifico si el vértice ya está registrado y obtengo su id</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_csv_vertices</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>
+        <span class="p">)</span> <span class="k">as</span> <span class="n">vertices</span><span class="p">:</span>
+            <span class="n">registros</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;§&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">registro</span> <span class="ow">in</span> <span class="n">registros</span><span class="p">:</span>
+                <span class="n">relacion_entrada</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">eliminar_justificado</span><span class="p">(</span><span class="n">proposicion</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">rel_tabla</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">eliminar_justificado</span><span class="p">(</span><span class="n">registro</span><span class="p">[</span><span class="s2">&quot;vertice&quot;</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">rel_tabla</span> <span class="o">==</span> <span class="n">relacion_entrada</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_id_rel</span> <span class="o">=</span> <span class="n">registro</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> 
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_rel_defecto</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="k">break</span>
+        <span class="c1"># Si no existe</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rel_defecto</span><span class="p">:</span>            
+            <span class="c1"># Registro el vértice en la tabla y creo un nuevo id </span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_csv_vertices</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>
+            <span class="p">)</span> <span class="k">as</span> <span class="n">vertices</span><span class="p">:</span>
+                <span class="n">escritor</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;§&quot;</span><span class="p">)</span>
+                <span class="c1"># El vértice no existe</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id_rel</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="c1"># Obtengo el últmo id</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_id_rel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ultimo_id_vertice</span>
+                    <span class="n">escritor</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_id_rel</span><span class="p">,</span> <span class="n">proposicion</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+                    <span class="c1"># Actualizo último id vértices</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_ultimo_id_vertice</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1"># El vértice ya existía</span>
+        <span class="k">else</span><span class="p">:</span>        
+            <span class="c1"># Verifico si existe la proposición      </span>
+            <span class="n">prop_aux</span><span class="p">:</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;ent1&quot;</span> <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id_ent1</span><span class="p">),</span>
+                <span class="s2">&quot;rel&quot;</span> <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id_rel</span><span class="p">),</span>
+                <span class="s2">&quot;ent2&quot;</span> <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id_ent2</span><span class="p">),</span>
+                <span class="s2">&quot;peso&quot;</span> <span class="p">:</span> <span class="n">proposicion</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+            <span class="p">}</span>        
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_csv_proposiciones</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>
+            <span class="p">)</span> <span class="k">as</span> <span class="n">proposiciones</span><span class="p">:</span>
+                <span class="n">registros</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">proposiciones</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;§&quot;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">registro</span> <span class="ow">in</span> <span class="n">registros</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">registro</span> <span class="o">==</span> <span class="n">prop_aux</span><span class="p">:</span>                    
+                        <span class="c1"># No se agragega porque ya existe</span>
+                        <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="GestionTexto._agregar_nodo_a_tabla">
+<a class="viewcode-back" href="../../../control.ambitos.html#control.ambitos.gestion_texto.GestionTexto._agregar_nodo_a_tabla">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_agregar_nodo_a_tabla</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_nodo</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">valor</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Antes de escribir, cambia los valores por defecto por los datos ingresados</span>
+<span class="sd">        y el id generado.</span>
+
+<span class="sd">        :param id_nodo: El id del nodo a registrar. </span>
+<span class="sd">        :type id_nodo: int | str</span>
+<span class="sd">        :param valor: El valor del nodo a registrar.</span>
+<span class="sd">        :type valor: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">comunes</span><span class="o">.</span><span class="n">atrb_nodos</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">id_nodo</span>
+        <span class="n">comunes</span><span class="o">.</span><span class="n">atrb_nodos</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">valor</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_csv_prop_nodos</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>
+        <span class="p">)</span> <span class="k">as</span> <span class="n">proposiciones</span><span class="p">:</span>
+            <span class="n">escritor</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">proposiciones</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;§&quot;</span><span class="p">)</span>
+            <span class="n">escritor</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_nodos</span><span class="o">.</span><span class="n">values</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="GestionTexto._registrar_propiedades">
+<a class="viewcode-back" href="../../../control.ambitos.html#control.ambitos.gestion_texto.GestionTexto._registrar_propiedades">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_registrar_propiedades</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proposicion</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Registra en las tablas de propiedades de nodos y vértices los nuevos</span>
+<span class="sd">        elementos de la proposición ingresada.</span>
+
+<span class="sd">        :param proposicion: La proposición ingresada.</span>
+<span class="sd">        :type proposicion: list[str]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Entidad1</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ent1_defecto</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_agregar_nodo_a_tabla</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id_ent1</span><span class="p">,</span> <span class="n">proposicion</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="c1"># Entidad2</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ent2_defecto</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_agregar_nodo_a_tabla</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id_ent2</span><span class="p">,</span> <span class="n">proposicion</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="c1"># Relación</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rel_defecto</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">comunes</span><span class="o">.</span><span class="n">atrb_vertices</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id_rel</span>
+            <span class="n">comunes</span><span class="o">.</span><span class="n">atrb_vertices</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">proposicion</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_csv_prop_vertices</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>
+            <span class="p">)</span> <span class="k">as</span> <span class="n">proposiciones</span><span class="p">:</span>
+                <span class="n">escritor</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">proposiciones</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;§&quot;</span><span class="p">)</span>    
+                <span class="n">escritor</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_vertices</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="c1"># Restablezco valores por defecto en los diccionarios de estilos</span>
+        <span class="n">comunes</span><span class="o">.</span><span class="n">atrb_nodos</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;-1&quot;</span>
+        <span class="n">comunes</span><span class="o">.</span><span class="n">atrb_nodos</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">comunes</span><span class="o">.</span><span class="n">atrb_vertices</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;-1&quot;</span>
+        <span class="n">comunes</span><span class="o">.</span><span class="n">atrb_vertices</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, errejotaeme.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

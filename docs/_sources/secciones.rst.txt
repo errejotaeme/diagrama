@@ -1,0 +1,46 @@
+Paquete secciones
+=================
+
+Subpaquete
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   secciones.subsecciones
+
+Módulo secciones.seccion\_grafo
+-------------------------------
+
+.. automodule:: secciones.seccion_grafo
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+
+Módulo secciones.seccion\_nodo
+------------------------------
+
+.. automodule:: secciones.seccion_nodo
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+
+Módulo secciones.seccion\_relacion
+----------------------------------
+
+.. automodule:: secciones.seccion_relacion
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+
+Módulo secciones.seccion\_vertice
+---------------------------------
+
+.. automodule:: secciones.seccion_vertice
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:

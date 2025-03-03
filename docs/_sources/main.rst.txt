@@ -1,0 +1,10 @@
+Módulo main
+===========
+
+Módulo de arranque del programa. Construye la ventana principal.
+
+.. automodule:: main
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:

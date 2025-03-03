@@ -1,0 +1,685 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>secciones.subsecciones.vertice &mdash; documentación de Diagrama - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Diagrama
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dependencias.html">Configuración del entorno (<cite>Linux</cite>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">Módulos y paquetes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Diagrama</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">secciones.subsecciones.vertice</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para secciones.subsecciones.vertice</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">colorchooser</span><span class="p">,</span> <span class="n">font</span><span class="p">,</span> <span class="n">scrolledtext</span><span class="p">,</span> <span class="n">ttk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz</span><span class="w"> </span><span class="kn">import</span> <span class="n">comunes</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz.componentes.elementos</span><span class="w"> </span><span class="kn">import</span> <span class="n">emergente</span><span class="p">,</span> <span class="n">opciones</span>
+
+
+<div class="viewcode-block" id="EditorVertice">
+<a class="viewcode-back" href="../../../secciones.subsecciones.html#secciones.subsecciones.vertice.EditorVertice">[documentos]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">EditorVertice</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Clase encargada de editar los atributos de los vértices del diagrama.</span>
+
+<span class="sd">    :param ancestro: El marco donde se ubica el contenedor principal y/o los artefactos instanciados por la clase.</span>
+<span class="sd">    :type ancestro: Frame</span>
+<span class="sd">    :param gestor: La instancia de la clase encargada de gestionar la comunicación entre los módulos y la interacción con las tablas.</span>
+<span class="sd">    :type gestor: Gestor </span>
+<span class="sd">    :param raiz: Ventana principal que controla el bucle de la aplicación.</span>
+<span class="sd">    :type raiz: Tk </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ancestro</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">,</span> <span class="n">gestor</span><span class="p">,</span> <span class="n">raiz</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor de la clase EditorVertice.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span> <span class="o">=</span> <span class="n">gestor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span> <span class="o">=</span> <span class="n">raiz</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ancestro</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">ancestro</span>    
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prop_vertice</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Almacenará los cambios</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_indicador_relacion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Interruptor de entrada &quot;peso&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>  <span class="c1"># Marco principal</span>
+            <span class="n">ancestro</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_construir_opciones_vertice</span><span class="p">()</span>
+        
+<div class="viewcode-block" id="EditorVertice.artefacto">
+<a class="viewcode-back" href="../../../secciones.subsecciones.html#secciones.subsecciones.vertice.EditorVertice.artefacto">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">artefacto</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retorna el contenedor que contiene a todos los artefactos de la sección.</span>
+
+<span class="sd">        :return: El marco principal de la subsección.</span>
+<span class="sd">        :rtype: Frame      </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span></div>
+
+
+<div class="viewcode-block" id="EditorVertice.actualizar_dict_vertice">
+<a class="viewcode-back" href="../../../secciones.subsecciones.html#secciones.subsecciones.vertice.EditorVertice.actualizar_dict_vertice">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">actualizar_dict_vertice</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Antes de actualizar, efectúa las comprobaciones necesarias</span>
+<span class="sd">        en los valores ingresados.</span>
+
+<span class="sd">        :return: El resultado de la verificación.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">res</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+        
+        <span class="n">tipo_flecha_d</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opc_tipo_flecha_d</span><span class="o">.</span><span class="n">obtener_eleccion</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">tipo_flecha_d</span> <span class="o">!=</span> <span class="s2">&quot;Delantera&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_prop_vertice</span><span class="p">[</span><span class="s2">&quot;arrowhead&quot;</span><span class="p">]</span> <span class="o">=</span>  <span class="n">tipo_flecha_d</span>
+        <span class="n">tipo_flecha_t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opc_tipo_flecha_t</span><span class="o">.</span><span class="n">obtener_eleccion</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">tipo_flecha_t</span> <span class="o">!=</span> <span class="s2">&quot;Trasera&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_prop_vertice</span><span class="p">[</span><span class="s2">&quot;arrowtail&quot;</span><span class="p">]</span> <span class="o">=</span>  <span class="n">tipo_flecha_t</span>
+            
+        <span class="n">tamaño_flecha</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tamaño_flecha</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">tamaño_flecha</span><span class="p">:</span>
+            <span class="n">cond1</span><span class="p">:</span><span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">cond2</span><span class="p">:</span><span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">cond1</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">tamaño_flecha</span><span class="p">))</span> <span class="ow">is</span> <span class="nb">int</span>
+                <span class="n">cond_aux</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tamaño_flecha</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+                <span class="n">cond1</span> <span class="o">=</span> <span class="n">cond1</span> <span class="ow">and</span> <span class="n">cond_aux</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">try</span><span class="p">:</span>                
+                <span class="n">cond2</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">tamaño_flecha</span><span class="p">))</span> <span class="ow">is</span> <span class="nb">float</span>
+                <span class="n">cond_aux</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">tamaño_flecha</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+                <span class="n">cond2</span> <span class="o">=</span> <span class="n">cond2</span> <span class="ow">and</span> <span class="n">cond_aux</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">if</span> <span class="n">cond1</span> <span class="ow">or</span> <span class="n">cond2</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_prop_vertice</span><span class="p">[</span><span class="s2">&quot;arrowsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tamaño_flecha</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_tamaño_flecha</span><span class="o">.</span><span class="n">focus_set</span><span class="p">()</span> 
+                <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_tamaño_flecha</span><span class="o">.</span><span class="n">select_range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">False</span>
+            
+        <span class="n">peso</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_peso_relacion</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">peso</span><span class="p">:</span>
+            <span class="n">cond1</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">cond2</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">cond1</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">peso</span><span class="p">))</span> <span class="ow">is</span> <span class="nb">int</span>
+                <span class="n">cond_aux</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">peso</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+                <span class="n">cond1</span> <span class="o">=</span> <span class="n">cond1</span> <span class="ow">and</span> <span class="n">cond_aux</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">try</span><span class="p">:</span>                
+                <span class="n">cond2</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">peso</span><span class="p">))</span> <span class="ow">is</span> <span class="nb">float</span>
+                <span class="n">cond_aux</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">peso</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+                <span class="n">cond2</span> <span class="o">=</span> <span class="n">cond2</span> <span class="ow">and</span> <span class="n">cond_aux</span>                
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">if</span> <span class="n">cond1</span> <span class="ow">or</span> <span class="n">cond2</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_prop_vertice</span><span class="p">[</span><span class="s2">&quot;peso&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">peso</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_relacion</span><span class="o">.</span><span class="n">focus_set</span><span class="p">()</span> 
+                <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_relacion</span><span class="o">.</span><span class="n">select_range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="n">fuente_v</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tipo_fuente_v</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">fuente_v</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_prop_vertice</span><span class="p">[</span><span class="s2">&quot;fontname&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tipo_fuente_v</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+        <span class="n">tamaño_fuente_v</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tamaño_fuente_v</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">tamaño_fuente_v</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">tamaño_valido_v</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">tamaño_fuente_v</span><span class="p">))</span> <span class="ow">is</span> <span class="nb">int</span>
+                <span class="n">cond_aux</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tamaño_fuente_v</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+                <span class="n">tamaño_valido_v</span> <span class="o">=</span> <span class="n">tamaño_valido_v</span> <span class="ow">and</span> <span class="n">cond_aux</span>
+                <span class="k">if</span> <span class="n">tamaño_valido_v</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_prop_vertice</span><span class="p">[</span><span class="s2">&quot;fontsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tamaño_fuente_v</span>
+                    <span class="n">res</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_tamaño_fuente_v</span><span class="o">.</span><span class="n">focus_set</span><span class="p">()</span> 
+                <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_tamaño_fuente_v</span><span class="o">.</span><span class="n">select_range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">False</span>        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prop_vertice</span><span class="p">:</span>  <span class="c1"># Si hay algún cambio </span>
+            <span class="n">res</span> <span class="o">=</span> <span class="kc">True</span>  
+        <span class="k">return</span> <span class="n">res</span></div>
+
+
+
+<div class="viewcode-block" id="EditorVertice.actualizar_flecha_d">
+<a class="viewcode-back" href="../../../secciones.subsecciones.html#secciones.subsecciones.vertice.EditorVertice.actualizar_flecha_d">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">actualizar_flecha_d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tipo</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Actualiza la entrada del diccionario de cambios.</span>
+
+<span class="sd">        :param tipo: La forma de la flecha delantera.</span>
+<span class="sd">        :type tipo: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prop_vertice</span><span class="p">[</span><span class="s2">&quot;arrowhead&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tipo</span></div>
+
+
+<div class="viewcode-block" id="EditorVertice.actualizar_flecha_t">
+<a class="viewcode-back" href="../../../secciones.subsecciones.html#secciones.subsecciones.vertice.EditorVertice.actualizar_flecha_t">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">actualizar_flecha_t</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tipo</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Actualiza la entrada del diccionario de cambios.</span>
+
+<span class="sd">        :param tipo: La forma de la flecha trasera.</span>
+<span class="sd">        :type tipo: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prop_vertice</span><span class="p">[</span><span class="s2">&quot;arrowtail&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tipo</span></div>
+
+
+<div class="viewcode-block" id="EditorVertice.actualizar_direccion">
+<a class="viewcode-back" href="../../../secciones.subsecciones.html#secciones.subsecciones.vertice.EditorVertice.actualizar_direccion">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">actualizar_direccion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sentido</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Actualiza la entrada del diccionario de cambios.</span>
+
+<span class="sd">        :param sentido: La orientacion de las flechas.</span>
+<span class="sd">        :type sentido: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prop_vertice</span><span class="p">[</span><span class="s2">&quot;dir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sentido</span></div>
+
+
+<div class="viewcode-block" id="EditorVertice.activar_interruptor">
+<a class="viewcode-back" href="../../../secciones.subsecciones.html#secciones.subsecciones.vertice.EditorVertice.activar_interruptor">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">activar_interruptor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Alterna el valor de verdad del interruptor que permite ocultar</span>
+<span class="sd">        o mostrar la opción de editar el &quot;peso&quot; de una relación.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_indicador_relacion</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_indicador_relacion</span></div>
+
+     
+<div class="viewcode-block" id="EditorVertice.interruptor_relacion">
+<a class="viewcode-back" href="../../../secciones.subsecciones.html#secciones.subsecciones.vertice.EditorVertice.interruptor_relacion">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">interruptor_relacion</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Hace visible la opción de &quot;peso&quot; de la relación cuando se modifica</span>
+<span class="sd">        un vértice específico. Para ello modifica la ubicación de los artefactos</span>
+<span class="sd">        que se encuentran en las celdas siguientes a la cual ocupa en la retícula.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_indicador_relacion</span><span class="p">:</span>
+            <span class="c1"># Peso relación</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_etq_peso_relacion</span><span class="o">.</span><span class="n">grid_forget</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_relacion</span><span class="o">.</span><span class="n">grid_forget</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_peso_relacion</span><span class="o">.</span><span class="n">grid_forget</span><span class="p">()</span>
+            <span class="c1"># Tipo de fuente</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_etq_tipo_fuente_v</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_tipo_fuente_v</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_tipo_fuente_v</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+                <span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_btn_ver_fuentes_v</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+            <span class="c1"># Tamaño</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_etq_tamaño_fuente_v</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+                <span class="n">row</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_tamaño_fuente_v</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+                <span class="n">row</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_tamaño_fuente_v</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+                <span class="n">row</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="c1"># Dirección</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_etq_direccion</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_artf_direccion</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Peso relación</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_etq_peso_relacion</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_relacion</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+                <span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_peso_relacion</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+                <span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="c1"># Tipo de fuente</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_etq_tipo_fuente_v</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_tipo_fuente_v</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+                <span class="n">row</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_tipo_fuente_v</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+                <span class="n">row</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_btn_ver_fuentes_v</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+            <span class="c1"># Tamaño</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_etq_tamaño_fuente_v</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+                <span class="n">row</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_tamaño_fuente_v</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+                <span class="n">row</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_tamaño_fuente_v</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+                <span class="n">row</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="c1"># Dirección</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_etq_direccion</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_artf_direccion</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="EditorVertice.obtener_cambios">
+<a class="viewcode-back" href="../../../secciones.subsecciones.html#secciones.subsecciones.vertice.EditorVertice.obtener_cambios">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">obtener_cambios</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retorna el diccionario de cambios en el vértice.</span>
+
+<span class="sd">        :return: Las modificaciones efectuadas.</span>
+<span class="sd">        :rtype: dict[str, str | None]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prop_vertice</span></div>
+
+    
+<div class="viewcode-block" id="EditorVertice.reiniciar_cambios">
+<a class="viewcode-back" href="../../../secciones.subsecciones.html#secciones.subsecciones.vertice.EditorVertice.reiniciar_cambios">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reiniciar_cambios</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Vacía el diccionario de cambios.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prop_vertice</span> <span class="o">=</span> <span class="p">{}</span></div>
+
+
+<div class="viewcode-block" id="EditorVertice.reiniciar_entradas">
+<a class="viewcode-back" href="../../../secciones.subsecciones.html#secciones.subsecciones.vertice.EditorVertice.reiniciar_entradas">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reiniciar_entradas</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Vacía los artefactos donde se ingresan los cambios.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opc_tipo_flecha_d</span><span class="o">.</span><span class="n">opcion_inicial</span><span class="p">(</span><span class="s2">&quot;Delantera&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opc_tipo_flecha_t</span><span class="o">.</span><span class="n">opcion_inicial</span><span class="p">(</span><span class="s2">&quot;Trasera&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_tamaño_flecha</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_relacion</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_tipo_fuente_v</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_tamaño_fuente_v</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opc_direccion</span><span class="o">.</span><span class="n">opcion_inicial</span><span class="p">(</span><span class="s2">&quot;Sentido&quot;</span><span class="p">)</span></div>
+
+  
+<div class="viewcode-block" id="EditorVertice._color_vertice">
+<a class="viewcode-back" href="../../../secciones.subsecciones.html#secciones.subsecciones.vertice.EditorVertice._color_vertice">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_color_vertice</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Abre un selector de color y actualiza el diccionario de cambios.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="n">colorchooser</span><span class="o">.</span><span class="n">askcolor</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span><span class="s2">&quot;Elegir color del vértice&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prop_vertice</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span></div>
+
+        
+<div class="viewcode-block" id="EditorVertice._color_texto_v">
+<a class="viewcode-back" href="../../../secciones.subsecciones.html#secciones.subsecciones.vertice.EditorVertice._color_texto_v">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_color_texto_v</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Abre un selector de color y actualiza el diccionario de cambios.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="n">colorchooser</span><span class="o">.</span><span class="n">askcolor</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span><span class="s2">&quot;Elegir color del texto&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prop_vertice</span><span class="p">[</span><span class="s2">&quot;fontcolor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="EditorVertice._construir_opciones_vertice">
+<a class="viewcode-back" href="../../../secciones.subsecciones.html#secciones.subsecciones.vertice.EditorVertice._construir_opciones_vertice">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_construir_opciones_vertice</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Construye los artefactos que permiten ingresar los cambios.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Titulo de sección</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sep_vertice_sup</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Separator</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Separator</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;horizontal&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_sec_opc_vertices</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;ATRIBUTOS DE VÉRTICE&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ayuda</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sep_vertice_inf</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Separator</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Separator</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;horizontal&quot;</span>
+        <span class="p">)</span>
+        <span class="c1"># Color vértice</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_relleno_vertice</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Color de vértice:&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ayuda</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_elegir_color_vertice</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Elegir&quot;</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_color_vertice</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_opc</span>
+        <span class="p">)</span>
+        <span class="c1"># Color texto vértice</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_texto_vertice</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Color del texto:&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ayuda</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_elegir_color_texto_v</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Elegir&quot;</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_color_texto_v</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_opc</span>
+        <span class="p">)</span>
+        <span class="c1"># Tipos de flechas</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_tipo_flecha</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Tipo de flechas:&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ayuda</span>
+        <span class="p">)</span>       
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opc_tipo_flecha_d</span> <span class="o">=</span> <span class="n">opciones</span><span class="o">.</span><span class="n">MenuOpciones</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span>
+            <span class="s2">&quot;Delantera&quot;</span><span class="p">,</span>
+            <span class="n">comunes</span><span class="o">.</span><span class="n">tipos_flechas</span><span class="p">,</span>
+            <span class="n">comunes</span><span class="o">.</span><span class="n">atrb_menu_opc</span><span class="p">,</span>
+            <span class="s2">&quot;opc_tipo_flecha_d&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_artf_tipo_flecha_d</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">OptionMenu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opc_tipo_flecha_d</span><span class="o">.</span><span class="n">artefacto</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opc_tipo_flecha_t</span> <span class="o">=</span> <span class="n">opciones</span><span class="o">.</span><span class="n">MenuOpciones</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span>
+            <span class="s2">&quot;Trasera&quot;</span><span class="p">,</span>
+            <span class="n">comunes</span><span class="o">.</span><span class="n">tipos_flechas</span><span class="p">,</span>
+            <span class="n">comunes</span><span class="o">.</span><span class="n">atrb_menu_opc</span><span class="p">,</span>
+            <span class="s2">&quot;opc_tipo_flecha_t&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_artf_tipo_flecha_t</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">OptionMenu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opc_tipo_flecha_t</span><span class="o">.</span><span class="n">artefacto</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ne_tipo_flecha</span> <span class="o">=</span> <span class="n">emergente</span><span class="o">.</span><span class="n">NotaEmergente</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_artf_tipo_flecha_t</span><span class="p">,</span> <span class="s1">&#39;Solo para Dirección &quot;back&quot; o &quot;both&quot;&#39;</span>
+        <span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_artf_tipo_flecha_t</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Enter&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_tipo_flecha</span><span class="o">.</span><span class="n">mostrar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_artf_tipo_flecha_t</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Leave&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_tipo_flecha</span><span class="o">.</span><span class="n">ocultar</span><span class="p">)</span>
+        <span class="c1"># Tamaño de flecha</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_tamaño_flecha</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Tamaño de flecha:&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ayuda</span>
+        <span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tamaño_flecha</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_tamaño_flecha</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span>
+            <span class="n">textvariable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tamaño_flecha</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_entrada</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_tamaño_flecha</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;( ? )&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ayuda</span>
+        <span class="p">)</span>
+        <span class="n">tex_aux1</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;Ingresar un número entero o decimal &gt; 0. Por ejemplo: &quot;0.7&quot;&#39;</span>
+        <span class="n">tex_aux1</span> <span class="o">=</span> <span class="n">tex_aux1</span> <span class="o">+</span> <span class="s1">&#39;, &quot;1&quot;, &quot;2.5&quot;, etc.&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ne_tamaño_flecha</span> <span class="o">=</span> <span class="n">emergente</span><span class="o">.</span><span class="n">NotaEmergente</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_tamaño_flecha</span><span class="p">,</span> <span class="n">tex_aux1</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_tamaño_flecha</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Enter&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_tamaño_flecha</span><span class="o">.</span><span class="n">mostrar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_tamaño_flecha</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Leave&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_tamaño_flecha</span><span class="o">.</span><span class="n">ocultar</span><span class="p">)</span>  
+        <span class="c1"># Peso relación</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_peso_relacion</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Peso de relación:&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ayuda</span>
+        <span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_peso_relacion</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_relacion</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span>
+            <span class="n">textvariable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_peso_relacion</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_entrada</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_peso_relacion</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;( ? )&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ayuda</span>
+        <span class="p">)</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ne_peso_relacion</span> <span class="o">=</span> <span class="n">emergente</span><span class="o">.</span><span class="n">NotaEmergente</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_peso_relacion</span><span class="p">,</span> <span class="s2">&quot;Ingresar un número entero o decimal &gt; 0&quot;</span>
+        <span class="p">)</span>   
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_peso_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Enter&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_peso_relacion</span><span class="o">.</span><span class="n">mostrar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_peso_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Leave&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_peso_relacion</span><span class="o">.</span><span class="n">ocultar</span><span class="p">)</span>
+        <span class="c1"># Tipo de fuente</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_tipo_fuente_v</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Tipo de fuente:&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ayuda</span>
+        <span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tipo_fuente_v</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_tipo_fuente_v</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span>
+            <span class="n">textvariable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tipo_fuente_v</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_entrada</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_ver_fuentes_v</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Disponibles&quot;</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_explorar_fuentes</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_fuentes</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_tipo_fuente_v</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;( ? )&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ayuda</span>
+        <span class="p">)</span>
+        <span class="n">tex_aux2</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Ingresar una combinación de la forma: {fuente disponible}&quot;</span>
+        <span class="n">tex_aux2</span> <span class="o">=</span> <span class="n">tex_aux2</span> <span class="o">+</span> <span class="s2">&quot;-</span><span class="si">{estilo}</span><span class="s2">,</span><span class="se">\n</span><span class="s2"> o bien el nombre de la fuente. &quot;</span>
+        <span class="n">tex_aux2</span> <span class="o">=</span> <span class="n">tex_aux2</span> <span class="o">+</span> <span class="s1">&#39;Por ejemplo: &quot;times-italic&quot;, &quot;Droid Sans&quot;, etc.&#39;</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ne_tipo_fuente_v</span> <span class="o">=</span> <span class="n">emergente</span><span class="o">.</span><span class="n">NotaEmergente</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_tipo_fuente_v</span><span class="p">,</span> <span class="n">tex_aux2</span>
+        <span class="p">)</span>            
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_tipo_fuente_v</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Enter&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_tipo_fuente_v</span><span class="o">.</span><span class="n">mostrar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_tipo_fuente_v</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Leave&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_tipo_fuente_v</span><span class="o">.</span><span class="n">ocultar</span><span class="p">)</span>        
+        <span class="c1"># Tamaño de fuente</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_tamaño_fuente_v</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Tamaño del texto:&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ayuda</span>
+        <span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tamaño_fuente_v</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_tamaño_fuente_v</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span>
+            <span class="n">textvariable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tamaño_fuente_v</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_entrada</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_tamaño_fuente_v</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;( ? )&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ayuda</span>
+        <span class="p">)</span>     
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ne_tamaño_fuente_v</span> <span class="o">=</span> <span class="n">emergente</span><span class="o">.</span><span class="n">NotaEmergente</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_tamaño_fuente_v</span><span class="p">,</span> <span class="s2">&quot;Ingresar un número entero&quot;</span>
+        <span class="p">)</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_tamaño_fuente_v</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Enter&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_tamaño_fuente_v</span><span class="o">.</span><span class="n">mostrar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_tamaño_fuente_v</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Leave&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_tamaño_fuente_v</span><span class="o">.</span><span class="n">ocultar</span><span class="p">)</span>
+        <span class="c1"># Dirección</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_direccion</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Dirección:&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ayuda</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opc_direccion</span> <span class="o">=</span> <span class="n">opciones</span><span class="o">.</span><span class="n">MenuOpciones</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_vertices</span><span class="p">,</span>
+            <span class="s2">&quot;Sentido&quot;</span><span class="p">,</span>
+            <span class="n">comunes</span><span class="o">.</span><span class="n">direcciones</span><span class="p">,</span>
+            <span class="n">comunes</span><span class="o">.</span><span class="n">atrb_menu_opc</span><span class="p">,</span>
+            <span class="s2">&quot;opc_direccion&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_artf_direccion</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">OptionMenu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opc_direccion</span><span class="o">.</span><span class="n">artefacto</span><span class="p">()</span>        
+        <span class="c1"># Ubicación de los elementos en el contenedor de opciones vértices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sep_vertice_sup</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_sec_opc_vertices</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sep_vertice_inf</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">13</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="c1"># Color borde</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_relleno_vertice</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_elegir_color_vertice</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+        <span class="c1"># Color relleno</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_texto_vertice</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_elegir_color_texto_v</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+        <span class="c1"># Tipo de flecha</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_tipo_flecha</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_artf_tipo_flecha_d</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_artf_tipo_flecha_t</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+        <span class="c1"># Tamaño flecha</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_tamaño_flecha</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_tamaño_flecha</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_tamaño_flecha</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="c1"># Peso relación</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_peso_relacion</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_relacion</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_peso_relacion</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="c1"># Tipo de fuente</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_tipo_fuente_v</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_tipo_fuente_v</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_tipo_fuente_v</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_ver_fuentes_v</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+        <span class="c1"># Tamaño</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_tamaño_fuente_v</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_tamaño_fuente_v</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_tamaño_fuente_v</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="c1"># Dirección</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_direccion</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_artf_direccion</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="EditorVertice._explorar_fuentes">
+<a class="viewcode-back" href="../../../secciones.subsecciones.html#secciones.subsecciones.vertice.EditorVertice._explorar_fuentes">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_explorar_fuentes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Construye una ventana independiente donde se muestran las fuentes</span>
+<span class="sd">        disponibles en el sistema.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">fuentes_disponibles</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">font</span><span class="o">.</span><span class="n">families</span><span class="p">())</span>
+        <span class="n">fuentes_disponibles_conj</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">fuentes_disponibles</span><span class="p">)</span>
+        <span class="n">fuentes_disponibles</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fuentes_disponibles_conj</span><span class="p">)</span>
+        <span class="n">fuentes_disponibles</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="n">texto_fuentes</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">fuente</span> <span class="k">for</span> <span class="n">fuente</span> <span class="ow">in</span> <span class="n">fuentes_disponibles</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="c1"># Creo la ventana emergente</span>
+        <span class="n">nueva_ventana</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Toplevel</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Toplevel</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ancestro</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+        <span class="p">)</span>
+        <span class="n">nueva_ventana</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Fuentes disponibles&quot;</span><span class="p">)</span>
+        <span class="c1"># Obtengo los datos para centrarla en la pantalla</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span>
+        <span class="n">ancho</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">500</span> 
+        <span class="n">alto</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">200</span> 
+        <span class="n">ancho_pantalla</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span><span class="o">.</span><span class="n">winfo_screenwidth</span><span class="p">()</span>
+        <span class="n">alto_pantalla</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span><span class="o">.</span><span class="n">winfo_screenheight</span><span class="p">()</span>
+        <span class="n">x</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="p">(</span><span class="n">ancho_pantalla</span> <span class="o">-</span> <span class="n">ancho</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="n">y</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="p">(</span><span class="n">alto_pantalla</span> <span class="o">-</span> <span class="n">alto</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="n">nueva_ventana</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ancho</span><span class="si">}</span><span class="s2">x</span><span class="si">{</span><span class="n">alto</span><span class="si">}</span><span class="s2">+</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">+</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>        
+        <span class="c1"># Creo el artefacto que mostrará el nombre de las fuentes</span>
+        <span class="n">caja_fuentes</span> <span class="o">=</span> <span class="n">scrolledtext</span><span class="o">.</span><span class="n">ScrolledText</span><span class="p">(</span>
+            <span class="n">nueva_ventana</span><span class="p">,</span>
+            <span class="n">wrap</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">WORD</span><span class="p">,</span>
+            <span class="n">state</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">NORMAL</span><span class="p">,</span>
+            <span class="n">undo</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">maxundo</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_area_txt</span>
+        <span class="p">)</span>
+        <span class="n">caja_fuentes</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">TOP</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+        <span class="n">caja_fuentes</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+        <span class="n">caja_fuentes</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">,</span> <span class="n">texto_fuentes</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, errejotaeme.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

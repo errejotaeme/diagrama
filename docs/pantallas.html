@@ -1,0 +1,369 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paquete pantallas &mdash; documentación de Diagrama - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Diagrama
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dependencias.html">Configuración del entorno (<cite>Linux</cite>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Módulos y paquetes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Diagrama</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Paquete pantallas</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pantallas.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="paquete-pantallas">
+<h1>Paquete pantallas<a class="headerlink" href="#paquete-pantallas" title="Link to this heading"></a></h1>
+<section id="module-pantallas.pantalla_guardar">
+<span id="modulo-pantallas-pantalla-guardar"></span><h2>Módulo pantallas.pantalla_guardar<a class="headerlink" href="#module-pantallas.pantalla_guardar" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pantallas.pantalla_guardar.PantallaGuardar">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pantallas.pantalla_guardar.</span></span><span class="sig-name descname"><span class="pre">PantallaGuardar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proyecto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gestor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raiz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pantallas/pantalla_guardar.html#PantallaGuardar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_guardar.PantallaGuardar" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de construir una ventana independiente que apoya
+la operación de guardar el proyecto actual.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>proyecto</strong> (<a class="reference internal" href="areas.html#areas.proyecto.AreaProyecto" title="areas.proyecto.AreaProyecto"><em>AreaProyecto</em></a>) – La instancia de la clase encargada de permitir guardar, exportar o cargar un proyecto.</p></li>
+<li><p><strong>gestor</strong> (<a class="reference internal" href="control.html#control.gestor.Gestor" title="control.gestor.Gestor"><em>Gestor</em></a>) – La instancia de la clase encargada de gestionar la comunicación entre los módulos y la interacción con las tablas.</p></li>
+<li><p><strong>raiz</strong> (<em>Tk</em>) – Ventana principal que controla el bucle de la aplicación.</p></li>
+<li><p><strong>ancestro</strong> (<em>Frame</em>) – El marco donde se ubica el contenedor principal y/o los artefactos instanciados por la clase.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pantallas.pantalla_guardar.PantallaGuardar._activar">
+<span class="sig-name descname"><span class="pre">_activar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pantallas/pantalla_guardar.html#PantallaGuardar._activar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_guardar.PantallaGuardar._activar" title="Link to this definition"></a></dt>
+<dd><p>Alamacena u olvida los datos en las variables que permiten acceder,
+desde el área de tarea, a la operación de guardar el proyecto activado
+con el atajo de teclado.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pantallas.pantalla_guardar.PantallaGuardar._cancelar_guardar">
+<span class="sig-name descname"><span class="pre">_cancelar_guardar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pantallas/pantalla_guardar.html#PantallaGuardar._cancelar_guardar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_guardar.PantallaGuardar._cancelar_guardar" title="Link to this definition"></a></dt>
+<dd><p>Recupera los datos respaldados y cierra la ventana.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pantallas.pantalla_guardar.PantallaGuardar._confirmar_guardar">
+<span class="sig-name descname"><span class="pre">_confirmar_guardar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pantallas/pantalla_guardar.html#PantallaGuardar._confirmar_guardar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_guardar.PantallaGuardar._confirmar_guardar" title="Link to this definition"></a></dt>
+<dd><p>Verifica que se hayan ingresado los datos necesarios,
+guarda el proyecto y, si fue seleccionada la opción de
+recordar, almacena el nombre y ubicación del mismo.
+Caso contrario, vacía las variables y cierra la ventana.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pantallas.pantalla_guardar.PantallaGuardar._construir_botonera">
+<span class="sig-name descname"><span class="pre">_construir_botonera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pantallas/pantalla_guardar.html#PantallaGuardar._construir_botonera"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_guardar.PantallaGuardar._construir_botonera" title="Link to this definition"></a></dt>
+<dd><p>Construye los botones para guardar o cancelar y al marco que
+los contiene.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ancestro</strong> (<em>Frame</em>) – El marco donde se ubica el contenedor principal y/o los artefactos instanciados por la clase.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pantallas.pantalla_guardar.PantallaGuardar._construir_pantalla">
+<span class="sig-name descname"><span class="pre">_construir_pantalla</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pantallas/pantalla_guardar.html#PantallaGuardar._construir_pantalla"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_guardar.PantallaGuardar._construir_pantalla" title="Link to this definition"></a></dt>
+<dd><p>Construye y ubica los artefactos necesarios para el proceso
+de guardar el proyecto.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ancestro</strong> (<em>Frame</em>) – El marco donde se ubica el contenedor principal y/o los artefactos instanciados por la clase.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pantallas.pantalla_guardar.PantallaGuardar._crear_notas_emergentes">
+<span class="sig-name descname"><span class="pre">_crear_notas_emergentes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pantallas/pantalla_guardar.html#PantallaGuardar._crear_notas_emergentes"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_guardar.PantallaGuardar._crear_notas_emergentes" title="Link to this definition"></a></dt>
+<dd><p>Construye las notas emergentes asociadas a los artefactos de la pantalla.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pantallas.pantalla_guardar.PantallaGuardar._seleccionar_directorio">
+<span class="sig-name descname"><span class="pre">_seleccionar_directorio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pantallas/pantalla_guardar.html#PantallaGuardar._seleccionar_directorio"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_guardar.PantallaGuardar._seleccionar_directorio" title="Link to this definition"></a></dt>
+<dd><p>Abre una ventana de diálogo que permite elegir la ubicación
+donde se creará la carpeta con los archivos necesarios para
+poder recuperar el proyecto.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pantallas.pantalla_guardar.PantallaGuardar.mostrar_aviso">
+<span class="sig-name descname"><span class="pre">mostrar_aviso</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aviso</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pantallas/pantalla_guardar.html#PantallaGuardar.mostrar_aviso"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_guardar.PantallaGuardar.mostrar_aviso" title="Link to this definition"></a></dt>
+<dd><p>Actualiza la etiqueta de avisos con el texto recibido.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>aviso</strong> (<em>str</em>) – La notificación a mostrar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pantallas.pantalla_guardar.PantallaGuardar.ocultar_aviso">
+<span class="sig-name descname"><span class="pre">ocultar_aviso</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pantallas/pantalla_guardar.html#PantallaGuardar.ocultar_aviso"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_guardar.PantallaGuardar.ocultar_aviso" title="Link to this definition"></a></dt>
+<dd><p>Oculta el aviso que esté visible.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pantallas.pantalla_notas">
+<span id="modulo-pantallas-pantalla-notas"></span><h2>Módulo pantallas.pantalla_notas<a class="headerlink" href="#module-pantallas.pantalla_notas" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pantallas.pantalla_notas.PantallaNotas">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pantallas.pantalla_notas.</span></span><span class="sig-name descname"><span class="pre">PantallaNotas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gestor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raiz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pantallas/pantalla_notas.html#PantallaNotas"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_notas.PantallaNotas" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de de construir una ventana independiente en la cual
+guardar notas relacionadas a la tarea en proceso.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gestor</strong> (<a class="reference internal" href="control.html#control.gestor.Gestor" title="control.gestor.Gestor"><em>Gestor</em></a>) – La instancia de la clase encargada de gestionar la comunicación entre los módulos y la interacción con las tablas.</p></li>
+<li><p><strong>raiz</strong> (<em>Tk</em>) – Ventana principal que controla el bucle de la aplicación.</p></li>
+<li><p><strong>ancestro</strong> (<em>Frame</em>) – El marco donde se ubica el contenedor principal y/o los artefactos instanciados por la clase.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pantallas.pantalla_notas.PantallaNotas._cargar_notas">
+<span class="sig-name descname"><span class="pre">_cargar_notas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pantallas/pantalla_notas.html#PantallaNotas._cargar_notas"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_notas.PantallaNotas._cargar_notas" title="Link to this definition"></a></dt>
+<dd><p>Obtiene del gestor las notas que se hayan registrado cuando se
+guardó el proyecto. Cuando se empieza de cero, éstas son una cadena
+vacía.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pantallas.pantalla_notas.PantallaNotas._crear_botonera">
+<span class="sig-name descname"><span class="pre">_crear_botonera</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pantallas/pantalla_notas.html#PantallaNotas._crear_botonera"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_notas.PantallaNotas._crear_botonera" title="Link to this definition"></a></dt>
+<dd><p>Crea el marco que contiene al botón de guardado.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pantallas.pantalla_notas.PantallaNotas._crear_texto_desplazable">
+<span class="sig-name descname"><span class="pre">_crear_texto_desplazable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pantallas/pantalla_notas.html#PantallaNotas._crear_texto_desplazable"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_notas.PantallaNotas._crear_texto_desplazable" title="Link to this definition"></a></dt>
+<dd><p>Crea el artefacto donde apuntar las notas.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pantallas.pantalla_notas.PantallaNotas._establecer_atajos">
+<span class="sig-name descname"><span class="pre">_establecer_atajos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pantallas/pantalla_notas.html#PantallaNotas._establecer_atajos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_notas.PantallaNotas._establecer_atajos" title="Link to this definition"></a></dt>
+<dd><p>Asocia los artefactos con atajos de teclados que efectúan llamadas
+a los métodos correspondientes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pantallas.pantalla_notas.PantallaNotas._guardar">
+<span class="sig-name descname"><span class="pre">_guardar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pantallas/pantalla_notas.html#PantallaNotas._guardar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_notas.PantallaNotas._guardar" title="Link to this definition"></a></dt>
+<dd><p>Obtiene el texto del ScrolledText y lo guardo en un txt para poder
+recuperarlo al cargar un proyecto. Args captura los eventos
+vinculados a los artefactos que llaman a éste método</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pantallas.pantalla_notas.PantallaNotas._salir">
+<span class="sig-name descname"><span class="pre">_salir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pantallas/pantalla_notas.html#PantallaNotas._salir"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_notas.PantallaNotas._salir" title="Link to this definition"></a></dt>
+<dd><p>Cierra la ventana que contiene a la pantalla de notas. Args captura
+los eventos vinculados a los artefactos que llaman a éste método</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pantallas.pantalla_relacion">
+<span id="modulo-pantallas-pantalla-relacion"></span><h2>Módulo pantallas.pantalla_relacion<a class="headerlink" href="#module-pantallas.pantalla_relacion" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pantallas.pantalla_relacion.PantallaRelacion">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pantallas.pantalla_relacion.</span></span><span class="sig-name descname"><span class="pre">PantallaRelacion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gestor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raiz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valores</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pantallas/pantalla_relacion.html#PantallaRelacion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_relacion.PantallaRelacion" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de construir una ventana independiente en la que
+editar la relación seleccionada.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gestor</strong> (<a class="reference internal" href="control.html#control.gestor.Gestor" title="control.gestor.Gestor"><em>Gestor</em></a>) – La instancia de la clase encargada de gestionar la comunicación entre los módulos y la interacción con las tablas.</p></li>
+<li><p><strong>raiz</strong> (<em>Tk</em>) – Ventana principal que controla el bucle de la aplicación.</p></li>
+<li><p><strong>ancestro</strong> (<em>Frame</em>) – El marco donde se ubica el contenedor principal y/o los artefactos instanciados por la clase.</p></li>
+<li><p><strong>valores</strong> (<em>list</em><em>[</em><em>tuple</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em><em>]</em>) – El id y valor de cada elemento implicado en la relación entidad-&gt;vinculo-&gt;entidad.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pantallas.pantalla_relacion.PantallaRelacion._cancelar_edicion">
+<span class="sig-name descname"><span class="pre">_cancelar_edicion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pantallas/pantalla_relacion.html#PantallaRelacion._cancelar_edicion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_relacion.PantallaRelacion._cancelar_edicion" title="Link to this definition"></a></dt>
+<dd><p>Destruye el Toplevel que permite editar la relación seleccionada.
+Args captura los eventos vinculados a los artefactos de ingreso
+que llaman a éste método.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pantallas.pantalla_relacion.PantallaRelacion._comprobar_ingresos">
+<span class="sig-name descname"><span class="pre">_comprobar_ingresos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pantallas/pantalla_relacion.html#PantallaRelacion._comprobar_ingresos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_relacion.PantallaRelacion._comprobar_ingresos" title="Link to this definition"></a></dt>
+<dd><p>Verifica que las modificaciones ingresadas sean válidas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>El resultado de la verificación.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pantallas.pantalla_relacion.PantallaRelacion._confirmar_edicion">
+<span class="sig-name descname"><span class="pre">_confirmar_edicion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pantallas/pantalla_relacion.html#PantallaRelacion._confirmar_edicion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_relacion.PantallaRelacion._confirmar_edicion" title="Link to this definition"></a></dt>
+<dd><p>Verifica que las modificaciones realizadas sean procesables y
+envía al gestor los cambios a registrar. Args captura los eventos
+vinculados a los artefactos de ingreso que llaman a éste método.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pantallas.pantalla_relacion.PantallaRelacion._construir_botonera">
+<span class="sig-name descname"><span class="pre">_construir_botonera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pantallas/pantalla_relacion.html#PantallaRelacion._construir_botonera"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_relacion.PantallaRelacion._construir_botonera" title="Link to this definition"></a></dt>
+<dd><p>Construye el marco y los artefactos que permiten confirmar o cancelar
+la edición.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ancestro</strong> (<em>Frame</em>) – El marco donde se ubica el contenedor principal y/o los artefactos instanciados por la clase.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pantallas.pantalla_relacion.PantallaRelacion._construir_entradas">
+<span class="sig-name descname"><span class="pre">_construir_entradas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valores</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pantallas/pantalla_relacion.html#PantallaRelacion._construir_entradas"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_relacion.PantallaRelacion._construir_entradas" title="Link to this definition"></a></dt>
+<dd><p>Crea los artefactos que permiten modificar los valores de
+los elementos de la relación.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ancestro</strong> (<em>Frame</em>) – El marco donde se ubica el contenedor principal y/o los artefactos instanciados por la clase.</p></li>
+<li><p><strong>valores</strong> (<em>list</em><em>[</em><em>tuple</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em><em>]</em>) – El id y valor de cada elemento implicado en la relación entidad-&gt;vinculo-&gt;entidad.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pantallas.pantalla_relacion.PantallaRelacion._establecer_atajos">
+<span class="sig-name descname"><span class="pre">_establecer_atajos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pantallas/pantalla_relacion.html#PantallaRelacion._establecer_atajos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_relacion.PantallaRelacion._establecer_atajos" title="Link to this definition"></a></dt>
+<dd><p>Asocia el presionar «Enter» en los artefactos con una llamada al
+método correspondiente.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pantallas.pantalla_relacion.PantallaRelacion.mostrar_aviso">
+<span class="sig-name descname"><span class="pre">mostrar_aviso</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aviso</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pantallas/pantalla_relacion.html#PantallaRelacion.mostrar_aviso"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_relacion.PantallaRelacion.mostrar_aviso" title="Link to this definition"></a></dt>
+<dd><p>Actualiza la etiqueta de avisos con el texto recibido.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>aviso</strong> (<em>str</em>) – El texto a mostrar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pantallas.pantalla_relacion.PantallaRelacion.ocultar_aviso">
+<span class="sig-name descname"><span class="pre">ocultar_aviso</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pantallas/pantalla_relacion.html#PantallaRelacion.ocultar_aviso"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#pantallas.pantalla_relacion.PantallaRelacion.ocultar_aviso" title="Link to this definition"></a></dt>
+<dd><p>Oculta el aviso que esté visible.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, errejotaeme.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,238 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>diseño &mdash; documentación de Diagrama - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Diagrama
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dependencias.html">Configuración del entorno (<cite>Linux</cite>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Módulos y paquetes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Diagrama</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">diseño</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para diseño</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.control</span><span class="w"> </span><span class="kn">import</span> <span class="n">gestor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz.componentes.areas</span><span class="w"> </span><span class="kn">import</span> <span class="n">edicion</span><span class="p">,</span> <span class="n">grafico</span><span class="p">,</span> <span class="n">proyecto</span><span class="p">,</span> <span class="n">texto</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz.componentes.elementos</span><span class="w"> </span><span class="kn">import</span> <span class="n">emergente</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz</span><span class="w"> </span><span class="kn">import</span> <span class="n">comunes</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">ttk</span>
+
+
+<div class="viewcode-block" id="Interfaz">
+<a class="viewcode-back" href="../dise%C3%B1o.html#diseño.Interfaz">[documentos]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Interfaz</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Clase encargada de construir los componentes básicos de la aplicación.</span>
+
+<span class="sd">    :param bucle: Instancia de la clase encargada de crear el bucle de la aplicación y gestionar el cambio de tema.</span>
+<span class="sd">    :type bucle: Bucle</span>
+<span class="sd">    :param tema: El tema actual de la aplicacion.</span>
+<span class="sd">    :type tema: str</span>
+<span class="sd">    :param respaldo_pendiente: Indica si se debe cargar el respaldo temporal guardado antes del reinicio por cambio de tema.</span>
+<span class="sd">    :type respaldo_pendiente: bool</span>
+<span class="sd">    :param diagrama_no_vacio: Indica si se debe actualizar el artefacto del área de gráfico para que coincida con el color de fondo del grafo.</span>
+<span class="sd">    :type diagrama_no_vacio: bool</span>
+<span class="sd">    :param proyecto_activo: Datos que permiten volver a activar el proyecto que estaba abierto, al reiniciar por cambio en tema.</span>
+<span class="sd">    :type proyecto_activo: tuple[str, str]</span>
+<span class="sd">    :param raiz: Ventana principal que controla el bucle de la aplicación.</span>
+<span class="sd">    :type raiz: Tk</span>
+<span class="sd">    :param texto_respaldo: Respaldo del contenido del área de texto que se vuelve a cargar cuando se reinicia por cambio de tema.</span>
+<span class="sd">    :type texto_respaldo: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">bucle</span><span class="p">,</span>
+        <span class="n">tema</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">respaldo_pendiente</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+        <span class="n">diagrama_no_vacio</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+        <span class="n">proyecto_activo</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
+        <span class="n">raiz</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">,</span>
+        <span class="n">texto_respaldo</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor de la clase Interfaz.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ventana_raiz</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span> <span class="o">=</span> <span class="n">raiz</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bucle</span> <span class="o">=</span> <span class="n">bucle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tema</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">tema</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_respaldo_pendiente</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">respaldo_pendiente</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto_activo</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">proyecto_activo</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_diagrama_no_vacio</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">diagrama_no_vacio</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_texto_respaldo</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">texto_respaldo</span>
+    
+<div class="viewcode-block" id="Interfaz.desplegar">
+<a class="viewcode-back" href="../dise%C3%B1o.html#diseño.Interfaz.desplegar">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">desplegar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Instancia y ordena los elementos en la ventana principal.</span>
+<span class="sd">        Da inicio al bucle de la aplicación.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">instancia_gestor</span> <span class="o">=</span> <span class="n">gestor</span><span class="o">.</span><span class="n">Gestor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ventana_raiz</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tema</span><span class="p">)</span>
+        <span class="c1"># Vacía el archivo con las relaciones generadas en sesión anterior</span>
+        <span class="n">instancia_gestor</span><span class="o">.</span><span class="n">restablecer_todo</span><span class="p">()</span>        
+        <span class="c1"># Panel principal</span>
+        <span class="n">estructura</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">PanedWindow</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">PanedWindow</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ventana_raiz</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">HORIZONTAL</span>
+        <span class="p">)</span>
+        <span class="n">estructura</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">BOTH</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># Pestañas</span>
+        <span class="n">estilo_pestaña</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Style</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Style</span><span class="p">()</span>
+        <span class="n">estilo_pestaña</span><span class="o">.</span><span class="n">theme_use</span><span class="p">(</span><span class="s2">&quot;default&quot;</span><span class="p">)</span>
+        <span class="n">estilo_pestaña</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;TNotebook&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_color_fondo</span><span class="p">)</span>
+        <span class="n">estilo_pestaña</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;TNotebook.Tab&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_pestañas_t</span><span class="p">)</span>
+        <span class="n">estilo_pestaña</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+            <span class="s2">&quot;TNotebook.Tab&quot;</span><span class="p">,</span>
+            <span class="n">background</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="p">(</span><span class="s2">&quot;active&quot;</span><span class="p">,</span> <span class="n">comunes</span><span class="o">.</span><span class="n">marron_pestaña_a</span><span class="p">),</span>
+                <span class="p">(</span><span class="s2">&quot;selected&quot;</span><span class="p">,</span> <span class="n">comunes</span><span class="o">.</span><span class="n">marron_pestaña_s</span><span class="p">)</span>
+            <span class="p">],</span>
+            <span class="n">foreground</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;selected&quot;</span><span class="p">,</span> <span class="n">comunes</span><span class="o">.</span><span class="n">color_tex_gral</span><span class="p">)]</span>
+                <span class="p">)</span>
+        <span class="n">pestañas</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Notebook</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Notebook</span><span class="p">(</span><span class="n">estructura</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;TNotebook&quot;</span><span class="p">)</span>
+        <span class="n">estructura</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">pestañas</span><span class="p">)</span>
+        
+        <span class="n">area_texto</span><span class="p">:</span> <span class="n">texto</span><span class="o">.</span><span class="n">AreaDeTexto</span> <span class="o">=</span> <span class="n">texto</span><span class="o">.</span><span class="n">AreaDeTexto</span><span class="p">(</span>
+            <span class="n">pestañas</span><span class="p">,</span>
+            <span class="n">instancia_gestor</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ventana_raiz</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_bucle</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tema</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_texto_respaldo</span>
+        <span class="p">)</span>
+        <span class="n">p_texto</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">area_texto</span><span class="o">.</span><span class="n">artefacto</span><span class="p">()</span>
+        <span class="n">pestañas</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">p_texto</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Tarea&quot;</span><span class="p">)</span>
+
+        <span class="n">area_edicion</span><span class="p">:</span> <span class="n">edicion</span><span class="o">.</span><span class="n">AreaEdicion</span> <span class="o">=</span> <span class="n">edicion</span><span class="o">.</span><span class="n">AreaEdicion</span><span class="p">(</span>
+            <span class="n">pestañas</span><span class="p">,</span> <span class="n">instancia_gestor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ventana_raiz</span>
+        <span class="p">)</span>
+        <span class="n">p_edicion</span><span class="p">:</span><span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">area_edicion</span><span class="o">.</span><span class="n">artefacto</span><span class="p">()</span>
+        <span class="n">pestañas</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">p_edicion</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Edición&quot;</span><span class="p">)</span>
+
+        <span class="n">area_proyecto</span><span class="p">:</span> <span class="n">proyecto</span><span class="o">.</span><span class="n">AreaProyecto</span> <span class="o">=</span> <span class="n">proyecto</span><span class="o">.</span><span class="n">AreaProyecto</span><span class="p">(</span>
+            <span class="n">pestañas</span><span class="p">,</span> <span class="n">instancia_gestor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ventana_raiz</span>
+        <span class="p">)</span>
+        <span class="n">p_proyecto</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">area_proyecto</span><span class="o">.</span><span class="n">artefacto</span><span class="p">()</span>       
+        <span class="n">pestañas</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">p_proyecto</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Proyecto&quot;</span><span class="p">)</span>       
+        
+        <span class="c1"># Panel interior derecho</span>
+        <span class="n">contenedor_seccion_grafico</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">PanedWindow</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">PanedWindow</span><span class="p">(</span>
+            <span class="n">estructura</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">VERTICAL</span>
+        <span class="p">)</span>
+        <span class="n">estructura</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">contenedor_seccion_grafico</span><span class="p">)</span>    
+
+        <span class="n">area_grafico</span><span class="p">:</span> <span class="n">grafico</span><span class="o">.</span><span class="n">AreaDeGrafico</span> <span class="o">=</span> <span class="n">grafico</span><span class="o">.</span><span class="n">AreaDeGrafico</span><span class="p">(</span>
+            <span class="n">contenedor_seccion_grafico</span><span class="p">,</span>  <span class="n">instancia_gestor</span>
+        <span class="p">)</span>
+        <span class="n">artf_grafico</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">area_grafico</span><span class="o">.</span><span class="n">artefacto</span><span class="p">()</span>
+        <span class="n">contenedor_seccion_grafico</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">artf_grafico</span><span class="p">)</span>
+        
+        <span class="c1"># Enlazo el gestor con las secciones</span>
+        <span class="n">instancia_gestor</span><span class="o">.</span><span class="n">enlazar</span><span class="p">(</span>
+            <span class="n">area_texto</span><span class="p">,</span>
+            <span class="n">area_edicion</span><span class="p">,</span>
+            <span class="n">area_proyecto</span><span class="p">,</span>
+            <span class="n">area_grafico</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_respaldo_pendiente</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_diagrama_no_vacio</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto_activo</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Inicio el bucle de la aplicación</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ventana_raiz</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+        <span class="c1"># Vacío las tablas y archivos cuando se cierra la aplicación</span>
+        <span class="n">instancia_gestor</span><span class="o">.</span><span class="n">restablecer_todo</span><span class="p">()</span></div>
+</div>
+
+        
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, errejotaeme.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

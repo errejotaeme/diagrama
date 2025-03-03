@@ -1,0 +1,209 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paquete elementos &mdash; documentación de Diagrama - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Diagrama
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dependencias.html">Configuración del entorno (<cite>Linux</cite>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Módulos y paquetes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Diagrama</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Paquete elementos</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/elementos.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="paquete-elementos">
+<h1>Paquete elementos<a class="headerlink" href="#paquete-elementos" title="Link to this heading"></a></h1>
+<section id="module-elementos.emergente">
+<span id="modulo-elementos-emergente"></span><h2>Módulo elementos.emergente<a class="headerlink" href="#module-elementos.emergente" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="elementos.emergente.NotaEmergente">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elementos.emergente.</span></span><span class="sig-name descname"><span class="pre">NotaEmergente</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elemento_asociado</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texto</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/elementos/emergente.html#NotaEmergente"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#elementos.emergente.NotaEmergente" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de gestionar y generar una nota emergente.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>elemento_asociado</strong> (<em>Widget</em>) – Artefacto sobre el cual será visible la nota.</p></li>
+<li><p><strong>texto</strong> (<em>str</em>) – Contenido de la nota.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="elementos.emergente.NotaEmergente.mostrar">
+<span class="sig-name descname"><span class="pre">mostrar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/elementos/emergente.html#NotaEmergente.mostrar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#elementos.emergente.NotaEmergente.mostrar" title="Link to this definition"></a></dt>
+<dd><p>Vuelve visible la nota emergente si está oculta. Args captura
+los eventos vinculados a los artefactos que llaman a éste método.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="elementos.emergente.NotaEmergente.ocultar">
+<span class="sig-name descname"><span class="pre">ocultar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/elementos/emergente.html#NotaEmergente.ocultar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#elementos.emergente.NotaEmergente.ocultar" title="Link to this definition"></a></dt>
+<dd><p>Si está visible, oculta la ventana que contiene a la nota emergente.
+Args captura los eventos vinculados a los artefactos que llaman a
+éste método.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-elementos.opciones">
+<span id="modulo-elementos-opciones"></span><h2>Módulo elementos.opciones<a class="headerlink" href="#module-elementos.opciones" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="elementos.opciones.MenuOpciones">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elementos.opciones.</span></span><span class="sig-name descname"><span class="pre">MenuOpciones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opc_inicial</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opciones</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atributos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_instancia</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gestor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/elementos/opciones.html#MenuOpciones"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#elementos.opciones.MenuOpciones" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de construir un OptionMenu y comunicarlo
+con el Gestor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ancestro</strong> (<em>Frame</em>) – El marco donde se ubicará.</p></li>
+<li><p><strong>opc_inicial</strong> (<em>str</em>) – La opción visible cuando se crea el artefacto.</p></li>
+<li><p><strong>opciones</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Cada opción del menú desplegable.</p></li>
+<li><p><strong>atributos</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em> | </em><em>int</em><em>]</em>) – El estilo del artefacto.</p></li>
+<li><p><strong>ref_instancia</strong> (<em>str</em>) – Un nombre que permite al gestor identificar la instancia y enrutar la opción elegida al módulo correspondiente.</p></li>
+<li><p><strong>gestor</strong> (<a class="reference internal" href="control.html#control.gestor.Gestor" title="control.gestor.Gestor"><em>Gestor</em></a>) – La instancia de la clase encargada de gestionar la comunicación entre los módulos y la interacción con las tablas.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="elementos.opciones.MenuOpciones._cambio_opc">
+<span class="sig-name descname"><span class="pre">_cambio_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/elementos/opciones.html#MenuOpciones._cambio_opc"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#elementos.opciones.MenuOpciones._cambio_opc" title="Link to this definition"></a></dt>
+<dd><p>Envía al gestor la opción seleccionada. Args captura el evento de
+interacción con la instancia del artefacto.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="elementos.opciones.MenuOpciones.artefacto">
+<span class="sig-name descname"><span class="pre">artefacto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">OptionMenu</span></span></span><a class="reference internal" href="_modules/elementos/opciones.html#MenuOpciones.artefacto"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#elementos.opciones.MenuOpciones.artefacto" title="Link to this definition"></a></dt>
+<dd><p>Retorna el menú de opciones.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>El menú de opciones.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>tk.OptionMenu</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="elementos.opciones.MenuOpciones.obtener_eleccion">
+<span class="sig-name descname"><span class="pre">obtener_eleccion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/elementos/opciones.html#MenuOpciones.obtener_eleccion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#elementos.opciones.MenuOpciones.obtener_eleccion" title="Link to this definition"></a></dt>
+<dd><p>Retorna la opción elegida.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Una opción del menú.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="elementos.opciones.MenuOpciones.opcion_inicial">
+<span class="sig-name descname"><span class="pre">opcion_inicial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opcion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/elementos/opciones.html#MenuOpciones.opcion_inicial"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#elementos.opciones.MenuOpciones.opcion_inicial" title="Link to this definition"></a></dt>
+<dd><p>Establece la opción que será visible en el menú, antes que
+se interactúe con él.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>opcion</strong> (<em>str</em>) – La opción incial.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, errejotaeme.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

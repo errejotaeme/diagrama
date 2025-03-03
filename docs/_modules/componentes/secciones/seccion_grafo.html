@@ -1,0 +1,398 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>componentes.secciones.seccion_grafo &mdash; documentación de Diagrama - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/translations.js?v=f85f4cfb"></script>
+      <script src="../../../_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="../../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Diagrama
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dependencias.html">Configuración del entorno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modulos.html">Módulos y paquetes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Diagrama</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">componentes.secciones.seccion_grafo</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para componentes.secciones.seccion_grafo</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz</span><span class="w"> </span><span class="kn">import</span> <span class="n">comunes</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz.componentes.elementos</span><span class="w"> </span><span class="kn">import</span> <span class="n">emergente</span><span class="p">,</span> <span class="n">opciones</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz.componentes.secciones.subsecciones</span><span class="w"> </span><span class="kn">import</span> <span class="n">nodo</span><span class="p">,</span> <span class="n">vertice</span><span class="p">,</span> <span class="n">grafo</span>
+
+
+<div class="viewcode-block" id="EdicionGrafo">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_grafo.EdicionGrafo">[documentos]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">EdicionGrafo</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Clase encargada de construir los artefactos que permiten editar de forma</span>
+<span class="sd">    general los atributos del diagrama.</span>
+
+<span class="sd">    :param ancestro: El artefacto que contiene al marco principal del área. </span>
+<span class="sd">    :type ancestro: tk.Frame</span>
+<span class="sd">    :param gestor: La instancia de la clase encargada de gestionar la comunicación entre los módulos y la interacción con las tablas.</span>
+<span class="sd">    :type gestor: Gestor </span>
+<span class="sd">    :param raiz: Ventana principal que controla el bucle de la aplicación.</span>
+<span class="sd">    :type raiz: Tk</span>
+<span class="sd">    &quot;&quot;&quot;</span>  
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ancestro</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">,</span> <span class="n">gestor</span><span class="p">,</span> <span class="n">raiz</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor de la clase EdicionGrafo.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span> <span class="o">=</span> <span class="n">gestor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span> <span class="o">=</span> <span class="n">raiz</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_almacenar_valores_por_defecto</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_gral</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>  <span class="c1"># Marco principal</span>
+            <span class="n">ancestro</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+        <span class="p">)</span>
+        <span class="c1"># Instancias de los módulos de edición</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nodo_general</span><span class="p">:</span> <span class="n">nodo</span><span class="o">.</span><span class="n">EditorNodo</span> <span class="o">=</span> <span class="n">nodo</span><span class="o">.</span><span class="n">EditorNodo</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_gral</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opc_gral_nodos</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodo_general</span><span class="o">.</span><span class="n">artefacto</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opc_gral_nodos</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;nw&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vertice_gral</span><span class="p">:</span> <span class="n">vertice</span><span class="o">.</span><span class="n">EditorVertice</span> <span class="o">=</span> <span class="n">vertice</span><span class="o">.</span><span class="n">EditorVertice</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_gral</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span>
+        <span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opc_gral_vertices</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vertice_gral</span><span class="o">.</span><span class="n">artefacto</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opc_gral_vertices</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;nw&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_grafo</span><span class="p">:</span> <span class="n">grafo</span><span class="o">.</span><span class="n">EditorGrafo</span> <span class="o">=</span> <span class="n">grafo</span><span class="o">.</span><span class="n">EditorGrafo</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_gral</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opc_gral_grafo</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_grafo</span><span class="o">.</span><span class="n">artefacto</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opc_gral_grafo</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;nw&quot;</span><span class="p">,</span><span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_construir_botonera</span><span class="p">(</span><span class="n">ancestro</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="EdicionGrafo.crecimiento">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_grafo.EdicionGrafo.crecimiento">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">crecimiento</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">direccion</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Recibe la opción seleccionada en el menú asociado y la manda a ingresar</span>
+<span class="sd">        al diccionario de modificaciones pendientes.</span>
+
+<span class="sd">        :param direccion: La dirección de crecimiento del grafo.</span>
+<span class="sd">        :type direccion: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">direccion</span> <span class="o">==</span> <span class="s2">&quot;arriba&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_grafo</span><span class="o">.</span><span class="n">actualizar_crecimiento</span><span class="p">(</span><span class="s2">&quot;BT&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">direccion</span> <span class="o">==</span> <span class="s2">&quot;abajo&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_grafo</span><span class="o">.</span><span class="n">actualizar_crecimiento</span><span class="p">(</span><span class="s2">&quot;TB&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">direccion</span> <span class="o">==</span> <span class="s2">&quot;izquierda&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_grafo</span><span class="o">.</span><span class="n">actualizar_crecimiento</span><span class="p">(</span><span class="s2">&quot;RL&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_grafo</span><span class="o">.</span><span class="n">actualizar_crecimiento</span><span class="p">(</span><span class="s2">&quot;LR&quot;</span><span class="p">)</span></div>
+
+            
+<div class="viewcode-block" id="EdicionGrafo.direccion">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_grafo.EdicionGrafo.direccion">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">direccion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sentido</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Recibe la opción seleccionada en el menú asociado y la manda a ingresar</span>
+<span class="sd">        al diccionario de modificaciones pendientes.</span>
+
+<span class="sd">        :param sentido: El sentido del vértice que une las entidades.</span>
+<span class="sd">        :type sentido: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vertice_gral</span><span class="o">.</span><span class="n">actualizar_direccion</span><span class="p">(</span><span class="n">sentido</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="EdicionGrafo.flecha_d">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_grafo.EdicionGrafo.flecha_d">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">flecha_d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tipo</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Recibe la opción seleccionada en el menú asociado y la manda a ingresar</span>
+<span class="sd">        al diccionario de modificaciones pendientes.</span>
+
+<span class="sd">        :param tipo: El tipo de flecha delantera.</span>
+<span class="sd">        :type tipo: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vertice_gral</span><span class="o">.</span><span class="n">actualizar_flecha_d</span><span class="p">(</span><span class="n">tipo</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="EdicionGrafo.flecha_t">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_grafo.EdicionGrafo.flecha_t">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">flecha_t</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tipo</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Recibe la opción seleccionada en el menú asociado y la manda a ingresar</span>
+<span class="sd">        al diccionario de modificaciones pendientes.</span>
+
+<span class="sd">        :param tipo: El tipo de flecha trasera.</span>
+<span class="sd">        :type tipo: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vertice_gral</span><span class="o">.</span><span class="n">actualizar_flecha_t</span><span class="p">(</span><span class="n">tipo</span><span class="p">)</span></div>
+
+        
+<div class="viewcode-block" id="EdicionGrafo.forma_nodo">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_grafo.EdicionGrafo.forma_nodo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forma_nodo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">forma</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Recibe la opción seleccionada en el menú asociado y la manda a ingresar</span>
+<span class="sd">        al diccionario de modificaciones pendientes.</span>
+
+<span class="sd">        :param forma: La forma de los nodos.</span>
+<span class="sd">        :type forma: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nodo_general</span><span class="o">.</span><span class="n">actualizar_forma</span><span class="p">(</span><span class="n">forma</span><span class="p">)</span>      </div>
+
+
+<div class="viewcode-block" id="EdicionGrafo.justificado">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_grafo.EdicionGrafo.justificado">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">justificado</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tipo</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Recibe la opción seleccionada en el menú asociado y la manda a ingresar</span>
+<span class="sd">        al diccionario de modificaciones pendientes.</span>
+
+<span class="sd">        :param tipo: El alineado del texto de nodos y vértices.</span>
+<span class="sd">        :type tipo: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">tipo</span> <span class="o">==</span> <span class="s2">&quot;centrado&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_grafo</span><span class="o">.</span><span class="n">actualizar_justificado</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">tipo</span> <span class="o">==</span> <span class="s2">&quot;a la izquierda&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_grafo</span><span class="o">.</span><span class="n">actualizar_justificado</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_grafo</span><span class="o">.</span><span class="n">actualizar_justificado</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">)</span></div>
+
+        
+<div class="viewcode-block" id="EdicionGrafo.interruptor_opc_peso">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_grafo.EdicionGrafo.interruptor_opc_peso">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">interruptor_opc_peso</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Permite ocultar o mostrar la opción de peso del vínculo, disponible</span>
+<span class="sd">        solo cuando se modifica un vértice específico.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vertice_gral</span><span class="o">.</span><span class="n">interruptor_relacion</span><span class="p">()</span>        </div>
+
+
+<div class="viewcode-block" id="EdicionGrafo.olvidar_ubicacion">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_grafo.EdicionGrafo.olvidar_ubicacion">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">olvidar_ubicacion</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Oculta el módulo cuando es seleccionado otro modo de edición.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_gral</span><span class="o">.</span><span class="n">grid_forget</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_botones</span><span class="o">.</span><span class="n">grid_forget</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="EdicionGrafo.reiniciar_opciones">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_grafo.EdicionGrafo.reiniciar_opciones">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reiniciar_opciones</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Restablece los valores por defecto de las entradas y los menú de</span>
+<span class="sd">        opciones.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nodo_general</span><span class="o">.</span><span class="n">reiniciar_entradas</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vertice_gral</span><span class="o">.</span><span class="n">reiniciar_entradas</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_grafo</span><span class="o">.</span><span class="n">reiniciar_entradas</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="EdicionGrafo.ubicar">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_grafo.EdicionGrafo.ubicar">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ubicar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Hace visible el módulo cuando se lo selecciona como modo de edición.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_opc_gral</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_botones</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span></div>
+
+        
+<div class="viewcode-block" id="EdicionGrafo.vaciar_atributos">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_grafo.EdicionGrafo.vaciar_atributos">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">vaciar_atributos</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Vacía los diccionarios que almacenan los cambios por aplicar.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nodo_general</span><span class="o">.</span><span class="n">reiniciar_cambios</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vertice_gral</span><span class="o">.</span><span class="n">reiniciar_cambios</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_grafo</span><span class="o">.</span><span class="n">reiniciar_cambios</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="EdicionGrafo._almacenar_valores_por_defecto">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_grafo.EdicionGrafo._almacenar_valores_por_defecto">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_almacenar_valores_por_defecto</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Almacena los atributos originales del diagrama para poder recuperarlos.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dict_nodos</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_nodos</span><span class="p">)</span>
+        <span class="k">del</span> <span class="n">dict_nodos</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
+        <span class="k">del</span> <span class="n">dict_nodos</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span>
+        <span class="n">dict_vertices</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_vertices</span><span class="p">)</span>
+        <span class="k">del</span> <span class="n">dict_vertices</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
+        <span class="k">del</span> <span class="n">dict_vertices</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span>
+        <span class="n">dict_grafo</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>        
+        <span class="n">dict_grafo</span><span class="p">[</span><span class="s2">&quot;cota&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;25&quot;</span>
+        <span class="n">dict_grafo</span><span class="p">[</span><span class="s2">&quot;crecimiento&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;TB&quot;</span>
+        <span class="n">dict_grafo</span><span class="p">[</span><span class="s2">&quot;fondo&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">comunes</span><span class="o">.</span><span class="n">color_fondo_grafo</span>       
+        <span class="n">dict_grafo</span><span class="p">[</span><span class="s2">&quot;justificado&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;n&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_valores_por_defecto</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">dict_nodos</span><span class="p">,</span> <span class="n">dict_vertices</span><span class="p">,</span> <span class="n">dict_grafo</span>
+        <span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="EdicionGrafo._aplicar_cambios_gral">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_grafo.EdicionGrafo._aplicar_cambios_gral">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_aplicar_cambios_gral</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Aplica los cambios ingresados.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">operacion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">cond1</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_grafo</span><span class="o">.</span><span class="n">actualizar_dict_grafo</span><span class="p">()</span> 
+        <span class="n">cond2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodo_general</span><span class="o">.</span><span class="n">actualizar_dict_nodo</span><span class="p">()</span>
+        <span class="n">cond3</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vertice_gral</span><span class="o">.</span><span class="n">actualizar_dict_vertice</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cond1</span> <span class="ow">or</span> <span class="n">cond2</span> <span class="ow">or</span> <span class="n">cond3</span><span class="p">:</span>
+            <span class="n">cambios</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_nodo_general</span><span class="o">.</span><span class="n">obtener_cambios</span><span class="p">(),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_vertice_gral</span><span class="o">.</span><span class="n">obtener_cambios</span><span class="p">(),</span> 
+                <span class="bp">self</span><span class="o">.</span><span class="n">_grafo</span><span class="o">.</span><span class="n">obtener_cambios</span><span class="p">()</span> 
+            <span class="p">]</span>
+            <span class="n">operacion</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">actualizar_grafo</span><span class="p">(</span><span class="n">cambios</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">operacion</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">reiniciar_opciones</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">vaciar_atributos</span><span class="p">()</span></div>
+
+        
+<div class="viewcode-block" id="EdicionGrafo._aplicar_valores_iniciales">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_grafo.EdicionGrafo._aplicar_valores_iniciales">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_aplicar_valores_iniciales</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Restablece los atributos originales del diagrama.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">actualizar_grafo</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_valores_por_defecto</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reiniciar_opciones</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vaciar_atributos</span><span class="p">()</span>     </div>
+
+
+
+
+<div class="viewcode-block" id="EdicionGrafo._construir_botonera">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_grafo.EdicionGrafo._construir_botonera">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_construir_botonera</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ancestro</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Construye la botonera superior de la sección.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_botones</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>
+            <span class="n">ancestro</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+        <span class="p">)</span>       
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_aplicar_cambios</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_botones</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Aplicar&quot;</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">_aplicar_cambios_gral</span><span class="p">(),</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_aplicar</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_aplicar_cambios</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_restablecer_todos</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_botones</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Valores iniciales&quot;</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">_aplicar_valores_iniciales</span><span class="p">(),</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_restablecer</span>
+        <span class="p">)</span>                
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_restablecer_todos</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, errejotaeme.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

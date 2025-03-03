@@ -1,0 +1,424 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pantallas.pantalla_guardar &mdash; documentación de Diagrama - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Diagrama
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dependencias.html">Configuración del entorno (<cite>Linux</cite>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Módulos y paquetes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Diagrama</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">pantallas.pantalla_guardar</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para pantallas.pantalla_guardar</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">filedialog</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz</span><span class="w"> </span><span class="kn">import</span> <span class="n">comunes</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz.componentes.elementos</span><span class="w"> </span><span class="kn">import</span> <span class="n">emergente</span>
+
+<div class="viewcode-block" id="PantallaGuardar">
+<a class="viewcode-back" href="../../pantallas.html#pantallas.pantalla_guardar.PantallaGuardar">[documentos]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">PantallaGuardar</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Clase encargada de construir una ventana independiente que apoya</span>
+<span class="sd">    la operación de guardar el proyecto actual.</span>
+
+<span class="sd">    :param proyecto: La instancia de la clase encargada de permitir guardar, exportar o cargar un proyecto.</span>
+<span class="sd">    :type proyecto: AreaProyecto</span>
+<span class="sd">    :param gestor: La instancia de la clase encargada de gestionar la comunicación entre los módulos y la interacción con las tablas.</span>
+<span class="sd">    :type gestor: Gestor </span>
+<span class="sd">    :param raiz: Ventana principal que controla el bucle de la aplicación.</span>
+<span class="sd">    :type raiz: Tk</span>
+<span class="sd">    :param ancestro: El marco donde se ubica el contenedor principal y/o los artefactos instanciados por la clase.</span>
+<span class="sd">    :type ancestro: Frame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proyecto</span><span class="p">,</span> <span class="n">gestor</span><span class="p">,</span> <span class="n">raiz</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">,</span> <span class="n">ancestro</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor de la clase PantallaGuardar.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span> <span class="o">=</span> <span class="n">proyecto</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ancestro</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">ancestro</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span> <span class="o">=</span> <span class="n">gestor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span> <span class="o">=</span> <span class="n">raiz</span>    
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pantalla_guardar</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Toplevel</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Toplevel</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ancestro</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+        <span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pantalla_guardar</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Guardar proyecto&quot;</span><span class="p">)</span>
+        <span class="c1"># Gestiono el cierre de la pantalla</span>
+        <span class="c1"># por fuera del proceso de guardado</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pantalla_guardar</span><span class="o">.</span><span class="n">protocol</span><span class="p">(</span>
+            <span class="s2">&quot;WM_DELETE_WINDOW&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cancelar_guardar</span>
+        <span class="p">)</span>
+        <span class="c1"># Obtengo los datos para centrarla en la pantalla</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span>
+        <span class="n">ancho</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">500</span> 
+        <span class="n">alto</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">260</span>
+        <span class="n">ancho_pantalla</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span><span class="o">.</span><span class="n">winfo_screenwidth</span><span class="p">()</span>
+        <span class="n">alto_pantalla</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span><span class="o">.</span><span class="n">winfo_screenheight</span><span class="p">()</span>
+        <span class="n">x</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="p">(</span><span class="n">ancho_pantalla</span> <span class="o">-</span> <span class="n">ancho</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="n">y</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="p">(</span><span class="n">alto_pantalla</span> <span class="o">-</span> <span class="n">alto</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pantalla_guardar</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ancho</span><span class="si">}</span><span class="s2">x</span><span class="si">{</span><span class="n">alto</span><span class="si">}</span><span class="s2">+</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">+</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>  <span class="c1"># Marco principal de la pantalla</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_pantalla_guardar</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_construir_pantalla</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_contenedor</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_crear_notas_emergentes</span><span class="p">()</span>
+        <span class="c1"># Guarda los datos del proyecto para restablecerlos</span>
+        <span class="c1"># si se cancela la operación y vacío las variables</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_respaldo_recordar</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">directorio_activado</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">nombre_proyecto</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">directorio_activado</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">nombre_proyecto</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="PantallaGuardar.mostrar_aviso">
+<a class="viewcode-back" href="../../pantallas.html#pantallas.pantalla_guardar.PantallaGuardar.mostrar_aviso">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mostrar_aviso</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aviso</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Actualiza la etiqueta de avisos con el texto recibido.</span>
+
+<span class="sd">        :param aviso: La notificación a mostrar.</span>
+<span class="sd">        :type aviso: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">aviso</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="PantallaGuardar.ocultar_aviso">
+<a class="viewcode-back" href="../../pantallas.html#pantallas.pantalla_guardar.PantallaGuardar.ocultar_aviso">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ocultar_aviso</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Oculta el aviso que esté visible.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="PantallaGuardar._activar">
+<a class="viewcode-back" href="../../pantallas.html#pantallas.pantalla_guardar.PantallaGuardar._activar">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_activar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Alamacena u olvida los datos en las variables que permiten acceder,</span>
+<span class="sd">        desde el área de tarea, a la operación de guardar el proyecto activado</span>
+<span class="sd">        con el atajo de teclado.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_var_recordar</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+            <span class="n">nombre_proyecto</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_var_nombre_proyecto</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">nombre_proyecto</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">nombre_proyecto</span> <span class="o">=</span> <span class="n">nombre_proyecto</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ocultar_aviso</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">aviso</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Ingrese un nombre de proyecto para activar esta opción&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mostrar_aviso</span><span class="p">(</span><span class="n">aviso</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_var_recordar</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+                <span class="k">return</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">nombre_proyecto</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">directorio_activado</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_nombre</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>        </div>
+
+
+<div class="viewcode-block" id="PantallaGuardar._cancelar_guardar">
+<a class="viewcode-back" href="../../pantallas.html#pantallas.pantalla_guardar.PantallaGuardar._cancelar_guardar">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cancelar_guardar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Recupera los datos respaldados y cierra la ventana.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">directorio_activado</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_respaldo_recordar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">nombre_proyecto</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_respaldo_recordar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">actualizar_etq_proyecto</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pantalla_guardar</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>                </div>
+
+
+<div class="viewcode-block" id="PantallaGuardar._confirmar_guardar">
+<a class="viewcode-back" href="../../pantallas.html#pantallas.pantalla_guardar.PantallaGuardar._confirmar_guardar">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_confirmar_guardar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Verifica que se hayan ingresado los datos necesarios,</span>
+<span class="sd">        guarda el proyecto y, si fue seleccionada la opción de</span>
+<span class="sd">        recordar, almacena el nombre y ubicación del mismo.</span>
+<span class="sd">        Caso contrario, vacía las variables y cierra la ventana.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">nombre_proyecto</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_var_nombre_proyecto</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="n">sin_nombre</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">nombre_proyecto</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">sin_ubicacion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">directorio_activado</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">sin_nombre</span><span class="p">:</span>
+            <span class="n">aviso</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Ingrese un nombre para su proyecto&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mostrar_aviso</span><span class="p">(</span><span class="n">aviso</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ocultar_aviso</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">sin_ubicacion</span><span class="p">:</span>
+            <span class="n">aviso</span> <span class="o">=</span> <span class="s2">&quot;Elija una carpeta donde guardar el proyecto&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mostrar_aviso</span><span class="p">(</span><span class="n">aviso</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ocultar_aviso</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_var_recordar</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+            <span class="c1"># Los proximos cambios se guardaran en el directorio activado</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">guardar_proyecto</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">directorio_activado</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">nombre_proyecto</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Se vacian las variables que permiten guardar</span>
+            <span class="c1"># directamente con el atajo de teclado</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">guardar_proyecto</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">directorio_activado</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">nombre_proyecto</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">directorio_activado</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">nombre_proyecto</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">actualizar_etq_proyecto</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pantalla_guardar</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span> </div>
+
+
+
+<div class="viewcode-block" id="PantallaGuardar._construir_botonera">
+<a class="viewcode-back" href="../../pantallas.html#pantallas.pantalla_guardar.PantallaGuardar._construir_botonera">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_construir_botonera</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ancestro</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Construye los botones para guardar o cancelar y al marco que</span>
+<span class="sd">        los contiene.</span>
+
+<span class="sd">        :param ancestro: El marco donde se ubica el contenedor principal y/o los artefactos instanciados por la clase.</span>
+<span class="sd">        :type ancestro: Frame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_botones</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>
+            <span class="n">ancestro</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_botones</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;e&quot;</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_boton_confirmar</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_botones</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Confirmar&quot;</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_confirmar_guardar</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_aplicar</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_boton_confirmar</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_boton_cancelar</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_botones</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Cancelar&quot;</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cancelar_guardar</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_cancelar</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_boton_cancelar</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_boton_cancelar</span><span class="o">.</span><span class="n">focus_set</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="PantallaGuardar._construir_pantalla">
+<a class="viewcode-back" href="../../pantallas.html#pantallas.pantalla_guardar.PantallaGuardar._construir_pantalla">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_construir_pantalla</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ancestro</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">)</span><span class="o">-&gt;</span><span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Construye y ubica los artefactos necesarios para el proceso</span>
+<span class="sd">        de guardar el proyecto.</span>
+
+<span class="sd">        :param ancestro: El marco donde se ubica el contenedor principal y/o los artefactos instanciados por la clase.</span>
+<span class="sd">        :type ancestro: Frame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Encabezado y notas de aviso</span>
+        <span class="n">aux1</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;La modificación externa del contenido o el nombre de los &quot;</span>
+        <span class="n">aux2</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;archivos .csv</span><span class="se">\n</span><span class="s2">puede hacer irrecuperable el proyecto&quot;</span>
+        <span class="n">aux3</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">aux1</span> <span class="o">+</span> <span class="n">aux2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_indicacion</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span>
+            <span class="n">ancestro</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="n">aux3</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_adv</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_indicacion</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span>
+        <span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span> 
+            <span class="n">ancestro</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_aviso</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span>
+        <span class="p">)</span>
+        <span class="c1"># Sección de entradas y opción</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_marco_nombre</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>
+            <span class="n">ancestro</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_marco_nombre</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_nombre</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_marco_nombre</span><span class="p">,</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Nombre del proyecto:&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ayuda</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_nombre</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;sw&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_var_nombre_proyecto</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_nombre</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_marco_nombre</span><span class="p">,</span>
+            <span class="n">textvariable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_var_nombre_proyecto</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_entrada</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_nombre</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_var_recordar</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">BooleanVar</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">BooleanVar</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opc_recordar</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Checkbutton</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Checkbutton</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_marco_nombre</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Recordar directorio &quot;</span><span class="p">,</span>
+            <span class="n">variable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_var_recordar</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_check_np</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_activar</span><span class="p">,</span>
+        <span class="p">)</span>       
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opc_recordar</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_seleccionar_directorio</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_marco_nombre</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Carpeta&quot;</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_seleccionar_directorio</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_abrir_carpeta</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_seleccionar_directorio</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_construir_botonera</span><span class="p">(</span><span class="n">ancestro</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PantallaGuardar._crear_notas_emergentes">
+<a class="viewcode-back" href="../../pantallas.html#pantallas.pantalla_guardar.PantallaGuardar._crear_notas_emergentes">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_crear_notas_emergentes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Construye las notas emergentes asociadas a los artefactos de la pantalla.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ne_aux</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Activarlo para sobrescribir en el directorio seleccionado usando el atajo &lt;Ctrl+g&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">ne_aux</span> <span class="o">=</span> <span class="n">ne_aux</span> <span class="o">+</span> <span class="s2">&quot;Desactivarlo para olvidar el directorio seleccionado&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ne_nombre</span> <span class="o">=</span> <span class="n">emergente</span><span class="o">.</span><span class="n">NotaEmergente</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_opc_recordar</span><span class="p">,</span> <span class="n">ne_aux</span><span class="p">)</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opc_recordar</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Enter&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_nombre</span><span class="o">.</span><span class="n">mostrar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opc_recordar</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Leave&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_nombre</span><span class="o">.</span><span class="n">ocultar</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PantallaGuardar._seleccionar_directorio">
+<a class="viewcode-back" href="../../pantallas.html#pantallas.pantalla_guardar.PantallaGuardar._seleccionar_directorio">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_seleccionar_directorio</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Abre una ventana de diálogo que permite elegir la ubicación</span>
+<span class="sd">        donde se creará la carpeta con los archivos necesarios para</span>
+<span class="sd">        poder recuperar el proyecto.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">titulo</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Se creará una carpeta en esta ubicación&quot;</span>
+        <span class="n">directorio</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">askdirectory</span><span class="p">(</span>
+            <span class="n">title</span><span class="o">=</span><span class="n">titulo</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_pantalla_guardar</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">directorio</span><span class="p">:</span>
+            <span class="n">nombre</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_var_nombre_proyecto</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">nombre</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">nombre</span> <span class="o">==</span> <span class="s2">&quot;__respaldo__&quot;</span><span class="p">:</span>
+                    <span class="n">aviso</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Palabra reservada: por favor elija otro nombre de proyecto&quot;</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">mostrar_aviso</span><span class="p">(</span><span class="n">aviso</span><span class="p">)</span>
+                    <span class="k">return</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">directorio_activado</span> <span class="o">=</span> <span class="n">directorio</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">nombre_proyecto</span> <span class="o">=</span> <span class="n">nombre</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ocultar_aviso</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mostrar_aviso</span><span class="p">(</span><span class="s2">&quot;Ingrese un nombre para su proyecto&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mostrar_aviso</span><span class="p">(</span><span class="s2">&quot;Seleccione una carpeta donde guardar el proyecto&quot;</span><span class="p">)</span></div>
+</div>
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, errejotaeme.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

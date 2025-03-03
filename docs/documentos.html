@@ -1,0 +1,228 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paquete documentos &mdash; documentación de Diagrama - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+      <script src="_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="prev" title="Paquete control.ambitos" href="control.ambitos.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Diagrama
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dependencias.html">Configuración del entorno (<cite>Linux</cite>)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Módulos y paquetes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="main.html">Módulo main</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfaz.html">Paquete interfaz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="control.html">Paquete control</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Paquete documentos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-documentos.contenido">Módulo documentos.contenido</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#documentos.contenido.Extractor"><code class="docutils literal notranslate"><span class="pre">Extractor</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-documentos.diagrama">Módulo documentos.diagrama</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#documentos.diagrama.Diagramador"><code class="docutils literal notranslate"><span class="pre">Diagramador</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Diagrama</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Módulos y paquetes</a></li>
+      <li class="breadcrumb-item active">Paquete documentos</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/documentos.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="paquete-documentos">
+<h1>Paquete documentos<a class="headerlink" href="#paquete-documentos" title="Link to this heading"></a></h1>
+<p>Contiene a las clases encargadas de extraer el texto y generar el diagrama. Además, incluye a la carpeta <cite>recursos</cite> donde se almacenan los archivos necesarios para generar los diagramas y guardar los proyectos.</p>
+<section id="module-documentos.contenido">
+<span id="modulo-documentos-contenido"></span><h2>Módulo documentos.contenido<a class="headerlink" href="#module-documentos.contenido" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="documentos.contenido.Extractor">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">documentos.contenido.</span></span><span class="sig-name descname"><span class="pre">Extractor</span></span><a class="reference internal" href="_modules/documentos/contenido.html#Extractor"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#documentos.contenido.Extractor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de obtener el texto contenido en un pdf o un txt.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="documentos.contenido.Extractor.extraer_contenido">
+<span class="sig-name descname"><span class="pre">extraer_contenido</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ruta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/documentos/contenido.html#Extractor.extraer_contenido"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#documentos.contenido.Extractor.extraer_contenido" title="Link to this definition"></a></dt>
+<dd><p>Obtiene el texto completo del archivo que recibe como argumento.
+Si no lo obtiene retorna -1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ruta</strong> (<em>str</em>) – Ubicación del archivo.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>El texto contenido en el archivo o -1.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="documentos.contenido.Extractor.ordenar_contenido">
+<span class="sig-name descname"><span class="pre">ordenar_contenido</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contenido</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/documentos/contenido.html#Extractor.ordenar_contenido"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#documentos.contenido.Extractor.ordenar_contenido" title="Link to this definition"></a></dt>
+<dd><p>Convierte las líneas extraídas en oraciones.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>contenido</strong> – El texto del PDF.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Las líneas del PDF concatenadas en oraciones.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-documentos.diagrama">
+<span id="modulo-documentos-diagrama"></span><h2>Módulo documentos.diagrama<a class="headerlink" href="#module-documentos.diagrama" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="documentos.diagrama.Diagramador">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">documentos.diagrama.</span></span><span class="sig-name descname"><span class="pre">Diagramador</span></span><a class="reference internal" href="_modules/documentos/diagrama.html#Diagramador"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#documentos.diagrama.Diagramador" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de generar el diagrama. Su constructor genera 
+las rutas a los archivos necesarios para construir el diagrama.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="documentos.diagrama.Diagramador._atributos">
+<span class="sig-name descname"><span class="pre">_atributos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_elem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tabla_propiedades</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/documentos/diagrama.html#Diagramador._atributos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#documentos.diagrama.Diagramador._atributos" title="Link to this definition"></a></dt>
+<dd><p>Obtiene los atributos de estilo de nodos y vértices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_elem</strong> (<em>str</em>) – El id del elemento.</p></li>
+<li><p><strong>tabla_prop</strong> (<em>Path</em>) – La tabla en la que se encuentran los datos.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Los atributos del elemento.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str | Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="documentos.diagrama.Diagramador.crear_grafo">
+<span class="sig-name descname"><span class="pre">crear_grafo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formato</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directorio</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/documentos/diagrama.html#Diagramador.crear_grafo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#documentos.diagrama.Diagramador.crear_grafo" title="Link to this definition"></a></dt>
+<dd><p>Genera un archivo png o pdf a partir de las tablas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>formato</strong> (<em>str</em>) – La extensión deseada del archivo con el diagrama.</p></li>
+<li><p><strong>directorio</strong> (<em>str</em><em> | </em><em>Path</em>) – La ubicación donde guardar el diagrama.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>La ruta al archivo con el diagrama generado.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="control.ambitos.html" class="btn btn-neutral float-left" title="Paquete control.ambitos" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, errejotaeme.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

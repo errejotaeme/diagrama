@@ -1,0 +1,38 @@
+Paquete areas
+=============
+
+Módulo areas.edicion
+--------------------
+
+.. automodule:: areas.edicion
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+
+Módulo areas.grafico
+--------------------
+
+.. automodule:: areas.grafico
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+
+Módulo areas.proyecto
+---------------------
+
+.. automodule:: areas.proyecto
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+
+Módulo areas.texto
+------------------
+
+.. automodule:: areas.texto
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:

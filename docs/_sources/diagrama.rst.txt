@@ -1,0 +1,8 @@
+Módulo diagrama
+===============
+
+.. automodule:: diagrama
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:

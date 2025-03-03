@@ -1,0 +1,524 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>componentes.areas.proyecto &mdash; documentación de Diagrama - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/translations.js?v=f85f4cfb"></script>
+      <script src="../../../_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="../../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Diagrama
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dependencias.html">Configuración del entorno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modulos.html">Módulos y paquetes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Diagrama</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">componentes.areas.proyecto</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para componentes.areas.proyecto</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">filedialog</span><span class="p">,</span> <span class="n">ttk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz</span><span class="w"> </span><span class="kn">import</span> <span class="n">comunes</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz.componentes.elementos</span><span class="w"> </span><span class="kn">import</span> <span class="n">emergente</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz.componentes.pantallas</span><span class="w"> </span><span class="kn">import</span> <span class="n">pantalla_guardar</span>
+
+<div class="viewcode-block" id="AreaProyecto">
+<a class="viewcode-back" href="../../../componentes.areas.html#componentes.areas.proyecto.AreaProyecto">[documentos]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AreaProyecto</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Clase encargada de permitir guardar, exportar o cargar un proyecto.</span>
+
+<span class="sd">    :param ancestro: El artefacto que contiene al marco principal del área. </span>
+<span class="sd">    :type ancestro: ttk.Notebook</span>
+<span class="sd">    :param gestor: Gestiona la comunicación entre los módulos y la interacción con las tablas.</span>
+<span class="sd">    :type gestor: Gestor</span>
+<span class="sd">    :param raiz: Ventana principal que controla el bucle de la aplicación.</span>
+<span class="sd">    :type raiz: Tk</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ancestro</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Notebook</span><span class="p">,</span> <span class="n">gestor</span><span class="p">,</span> <span class="n">raiz</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor de la clase AreaProyecto.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span> <span class="o">=</span> <span class="n">gestor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span> <span class="o">=</span> <span class="n">raiz</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">directorio_activado</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nombre_proyecto</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_atajos_visibles</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_atajos_ubicados</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>  <span class="c1"># Marco principal</span>
+            <span class="n">ancestro</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_aviso</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;n&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_crear_botonera</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_crear_notas_emergentes</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_crear_seccion_atajos</span><span class="p">()</span>
+        <span class="n">tex_aux</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;No hay un proyecto activo&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">etq_proyecto_activo</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">tex_aux</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_adv</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">etq_proyecto_activo</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span>
+        <span class="p">)</span>        
+
+<div class="viewcode-block" id="AreaProyecto.artefacto">
+<a class="viewcode-back" href="../../../componentes.areas.html#componentes.areas.proyecto.AreaProyecto.artefacto">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">artefacto</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retorna el contenedor principal de la sección.</span>
+
+<span class="sd">        :return: El marco principal de la sección.</span>
+<span class="sd">        :rtype: tk.Frame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span></div>
+
+
+<div class="viewcode-block" id="AreaProyecto.actualizar_etq_proyecto">
+<a class="viewcode-back" href="../../../componentes.areas.html#componentes.areas.proyecto.AreaProyecto.actualizar_etq_proyecto">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">actualizar_etq_proyecto</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Actualiza la etiqueta que muestra el proyecto que está activo.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">nombre</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nombre_proyecto</span>
+        <span class="k">if</span> <span class="n">nombre</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">etq_proyecto_activo</span><span class="o">.</span><span class="n">config</span><span class="p">(</span>
+                <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Proyecto activo: </span><span class="si">{</span><span class="n">nombre</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">etq_proyecto_activo</span><span class="o">.</span><span class="n">config</span><span class="p">(</span>
+                <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;No hay un proyecto activo&quot;</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">etq_proyecto_activo</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span> </div>
+
+
+<div class="viewcode-block" id="AreaProyecto.mostrar_aviso">
+<a class="viewcode-back" href="../../../componentes.areas.html#componentes.areas.proyecto.AreaProyecto.mostrar_aviso">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mostrar_aviso</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aviso</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Actualiza la etiqueta de avisos con el texto recibido.</span>
+
+<span class="sd">        :param aviso: La notificación a mostrar.</span>
+<span class="sd">        :type aviso: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">aviso</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AreaProyecto.obtener_proyecto_activo">
+<a class="viewcode-back" href="../../../componentes.areas.html#componentes.areas.proyecto.AreaProyecto.obtener_proyecto_activo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">obtener_proyecto_activo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[()]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Devuelve los datos del proyecto activo o una tupla vacía. Se utiliza</span>
+<span class="sd">        al reiniciar por cambio de tema.</span>
+
+<span class="sd">        :rteurn: Los datos del proyecto activo.</span>
+<span class="sd">        :rtype: tuple[str, str] | tuple[()]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">directorio_activado</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">nombre_proyecto</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">directorio_activado</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nombre_proyecto</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">()</span></div>
+
+            
+
+<div class="viewcode-block" id="AreaProyecto.ocultar_aviso">
+<a class="viewcode-back" href="../../../componentes.areas.html#componentes.areas.proyecto.AreaProyecto.ocultar_aviso">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ocultar_aviso</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Oculta el aviso que esté visible.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AreaProyecto.restaurar_proyecto_activo">
+<a class="viewcode-back" href="../../../componentes.areas.html#componentes.areas.proyecto.AreaProyecto.restaurar_proyecto_activo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">restaurar_proyecto_activo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proyecto</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Si el Gestor detectó que había un proyecto activo al reinicio por cambio</span>
+<span class="sd">        de tema, llama al método para que carge los datos y muestre la notificación</span>
+
+<span class="sd">        :param proyecto: Los datos del proyecto activo.</span>
+<span class="sd">        :type proyecto: tuple[str, str] | tuple[()]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">directorio</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">proyecto</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">nombre</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">proyecto</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">directorio_activado</span> <span class="o">=</span> <span class="n">directorio</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nombre_proyecto</span> <span class="o">=</span> <span class="n">nombre</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actualizar_etq_proyecto</span><span class="p">()</span></div>
+
+        
+<div class="viewcode-block" id="AreaProyecto._crear_botonera">
+<a class="viewcode-back" href="../../../componentes.areas.html#componentes.areas.proyecto.AreaProyecto._crear_botonera">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_crear_botonera</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Crea los artefactos que habilitan las opciones de proyecto.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_marco_botonera</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_marco_botonera</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sep1</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Separator</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Separator</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_marco_botonera</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;horizontal&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sep1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span><span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="c1"># Exportar diagrama</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_exportar_diagrama</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_marco_botonera</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Exportar diagrama&quot;</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_exportar_diagrama</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_proyecto_ex</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_exportar_diagrama</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_var_btn_radial</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opc_pdf</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Radiobutton</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Radiobutton</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_marco_botonera</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="s2">&quot;.pdf &quot;</span><span class="p">,</span>
+            <span class="n">variable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_var_btn_radial</span><span class="p">,</span>
+            <span class="n">value</span><span class="o">=</span><span class="s2">&quot;pdf&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_radial</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opc_pdf</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opc_png</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Radiobutton</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Radiobutton</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_marco_botonera</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="s2">&quot;.png &quot;</span><span class="p">,</span>
+            <span class="n">variable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_var_btn_radial</span><span class="p">,</span>
+            <span class="n">value</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_radial</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opc_png</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="c1"># Guardar proyecto</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_guardar_proyecto</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_marco_botonera</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Guardar proyecto&quot;</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_pantalla_guardar</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_proyecto_g</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_guardar_proyecto</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="c1"># Abrir proyecto</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_cargar_proyecto</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_marco_botonera</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Abrir proyecto&quot;</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cargar_proyecto</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_proyecto_ap</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_cargar_proyecto</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_cargar_proyecto</span><span class="o">.</span><span class="n">focus_set</span><span class="p">()</span>
+        <span class="c1"># Atajos</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_atajos</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_marco_botonera</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Atajos de teclado&quot;</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cargar_atajos</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_proyecto_at</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_atajos</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sep2</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Separator</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Separator</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_marco_botonera</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;horizontal&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sep2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="AreaProyecto._crear_notas_emergentes">
+<a class="viewcode-back" href="../../../componentes.areas.html#componentes.areas.proyecto.AreaProyecto._crear_notas_emergentes">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_crear_notas_emergentes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Crea las notas emergentes del área.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Exportar diagrama</span>
+        <span class="n">tex_ne1</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Seleccione un formato antes de elegir el directorio&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ne_btn_exportar_diagrama</span><span class="p">:</span> <span class="n">emergente</span><span class="o">.</span><span class="n">NotaEmergente</span> <span class="o">=</span> <span class="n">emergente</span><span class="o">.</span><span class="n">NotaEmergente</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_btn_exportar_diagrama</span><span class="p">,</span> <span class="n">tex_ne1</span>            
+        <span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_exportar_diagrama</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span>
+            <span class="s2">&quot;&lt;Enter&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_btn_exportar_diagrama</span><span class="o">.</span><span class="n">mostrar</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_exportar_diagrama</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span>
+            <span class="s2">&quot;&lt;Leave&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_btn_exportar_diagrama</span><span class="o">.</span><span class="n">ocultar</span>
+        <span class="p">)</span>
+        <span class="c1"># Cargar proyecto</span>
+        <span class="n">tex_ne2</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span><span class="s2">&quot;Se reemplazarán los datos actuales: guarde el proyecto &quot;</span>
+        <span class="n">tex_ne2</span> <span class="o">=</span> <span class="n">tex_ne2</span> <span class="o">+</span> <span class="s2">&quot;para no perder los cambios&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ne_btn_cargar_proyecto</span><span class="p">:</span> <span class="n">emergente</span><span class="o">.</span><span class="n">NotaEmergente</span> <span class="o">=</span> <span class="n">emergente</span><span class="o">.</span><span class="n">NotaEmergente</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_btn_cargar_proyecto</span><span class="p">,</span> <span class="n">tex_ne2</span>            
+        <span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_cargar_proyecto</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span>
+            <span class="s2">&quot;&lt;Enter&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_btn_cargar_proyecto</span><span class="o">.</span><span class="n">mostrar</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_cargar_proyecto</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span>
+            <span class="s2">&quot;&lt;Leave&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_btn_cargar_proyecto</span><span class="o">.</span><span class="n">ocultar</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaProyecto._crear_seccion_atajos">
+<a class="viewcode-back" href="../../../componentes.areas.html#componentes.areas.proyecto.AreaProyecto._crear_seccion_atajos">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_crear_seccion_atajos</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Construye la sección con los datos de los atajos de teclado.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_atajos</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_estilo_lista_a</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Style</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Style</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_estilo_lista_a</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;TFrame&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_estilo_lista_a</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span>
+            <span class="s2">&quot;ListaA.TFrame&quot;</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">comunes</span><span class="o">.</span><span class="n">color_fondo_gral</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lista_atajos</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_atajos</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;ListaA.TFrame&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lista_atajos</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cv_atajos</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Canvas</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Canvas</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lista_atajos</span><span class="p">,</span>
+            <span class="n">width</span><span class="o">=</span><span class="mi">370</span><span class="p">,</span>
+            <span class="n">height</span><span class="o">=</span><span class="mi">345</span><span class="p">,</span>
+            <span class="n">highlightthickness</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_barra_v</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Scrollbar</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Scrollbar</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lista_atajos</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;vertical&quot;</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cv_atajos</span><span class="o">.</span><span class="n">yview</span>
+        <span class="p">)</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">_barra_h</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Scrollbar</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Scrollbar</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lista_atajos</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;horizontal&quot;</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cv_atajos</span><span class="o">.</span><span class="n">xview</span>
+        <span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_marco_desplazable_a</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cv_atajos</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;ListaA.TFrame&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_marco_desplazable_a</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span>
+            <span class="s2">&quot;&lt;Configure&gt;&quot;</span><span class="p">,</span>
+            <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cv_atajos</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span>
+                <span class="n">scrollregion</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cv_atajos</span><span class="o">.</span><span class="n">bbox</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cv_atajos</span><span class="o">.</span><span class="n">create_window</span><span class="p">(</span>
+            <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">window</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_marco_desplazable_a</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s2">&quot;nw&quot;</span>
+        <span class="p">)</span>
+        <span class="n">aux_titulo</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Atajos de teclado&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_titulo_atajos</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_marco_desplazable_a</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">aux_titulo</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_titulo_a</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_titulo_atajos</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sep_atajos</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Separator</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Separator</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_marco_desplazable_a</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;horizontal&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sep_atajos</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
+        <span class="p">)</span>
+        
+        <span class="n">fila</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="k">for</span> <span class="n">clave</span><span class="p">,</span> <span class="n">valor</span> <span class="ow">in</span> <span class="n">comunes</span><span class="o">.</span><span class="n">atajos</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">marco</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_marco_desplazable_a</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+            <span class="p">)</span>
+            <span class="n">etq_tecla</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span>
+                <span class="n">marco</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">clave</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_tecla</span>
+            <span class="p">)</span>
+            <span class="n">etq_tecla</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+            <span class="n">etq_descripcion</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span>
+                <span class="n">marco</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">valor</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ayuda</span>
+            <span class="p">)</span>
+            <span class="n">etq_descripcion</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+            <span class="n">sep</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Separator</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Separator</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_marco_desplazable_a</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;horizontal&quot;</span>
+            <span class="p">)</span>
+            <span class="n">fila_sep</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">fila</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">sep</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+                <span class="n">row</span><span class="o">=</span><span class="n">fila_sep</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">marco</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="n">fila</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_atajos_ubicados</span><span class="p">[</span><span class="n">clave</span><span class="p">]</span> <span class="o">=</span> <span class="n">marco</span>
+            <span class="n">fila</span> <span class="o">+=</span> <span class="mi">2</span>
+            
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cv_atajos</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cv_atajos</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">yscrollcommand</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_barra_v</span><span class="o">.</span><span class="n">set</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cv_atajos</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">xscrollcommand</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_barra_h</span><span class="o">.</span><span class="n">set</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_barra_v</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ns&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_barra_h</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaProyecto._cargar_atajos">
+<a class="viewcode-back" href="../../../componentes.areas.html#componentes.areas.proyecto.AreaProyecto._cargar_atajos">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cargar_atajos</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Muestra u oculta la sección de atajos de teclado.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_atajos_visibles</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_atajos</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+                <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_atajos_visibles</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_atajos</span><span class="o">.</span><span class="n">grid_forget</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_atajos_visibles</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+        
+
+<div class="viewcode-block" id="AreaProyecto._exportar_diagrama">
+<a class="viewcode-back" href="../../../componentes.areas.html#componentes.areas.proyecto.AreaProyecto._exportar_diagrama">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_exportar_diagrama</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Abre una ventana de dialogo que permite obtener la ubicacion donde</span>
+<span class="sd">        guardar el diagrama. Luego capura la extensión seleccionada y envía</span>
+<span class="sd">        los datos al gestor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">titulo</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Se guardará en esta ubicación&quot;</span>
+        <span class="n">directorio</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">askdirectory</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">titulo</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">directorio</span><span class="p">:</span>
+            <span class="n">formato</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_var_btn_radial</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">formato</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">exportar_diagrama</span><span class="p">(</span><span class="n">formato</span><span class="p">,</span> <span class="n">directorio</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mostrar_aviso</span><span class="p">(</span><span class="s2">&quot;Seleccione un formato&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mostrar_aviso</span><span class="p">(</span><span class="s2">&quot;Seleccione un directorio&quot;</span><span class="p">)</span>          </div>
+
+
+<div class="viewcode-block" id="AreaProyecto._cargar_proyecto">
+<a class="viewcode-back" href="../../../componentes.areas.html#componentes.areas.proyecto.AreaProyecto._cargar_proyecto">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cargar_proyecto</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Abre un proyecto guardado. Si la operación falla, restaura los datos</span>
+<span class="sd">        previos al intento de carga.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">titulo</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Ingrese a la carpeta del proyecto a cargar&quot;</span>
+        <span class="n">directorio</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">askdirectory</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">titulo</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">directorio</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">respaldo_temporal</span><span class="p">()</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">cargar_proyecto</span><span class="p">(</span><span class="n">directorio</span><span class="p">,</span> <span class="s2">&quot;guardado&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mostrar_aviso</span><span class="p">(</span><span class="s2">&quot;El proyecto se cargó correctamente&quot;</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">cargar_respaldo</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">eliminar_respaldo</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AreaProyecto._pantalla_guardar">
+<a class="viewcode-back" href="../../../componentes.areas.html#componentes.areas.proyecto.AreaProyecto._pantalla_guardar">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_pantalla_guardar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Abre la pantalla con las opciones para guardar el proyecto.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pantalla</span> <span class="o">=</span> <span class="n">pantalla_guardar</span><span class="o">.</span><span class="n">PantallaGuardar</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span>
+        <span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, errejotaeme.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

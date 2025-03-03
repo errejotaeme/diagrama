@@ -1,0 +1,504 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>areas.edicion &mdash; documentación de Diagrama - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Diagrama
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dependencias.html">Configuración del entorno (<cite>Linux</cite>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Módulos y paquetes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Diagrama</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">areas.edicion</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para areas.edicion</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">ttk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz</span><span class="w"> </span><span class="kn">import</span> <span class="n">comunes</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz.componentes.elementos</span><span class="w"> </span><span class="kn">import</span> <span class="n">opciones</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz.componentes.secciones</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">seccion_grafo</span><span class="p">,</span> <span class="n">seccion_nodo</span><span class="p">,</span> <span class="n">seccion_vertice</span><span class="p">,</span> <span class="n">seccion_relacion</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="AreaEdicion">
+<a class="viewcode-back" href="../../areas.html#areas.edicion.AreaEdicion">[documentos]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AreaEdicion</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Clase encargada de construir las secciones que permiten modificar</span>
+<span class="sd">    los atributos del diagrama.</span>
+
+<span class="sd">    :param ancestro: El artefacto que contiene al marco principal del área. </span>
+<span class="sd">    :type ancestro: ttk.Notebook</span>
+<span class="sd">    :param gestor: Gestiona la comunicación entre los módulos y la interacción con las tablas.</span>
+<span class="sd">    :type gestor: Gestor</span>
+<span class="sd">    :param raiz: Ventana principal que controla el bucle de la aplicación.</span>
+<span class="sd">    :type raiz: Tk</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ancestro</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Notebook</span><span class="p">,</span> <span class="n">gestor</span><span class="p">,</span> <span class="n">raiz</span> <span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor de la clase AreaEdicion.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span> <span class="o">=</span> <span class="n">gestor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span> <span class="o">=</span> <span class="n">raiz</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_activa</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>  <span class="c1"># Marco principal</span>
+            <span class="n">ancestro</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opc_edicion</span><span class="p">:</span> <span class="n">opciones</span><span class="o">.</span><span class="n">MenuOpciones</span> <span class="o">=</span> <span class="n">opciones</span><span class="o">.</span><span class="n">MenuOpciones</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span><span class="p">,</span> 
+            <span class="s2">&quot;Elegir modo&quot;</span><span class="p">,</span> 
+            <span class="n">comunes</span><span class="o">.</span><span class="n">opc_edicion</span><span class="p">,</span>  
+            <span class="n">comunes</span><span class="o">.</span><span class="n">atrb_menu_ed</span><span class="p">,</span>  
+            <span class="s2">&quot;opc_edicion&quot;</span><span class="p">,</span>
+            <span class="n">gestor</span>  
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_artf_edicion</span><span class="p">:</span><span class="n">tk</span><span class="o">.</span><span class="n">OptionMenu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opc_edicion</span><span class="o">.</span><span class="n">artefacto</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_artf_edicion</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span>
+            <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso_grafo</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span>  <span class="c1"># Muestra las notificaciones</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span><span class="p">,</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_aviso</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso_grafo</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span>
+            <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span>
+        <span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_grafo</span> <span class="o">=</span> <span class="n">seccion_grafo</span><span class="o">.</span><span class="n">EdicionGrafo</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span>
+        <span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_nodo</span> <span class="o">=</span> <span class="n">seccion_nodo</span><span class="o">.</span><span class="n">EdicionNodo</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_vertice</span> <span class="o">=</span> <span class="n">seccion_vertice</span><span class="o">.</span><span class="n">EdicionVertice</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_relacion</span> <span class="o">=</span> <span class="n">seccion_relacion</span><span class="o">.</span><span class="n">EdicionRelacion</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span>
+        <span class="p">)</span>
+
+ 
+<div class="viewcode-block" id="AreaEdicion.artefacto">
+<a class="viewcode-back" href="../../areas.html#areas.edicion.AreaEdicion.artefacto">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">artefacto</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retorna el contenedor principal de la sección.</span>
+
+<span class="sd">        :return: El marco principal de la sección.</span>
+<span class="sd">        :rtype: tk.Frame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span></div>
+
+           
+<div class="viewcode-block" id="AreaEdicion.cambio_en_forma_nodo">
+<a class="viewcode-back" href="../../areas.html#areas.edicion.AreaEdicion.cambio_en_forma_nodo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cambio_en_forma_nodo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mensaje</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Envía a la sección correspondiente el mensaje recibido desde el Gestor</span>
+<span class="sd">        con la actualización en el menú de opción que está asociado a este</span>
+<span class="sd">        método.</span>
+
+<span class="sd">        :param mensaje: La opción seleccionada.</span>
+<span class="sd">        :type mensaje: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">mensaje</span> <span class="o">!=</span> <span class="s2">&quot;Formas&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_nodo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_nodo</span><span class="o">.</span><span class="n">forma_nodo</span><span class="p">(</span><span class="n">mensaje</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_grafo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_grafo</span><span class="o">.</span><span class="n">forma_nodo</span><span class="p">(</span><span class="n">mensaje</span><span class="p">)</span>               </div>
+
+
+<div class="viewcode-block" id="AreaEdicion.cambio_en_crecimiento">
+<a class="viewcode-back" href="../../areas.html#areas.edicion.AreaEdicion.cambio_en_crecimiento">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cambio_en_crecimiento</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mensaje</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Envía a la sección correspondiente el mensaje recibido desde el Gestor</span>
+<span class="sd">        con la actualización en el menú de opción que está asociado a este</span>
+<span class="sd">        método.</span>
+
+<span class="sd">        :param mensaje: La opción seleccionada.</span>
+<span class="sd">        :type mensaje: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">mensaje</span> <span class="o">!=</span> <span class="s2">&quot;Hacia&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_grafo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_grafo</span><span class="o">.</span><span class="n">crecimiento</span><span class="p">(</span><span class="n">mensaje</span><span class="p">)</span></div>
+
+                
+<div class="viewcode-block" id="AreaEdicion.cambio_en_direccion">
+<a class="viewcode-back" href="../../areas.html#areas.edicion.AreaEdicion.cambio_en_direccion">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cambio_en_direccion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mensaje</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Envía a la sección correspondiente el mensaje recibido desde el Gestor</span>
+<span class="sd">        con la actualización en el menú de opción que está asociado a este</span>
+<span class="sd">        método.</span>
+
+<span class="sd">        :param mensaje: La opción seleccionada.</span>
+<span class="sd">        :type mensaje: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">mensaje</span> <span class="o">!=</span> <span class="s2">&quot;Sentido&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_grafo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_grafo</span><span class="o">.</span><span class="n">direccion</span><span class="p">(</span><span class="n">mensaje</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_vertice</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_vertice</span><span class="o">.</span><span class="n">direccion</span><span class="p">(</span><span class="n">mensaje</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaEdicion.cambio_en_flecha_d">
+<a class="viewcode-back" href="../../areas.html#areas.edicion.AreaEdicion.cambio_en_flecha_d">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cambio_en_flecha_d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mensaje</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Envía a la sección correspondiente el mensaje recibido desde el Gestor</span>
+<span class="sd">        con la actualización en el menú de opción que está asociado a este</span>
+<span class="sd">        método.</span>
+
+<span class="sd">        :param mensaje: La opción seleccionada.</span>
+<span class="sd">        :type mensaje: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">mensaje</span> <span class="o">!=</span> <span class="s2">&quot;Delantera&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_grafo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_grafo</span><span class="o">.</span><span class="n">flecha_d</span><span class="p">(</span><span class="n">mensaje</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_vertice</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_vertice</span><span class="o">.</span><span class="n">flecha_d</span><span class="p">(</span><span class="n">mensaje</span><span class="p">)</span></div>
+
+                
+<div class="viewcode-block" id="AreaEdicion.cambio_en_flecha_t">
+<a class="viewcode-back" href="../../areas.html#areas.edicion.AreaEdicion.cambio_en_flecha_t">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cambio_en_flecha_t</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mensaje</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Envía a la sección correspondiente el mensaje recibido desde el Gestor</span>
+<span class="sd">        con la actualización en el menú de opción que está asociado a este</span>
+<span class="sd">        método.</span>
+
+<span class="sd">        :param mensaje: La opción seleccionada.</span>
+<span class="sd">        :type mensaje: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">mensaje</span> <span class="o">!=</span> <span class="s2">&quot;Trasera&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_grafo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_grafo</span><span class="o">.</span><span class="n">flecha_t</span><span class="p">(</span><span class="n">mensaje</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_vertice</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_vertice</span><span class="o">.</span><span class="n">flecha_t</span><span class="p">(</span><span class="n">mensaje</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaEdicion.cambio_en_justificado">
+<a class="viewcode-back" href="../../areas.html#areas.edicion.AreaEdicion.cambio_en_justificado">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cambio_en_justificado</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mensaje</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Envía a la sección correspondiente el mensaje recibido desde el Gestor</span>
+<span class="sd">        con la actualización en el menú de opción que está asociado a este</span>
+<span class="sd">        método.</span>
+
+<span class="sd">        :param mensaje: La opción seleccionada.</span>
+<span class="sd">        :type mensaje: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">mensaje</span> <span class="o">!=</span> <span class="s2">&quot;Párrafo&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_grafo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_grafo</span><span class="o">.</span><span class="n">justificado</span><span class="p">(</span><span class="n">mensaje</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaEdicion.cambio_en_opc">
+<a class="viewcode-back" href="../../areas.html#areas.edicion.AreaEdicion.cambio_en_opc">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cambio_en_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mensaje</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Recibe desde el Gestor un mensaje con alguna de las opciones del</span>
+<span class="sd">        menú de edición, activa la sección recibida en el mensaje y oculta</span>
+<span class="sd">        las que corresponde.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">mensaje</span> <span class="o">==</span> <span class="s2">&quot;Editar grafo&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_vaciar_dicc_atributos</span><span class="p">()</span>          
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_grafo</span><span class="o">.</span><span class="n">interruptor_opc_peso</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_nodo</span><span class="o">.</span><span class="n">olvidar_ubicacion</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_vertice</span><span class="o">.</span><span class="n">olvidar_ubicacion</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_relacion</span><span class="o">.</span><span class="n">olvidar_ubicacion</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_grafo</span><span class="o">.</span><span class="n">ubicar</span><span class="p">()</span>            
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_activa</span> <span class="o">=</span> <span class="s2">&quot;Grafo&quot;</span>
+            
+        <span class="k">elif</span> <span class="n">mensaje</span> <span class="o">==</span> <span class="s2">&quot;Editar nodo&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_vaciar_dicc_atributos</span><span class="p">()</span>            
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_grafo</span><span class="o">.</span><span class="n">olvidar_ubicacion</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_vertice</span><span class="o">.</span><span class="n">olvidar_ubicacion</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_relacion</span><span class="o">.</span><span class="n">olvidar_ubicacion</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_nodo</span><span class="o">.</span><span class="n">activar_seccion</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_nodo</span><span class="o">.</span><span class="n">ubicar</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_activa</span> <span class="o">=</span> <span class="s2">&quot;Nodo&quot;</span>
+            
+        <span class="k">elif</span> <span class="n">mensaje</span> <span class="o">==</span> <span class="s2">&quot;Editar vértice&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_vaciar_dicc_atributos</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_vertice</span><span class="o">.</span><span class="n">interruptor_opc_peso</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_grafo</span><span class="o">.</span><span class="n">olvidar_ubicacion</span><span class="p">()</span>           
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_nodo</span><span class="o">.</span><span class="n">olvidar_ubicacion</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_relacion</span><span class="o">.</span><span class="n">olvidar_ubicacion</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_vertice</span><span class="o">.</span><span class="n">activar_seccion</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_vertice</span><span class="o">.</span><span class="n">ubicar</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_activa</span> <span class="o">=</span> <span class="s2">&quot;Vértice&quot;</span>
+
+        <span class="k">elif</span> <span class="n">mensaje</span> <span class="o">==</span> <span class="s2">&quot;Editar relación&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_vaciar_dicc_atributos</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_nodo</span><span class="o">.</span><span class="n">olvidar_ubicacion</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_vertice</span><span class="o">.</span><span class="n">olvidar_ubicacion</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_grafo</span><span class="o">.</span><span class="n">olvidar_ubicacion</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_relacion</span><span class="o">.</span><span class="n">activar_seccion</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_relacion</span><span class="o">.</span><span class="n">ubicar</span><span class="p">()</span>            
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_activa</span> <span class="o">=</span> <span class="s2">&quot;Relación&quot;</span></div>
+
+
+<div class="viewcode-block" id="AreaEdicion.mostrar_aviso_grafo">
+<a class="viewcode-back" href="../../areas.html#areas.edicion.AreaEdicion.mostrar_aviso_grafo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mostrar_aviso_grafo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aviso</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Actualiza la etiqueta de avisos con el texto recibido.</span>
+
+<span class="sd">        :param aviso: La notificación a mostrar.</span>
+<span class="sd">        :type aviso: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso_grafo</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">aviso</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso_grafo</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AreaEdicion.mostrar_aviso_nodo">
+<a class="viewcode-back" href="../../areas.html#areas.edicion.AreaEdicion.mostrar_aviso_nodo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mostrar_aviso_nodo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aviso</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Actualiza la etiqueta de avisos de la sección Nodo</span>
+<span class="sd">        con el texto recibido.</span>
+
+<span class="sd">        :param aviso: La notificación a mostrar.</span>
+<span class="sd">        :type aviso: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_nodo</span><span class="o">.</span><span class="n">mostrar_aviso</span><span class="p">(</span><span class="n">aviso</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaEdicion.mostrar_aviso_relacion">
+<a class="viewcode-back" href="../../areas.html#areas.edicion.AreaEdicion.mostrar_aviso_relacion">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mostrar_aviso_relacion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aviso</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Actualiza la etiqueta de avisos de la sección Relación</span>
+<span class="sd">        con el texto recibido.</span>
+
+<span class="sd">        :param aviso: La notificación a mostrar.</span>
+<span class="sd">        :type aviso: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>         
+        <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_relacion</span><span class="o">.</span><span class="n">mostrar_aviso</span><span class="p">(</span><span class="n">aviso</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaEdicion.mostrar_aviso_vertice">
+<a class="viewcode-back" href="../../areas.html#areas.edicion.AreaEdicion.mostrar_aviso_vertice">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mostrar_aviso_vertice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aviso</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Actualiza la etiqueta de avisos de la sección Vértice</span>
+<span class="sd">        con el texto recibido.</span>
+
+<span class="sd">        :param aviso: La notificación a mostrar.</span>
+<span class="sd">        :type aviso: str</span>
+<span class="sd">        &quot;&quot;&quot;</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_vertice</span><span class="o">.</span><span class="n">mostrar_aviso</span><span class="p">(</span><span class="n">aviso</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaEdicion.ocultar_aviso_grafo">
+<a class="viewcode-back" href="../../areas.html#areas.edicion.AreaEdicion.ocultar_aviso_grafo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ocultar_aviso_grafo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Oculta el aviso que esté visible.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso_grafo</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso_grafo</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AreaEdicion.ocultar_aviso_nodo">
+<a class="viewcode-back" href="../../areas.html#areas.edicion.AreaEdicion.ocultar_aviso_nodo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ocultar_aviso_nodo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Oculta el aviso que esté visible en la sección Nodo.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_nodo</span><span class="o">.</span><span class="n">ocultar_aviso</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AreaEdicion.ocultar_aviso_relacion">
+<a class="viewcode-back" href="../../areas.html#areas.edicion.AreaEdicion.ocultar_aviso_relacion">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ocultar_aviso_relacion</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Oculta el aviso que esté visible en la sección Relación.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_relacion</span><span class="o">.</span><span class="n">ocultar_aviso</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AreaEdicion.ocultar_aviso_vertice">
+<a class="viewcode-back" href="../../areas.html#areas.edicion.AreaEdicion.ocultar_aviso_vertice">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ocultar_aviso_vertice</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Oculta el aviso que esté visible en la sección Vértice.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_vertice</span><span class="o">.</span><span class="n">ocultar_aviso</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AreaEdicion.reiniciar_edicion">
+<a class="viewcode-back" href="../../areas.html#areas.edicion.AreaEdicion.reiniciar_edicion">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reiniciar_edicion</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Permite restablecer los valores iniciales de las secciones de edición.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_nodo</span><span class="o">.</span><span class="n">reiniciar_pila</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_vertice</span><span class="o">.</span><span class="n">reiniciar_pila</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reiniciar_opciones</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AreaEdicion.volver_a_cargar_nodos">
+<a class="viewcode-back" href="../../areas.html#areas.edicion.AreaEdicion.volver_a_cargar_nodos">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">volver_a_cargar_nodos</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Luego de realizada una modificación en los nodos desde la sección,</span>
+<span class="sd">        actualiza las opciones disponibles incluyendo los nuevos datos. Para</span>
+<span class="sd">        ello, vuelve a activar la sección actual.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_activa</span> <span class="o">==</span> <span class="s2">&quot;Nodo&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cambio_en_opc</span><span class="p">(</span><span class="s2">&quot;Editar nodo&quot;</span><span class="p">)</span></div>
+
+            
+<div class="viewcode-block" id="AreaEdicion.volver_a_cargar_relaciones">
+<a class="viewcode-back" href="../../areas.html#areas.edicion.AreaEdicion.volver_a_cargar_relaciones">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">volver_a_cargar_relaciones</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Luego de realizada una modificación en las relaciones desde la sección,</span>
+<span class="sd">        actualiza las opciones disponibles incluyendo los nuevos datos. Para</span>
+<span class="sd">        ello, vuelve a activar la sección actual.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_activa</span> <span class="o">==</span> <span class="s2">&quot;Relación&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cambio_en_opc</span><span class="p">(</span><span class="s2">&quot;Editar relación&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaEdicion.volver_a_cargar_vertices">
+<a class="viewcode-back" href="../../areas.html#areas.edicion.AreaEdicion.volver_a_cargar_vertices">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">volver_a_cargar_vertices</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Luego de realizada una modificación en los vértices desde la sección,</span>
+<span class="sd">        actualiza las opciones disponibles incluyendo los nuevos datos. Para</span>
+<span class="sd">        ello, vuelve a activar la sección actual.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_activa</span> <span class="o">==</span> <span class="s2">&quot;Vértice&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cambio_en_opc</span><span class="p">(</span><span class="s2">&quot;Editar vértice&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaEdicion._reiniciar_opciones">
+<a class="viewcode-back" href="../../areas.html#areas.edicion.AreaEdicion._reiniciar_opciones">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_reiniciar_opciones</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Vacía las entradas y restablece los menú de opciones.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_nodo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_nodo</span><span class="o">.</span><span class="n">reiniciar_opciones</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_vertice</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_vertice</span><span class="o">.</span><span class="n">reiniciar_opciones</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_grafo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_grafo</span><span class="o">.</span><span class="n">reiniciar_opciones</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AreaEdicion._vaciar_dicc_atributos">
+<a class="viewcode-back" href="../../areas.html#areas.edicion.AreaEdicion._vaciar_dicc_atributos">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_vaciar_dicc_atributos</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Al navegar entre secciones, vacía los diccionarios que almacenan las</span>
+<span class="sd">        modificaciones a realizar, para prevenir cambios no deseados.</span>
+<span class="sd">        &quot;&quot;&quot;</span>          
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_grafo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_grafo</span><span class="o">.</span><span class="n">vaciar_atributos</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_nodo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_nodo</span><span class="o">.</span><span class="n">vaciar_atributos</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_vertice</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_seccion_vertice</span><span class="o">.</span><span class="n">vaciar_atributos</span><span class="p">()</span>            </div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, errejotaeme.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

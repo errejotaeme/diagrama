@@ -1,0 +1,843 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>areas.texto &mdash; documentación de Diagrama - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Diagrama
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dependencias.html">Configuración del entorno (<cite>Linux</cite>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Módulos y paquetes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Diagrama</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">areas.texto</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para areas.texto</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">filedialog</span><span class="p">,</span> <span class="n">scrolledtext</span><span class="p">,</span> <span class="n">ttk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz</span><span class="w"> </span><span class="kn">import</span> <span class="n">comunes</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz.componentes.elementos</span><span class="w"> </span><span class="kn">import</span> <span class="n">emergente</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz.componentes.pantallas</span><span class="w"> </span><span class="kn">import</span> <span class="n">pantalla_notas</span>
+
+
+
+<div class="viewcode-block" id="AreaDeTexto">
+<a class="viewcode-back" href="../../areas.html#areas.texto.AreaDeTexto">[documentos]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AreaDeTexto</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Clase encargada de cargar un texto e ingresar las proposiciones</span>
+<span class="sd">    que constituyen el diagrama.</span>
+
+<span class="sd">    :param ancestro: El artefacto que contiene al marco principal del área. </span>
+<span class="sd">    :type ancestro: ttk.Notebook</span>
+<span class="sd">    :param gestor: La instancia de la clase encargada de gestionar la comunicación entre los módulos y la interacción con las tablas.</span>
+<span class="sd">    :type gestor: Gestor </span>
+<span class="sd">    :param raiz: Ventana principal que controla el bucle de la aplicación.</span>
+<span class="sd">    :type raiz: Tk</span>
+<span class="sd">    :param bucle: Instancia de la clase encargada de crear el bucle de la aplicación y gestionar el cambio de tema.</span>
+<span class="sd">    :type bucle: Bucle</span>
+<span class="sd">    :param tema: El tema actual de la aplicacion.</span>
+<span class="sd">    :type tema: str</span>
+<span class="sd">    :param texto_respaldo: Respaldo del contenido del área de texto que se vuelve a cargar cuando se reinicia por cambio de tema.</span>
+<span class="sd">    :type texto_respaldo: str   </span>
+<span class="sd">    &quot;&quot;&quot;</span>  
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">ancestro</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Notebook</span><span class="p">,</span>
+        <span class="n">gestor</span><span class="p">,</span>
+        <span class="n">raiz</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">,</span>
+        <span class="n">bucle</span><span class="p">,</span>
+        <span class="n">tema</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">texto_respaldo</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor de la clase AreaDeTexto.   </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span> <span class="o">=</span> <span class="n">raiz</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span> <span class="o">=</span> <span class="n">gestor</span>  <span class="c1"># type: ignore</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bucle</span> <span class="o">=</span> <span class="n">bucle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tema</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">tema</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_texto_respaldo</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">texto_respaldo</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>  <span class="c1"># Marco principal</span>
+            <span class="n">ancestro</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+        <span class="p">)</span>
+        <span class="c1"># Permite que el texto desplazable ocupe todo el espacio disponible</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span><span class="o">.</span><span class="n">grid_rowconfigure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span><span class="o">.</span><span class="n">grid_columnconfigure</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_crear_botonera</span><span class="p">()</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_crear_texto_desplazable</span><span class="p">()</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_crear_subsec_proposicion</span><span class="p">()</span>     
+        <span class="bp">self</span><span class="o">.</span><span class="n">_crear_notas_emergentes</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_establecer_atajos</span><span class="p">()</span> 
+
+<div class="viewcode-block" id="AreaDeTexto.artefacto">
+<a class="viewcode-back" href="../../areas.html#areas.texto.AreaDeTexto.artefacto">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">artefacto</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retorna el contenedor principal de la sección.</span>
+
+<span class="sd">        :return: El marco principal de la sección.</span>
+<span class="sd">        :rtype: tk.Frame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span></div>
+
+    
+
+<div class="viewcode-block" id="AreaDeTexto.atajo">
+<a class="viewcode-back" href="../../areas.html#areas.texto.AreaDeTexto.atajo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">atajo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">señal</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Asocia cada señal con un artefacto y comportamiento específico.</span>
+
+<span class="sd">        :param señal: Un entero indicando la entrada a modificar o el botón activado.</span>
+<span class="sd">        :type señal: int </span>
+<span class="sd">        :return: Una cadena que previene que el evento se propage a través de la jerarquía de artefactos.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+        <span class="n">seleccion</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">seleccion</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sel.first&quot;</span><span class="p">,</span> <span class="s2">&quot;sel.last&quot;</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="c1"># Entidad1</span>
+        <span class="k">if</span> <span class="n">señal</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">seleccion</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+        <span class="c1"># Relacion</span>
+        <span class="k">elif</span> <span class="n">señal</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_relacion</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_relacion</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">seleccion</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_relacion</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+        <span class="c1"># Entidad2</span>
+        <span class="k">elif</span> <span class="n">señal</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">seleccion</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+        <span class="c1"># Relacionar entidades</span>
+        <span class="k">elif</span> <span class="n">señal</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_actualizar_diagrama</span><span class="p">()</span>            
+        <span class="c1"># Borrar lo último que se graficó</span>
+        <span class="k">elif</span> <span class="n">señal</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">borrar_ultimo_ingreso</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+        <span class="c1"># Peso relación</span>
+        <span class="k">elif</span> <span class="n">señal</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">seleccion</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+        <span class="c1"># Peso relación</span>
+        <span class="k">elif</span> <span class="n">señal</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_abrir_notas</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">señal</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">guardar_proyecto_desde_atajo</span><span class="p">()</span>
+        <span class="k">return</span> <span class="s2">&quot;break&quot;</span></div>
+
+
+<div class="viewcode-block" id="AreaDeTexto.cargar_texto_retornado">
+<a class="viewcode-back" href="../../areas.html#areas.texto.AreaDeTexto.cargar_texto_retornado">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cargar_texto_retornado</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texto</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Recibe desde el Gestor la indicación para actualizar el área de texto,</span>
+<span class="sd">        cuando el contenido se terminó de extraer.</span>
+
+<span class="sd">        :param texto: El contenido a cargar.</span>
+<span class="sd">        :type texto: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">,</span> <span class="n">texto</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">tag_add</span><span class="p">(</span><span class="s2">&quot;formato&quot;</span><span class="p">,</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AreaDeTexto.mostrar_aviso">
+<a class="viewcode-back" href="../../areas.html#areas.texto.AreaDeTexto.mostrar_aviso">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mostrar_aviso</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aviso</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Actualiza la etiqueta de avisos con el texto recibido.</span>
+
+<span class="sd">        :param aviso: La notificación a mostrar.</span>
+<span class="sd">        :type aviso: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">aviso</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AreaDeTexto.ocultar_aviso">
+<a class="viewcode-back" href="../../areas.html#areas.texto.AreaDeTexto.ocultar_aviso">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ocultar_aviso</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Oculta el aviso que esté activo.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="AreaDeTexto._abrir_notas">
+<a class="viewcode-back" href="../../areas.html#areas.texto.AreaDeTexto._abrir_notas">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_abrir_notas</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Habilita la pantalla que permite tomar notas personales del proyecto.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pantalla</span> <span class="o">=</span> <span class="n">pantalla_notas</span><span class="o">.</span><span class="n">PantallaNotas</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaDeTexto._actualizar_diagrama">
+<a class="viewcode-back" href="../../areas.html#areas.texto.AreaDeTexto._actualizar_diagrama">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_actualizar_diagrama</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Obtiene el texto ingresado y llama al Gestor para que actualice</span>
+<span class="sd">        la vista del diagrama. Args captura el evento producido al presionar</span>
+<span class="sd">        el botón relacionar.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">proposicion</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">ent1</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ent1</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">ent1</span><span class="p">:</span>
+            <span class="n">proposicion</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ent1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+            <span class="k">return</span>
+        <span class="n">proposicion</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rel</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>  <span class="c1"># Si es vacío lo maneja el gestor</span>
+        <span class="n">ent2</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ent2</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">ent2</span><span class="p">:</span>
+            <span class="n">proposicion</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ent2</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+            <span class="k">return</span>
+        <span class="n">peso</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_peso</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> 
+        <span class="k">if</span> <span class="n">peso</span><span class="p">:</span>
+            <span class="n">cond1</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">cond2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">cond1</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">peso</span><span class="p">))</span> <span class="ow">is</span> <span class="nb">int</span>
+                <span class="n">cond_aux</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">peso</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+                <span class="n">cond1</span> <span class="o">=</span> <span class="n">cond1</span> <span class="ow">and</span> <span class="n">cond_aux</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">try</span><span class="p">:</span>                
+                <span class="n">cond2</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">peso</span><span class="p">))</span> <span class="ow">is</span> <span class="nb">float</span>
+                <span class="n">cond_aux</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">peso</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+                <span class="n">cond2</span> <span class="o">=</span> <span class="n">cond2</span> <span class="ow">and</span> <span class="n">cond_aux</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">if</span> <span class="n">cond1</span> <span class="ow">or</span> <span class="n">cond2</span><span class="p">:</span>
+                <span class="n">proposicion</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">peso</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+                <span class="k">return</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+            <span class="k">return</span>
+        
+        <span class="c1"># Envía al gestor la proposición para que actualice el mapa</span>
+        <span class="n">respuesta</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">relacionar_entidades</span><span class="p">(</span><span class="n">proposicion</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">respuesta</span><span class="p">:</span>
+            <span class="c1"># Vacía los artefactos</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_relacion</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AreaDeTexto._cambiar_tema">
+<a class="viewcode-back" href="../../areas.html#areas.texto.AreaDeTexto._cambiar_tema">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cambiar_tema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Obtiene los datos necesarios previo al reinicio que permite cambiar</span>
+<span class="sd">        el tema de la aplicación.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">cancelar_pendientes</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">respaldo_temporal</span><span class="p">()</span>
+        <span class="n">proyecto_activo</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">datos_proyecto_activo</span><span class="p">()</span>
+        <span class="n">diagrama_no_vacio</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">nodos_existentes</span><span class="p">())</span>
+        <span class="n">texto_actual</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bucle</span><span class="o">.</span><span class="n">cambiar_tema</span><span class="p">(</span>
+            <span class="n">diagrama_no_vacio</span><span class="p">,</span> <span class="n">proyecto_activo</span><span class="p">,</span> <span class="n">texto_actual</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaDeTexto._cargar_texto">
+<a class="viewcode-back" href="../../areas.html#areas.texto.AreaDeTexto._cargar_texto">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cargar_texto</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Carga en el área de texto desplazable el contenido extraído del</span>
+<span class="sd">        documento seleccionado.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ruta</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">askopenfilename</span><span class="p">(</span>
+            <span class="n">filetypes</span><span class="o">=</span><span class="p">[</span>
+                <span class="p">(</span><span class="s2">&quot;Archivos de texto plano&quot;</span><span class="p">,</span> <span class="s2">&quot;*.txt&quot;</span><span class="p">),</span>
+                <span class="p">(</span><span class="s2">&quot;Documentos PDF&quot;</span><span class="p">,</span> <span class="s2">&quot;*.pdf&quot;</span><span class="p">)</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">texto</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">obtener_texto</span><span class="p">(</span><span class="n">ruta</span><span class="p">)</span>
+        <span class="c1"># Define el estilo de aviso, vacía y escribe en el área de texto</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">,</span> <span class="n">texto</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">tag_add</span><span class="p">(</span><span class="s2">&quot;aviso&quot;</span><span class="p">,</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">)</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">tag_config</span><span class="p">(</span>
+            <span class="s2">&quot;aviso&quot;</span><span class="p">,</span> <span class="n">foreground</span><span class="o">=</span><span class="n">comunes</span><span class="o">.</span><span class="n">color_tex_mensaje</span><span class="p">,</span>
+            <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Arial&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;bold italic&quot;</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span>    
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AreaDeTexto._cadena_tema">
+<a class="viewcode-back" href="../../areas.html#areas.texto.AreaDeTexto._cadena_tema">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cadena_tema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Devuelve una cadena con el tema a aplicar.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;claro&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tema</span> <span class="o">==</span> <span class="s2">&quot;oscuro&quot;</span> <span class="k">else</span> <span class="s2">&quot;oscuro&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="AreaDeTexto._crear_botonera">
+<a class="viewcode-back" href="../../areas.html#areas.texto.AreaDeTexto._crear_botonera">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_crear_botonera</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Construye la botonera del área de texto.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_sup</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+        <span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_sup</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_cargar_texto</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_sup</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Cargar texto&quot;</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cargar_texto</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_cargar_texto</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_cargar_texto</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_notas</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_sup</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Notas&quot;</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_abrir_notas</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_abrir_notas</span>
+        <span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_notas</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span>  
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_reiniciar</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_sup</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Reiniciar&quot;</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_reiniciar</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_reiniciar</span>
+        <span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_reiniciar</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span>
+        <span class="p">)</span>
+        <span class="n">tema</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cadena_tema</span><span class="p">()</span>
+        <span class="n">tex_boton_tema</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Tema </span><span class="si">{</span><span class="n">tema</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_tema</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_sup</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="n">tex_boton_tema</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cambiar_tema</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_tema</span>
+        <span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_tema</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span> <span class="c1"># Etiqueta estado</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_sup</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_aviso</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaDeTexto._crear_texto_desplazable">
+<a class="viewcode-back" href="../../areas.html#areas.texto.AreaDeTexto._crear_texto_desplazable">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_crear_texto_desplazable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Construye el artefacto donde se carga el texto extraído</span>
+<span class="sd">        de los documentos seleccionados.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="p">:</span> <span class="n">scrolledtext</span><span class="o">.</span><span class="n">ScrolledText</span> <span class="o">=</span> <span class="n">scrolledtext</span><span class="o">.</span><span class="n">ScrolledText</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span><span class="p">,</span>
+            <span class="n">wrap</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">WORD</span><span class="p">,</span>
+            <span class="n">state</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">NORMAL</span><span class="p">,</span>
+            <span class="n">undo</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">maxundo</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_area_txt</span>
+        <span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">tag_configure</span><span class="p">(</span>
+            <span class="s2">&quot;formato&quot;</span><span class="p">,</span> <span class="n">spacing1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">spacing2</span><span class="o">=</span><span class="mi">3</span> <span class="p">,</span> <span class="n">spacing3</span><span class="o">=</span><span class="mi">1</span>
+        <span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;nsew&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_texto_respaldo</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">tag_add</span><span class="p">(</span><span class="s2">&quot;formato&quot;</span><span class="p">,</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">)</span></div>
+
+        
+
+<div class="viewcode-block" id="AreaDeTexto._crear_subsec_proposicion">
+<a class="viewcode-back" href="../../areas.html#areas.texto.AreaDeTexto._crear_subsec_proposicion">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_crear_subsec_proposicion</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Construye los artefactos que permiten el ingreso</span>
+<span class="sd">        de proposiciones.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_subseccion_ingresos</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_color_fondo</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_subseccion_ingresos</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">25</span><span class="p">)</span>
+        <span class="p">)</span>            
+        <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_mapa</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_subseccion_ingresos</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_color_fondo</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_mapa</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="c1"># Separador</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sep_prop_izq</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Separator</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Separator</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_mapa</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;horizontal&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sep_prop_der</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Separator</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Separator</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_mapa</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;horizontal&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_prop_titulo</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_mapa</span><span class="p">,</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;P R O P O S I C I Ó N&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ayuda</span>
+        <span class="p">)</span>        
+        <span class="c1"># Variables de almacenamiento</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ent1</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rel</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ent2</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_peso</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>        
+        <span class="c1"># Etiqueta con nota emergente</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_proposicion</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_mapa</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;( ? )&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ayuda</span>
+        <span class="p">)</span>
+        <span class="c1"># Entidad1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_entidad1</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_mapa</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Entidad&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_mapa</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_ent1</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_entrada_e</span>
+        <span class="p">)</span> 
+        <span class="c1"># Relación entre entidades</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_relacion</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_mapa</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Vínculo&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ent</span>
+        <span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_relacion</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_mapa</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_rel</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_entrada_r</span>
+        <span class="p">)</span>
+        <span class="c1"># Peso de la relación entre entidades</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_peso_rel</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_mapa</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Peso&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ent</span>
+        <span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_mapa</span><span class="p">,</span>
+            <span class="n">width</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="n">textvariable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_peso</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_entrada</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">)</span>
+        <span class="c1"># Entidad2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_entidad2</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_mapa</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Entidad&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ent</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_mapa</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_ent2</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_entrada_e</span>
+        <span class="p">)</span> 
+        <span class="c1"># Boton confirmar relación</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_mapa</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Relacionar&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_relacionar</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_actualizar_diagrama</span><span class="p">)</span>
+        
+        <span class="c1"># Ubicacion de los elementos en la botonera mapa        </span>
+        <span class="c1"># Fila 1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sep_prop_izq</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_prop_titulo</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sep_prop_der</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="c1"># Fila 2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_entidad1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_relacion</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_peso_rel</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_entidad2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">)</span>        
+        <span class="c1"># Fila 3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_proposicion</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_relacion</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="AreaDeTexto._crear_notas_emergentes">
+<a class="viewcode-back" href="../../areas.html#areas.texto.AreaDeTexto._crear_notas_emergentes">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_crear_notas_emergentes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Construye las notas que se mostrarán al posar el cursor sobre ciertos</span>
+<span class="sd">        artefactos.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Nota emergente sobre botón cargar-texto</span>
+        <span class="n">ne1</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;Archivos con extensión &quot;.pdf&quot; o &quot;.txt&quot;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ne_btn_cargar</span> <span class="o">=</span> <span class="n">emergente</span><span class="o">.</span><span class="n">NotaEmergente</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_btn_cargar_texto</span><span class="p">,</span> <span class="n">ne1</span>
+        <span class="p">)</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_cargar_texto</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Enter&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_btn_cargar</span><span class="o">.</span><span class="n">mostrar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_cargar_texto</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Leave&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_btn_cargar</span><span class="o">.</span><span class="n">ocultar</span><span class="p">)</span>
+        <span class="c1"># Nota emergente sobre etiqueta de ayuda a proposición</span>
+        <span class="n">ne2</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&quot;Relacionar&quot; graficará la proposición:  [ Entidad_1 ]----&#39;</span>
+        <span class="n">ne2</span> <span class="o">=</span> <span class="n">ne2</span> <span class="o">+</span> <span class="s2">&quot;[ Vínculo ]----&gt;[ Entidad_2 ]&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ne_proposicion</span> <span class="o">=</span> <span class="n">emergente</span><span class="o">.</span><span class="n">NotaEmergente</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_etq_proposicion</span><span class="p">,</span> <span class="n">ne2</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_proposicion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Enter&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_proposicion</span><span class="o">.</span><span class="n">mostrar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_proposicion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Leave&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_proposicion</span><span class="o">.</span><span class="n">ocultar</span><span class="p">)</span>
+        <span class="c1"># Nota emergente sobre etiqueta Entidad1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ne_ent1</span> <span class="o">=</span> <span class="n">emergente</span><span class="o">.</span><span class="n">NotaEmergente</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_etq_entidad1</span><span class="p">,</span>
+            <span class="s2">&quot;&lt;Ctrl+a&gt; ingresa automáticamente el texto seleccionado&quot;</span><span class="p">)</span> <span class="c1"># Enviar a un diccionario  </span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_entidad1</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Enter&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_ent1</span><span class="o">.</span><span class="n">mostrar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_entidad1</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Leave&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_ent1</span><span class="o">.</span><span class="n">ocultar</span><span class="p">)</span>
+        <span class="c1"># Nota emergente sobre etiqueta Relación</span>
+        <span class="n">ne3</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span>  <span class="s2">&quot;&lt;Ctrl+s&gt; ingresa automáticamente el texto seleccionado&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ne_rel</span> <span class="o">=</span> <span class="n">emergente</span><span class="o">.</span><span class="n">NotaEmergente</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">_etq_relacion</span><span class="p">,</span> <span class="n">ne3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Enter&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_rel</span><span class="o">.</span><span class="n">mostrar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Leave&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_rel</span><span class="o">.</span><span class="n">ocultar</span><span class="p">)</span>
+        <span class="c1"># Nota emergente sobre etiqueta Peso de relación</span>
+        <span class="n">ne4</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Ingresar un número entero o decimal &gt; 0 (valor por &quot;</span>
+        <span class="n">ne4</span> <span class="o">=</span> <span class="n">ne4</span> <span class="o">+</span> <span class="s2">&quot;defecto = 1).</span><span class="se">\n</span><span class="s2">A mayor peso, mayor proximidad &quot;</span>
+        <span class="n">ne4</span> <span class="o">=</span> <span class="n">ne4</span> <span class="o">+</span> <span class="s2">&quot;relativa entre las entidades relacionadas.&quot;</span>
+        <span class="n">ne4</span> <span class="o">=</span> <span class="n">ne4</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Atajo de teclado: &lt;Ctrl+w&gt;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ne_peso</span> <span class="o">=</span> <span class="n">emergente</span><span class="o">.</span><span class="n">NotaEmergente</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_etq_peso_rel</span><span class="p">,</span> <span class="n">ne4</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_peso_rel</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Enter&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_peso</span><span class="o">.</span><span class="n">mostrar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_peso_rel</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Leave&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_peso</span><span class="o">.</span><span class="n">ocultar</span><span class="p">)</span>
+        <span class="c1"># Nota emergente sobre etiqueta Entidad2</span>
+        <span class="n">ne5</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span><span class="s2">&quot;&lt;Ctrl+d&gt; ingresa automáticamente el texto seleccionado&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ne_ent2</span> <span class="o">=</span> <span class="n">emergente</span><span class="o">.</span><span class="n">NotaEmergente</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_etq_entidad2</span><span class="p">,</span> <span class="n">ne5</span><span class="p">)</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_entidad2</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Enter&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_ent2</span><span class="o">.</span><span class="n">mostrar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_entidad2</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Leave&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_ent2</span><span class="o">.</span><span class="n">ocultar</span><span class="p">)</span>
+        <span class="c1"># Nota emergente sobre boton Relacionar</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ne_btn_relacionar</span> <span class="o">=</span> <span class="n">emergente</span><span class="o">.</span><span class="n">NotaEmergente</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="p">,</span> <span class="s2">&quot;&lt;Ctrl+f&gt;&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Enter&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_btn_relacionar</span><span class="o">.</span><span class="n">mostrar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Leave&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ne_btn_relacionar</span><span class="o">.</span><span class="n">ocultar</span><span class="p">)</span></div>
+
+  
+<div class="viewcode-block" id="AreaDeTexto._establecer_atajos">
+<a class="viewcode-back" href="../../areas.html#areas.texto.AreaDeTexto._establecer_atajos">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_establecer_atajos</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Vincula algunos artefactos y sus operaciones con atajos de teclado.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_notas</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Return&gt;&quot;</span><span class="p">,</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_abrir_notas</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_reiniciar</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Return&gt;&quot;</span><span class="p">,</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reiniciar</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_tema</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Return&gt;&quot;</span><span class="p">,</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cambiar_tema</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_cargar_texto</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Return&gt;&quot;</span><span class="p">,</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cargar_texto</span><span class="p">())</span>
+        <span class="c1"># Cargar texto        </span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_cargar_texto</span><span class="o">.</span><span class="n">bind_all</span><span class="p">(</span><span class="s2">&quot;&lt;Control-o&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cargar_texto</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_cargar_texto</span><span class="o">.</span><span class="n">bind_all</span><span class="p">(</span><span class="s2">&quot;&lt;Control-O&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cargar_texto</span><span class="p">())</span>
+        <span class="c1"># Ingresar entidad1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-a&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-A&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-a&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-A&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-a&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-A&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-a&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-A&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-a&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-A&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-a&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-A&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="c1"># Ingresar relación</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-s&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-S&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-s&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-S&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-s&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-S&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-s&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-S&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-s&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-S&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-s&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-S&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+        <span class="c1"># Ingresar peso</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-w&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-W&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-w&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-W&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-w&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-W&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-w&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-W&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-w&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-w&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-w&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-W&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+        <span class="c1"># Ingresa entidad2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-d&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-D&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-d&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-D&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-d&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-D&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-d&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-D&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-d&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-D&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-d&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-D&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+        <span class="c1"># Relacionar entidades</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-f&gt;&quot;</span><span class="p">,</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-F&gt;&quot;</span><span class="p">,</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Return&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Return&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Return&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Return&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Return&gt;&quot;</span><span class="p">,</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-f&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-F&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-f&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-F&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-f&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-F&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-f&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-F&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-f&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-F&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+        <span class="c1"># Borrar ultimo ingreso</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-u&gt;&quot;</span><span class="p">,</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-U&gt;&quot;</span><span class="p">,</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-u&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-U&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-u&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-U&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-u&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-U&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-u&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-U&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-u&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-U&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+        <span class="c1"># Abrir notas</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-n&gt;&quot;</span><span class="p">,</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-N&gt;&quot;</span><span class="p">,</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-n&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-N&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-n&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-N&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-n&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-N&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-n&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-N&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-n&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-N&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+        <span class="c1"># Guardar proyecto</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-g&gt;&quot;</span><span class="p">,</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-G&gt;&quot;</span><span class="p">,</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-g&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad1</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-G&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-g&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-G&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-g&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_entidad2</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-G&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-g&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_confirmar_relacion</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-G&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-g&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_peso_rel</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-G&gt;&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span></div>
+
+        
+<div class="viewcode-block" id="AreaDeTexto._reiniciar">
+<a class="viewcode-back" href="../../areas.html#areas.texto.AreaDeTexto._reiniciar">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_reiniciar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Recibe la orden de reinicio y activa la ventana de dialogo.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">mensaje</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Se eliminarán todos los datos registrados. &quot;</span>
+        <span class="n">mensaje</span> <span class="o">=</span> <span class="n">mensaje</span> <span class="o">+</span> <span class="s2">&quot;Esta acción no se puede revertir.&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ventana_dialogo</span><span class="p">(</span><span class="n">mensaje</span><span class="p">,</span> <span class="s2">&quot;Confirmar reinicio&quot;</span><span class="p">)</span>            </div>
+
+
+<div class="viewcode-block" id="AreaDeTexto._ventana_dialogo">
+<a class="viewcode-back" href="../../areas.html#areas.texto.AreaDeTexto._ventana_dialogo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_ventana_dialogo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">contenido</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">titulo_ventana</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Construye la ventana de confirmación de reinicio.</span>
+
+<span class="sd">        :param contenido: Mensaje a notificar.</span>
+<span class="sd">        :type contenido: str</span>
+<span class="sd">        :param titulo_ventana: Título de la ventana.</span>
+<span class="sd">        :type titulo_ventana: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dialogo</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Toplevel</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Toplevel</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_artf</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dialogo</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">titulo_ventana</span><span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etiqueta_mensaje</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_dialogo</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="n">contenido</span><span class="p">,</span>
+            <span class="n">justify</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ayuda</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">titulo_ventana</span> <span class="o">==</span> <span class="s2">&quot;Confirmar reinicio&quot;</span><span class="p">:</span>
+            <span class="c1"># La centor en la pantalla</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span>
+            <span class="n">ancho</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">600</span> 
+            <span class="n">alto</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">140</span> 
+            <span class="n">ancho_pantalla</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span><span class="o">.</span><span class="n">winfo_screenwidth</span><span class="p">()</span>
+            <span class="n">alto_pantalla</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span><span class="o">.</span><span class="n">winfo_screenheight</span><span class="p">()</span>
+            <span class="n">x</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="p">(</span><span class="n">ancho_pantalla</span> <span class="o">-</span> <span class="n">ancho</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+            <span class="n">y</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="p">(</span><span class="n">alto_pantalla</span> <span class="o">-</span> <span class="n">alto</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_dialogo</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ancho</span><span class="si">}</span><span class="s2">x</span><span class="si">{</span><span class="n">alto</span><span class="si">}</span><span class="s2">+</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">+</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            
+            <span class="bp">self</span><span class="o">.</span><span class="n">_boton_confirmar</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_dialogo</span><span class="p">,</span>
+                <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Confirmar&quot;</span><span class="p">,</span>
+                <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_confirmar_reinicio</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_aplicar</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_boton_cancelar</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_dialogo</span><span class="p">,</span>
+                <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Cancelar&quot;</span><span class="p">,</span>
+                <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cancelar_reinicio</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_cancelar</span>
+            <span class="p">)</span>
+            <span class="c1"># Ubicación de los elementos</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_etiqueta_mensaje</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+                <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_boton_confirmar</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">30</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_boton_cancelar</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">30</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_boton_cancelar</span><span class="o">.</span><span class="n">focus_set</span><span class="p">()</span>
+            <span class="c1"># Atajos de teclado</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_boton_cancelar</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Return&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cancelar_reinicio</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_boton_confirmar</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Return&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_confirmar_reinicio</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_dialogo</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_etiqueta_mensaje</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>            </div>
+
+
+<div class="viewcode-block" id="AreaDeTexto._confirmar_reinicio">
+<a class="viewcode-back" href="../../areas.html#areas.texto.AreaDeTexto._confirmar_reinicio">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_confirmar_reinicio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Destruye la ventana y envia al gestor la orden de reinicio.</span>
+<span class="sd">        Args captura el evento producido al presionar el botón.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dialogo</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_area_texto</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">reiniciar</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AreaDeTexto._cancelar_reinicio">
+<a class="viewcode-back" href="../../areas.html#areas.texto.AreaDeTexto._cancelar_reinicio">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cancelar_reinicio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Destruye la ventana. Args captura el evento producido al presionar</span>
+<span class="sd">        el botón.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dialogo</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span></div>
+</div>
+
+        
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, errejotaeme.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

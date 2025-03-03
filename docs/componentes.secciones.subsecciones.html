@@ -1,0 +1,501 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paquete componentes.secciones.subsecciones &mdash; documentación de Diagrama - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+      <script src="_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Paquete control" href="control.html" />
+    <link rel="prev" title="Paquete componentes.secciones" href="componentes.secciones.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Diagrama
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dependencias.html">Configuración del entorno (<cite>Linux</cite>)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Módulos y paquetes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="main.html">Módulo main</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="interfaz.html">Paquete interfaz</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="componentes.html">Paquete componentes</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="componentes.html#subpaquetes">Subpaquetes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="interfaz.html#module-interfaz.ventana">Módulo interfaz.ventana</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfaz.html#module-interfaz.diseno">Módulo interfaz.diseño</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfaz.html#modulo-interfaz-comunes">Módulo interfaz.comunes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="control.html">Paquete control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentos.html">Paquete documentos</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Diagrama</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Módulos y paquetes</a></li>
+          <li class="breadcrumb-item"><a href="interfaz.html">Paquete interfaz</a></li>
+          <li class="breadcrumb-item"><a href="componentes.html">Paquete componentes</a></li>
+          <li class="breadcrumb-item"><a href="componentes.secciones.html">Paquete componentes.secciones</a></li>
+      <li class="breadcrumb-item active">Paquete componentes.secciones.subsecciones</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/componentes.secciones.subsecciones.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="paquete-componentes-secciones-subsecciones">
+<h1>Paquete componentes.secciones.subsecciones<a class="headerlink" href="#paquete-componentes-secciones-subsecciones" title="Link to this heading"></a></h1>
+<section id="module-componentes.secciones.subsecciones.grafo">
+<span id="modulo-componentes-secciones-subsecciones-grafo"></span><h2>Módulo componentes.secciones.subsecciones.grafo<a class="headerlink" href="#module-componentes.secciones.subsecciones.grafo" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.grafo.EditorGrafo">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">componentes.secciones.subsecciones.grafo.</span></span><span class="sig-name descname"><span class="pre">EditorGrafo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gestor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raiz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/grafo.html#EditorGrafo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.grafo.EditorGrafo" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de editar los atributos generales del diagrama.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ancestro</strong> (<em>Frame</em>) – El marco donde se ubica el contenedor principal y/o los artefactos instanciados por la clase.</p></li>
+<li><p><strong>gestor</strong> (<a class="reference internal" href="control.html#control.gestor.Gestor" title="control.gestor.Gestor"><em>Gestor</em></a>) – La instancia de la clase encargada de gestionar la comunicación entre los módulos y la interacción con las tablas.</p></li>
+<li><p><strong>raiz</strong> (<em>Tk</em>) – Ventana principal que controla el bucle de la aplicación.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.grafo.EditorGrafo._color_fondo_grafo">
+<span class="sig-name descname"><span class="pre">_color_fondo_grafo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/grafo.html#EditorGrafo._color_fondo_grafo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.grafo.EditorGrafo._color_fondo_grafo" title="Link to this definition"></a></dt>
+<dd><p>Abre un selector de color y actualiza el diccionario de cambios.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.grafo.EditorGrafo._construir_opciones_grafo">
+<span class="sig-name descname"><span class="pre">_construir_opciones_grafo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/grafo.html#EditorGrafo._construir_opciones_grafo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.grafo.EditorGrafo._construir_opciones_grafo" title="Link to this definition"></a></dt>
+<dd><p>Construye los artefactos que permiten ingresar los cambios.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.grafo.EditorGrafo.actualizar_crecimiento">
+<span class="sig-name descname"><span class="pre">actualizar_crecimiento</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">valor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/grafo.html#EditorGrafo.actualizar_crecimiento"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.grafo.EditorGrafo.actualizar_crecimiento" title="Link to this definition"></a></dt>
+<dd><p>Actualiza la entrada del diccionario de cambios.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>valor</strong> (<em>str</em>) – La dirección y el sentido en que crecerá el grafo.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.grafo.EditorGrafo.actualizar_dict_grafo">
+<span class="sig-name descname"><span class="pre">actualizar_dict_grafo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/grafo.html#EditorGrafo.actualizar_dict_grafo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.grafo.EditorGrafo.actualizar_dict_grafo" title="Link to this definition"></a></dt>
+<dd><p>Antes de actualizar, efectúa las comprobaciones necesarias en
+los valores ingresados.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>El resultado de la verificación.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.grafo.EditorGrafo.actualizar_justificado">
+<span class="sig-name descname"><span class="pre">actualizar_justificado</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">valor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/grafo.html#EditorGrafo.actualizar_justificado"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.grafo.EditorGrafo.actualizar_justificado" title="Link to this definition"></a></dt>
+<dd><p>Actualiza la entrada del diccionario de cambios.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>valor</strong> (<em>str</em>) – La alineación del texto de nodos y vértices respecto a los márgenes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.grafo.EditorGrafo.artefacto">
+<span class="sig-name descname"><span class="pre">artefacto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Frame</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/grafo.html#EditorGrafo.artefacto"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.grafo.EditorGrafo.artefacto" title="Link to this definition"></a></dt>
+<dd><p>Retorna el contenedor que contiene a todos los artefactos de la sección.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>El marco principal de la subsección.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>Frame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.grafo.EditorGrafo.obtener_cambios">
+<span class="sig-name descname"><span class="pre">obtener_cambios</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/grafo.html#EditorGrafo.obtener_cambios"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.grafo.EditorGrafo.obtener_cambios" title="Link to this definition"></a></dt>
+<dd><p>Retorna el diccionario de cambios en el grafo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Las modificaciones efectuadas.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str, str| None]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.grafo.EditorGrafo.reiniciar_cambios">
+<span class="sig-name descname"><span class="pre">reiniciar_cambios</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/grafo.html#EditorGrafo.reiniciar_cambios"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.grafo.EditorGrafo.reiniciar_cambios" title="Link to this definition"></a></dt>
+<dd><p>Vacía el diccionario de cambios.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.grafo.EditorGrafo.reiniciar_entradas">
+<span class="sig-name descname"><span class="pre">reiniciar_entradas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/grafo.html#EditorGrafo.reiniciar_entradas"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.grafo.EditorGrafo.reiniciar_entradas" title="Link to this definition"></a></dt>
+<dd><p>Vacía los artefactos donde se ingresan los cambios.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-componentes.secciones.subsecciones.nodo">
+<span id="modulo-componentes-secciones-subsecciones-nodo"></span><h2>Módulo componentes.secciones.subsecciones.nodo<a class="headerlink" href="#module-componentes.secciones.subsecciones.nodo" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.nodo.EditorNodo">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">componentes.secciones.subsecciones.nodo.</span></span><span class="sig-name descname"><span class="pre">EditorNodo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gestor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raiz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/nodo.html#EditorNodo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.nodo.EditorNodo" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de editar los atributos de los nodos del diagrama.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ancestro</strong> (<em>Frame</em>) – El marco donde se ubica el contenedor principal y/o los artefactos instanciados por la clase.</p></li>
+<li><p><strong>gestor</strong> (<a class="reference internal" href="control.html#control.gestor.Gestor" title="control.gestor.Gestor"><em>Gestor</em></a>) – La instancia de la clase encargada de gestionar la comunicación entre los módulos y la interacción con las tablas.</p></li>
+<li><p><strong>raiz</strong> (<em>Tk</em>) – Ventana principal que controla el bucle de la aplicación.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.nodo.EditorNodo._color_borde_n">
+<span class="sig-name descname"><span class="pre">_color_borde_n</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/nodo.html#EditorNodo._color_borde_n"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.nodo.EditorNodo._color_borde_n" title="Link to this definition"></a></dt>
+<dd><p>Abre un selector de color y actualiza el diccionario de cambios.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.nodo.EditorNodo._color_relleno_n">
+<span class="sig-name descname"><span class="pre">_color_relleno_n</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/nodo.html#EditorNodo._color_relleno_n"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.nodo.EditorNodo._color_relleno_n" title="Link to this definition"></a></dt>
+<dd><p>Abre un selector de color y actualiza el diccionario de cambios.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.nodo.EditorNodo._color_texto_n">
+<span class="sig-name descname"><span class="pre">_color_texto_n</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/nodo.html#EditorNodo._color_texto_n"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.nodo.EditorNodo._color_texto_n" title="Link to this definition"></a></dt>
+<dd><p>Abre un selector de colores y actualiza el diccionario de cambios.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.nodo.EditorNodo._construir_opciones_nodo">
+<span class="sig-name descname"><span class="pre">_construir_opciones_nodo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/nodo.html#EditorNodo._construir_opciones_nodo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.nodo.EditorNodo._construir_opciones_nodo" title="Link to this definition"></a></dt>
+<dd><p>Construye los artefactos que permiten ingresar los cambios.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.nodo.EditorNodo._explorar_fuentes">
+<span class="sig-name descname"><span class="pre">_explorar_fuentes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/nodo.html#EditorNodo._explorar_fuentes"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.nodo.EditorNodo._explorar_fuentes" title="Link to this definition"></a></dt>
+<dd><p>Construye una ventana independiente donde se muestran las fuentes
+disponibles en el sistema.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.nodo.EditorNodo.actualizar_dict_nodo">
+<span class="sig-name descname"><span class="pre">actualizar_dict_nodo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/nodo.html#EditorNodo.actualizar_dict_nodo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.nodo.EditorNodo.actualizar_dict_nodo" title="Link to this definition"></a></dt>
+<dd><p>Antes de actualizar, efectúa las comprobaciones necesarias
+en los valores ingresados.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>El resultado de la verificación.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.nodo.EditorNodo.actualizar_forma">
+<span class="sig-name descname"><span class="pre">actualizar_forma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forma</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/nodo.html#EditorNodo.actualizar_forma"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.nodo.EditorNodo.actualizar_forma" title="Link to this definition"></a></dt>
+<dd><p>Actualiza la entrada del diccionario de cambios.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.nodo.EditorNodo.artefacto">
+<span class="sig-name descname"><span class="pre">artefacto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Frame</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/nodo.html#EditorNodo.artefacto"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.nodo.EditorNodo.artefacto" title="Link to this definition"></a></dt>
+<dd><p>Retorna el contenedor que contiene a todos los artefactos de la sección.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>El marco principal de la subsección.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>Frame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.nodo.EditorNodo.obtener_cambios">
+<span class="sig-name descname"><span class="pre">obtener_cambios</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/nodo.html#EditorNodo.obtener_cambios"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.nodo.EditorNodo.obtener_cambios" title="Link to this definition"></a></dt>
+<dd><p>Retorna el diccionario de cambios en el nodo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Las modificaciones efectuadas.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str, str | None]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.nodo.EditorNodo.reiniciar_cambios">
+<span class="sig-name descname"><span class="pre">reiniciar_cambios</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/nodo.html#EditorNodo.reiniciar_cambios"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.nodo.EditorNodo.reiniciar_cambios" title="Link to this definition"></a></dt>
+<dd><p>Vacía el diccionario de cambios.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.nodo.EditorNodo.reiniciar_entradas">
+<span class="sig-name descname"><span class="pre">reiniciar_entradas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/nodo.html#EditorNodo.reiniciar_entradas"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.nodo.EditorNodo.reiniciar_entradas" title="Link to this definition"></a></dt>
+<dd><p>Vacía los artefactos donde se ingresan los cambios.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-componentes.secciones.subsecciones.vertice">
+<span id="modulo-componentes-secciones-subsecciones-vertice"></span><h2>Módulo componentes.secciones.subsecciones.vertice<a class="headerlink" href="#module-componentes.secciones.subsecciones.vertice" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.vertice.EditorVertice">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">componentes.secciones.subsecciones.vertice.</span></span><span class="sig-name descname"><span class="pre">EditorVertice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gestor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raiz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/vertice.html#EditorVertice"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.vertice.EditorVertice" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de editar los atributos de los vértices del diagrama.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ancestro</strong> (<em>Frame</em>) – El marco donde se ubica el contenedor principal y/o los artefactos instanciados por la clase.</p></li>
+<li><p><strong>gestor</strong> (<a class="reference internal" href="control.html#control.gestor.Gestor" title="control.gestor.Gestor"><em>Gestor</em></a>) – La instancia de la clase encargada de gestionar la comunicación entre los módulos y la interacción con las tablas.</p></li>
+<li><p><strong>raiz</strong> (<em>Tk</em>) – Ventana principal que controla el bucle de la aplicación.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.vertice.EditorVertice._color_texto_v">
+<span class="sig-name descname"><span class="pre">_color_texto_v</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/vertice.html#EditorVertice._color_texto_v"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.vertice.EditorVertice._color_texto_v" title="Link to this definition"></a></dt>
+<dd><p>Abre un selector de color y actualiza el diccionario de cambios.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.vertice.EditorVertice._color_vertice">
+<span class="sig-name descname"><span class="pre">_color_vertice</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/vertice.html#EditorVertice._color_vertice"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.vertice.EditorVertice._color_vertice" title="Link to this definition"></a></dt>
+<dd><p>Abre un selector de color y actualiza el diccionario de cambios.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.vertice.EditorVertice._construir_opciones_vertice">
+<span class="sig-name descname"><span class="pre">_construir_opciones_vertice</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/vertice.html#EditorVertice._construir_opciones_vertice"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.vertice.EditorVertice._construir_opciones_vertice" title="Link to this definition"></a></dt>
+<dd><p>Construye los artefactos que permiten ingresar los cambios.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.vertice.EditorVertice._explorar_fuentes">
+<span class="sig-name descname"><span class="pre">_explorar_fuentes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/vertice.html#EditorVertice._explorar_fuentes"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.vertice.EditorVertice._explorar_fuentes" title="Link to this definition"></a></dt>
+<dd><p>Construye una ventana independiente donde se muestran las fuentes
+disponibles en el sistema.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.vertice.EditorVertice.activar_interruptor">
+<span class="sig-name descname"><span class="pre">activar_interruptor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/vertice.html#EditorVertice.activar_interruptor"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.vertice.EditorVertice.activar_interruptor" title="Link to this definition"></a></dt>
+<dd><p>Alterna el valor de verdad del interruptor que permite ocultar
+o mostrar la opción de editar el «peso» de una relación.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.vertice.EditorVertice.actualizar_dict_vertice">
+<span class="sig-name descname"><span class="pre">actualizar_dict_vertice</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/vertice.html#EditorVertice.actualizar_dict_vertice"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.vertice.EditorVertice.actualizar_dict_vertice" title="Link to this definition"></a></dt>
+<dd><p>Antes de actualizar, efectúa las comprobaciones necesarias
+en los valores ingresados.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>El resultado de la verificación.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.vertice.EditorVertice.actualizar_direccion">
+<span class="sig-name descname"><span class="pre">actualizar_direccion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentido</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/vertice.html#EditorVertice.actualizar_direccion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.vertice.EditorVertice.actualizar_direccion" title="Link to this definition"></a></dt>
+<dd><p>Actualiza la entrada del diccionario de cambios.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sentido</strong> (<em>str</em>) – La orientacion de las flechas.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.vertice.EditorVertice.actualizar_flecha_d">
+<span class="sig-name descname"><span class="pre">actualizar_flecha_d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tipo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/vertice.html#EditorVertice.actualizar_flecha_d"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.vertice.EditorVertice.actualizar_flecha_d" title="Link to this definition"></a></dt>
+<dd><p>Actualiza la entrada del diccionario de cambios.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tipo</strong> (<em>str</em>) – La forma de la flecha delantera.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.vertice.EditorVertice.actualizar_flecha_t">
+<span class="sig-name descname"><span class="pre">actualizar_flecha_t</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tipo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/vertice.html#EditorVertice.actualizar_flecha_t"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.vertice.EditorVertice.actualizar_flecha_t" title="Link to this definition"></a></dt>
+<dd><p>Actualiza la entrada del diccionario de cambios.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tipo</strong> (<em>str</em>) – La forma de la flecha trasera.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.vertice.EditorVertice.artefacto">
+<span class="sig-name descname"><span class="pre">artefacto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Frame</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/vertice.html#EditorVertice.artefacto"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.vertice.EditorVertice.artefacto" title="Link to this definition"></a></dt>
+<dd><p>Retorna el contenedor que contiene a todos los artefactos de la sección.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>El marco principal de la subsección.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>Frame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.vertice.EditorVertice.interruptor_relacion">
+<span class="sig-name descname"><span class="pre">interruptor_relacion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/vertice.html#EditorVertice.interruptor_relacion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.vertice.EditorVertice.interruptor_relacion" title="Link to this definition"></a></dt>
+<dd><p>Hace visible la opción de «peso» de la relación cuando se modifica
+un vértice específico. Para ello modifica la ubicación de los artefactos
+que se encuentran en las celdas siguientes a la cual ocupa en la retícula.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.vertice.EditorVertice.obtener_cambios">
+<span class="sig-name descname"><span class="pre">obtener_cambios</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/vertice.html#EditorVertice.obtener_cambios"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.vertice.EditorVertice.obtener_cambios" title="Link to this definition"></a></dt>
+<dd><p>Retorna el diccionario de cambios en el vértice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Las modificaciones efectuadas.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str, str | None]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.vertice.EditorVertice.reiniciar_cambios">
+<span class="sig-name descname"><span class="pre">reiniciar_cambios</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/vertice.html#EditorVertice.reiniciar_cambios"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.vertice.EditorVertice.reiniciar_cambios" title="Link to this definition"></a></dt>
+<dd><p>Vacía el diccionario de cambios.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.subsecciones.vertice.EditorVertice.reiniciar_entradas">
+<span class="sig-name descname"><span class="pre">reiniciar_entradas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/subsecciones/vertice.html#EditorVertice.reiniciar_entradas"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.subsecciones.vertice.EditorVertice.reiniciar_entradas" title="Link to this definition"></a></dt>
+<dd><p>Vacía los artefactos donde se ingresan los cambios.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="componentes.secciones.html" class="btn btn-neutral float-left" title="Paquete componentes.secciones" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="control.html" class="btn btn-neutral float-right" title="Paquete control" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, errejotaeme.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

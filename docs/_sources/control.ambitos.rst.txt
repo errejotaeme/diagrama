@@ -1,0 +1,29 @@
+Paquete control.ambitos
+=======================
+
+Módulo control.ambitos.gestion\_edicion
+---------------------------------------
+
+.. automodule:: control.ambitos.gestion_edicion
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+
+Módulo control.ambitos.gestion\_proyecto
+----------------------------------------
+
+.. automodule:: control.ambitos.gestion_proyecto
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+
+Módulo control.ambitos.gestion\_texto
+-------------------------------------
+
+.. automodule:: control.ambitos.gestion_texto
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:

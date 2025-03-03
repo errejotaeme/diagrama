@@ -1,0 +1,8 @@
+Módulo contenido
+================
+
+.. automodule:: contenido
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:

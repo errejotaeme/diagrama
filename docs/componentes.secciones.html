@@ -1,0 +1,930 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paquete componentes.secciones &mdash; documentación de Diagrama - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+      <script src="_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Paquete componentes.secciones.subsecciones" href="componentes.secciones.subsecciones.html" />
+    <link rel="prev" title="Paquete componentes.pantallas" href="componentes.pantallas.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Diagrama
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dependencias.html">Configuración del entorno</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modulos.html">Módulos y paquetes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="main.html">Módulo main</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="interfaz.html">Paquete interfaz</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="componentes.html">Paquete componentes</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="componentes.html#subpaquetes">Subpaquetes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="interfaz.html#module-interfaz.ventana">Módulo interfaz.ventana</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfaz.html#module-interfaz.diseno">Módulo interfaz.diseño</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfaz.html#modulo-interfaz-comunes">Módulo interfaz.comunes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="control.html">Paquete control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentos.html">Paquete documentos</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Diagrama</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modulos.html">Módulos y paquetes</a></li>
+          <li class="breadcrumb-item"><a href="interfaz.html">Paquete interfaz</a></li>
+          <li class="breadcrumb-item"><a href="componentes.html">Paquete componentes</a></li>
+      <li class="breadcrumb-item active">Paquete componentes.secciones</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/componentes.secciones.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="paquete-componentes-secciones">
+<h1>Paquete componentes.secciones<a class="headerlink" href="#paquete-componentes-secciones" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="componentes.secciones.subsecciones.html">Paquete componentes.secciones.subsecciones</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="componentes.secciones.subsecciones.html#module-componentes.secciones.subsecciones.grafo">Módulo componentes.secciones.subsecciones.grafo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.grafo.EditorGrafo"><code class="docutils literal notranslate"><span class="pre">EditorGrafo</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.grafo.EditorGrafo._color_fondo_grafo"><code class="docutils literal notranslate"><span class="pre">EditorGrafo._color_fondo_grafo()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.grafo.EditorGrafo._construir_opciones_grafo"><code class="docutils literal notranslate"><span class="pre">EditorGrafo._construir_opciones_grafo()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.grafo.EditorGrafo.actualizar_crecimiento"><code class="docutils literal notranslate"><span class="pre">EditorGrafo.actualizar_crecimiento()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.grafo.EditorGrafo.actualizar_dict_grafo"><code class="docutils literal notranslate"><span class="pre">EditorGrafo.actualizar_dict_grafo()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.grafo.EditorGrafo.actualizar_justificado"><code class="docutils literal notranslate"><span class="pre">EditorGrafo.actualizar_justificado()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.grafo.EditorGrafo.artefacto"><code class="docutils literal notranslate"><span class="pre">EditorGrafo.artefacto()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.grafo.EditorGrafo.obtener_cambios"><code class="docutils literal notranslate"><span class="pre">EditorGrafo.obtener_cambios()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.grafo.EditorGrafo.reiniciar_cambios"><code class="docutils literal notranslate"><span class="pre">EditorGrafo.reiniciar_cambios()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.grafo.EditorGrafo.reiniciar_entradas"><code class="docutils literal notranslate"><span class="pre">EditorGrafo.reiniciar_entradas()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="componentes.secciones.subsecciones.html#module-componentes.secciones.subsecciones.nodo">Módulo componentes.secciones.subsecciones.nodo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.nodo.EditorNodo"><code class="docutils literal notranslate"><span class="pre">EditorNodo</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.nodo.EditorNodo._color_borde_n"><code class="docutils literal notranslate"><span class="pre">EditorNodo._color_borde_n()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.nodo.EditorNodo._color_relleno_n"><code class="docutils literal notranslate"><span class="pre">EditorNodo._color_relleno_n()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.nodo.EditorNodo._color_texto_n"><code class="docutils literal notranslate"><span class="pre">EditorNodo._color_texto_n()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.nodo.EditorNodo._construir_opciones_nodo"><code class="docutils literal notranslate"><span class="pre">EditorNodo._construir_opciones_nodo()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.nodo.EditorNodo._explorar_fuentes"><code class="docutils literal notranslate"><span class="pre">EditorNodo._explorar_fuentes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.nodo.EditorNodo.actualizar_dict_nodo"><code class="docutils literal notranslate"><span class="pre">EditorNodo.actualizar_dict_nodo()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.nodo.EditorNodo.actualizar_forma"><code class="docutils literal notranslate"><span class="pre">EditorNodo.actualizar_forma()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.nodo.EditorNodo.artefacto"><code class="docutils literal notranslate"><span class="pre">EditorNodo.artefacto()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.nodo.EditorNodo.obtener_cambios"><code class="docutils literal notranslate"><span class="pre">EditorNodo.obtener_cambios()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.nodo.EditorNodo.reiniciar_cambios"><code class="docutils literal notranslate"><span class="pre">EditorNodo.reiniciar_cambios()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.nodo.EditorNodo.reiniciar_entradas"><code class="docutils literal notranslate"><span class="pre">EditorNodo.reiniciar_entradas()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="componentes.secciones.subsecciones.html#module-componentes.secciones.subsecciones.vertice">Módulo componentes.secciones.subsecciones.vertice</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.vertice.EditorVertice"><code class="docutils literal notranslate"><span class="pre">EditorVertice</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.vertice.EditorVertice._color_texto_v"><code class="docutils literal notranslate"><span class="pre">EditorVertice._color_texto_v()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.vertice.EditorVertice._color_vertice"><code class="docutils literal notranslate"><span class="pre">EditorVertice._color_vertice()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.vertice.EditorVertice._construir_opciones_vertice"><code class="docutils literal notranslate"><span class="pre">EditorVertice._construir_opciones_vertice()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.vertice.EditorVertice._explorar_fuentes"><code class="docutils literal notranslate"><span class="pre">EditorVertice._explorar_fuentes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.vertice.EditorVertice.activar_interruptor"><code class="docutils literal notranslate"><span class="pre">EditorVertice.activar_interruptor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.vertice.EditorVertice.actualizar_dict_vertice"><code class="docutils literal notranslate"><span class="pre">EditorVertice.actualizar_dict_vertice()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.vertice.EditorVertice.actualizar_direccion"><code class="docutils literal notranslate"><span class="pre">EditorVertice.actualizar_direccion()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.vertice.EditorVertice.actualizar_flecha_d"><code class="docutils literal notranslate"><span class="pre">EditorVertice.actualizar_flecha_d()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.vertice.EditorVertice.actualizar_flecha_t"><code class="docutils literal notranslate"><span class="pre">EditorVertice.actualizar_flecha_t()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.vertice.EditorVertice.artefacto"><code class="docutils literal notranslate"><span class="pre">EditorVertice.artefacto()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.vertice.EditorVertice.interruptor_relacion"><code class="docutils literal notranslate"><span class="pre">EditorVertice.interruptor_relacion()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.vertice.EditorVertice.obtener_cambios"><code class="docutils literal notranslate"><span class="pre">EditorVertice.obtener_cambios()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.vertice.EditorVertice.reiniciar_cambios"><code class="docutils literal notranslate"><span class="pre">EditorVertice.reiniciar_cambios()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.vertice.EditorVertice.reiniciar_entradas"><code class="docutils literal notranslate"><span class="pre">EditorVertice.reiniciar_entradas()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="module-componentes.secciones.seccion_grafo">
+<span id="modulo-componentes-secciones-seccion-grafo"></span><h2>Módulo componentes.secciones.seccion_grafo<a class="headerlink" href="#module-componentes.secciones.seccion_grafo" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_grafo.EdicionGrafo">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">componentes.secciones.seccion_grafo.</span></span><span class="sig-name descname"><span class="pre">EdicionGrafo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gestor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raiz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/componentes/secciones/seccion_grafo.html#EdicionGrafo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_grafo.EdicionGrafo" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de construir los artefactos que permiten editar de forma
+general los atributos del diagrama.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ancestro</strong> (<em>tk.Frame</em>) – El artefacto que contiene al marco principal del área.</p></li>
+<li><p><strong>gestor</strong> (<a class="reference internal" href="control.html#control.gestor.Gestor" title="control.gestor.Gestor"><em>Gestor</em></a>) – La instancia de la clase encargada de gestionar la comunicación entre los módulos y la interacción con las tablas.</p></li>
+<li><p><strong>raiz</strong> (<em>Tk</em>) – Ventana principal que controla el bucle de la aplicación.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_grafo.EdicionGrafo._almacenar_valores_por_defecto">
+<span class="sig-name descname"><span class="pre">_almacenar_valores_por_defecto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_grafo.html#EdicionGrafo._almacenar_valores_por_defecto"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_grafo.EdicionGrafo._almacenar_valores_por_defecto" title="Link to this definition"></a></dt>
+<dd><p>Almacena los atributos originales del diagrama para poder recuperarlos.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_grafo.EdicionGrafo._aplicar_cambios_gral">
+<span class="sig-name descname"><span class="pre">_aplicar_cambios_gral</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_grafo.html#EdicionGrafo._aplicar_cambios_gral"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_grafo.EdicionGrafo._aplicar_cambios_gral" title="Link to this definition"></a></dt>
+<dd><p>Aplica los cambios ingresados.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_grafo.EdicionGrafo._aplicar_valores_iniciales">
+<span class="sig-name descname"><span class="pre">_aplicar_valores_iniciales</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_grafo.html#EdicionGrafo._aplicar_valores_iniciales"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_grafo.EdicionGrafo._aplicar_valores_iniciales" title="Link to this definition"></a></dt>
+<dd><p>Restablece los atributos originales del diagrama.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_grafo.EdicionGrafo._construir_botonera">
+<span class="sig-name descname"><span class="pre">_construir_botonera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_grafo.html#EdicionGrafo._construir_botonera"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_grafo.EdicionGrafo._construir_botonera" title="Link to this definition"></a></dt>
+<dd><p>Construye la botonera superior de la sección.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_grafo.EdicionGrafo.crecimiento">
+<span class="sig-name descname"><span class="pre">crecimiento</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">direccion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_grafo.html#EdicionGrafo.crecimiento"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_grafo.EdicionGrafo.crecimiento" title="Link to this definition"></a></dt>
+<dd><p>Recibe la opción seleccionada en el menú asociado y la manda a ingresar
+al diccionario de modificaciones pendientes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>direccion</strong> (<em>str</em>) – La dirección de crecimiento del grafo.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_grafo.EdicionGrafo.direccion">
+<span class="sig-name descname"><span class="pre">direccion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentido</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_grafo.html#EdicionGrafo.direccion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_grafo.EdicionGrafo.direccion" title="Link to this definition"></a></dt>
+<dd><p>Recibe la opción seleccionada en el menú asociado y la manda a ingresar
+al diccionario de modificaciones pendientes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sentido</strong> (<em>str</em>) – El sentido del vértice que une las entidades.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_grafo.EdicionGrafo.flecha_d">
+<span class="sig-name descname"><span class="pre">flecha_d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tipo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_grafo.html#EdicionGrafo.flecha_d"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_grafo.EdicionGrafo.flecha_d" title="Link to this definition"></a></dt>
+<dd><p>Recibe la opción seleccionada en el menú asociado y la manda a ingresar
+al diccionario de modificaciones pendientes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tipo</strong> (<em>str</em>) – El tipo de flecha delantera.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_grafo.EdicionGrafo.flecha_t">
+<span class="sig-name descname"><span class="pre">flecha_t</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tipo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_grafo.html#EdicionGrafo.flecha_t"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_grafo.EdicionGrafo.flecha_t" title="Link to this definition"></a></dt>
+<dd><p>Recibe la opción seleccionada en el menú asociado y la manda a ingresar
+al diccionario de modificaciones pendientes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tipo</strong> (<em>str</em>) – El tipo de flecha trasera.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_grafo.EdicionGrafo.forma_nodo">
+<span class="sig-name descname"><span class="pre">forma_nodo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forma</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_grafo.html#EdicionGrafo.forma_nodo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_grafo.EdicionGrafo.forma_nodo" title="Link to this definition"></a></dt>
+<dd><p>Recibe la opción seleccionada en el menú asociado y la manda a ingresar
+al diccionario de modificaciones pendientes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>forma</strong> (<em>str</em>) – La forma de los nodos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_grafo.EdicionGrafo.interruptor_opc_peso">
+<span class="sig-name descname"><span class="pre">interruptor_opc_peso</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_grafo.html#EdicionGrafo.interruptor_opc_peso"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_grafo.EdicionGrafo.interruptor_opc_peso" title="Link to this definition"></a></dt>
+<dd><p>Permite ocultar o mostrar la opción de peso del vínculo, disponible
+solo cuando se modifica un vértice específico.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_grafo.EdicionGrafo.justificado">
+<span class="sig-name descname"><span class="pre">justificado</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tipo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_grafo.html#EdicionGrafo.justificado"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_grafo.EdicionGrafo.justificado" title="Link to this definition"></a></dt>
+<dd><p>Recibe la opción seleccionada en el menú asociado y la manda a ingresar
+al diccionario de modificaciones pendientes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tipo</strong> (<em>str</em>) – El alineado del texto de nodos y vértices.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_grafo.EdicionGrafo.olvidar_ubicacion">
+<span class="sig-name descname"><span class="pre">olvidar_ubicacion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_grafo.html#EdicionGrafo.olvidar_ubicacion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_grafo.EdicionGrafo.olvidar_ubicacion" title="Link to this definition"></a></dt>
+<dd><p>Oculta el módulo cuando es seleccionado otro modo de edición.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_grafo.EdicionGrafo.reiniciar_opciones">
+<span class="sig-name descname"><span class="pre">reiniciar_opciones</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_grafo.html#EdicionGrafo.reiniciar_opciones"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_grafo.EdicionGrafo.reiniciar_opciones" title="Link to this definition"></a></dt>
+<dd><p>Restablece los valores por defecto de las entradas y los menú de
+opciones.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_grafo.EdicionGrafo.ubicar">
+<span class="sig-name descname"><span class="pre">ubicar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_grafo.html#EdicionGrafo.ubicar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_grafo.EdicionGrafo.ubicar" title="Link to this definition"></a></dt>
+<dd><p>Hace visible el módulo cuando se lo selecciona como modo de edición.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_grafo.EdicionGrafo.vaciar_atributos">
+<span class="sig-name descname"><span class="pre">vaciar_atributos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_grafo.html#EdicionGrafo.vaciar_atributos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_grafo.EdicionGrafo.vaciar_atributos" title="Link to this definition"></a></dt>
+<dd><p>Vacía los diccionarios que almacenan los cambios por aplicar.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-componentes.secciones.seccion_nodo">
+<span id="modulo-componentes-secciones-seccion-nodo"></span><h2>Módulo componentes.secciones.seccion_nodo<a class="headerlink" href="#module-componentes.secciones.seccion_nodo" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_nodo.EdicionNodo">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">componentes.secciones.seccion_nodo.</span></span><span class="sig-name descname"><span class="pre">EdicionNodo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gestor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raiz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/componentes/secciones/seccion_nodo.html#EdicionNodo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_nodo.EdicionNodo" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de construir los artefactos que permiten editar
+los atributos de los nodos del diagrama.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ancestro</strong> (<em>tk.Frame</em>) – El artefacto que contiene al marco principal del área.</p></li>
+<li><p><strong>gestor</strong> (<a class="reference internal" href="control.html#control.gestor.Gestor" title="control.gestor.Gestor"><em>Gestor</em></a>) – La instancia de la clase encargada de gestionar la comunicación entre los módulos y la interacción con las tablas.</p></li>
+<li><p><strong>raiz</strong> (<em>Tk</em>) – Ventana principal que controla el bucle de la aplicación.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_nodo.EdicionNodo._apilar_atributos_nodo">
+<span class="sig-name descname"><span class="pre">_apilar_atributos_nodo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_nodo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_nodo.html#EdicionNodo._apilar_atributos_nodo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_nodo.EdicionNodo._apilar_atributos_nodo" title="Link to this definition"></a></dt>
+<dd><p>Obtiene los atributos del nodo a partir del id y los almacena.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_nodo</strong> (<em>str</em>) – El id del nodo del cual se obtienen los atributos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_nodo.EdicionNodo._aplicar_cambios_nodo">
+<span class="sig-name descname"><span class="pre">_aplicar_cambios_nodo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instancia</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EditorNodo</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_nodo.html#EdicionNodo._aplicar_cambios_nodo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_nodo.EdicionNodo._aplicar_cambios_nodo" title="Link to this definition"></a></dt>
+<dd><p>Aplica la edición realizada sobre el nodo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>instancia</strong> (<a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.nodo.EditorNodo" title="componentes.secciones.subsecciones.nodo.EditorNodo"><em>nodo.EditorNodo</em></a>) – El módulo de edición de nodo.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_nodo.EdicionNodo._cargar_de_nuevo">
+<span class="sig-name descname"><span class="pre">_cargar_de_nuevo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_nodo.html#EdicionNodo._cargar_de_nuevo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_nodo.EdicionNodo._cargar_de_nuevo" title="Link to this definition"></a></dt>
+<dd><p>Vuelve visible la barra de desplazamiento vertical cuando la lista
+de nodos es demasiado grande.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_nodo.EdicionNodo._cargar_nodos">
+<span class="sig-name descname"><span class="pre">_cargar_nodos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_nodo.html#EdicionNodo._cargar_nodos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_nodo.EdicionNodo._cargar_nodos" title="Link to this definition"></a></dt>
+<dd><p>Ubica los nodos existentes en el contenedor de la lista de nodos.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_nodo.EdicionNodo._comprobar_id_nodo">
+<span class="sig-name descname"><span class="pre">_comprobar_id_nodo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_nodo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_nodo.html#EdicionNodo._comprobar_id_nodo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_nodo.EdicionNodo._comprobar_id_nodo" title="Link to this definition"></a></dt>
+<dd><p>Verifica que el id ingresado sea válido.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>El resultado de la verificación.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_nodo.EdicionNodo._construir_botonera_ed_nodo">
+<span class="sig-name descname"><span class="pre">_construir_botonera_ed_nodo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instancia</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EditorNodo</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_nodo.html#EdicionNodo._construir_botonera_ed_nodo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_nodo.EdicionNodo._construir_botonera_ed_nodo" title="Link to this definition"></a></dt>
+<dd><p>Construye la botonera superior de la sección.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ancestro</strong> (<em>tk.Frame</em>) – El artefacto que contiene a la botonera.</p></li>
+<li><p><strong>instancia</strong> (<a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.nodo.EditorNodo" title="componentes.secciones.subsecciones.nodo.EditorNodo"><em>nodo.EditorNodo</em></a>) – El módulo de edición de nodo.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_nodo.EdicionNodo._construir_encab_nodos">
+<span class="sig-name descname"><span class="pre">_construir_encab_nodos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_nodo.html#EdicionNodo._construir_encab_nodos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_nodo.EdicionNodo._construir_encab_nodos" title="Link to this definition"></a></dt>
+<dd><p>Construye el encabezado de la lista de nodos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ancestro</strong> (<em>tk.Frame</em>) – El artefacto que contiene al encabezado.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_nodo.EdicionNodo._construir_lista_nodos">
+<span class="sig-name descname"><span class="pre">_construir_lista_nodos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_nodo.html#EdicionNodo._construir_lista_nodos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_nodo.EdicionNodo._construir_lista_nodos" title="Link to this definition"></a></dt>
+<dd><p>Construye el contenedor donde se cargan dinámicamente
+los nodos existentes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ancestro</strong> (<em>tk.Frame</em>) – El artefacto que contiene a la lista de nodos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_nodo.EdicionNodo._desapilar_atributos_nodo">
+<span class="sig-name descname"><span class="pre">_desapilar_atributos_nodo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_nodo.html#EdicionNodo._desapilar_atributos_nodo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_nodo.EdicionNodo._desapilar_atributos_nodo" title="Link to this definition"></a></dt>
+<dd><p>Desapila la última tupla ingresada con los atributos del nodo antes
+de realizar los cambios.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>La tupla con los atributos anteriores.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[str, dict[str, str]] | tuple[()]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_nodo.EdicionNodo._deshacer_ed_nodo">
+<span class="sig-name descname"><span class="pre">_deshacer_ed_nodo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_nodo.html#EdicionNodo._deshacer_ed_nodo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_nodo.EdicionNodo._deshacer_ed_nodo" title="Link to this definition"></a></dt>
+<dd><p>Obtiene los atributos anteriores y los restablece.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_nodo.EdicionNodo._eliminar_nodos_existentes">
+<span class="sig-name descname"><span class="pre">_eliminar_nodos_existentes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_nodo.html#EdicionNodo._eliminar_nodos_existentes"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_nodo.EdicionNodo._eliminar_nodos_existentes" title="Link to this definition"></a></dt>
+<dd><p>Vacía las entradas con los nodos generadas dinámicamente.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_nodo.EdicionNodo._obtener_nodos">
+<span class="sig-name descname"><span class="pre">_obtener_nodos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_nodo.html#EdicionNodo._obtener_nodos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_nodo.EdicionNodo._obtener_nodos" title="Link to this definition"></a></dt>
+<dd><p>Devuelve los nodos registrados hasta el momento.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_nodo.EdicionNodo.activar_seccion">
+<span class="sig-name descname"><span class="pre">activar_seccion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_nodo.html#EdicionNodo.activar_seccion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_nodo.EdicionNodo.activar_seccion" title="Link to this definition"></a></dt>
+<dd><p>Obtiene los nodos existentes y los ubica en el contenedor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_nodo.EdicionNodo.forma_nodo">
+<span class="sig-name descname"><span class="pre">forma_nodo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forma</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_nodo.html#EdicionNodo.forma_nodo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_nodo.EdicionNodo.forma_nodo" title="Link to this definition"></a></dt>
+<dd><p>Recibe la opción seleccionada en el menú asociado y la manda a ingresar
+al diccionario de modificaciones pendientes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>forma</strong> (<em>str</em>) – La forma del nodo.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_nodo.EdicionNodo.mostrar_aviso">
+<span class="sig-name descname"><span class="pre">mostrar_aviso</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aviso</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_nodo.html#EdicionNodo.mostrar_aviso"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_nodo.EdicionNodo.mostrar_aviso" title="Link to this definition"></a></dt>
+<dd><p>Actualiza la etiqueta de avisos con el texto recibido.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>aviso</strong> (<em>str</em>) – La notificación a mostrar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_nodo.EdicionNodo.ocultar_aviso">
+<span class="sig-name descname"><span class="pre">ocultar_aviso</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/componentes/secciones/seccion_nodo.html#EdicionNodo.ocultar_aviso"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_nodo.EdicionNodo.ocultar_aviso" title="Link to this definition"></a></dt>
+<dd><p>Oculta el aviso que esté activo.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_nodo.EdicionNodo.olvidar_ubicacion">
+<span class="sig-name descname"><span class="pre">olvidar_ubicacion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_nodo.html#EdicionNodo.olvidar_ubicacion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_nodo.EdicionNodo.olvidar_ubicacion" title="Link to this definition"></a></dt>
+<dd><p>Oculta el módulo cuando es seleccionado otro modo de edición.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_nodo.EdicionNodo.reiniciar_opciones">
+<span class="sig-name descname"><span class="pre">reiniciar_opciones</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_nodo.html#EdicionNodo.reiniciar_opciones"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_nodo.EdicionNodo.reiniciar_opciones" title="Link to this definition"></a></dt>
+<dd><p>Restablece los valores por defecto de las entradas y los menú de
+opciones.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_nodo.EdicionNodo.reiniciar_pila">
+<span class="sig-name descname"><span class="pre">reiniciar_pila</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_nodo.html#EdicionNodo.reiniciar_pila"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_nodo.EdicionNodo.reiniciar_pila" title="Link to this definition"></a></dt>
+<dd><p>Crea una nueva pila donde almacenar los cambios, olvidando la anterior.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_nodo.EdicionNodo.ubicar">
+<span class="sig-name descname"><span class="pre">ubicar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_nodo.html#EdicionNodo.ubicar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_nodo.EdicionNodo.ubicar" title="Link to this definition"></a></dt>
+<dd><p>Hace visible el módulo cuando se lo selecciona como modo de edición.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_nodo.EdicionNodo.vaciar_atributos">
+<span class="sig-name descname"><span class="pre">vaciar_atributos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_nodo.html#EdicionNodo.vaciar_atributos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_nodo.EdicionNodo.vaciar_atributos" title="Link to this definition"></a></dt>
+<dd><p>Vacía el diccionario que almacena los cambios por aplicar.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-componentes.secciones.seccion_relacion">
+<span id="modulo-componentes-secciones-seccion-relacion"></span><h2>Módulo componentes.secciones.seccion_relacion<a class="headerlink" href="#module-componentes.secciones.seccion_relacion" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_relacion.EdicionRelacion">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">componentes.secciones.seccion_relacion.</span></span><span class="sig-name descname"><span class="pre">EdicionRelacion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gestor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raiz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/componentes/secciones/seccion_relacion.html#EdicionRelacion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_relacion.EdicionRelacion" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de construir los artefactos que permiten editar
+las relaciones del diagrama.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ancestro</strong> (<em>tk.Frame</em>) – El artefacto que contiene al marco principal del área.</p></li>
+<li><p><strong>gestor</strong> (<a class="reference internal" href="control.html#control.gestor.Gestor" title="control.gestor.Gestor"><em>Gestor</em></a>) – La instancia de la clase encargada de gestionar la comunicación entre los módulos y la interacción con las tablas.</p></li>
+<li><p><strong>raiz</strong> (<em>Tk</em>) – Ventana principal que controla el bucle de la aplicación.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_relacion.EdicionRelacion._cargar_de_nuevo">
+<span class="sig-name descname"><span class="pre">_cargar_de_nuevo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_relacion.html#EdicionRelacion._cargar_de_nuevo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_relacion.EdicionRelacion._cargar_de_nuevo" title="Link to this definition"></a></dt>
+<dd><p>Vuelve visible la barra de desplazamiento vertical cuando la lista
+de relaciones es demasiado grande.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_relacion.EdicionRelacion._cargar_relaciones">
+<span class="sig-name descname"><span class="pre">_cargar_relaciones</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_relacion.html#EdicionRelacion._cargar_relaciones"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_relacion.EdicionRelacion._cargar_relaciones" title="Link to this definition"></a></dt>
+<dd><p>Ubica las relaciones existentes en el contenedor de la lista de relacioens.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_relacion.EdicionRelacion._comprobar_id">
+<span class="sig-name descname"><span class="pre">_comprobar_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_rel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_relacion.html#EdicionRelacion._comprobar_id"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_relacion.EdicionRelacion._comprobar_id" title="Link to this definition"></a></dt>
+<dd><p>Verifica que el id ingresado sea válido.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>El resultado de la verificación.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_relacion.EdicionRelacion._construir_encabezado">
+<span class="sig-name descname"><span class="pre">_construir_encabezado</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_relacion.html#EdicionRelacion._construir_encabezado"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_relacion.EdicionRelacion._construir_encabezado" title="Link to this definition"></a></dt>
+<dd><p>Construye el encabezado de la sección.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ancestro</strong> (<em>tk.Frame</em>) – El artefacto que contiene al encabezado.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_relacion.EdicionRelacion._construir_lista_relaciones">
+<span class="sig-name descname"><span class="pre">_construir_lista_relaciones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_relacion.html#EdicionRelacion._construir_lista_relaciones"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_relacion.EdicionRelacion._construir_lista_relaciones" title="Link to this definition"></a></dt>
+<dd><p>Construye el contenedor donde se cargan dinámicamente
+las relaciones existentes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ancestro</strong> (<em>tk.Frame</em>) – El artefacto que contiene a la lista de relaciones.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_relacion.EdicionRelacion._eliminar_relacion">
+<span class="sig-name descname"><span class="pre">_eliminar_relacion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_relacion.html#EdicionRelacion._eliminar_relacion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_relacion.EdicionRelacion._eliminar_relacion" title="Link to this definition"></a></dt>
+<dd><p>Elimina la relación cuyo id fue ingresado.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_relacion.EdicionRelacion._eliminar_relaciones_existentes">
+<span class="sig-name descname"><span class="pre">_eliminar_relaciones_existentes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_relacion.html#EdicionRelacion._eliminar_relaciones_existentes"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_relacion.EdicionRelacion._eliminar_relaciones_existentes" title="Link to this definition"></a></dt>
+<dd><p>Vacía las entradas con las relaciones generadas dinámicamente.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_relacion.EdicionRelacion._insertar_texto">
+<span class="sig-name descname"><span class="pre">_insertar_texto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">artefacto</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valores</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_relacion.html#EdicionRelacion._insertar_texto"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_relacion.EdicionRelacion._insertar_texto" title="Link to this definition"></a></dt>
+<dd><p>Aplica formato a cada elemento de la relación antes de insertarlo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>artefacto</strong> (<em>tk.Text</em>) – El artefacto de texto.</p></li>
+<li><p><strong>valores</strong> (<em>list</em><em>[</em><em>tuple</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em><em>]</em><em>]</em>) – Los elementos de la relación.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_relacion.EdicionRelacion._obtener_relaciones">
+<span class="sig-name descname"><span class="pre">_obtener_relaciones</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_relacion.html#EdicionRelacion._obtener_relaciones"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_relacion.EdicionRelacion._obtener_relaciones" title="Link to this definition"></a></dt>
+<dd><p>Devuelve las relaciones registrados hasta el momento.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_relacion.EdicionRelacion._pantalla_edicion">
+<span class="sig-name descname"><span class="pre">_pantalla_edicion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">valores</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_relacion.html#EdicionRelacion._pantalla_edicion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_relacion.EdicionRelacion._pantalla_edicion" title="Link to this definition"></a></dt>
+<dd><p>Crea la pantalla que permite editar cada proposición.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>valores</strong> (<em>list</em><em>[</em><em>tuple</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em><em>]</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_relacion.EdicionRelacion.activar_seccion">
+<span class="sig-name descname"><span class="pre">activar_seccion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_relacion.html#EdicionRelacion.activar_seccion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_relacion.EdicionRelacion.activar_seccion" title="Link to this definition"></a></dt>
+<dd><p>Obtiene las relaciones existentes y los ubica en el contenedor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_relacion.EdicionRelacion.mostrar_aviso">
+<span class="sig-name descname"><span class="pre">mostrar_aviso</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aviso</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_relacion.html#EdicionRelacion.mostrar_aviso"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_relacion.EdicionRelacion.mostrar_aviso" title="Link to this definition"></a></dt>
+<dd><p>Actualiza la etiqueta de avisos con el texto recibido.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>aviso</strong> (<em>str</em>) – La notificación a mostrar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_relacion.EdicionRelacion.ocultar_aviso">
+<span class="sig-name descname"><span class="pre">ocultar_aviso</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_relacion.html#EdicionRelacion.ocultar_aviso"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_relacion.EdicionRelacion.ocultar_aviso" title="Link to this definition"></a></dt>
+<dd><p>Oculta el aviso que esté visible.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_relacion.EdicionRelacion.olvidar_ubicacion">
+<span class="sig-name descname"><span class="pre">olvidar_ubicacion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_relacion.html#EdicionRelacion.olvidar_ubicacion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_relacion.EdicionRelacion.olvidar_ubicacion" title="Link to this definition"></a></dt>
+<dd><p>Oculta el módulo cuando es seleccionado otro modo de edición.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_relacion.EdicionRelacion.ubicar">
+<span class="sig-name descname"><span class="pre">ubicar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_relacion.html#EdicionRelacion.ubicar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_relacion.EdicionRelacion.ubicar" title="Link to this definition"></a></dt>
+<dd><p>Hace visible el módulo cuando se lo selecciona como modo de edición.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-componentes.secciones.seccion_vertice">
+<span id="modulo-componentes-secciones-seccion-vertice"></span><h2>Módulo componentes.secciones.seccion_vertice<a class="headerlink" href="#module-componentes.secciones.seccion_vertice" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">componentes.secciones.seccion_vertice.</span></span><span class="sig-name descname"><span class="pre">EdicionVertice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gestor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raiz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de construir los artefactos que permiten editar
+los atributos de los vértices del diagrama.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ancestro</strong> (<em>tk.Frame</em>) – El artefacto que contiene al marco principal del área.</p></li>
+<li><p><strong>gestor</strong> (<a class="reference internal" href="control.html#control.gestor.Gestor" title="control.gestor.Gestor"><em>Gestor</em></a>) – La instancia de la clase encargada de gestionar la comunicación entre los módulos y la interacción con las tablas.</p></li>
+<li><p><strong>raiz</strong> (<em>Tk</em>) – Ventana principal que controla el bucle de la aplicación.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice._apilar_atributos_vertice">
+<span class="sig-name descname"><span class="pre">_apilar_atributos_vertice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_vertice</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice._apilar_atributos_vertice"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice._apilar_atributos_vertice" title="Link to this definition"></a></dt>
+<dd><p>Obtiene los atributos del vértice a partir del id y los almacena.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_vertice</strong> (<em>str</em>) – El id del vértice del cual se obtienen los atributos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice._aplicar_cambios_vertice">
+<span class="sig-name descname"><span class="pre">_aplicar_cambios_vertice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instancia</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EditorVertice</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice._aplicar_cambios_vertice"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice._aplicar_cambios_vertice" title="Link to this definition"></a></dt>
+<dd><p>Aplica la edición realizada sobre el vértice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>instancia</strong> (<a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.vertice.EditorVertice" title="componentes.secciones.subsecciones.vertice.EditorVertice"><em>vertice.EditorVertice</em></a>) – El módulo de edición de vértice.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice._cargar_de_nuevo">
+<span class="sig-name descname"><span class="pre">_cargar_de_nuevo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice._cargar_de_nuevo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice._cargar_de_nuevo" title="Link to this definition"></a></dt>
+<dd><p>Vuelve visible la barra de desplazamiento vertical cuando la lista
+de vértices es demasiado grande.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice._cargar_vertices">
+<span class="sig-name descname"><span class="pre">_cargar_vertices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice._cargar_vertices"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice._cargar_vertices" title="Link to this definition"></a></dt>
+<dd><p>Ubica los nodos existentes en el contenedor de la lista de vértices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice._comprobar_id_vertice">
+<span class="sig-name descname"><span class="pre">_comprobar_id_vertice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_vertice</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice._comprobar_id_vertice"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice._comprobar_id_vertice" title="Link to this definition"></a></dt>
+<dd><p>Verifica que el id ingresado sea válido.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>El resultado de la verificación.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice._construir_botonera_vertices">
+<span class="sig-name descname"><span class="pre">_construir_botonera_vertices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instancia</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EditorVertice</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice._construir_botonera_vertices"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice._construir_botonera_vertices" title="Link to this definition"></a></dt>
+<dd><p>Construye la botonera superior de la sección.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ancestro</strong> (<em>tk.Frame</em>) – El artefacto que contiene a la botonera.</p></li>
+<li><p><strong>instancia</strong> (<a class="reference internal" href="componentes.secciones.subsecciones.html#componentes.secciones.subsecciones.vertice.EditorVertice" title="componentes.secciones.subsecciones.vertice.EditorVertice"><em>vertice.EditorVertice</em></a>) – El módulo de edición de vértice.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice._construir_encab_vertices">
+<span class="sig-name descname"><span class="pre">_construir_encab_vertices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice._construir_encab_vertices"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice._construir_encab_vertices" title="Link to this definition"></a></dt>
+<dd><p>Construye el encabezado de la lista de vértices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ancestro</strong> (<em>tk.Frame</em>) – El artefacto que contiene al encabezado.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice._construir_lista_vertices">
+<span class="sig-name descname"><span class="pre">_construir_lista_vertices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice._construir_lista_vertices"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice._construir_lista_vertices" title="Link to this definition"></a></dt>
+<dd><p>Construye el contenedor donde se cargan dinámicamente
+los vértices existentes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ancestro</strong> (<em>tk.Frame</em>) – El artefacto que contiene a la lista de vértices.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice._desapilar_atributos_vertice">
+<span class="sig-name descname"><span class="pre">_desapilar_atributos_vertice</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice._desapilar_atributos_vertice"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice._desapilar_atributos_vertice" title="Link to this definition"></a></dt>
+<dd><p>Desapila la última tupla ingresada con los atributos del vértice antes
+de realizar los cambios.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>La tupla con los atributos anteriores.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[str, dict[str, str]] | tuple[()]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice._deshacer_ed_vertice">
+<span class="sig-name descname"><span class="pre">_deshacer_ed_vertice</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice._deshacer_ed_vertice"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice._deshacer_ed_vertice" title="Link to this definition"></a></dt>
+<dd><p>Obtiene los atributos anteriores y los restablece.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice._eliminar_vertices_existentes">
+<span class="sig-name descname"><span class="pre">_eliminar_vertices_existentes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice._eliminar_vertices_existentes"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice._eliminar_vertices_existentes" title="Link to this definition"></a></dt>
+<dd><p>Vacía las entradas con los vértices generadas dinámicamente.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice._obtener_vertices">
+<span class="sig-name descname"><span class="pre">_obtener_vertices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice._obtener_vertices"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice._obtener_vertices" title="Link to this definition"></a></dt>
+<dd><p>Devuelve los vértices registrados hasta el momento.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice.activar_seccion">
+<span class="sig-name descname"><span class="pre">activar_seccion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice.activar_seccion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice.activar_seccion" title="Link to this definition"></a></dt>
+<dd><p>Obtiene los vértices existentes y los ubica en el contenedor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice.direccion">
+<span class="sig-name descname"><span class="pre">direccion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentido</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice.direccion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice.direccion" title="Link to this definition"></a></dt>
+<dd><p>Recibe la opción seleccionada en el menú asociado y la manda a ingresar
+al diccionario de modificaciones pendientes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sentido</strong> (<em>str</em>) – El sentido del vértice que une las entidades.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice.flecha_d">
+<span class="sig-name descname"><span class="pre">flecha_d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tipo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice.flecha_d"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice.flecha_d" title="Link to this definition"></a></dt>
+<dd><p>Recibe la opción seleccionada en el menú asociado y la manda a ingresar
+al diccionario de modificaciones pendientes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tipo</strong> (<em>str</em>) – El tipo de flecha delantera.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice.flecha_t">
+<span class="sig-name descname"><span class="pre">flecha_t</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tipo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice.flecha_t"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice.flecha_t" title="Link to this definition"></a></dt>
+<dd><p>Recibe la opción seleccionada en el menú asociado y la manda a ingresar
+al diccionario de modificaciones pendientes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tipo</strong> (<em>str</em>) – El tipo de flecha trasera.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice.interruptor_opc_peso">
+<span class="sig-name descname"><span class="pre">interruptor_opc_peso</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice.interruptor_opc_peso"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice.interruptor_opc_peso" title="Link to this definition"></a></dt>
+<dd><p>Permite ocultar o mostrar la opción de peso del vínculo, disponible
+solo cuando se modifica un vértice específico.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice.mostrar_aviso">
+<span class="sig-name descname"><span class="pre">mostrar_aviso</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aviso</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice.mostrar_aviso"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice.mostrar_aviso" title="Link to this definition"></a></dt>
+<dd><p>Actualiza la etiqueta de avisos con el texto recibido.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>aviso</strong> (<em>str</em>) – La notificación a mostrar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice.ocultar_aviso">
+<span class="sig-name descname"><span class="pre">ocultar_aviso</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice.ocultar_aviso"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice.ocultar_aviso" title="Link to this definition"></a></dt>
+<dd><p>Oculta el aviso que esté visible.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice.olvidar_ubicacion">
+<span class="sig-name descname"><span class="pre">olvidar_ubicacion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice.olvidar_ubicacion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice.olvidar_ubicacion" title="Link to this definition"></a></dt>
+<dd><p>Oculta el módulo cuando es seleccionado otro modo de edición.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice.reiniciar_opciones">
+<span class="sig-name descname"><span class="pre">reiniciar_opciones</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice.reiniciar_opciones"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice.reiniciar_opciones" title="Link to this definition"></a></dt>
+<dd><p>Restablece los valores por defecto de las entradas y los menú de
+opciones.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice.reiniciar_pila">
+<span class="sig-name descname"><span class="pre">reiniciar_pila</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice.reiniciar_pila"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice.reiniciar_pila" title="Link to this definition"></a></dt>
+<dd><p>Crea una nueva pila donde almacenar los cambios, olvidando la anterior.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice.ubicar">
+<span class="sig-name descname"><span class="pre">ubicar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice.ubicar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice.ubicar" title="Link to this definition"></a></dt>
+<dd><p>Hace visible el módulo cuando se lo selecciona como modo de edición.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.secciones.seccion_vertice.EdicionVertice.vaciar_atributos">
+<span class="sig-name descname"><span class="pre">vaciar_atributos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/secciones/seccion_vertice.html#EdicionVertice.vaciar_atributos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.secciones.seccion_vertice.EdicionVertice.vaciar_atributos" title="Link to this definition"></a></dt>
+<dd><p>Vacía el diccionario que almacena los cambios por aplicar.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="componentes.pantallas.html" class="btn btn-neutral float-left" title="Paquete componentes.pantallas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="componentes.secciones.subsecciones.html" class="btn btn-neutral float-right" title="Paquete componentes.secciones.subsecciones" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, errejotaeme.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,201 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estructura del proyecto &mdash; documentación de Diagrama - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+      <script src="_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="prev" title="Paquete documentos" href="documentos.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Diagrama
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dependencias.html">Configuración del entorno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modulos.html">Módulos y paquetes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Estructura del proyecto</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Diagrama</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Estructura del proyecto</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/estructura.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="estructura-del-proyecto">
+<h1>Estructura del proyecto<a class="headerlink" href="#estructura-del-proyecto" title="Link to this heading"></a></h1>
+<div class="graphviz"><img src="_images/graphviz-6b94374756edca2eaf2e5c0ffddca2055ebd6fc8.png" alt="digraph grafo_proposiciones {
+         graph [bgcolor=&quot;#141414&quot; rankdir=LR]
+         0 [label=Diagrama color=&quot;&quot; fillcolor=&quot;#cec0a4&quot; fixedsize=false fontcolor=&quot;&quot; fontname=times fontsize=9 nojustify=true shape=folder style=filled]
+         1 [label=&quot;main.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         4 [label=aplicacion color=&quot;&quot; fillcolor=&quot;#cec0a4&quot; fixedsize=false fontcolor=&quot;&quot; fontname=times fontsize=9 nojustify=true shape=folder style=filled]
+         7 [label=control color=&quot;&quot; fillcolor=&quot;#cec0a4&quot; fixedsize=false fontcolor=&quot;&quot; fontname=times fontsize=9 nojustify=true shape=folder style=filled]
+         8 [label=documentos color=&quot;&quot; fillcolor=&quot;#cec0a4&quot; fixedsize=false fontcolor=&quot;&quot; fontname=times fontsize=9 nojustify=true shape=folder style=filled]
+         9 [label=interfaz color=&quot;&quot; fillcolor=&quot;#cec0a4&quot; fixedsize=false fontcolor=&quot;&quot; fontname=times fontsize=9 nojustify=true shape=folder style=filled]
+         10 [label=resultados color=&quot;&quot; fillcolor=&quot;#cec0a4&quot; fixedsize=false fontcolor=&quot;&quot; fontname=times fontsize=9 nojustify=true shape=folder style=filled]
+         11 [label=ambitos color=&quot;&quot; fillcolor=&quot;#cec0a4&quot; fixedsize=false fontcolor=&quot;&quot; fontname=times fontsize=9 nojustify=true shape=folder style=filled]
+         12 [label=&quot;gestor.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         13 [label=&quot;gestion_edicion.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         14 [label=&quot;gestion_proyecto.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         15 [label=&quot;gestion_texto.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         16 [label=recursos color=&quot;&quot; fillcolor=&quot;#cec0a4&quot; fixedsize=false fontcolor=&quot;&quot; fontname=times fontsize=9 nojustify=true shape=folder style=filled]
+         17 [label=&quot;contenido.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         18 [label=&quot;diagrama.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         19 [label=&quot;archivos .png y .gv&quot; color=&quot;#f1e5e0&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#09dca0&quot; fontname=times fontsize=9 nojustify=true shape=none style=filled]
+         20 [label=&quot;archivos.csv y .txt&quot; color=&quot;#f1e5e0&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#09dca0&quot; fontname=times fontsize=9 nojustify=true shape=none style=filled]
+         21 [label=componentes color=&quot;&quot; fillcolor=&quot;#cec0a4&quot; fixedsize=false fontcolor=&quot;&quot; fontname=times fontsize=9 nojustify=true shape=folder style=filled]
+         22 [label=&quot;comunes.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         23 [label=&quot;diseño.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         24 [label=&quot;ventana.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         25 [label=areas color=&quot;&quot; fillcolor=&quot;#cec0a4&quot; fixedsize=false fontcolor=&quot;&quot; fontname=times fontsize=9 nojustify=true shape=folder style=filled]
+         26 [label=elementos color=&quot;&quot; fillcolor=&quot;#cec0a4&quot; fixedsize=false fontcolor=&quot;&quot; fontname=times fontsize=9 nojustify=true shape=folder style=filled]
+         27 [label=pantallas color=&quot;&quot; fillcolor=&quot;#cec0a4&quot; fixedsize=false fontcolor=&quot;&quot; fontname=times fontsize=9 nojustify=true shape=folder style=filled]
+         28 [label=secciones color=&quot;&quot; fillcolor=&quot;#cec0a4&quot; fixedsize=false fontcolor=&quot;&quot; fontname=times fontsize=9 nojustify=true shape=folder style=filled]
+         29 [label=&quot;edicion.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         30 [label=&quot;grafico.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         31 [label=&quot;proyecto.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         32 [label=&quot;texto.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         33 [label=&quot;emergente.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         34 [label=&quot;opciones.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         35 [label=&quot;pantalla_guardar.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         36 [label=&quot;pantalla_notas.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         37 [label=&quot;pantalla_relacion.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         38 [label=subsecciones color=&quot;&quot; fillcolor=&quot;#cec0a4&quot; fixedsize=false fontcolor=&quot;&quot; fontname=times fontsize=9 nojustify=true shape=folder style=filled]
+         39 [label=&quot;seccion_grafo.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         40 [label=&quot;seccion_nodo.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         41 [label=&quot;seccion_relacion.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         42 [label=&quot;seccion_vertice.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         43 [label=&quot;grafo.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         47 [label=&quot;nodo.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         48 [label=&quot;vertice.py&quot; color=&quot;#fcb944&quot; fillcolor=&quot;#141414&quot; fixedsize=false fontcolor=&quot;#fcb944&quot; fontname=times fontsize=9 nojustify=true shape=note style=filled]
+         0 -&gt; 1 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         0 -&gt; 4 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         4 -&gt; 7 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         4 -&gt; 8 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         4 -&gt; 9 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         4 -&gt; 10 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         7 -&gt; 11 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         7 -&gt; 12 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         11 -&gt; 13 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         11 -&gt; 14 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         11 -&gt; 15 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         8 -&gt; 16 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         8 -&gt; 17 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         8 -&gt; 18 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         10 -&gt; 19 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         16 -&gt; 20 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         9 -&gt; 21 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         9 -&gt; 22 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         9 -&gt; 23 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         9 -&gt; 24 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         21 -&gt; 25 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         21 -&gt; 26 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         21 -&gt; 27 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         21 -&gt; 28 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         25 -&gt; 29 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         25 -&gt; 30 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         25 -&gt; 31 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         25 -&gt; 32 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         26 -&gt; 33 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         26 -&gt; 34 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         27 -&gt; 35 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         27 -&gt; 36 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         27 -&gt; 37 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         28 -&gt; 38 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         28 -&gt; 39 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         28 -&gt; 40 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         28 -&gt; 41 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         28 -&gt; 42 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         38 -&gt; 43 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         38 -&gt; 47 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+         38 -&gt; 48 [label=&quot; &quot; arrowhead=normal arrowsize=0.75 arrowtail=normal color=&quot;#f65b56&quot; decorate=false dir=forward fontcolor=&quot;#f1e5e0&quot; fontname=&quot;times-italic&quot; fontsize=9 nojustify=true weight=1]
+}" class="graphviz" /></div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="documentos.html" class="btn btn-neutral float-left" title="Paquete documentos" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, errejotaeme.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

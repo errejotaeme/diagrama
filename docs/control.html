@@ -1,0 +1,783 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paquete control &mdash; documentación de Diagrama - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+      <script src="_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Paquete control.ambitos" href="control.ambitos.html" />
+    <link rel="prev" title="Paquete componentes.secciones.subsecciones" href="componentes.secciones.subsecciones.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Diagrama
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dependencias.html">Configuración del entorno</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modulos.html">Módulos y paquetes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="main.html">Módulo main</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfaz.html">Paquete interfaz</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Paquete control</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="control.ambitos.html">Paquete control.ambitos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-control.gestor">Módulo control.gestor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#control.gestor.Gestor"><code class="docutils literal notranslate"><span class="pre">Gestor</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentos.html">Paquete documentos</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Diagrama</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modulos.html">Módulos y paquetes</a></li>
+      <li class="breadcrumb-item active">Paquete control</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/control.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="paquete-control">
+<h1>Paquete control<a class="headerlink" href="#paquete-control" title="Link to this heading"></a></h1>
+<p>Contiene a las clases encargadas de operar sobre las tablas y comunicar las distintas partes del programa.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="control.ambitos.html">Paquete control.ambitos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="control.ambitos.html#module-control.ambitos.gestion_edicion">Módulo control.ambitos.gestion_edicion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion"><code class="docutils literal notranslate"><span class="pre">GestionEdicion</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion._actualizar_atributos_grafo"><code class="docutils literal notranslate"><span class="pre">GestionEdicion._actualizar_atributos_grafo()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion._actualizar_fila"><code class="docutils literal notranslate"><span class="pre">GestionEdicion._actualizar_fila()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion._actualizar_peso"><code class="docutils literal notranslate"><span class="pre">GestionEdicion._actualizar_peso()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion._actualizar_propiedades"><code class="docutils literal notranslate"><span class="pre">GestionEdicion._actualizar_propiedades()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion._borrar_elementos_aislados"><code class="docutils literal notranslate"><span class="pre">GestionEdicion._borrar_elementos_aislados()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion._borrar_fila_proposicion"><code class="docutils literal notranslate"><span class="pre">GestionEdicion._borrar_fila_proposicion()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion._editar_campo"><code class="docutils literal notranslate"><span class="pre">GestionEdicion._editar_campo()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion._editar_registro"><code class="docutils literal notranslate"><span class="pre">GestionEdicion._editar_registro()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion._escribir_en_tablas"><code class="docutils literal notranslate"><span class="pre">GestionEdicion._escribir_en_tablas()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion._gestionar_justificado"><code class="docutils literal notranslate"><span class="pre">GestionEdicion._gestionar_justificado()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion._normalizar_tablas"><code class="docutils literal notranslate"><span class="pre">GestionEdicion._normalizar_tablas()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion._obtener_ids"><code class="docutils literal notranslate"><span class="pre">GestionEdicion._obtener_ids()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion._obtener_indice_registro"><code class="docutils literal notranslate"><span class="pre">GestionEdicion._obtener_indice_registro()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion._ordenar"><code class="docutils literal notranslate"><span class="pre">GestionEdicion._ordenar()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion._valor_entidad"><code class="docutils literal notranslate"><span class="pre">GestionEdicion._valor_entidad()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion.atributos_de_elemento"><code class="docutils literal notranslate"><span class="pre">GestionEdicion.atributos_de_elemento()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion.borrar_relacion"><code class="docutils literal notranslate"><span class="pre">GestionEdicion.borrar_relacion()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion.enlazar_area"><code class="docutils literal notranslate"><span class="pre">GestionEdicion.enlazar_area()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion.enviar"><code class="docutils literal notranslate"><span class="pre">GestionEdicion.enviar()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion.ids_registrados"><code class="docutils literal notranslate"><span class="pre">GestionEdicion.ids_registrados()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion.modificar_elemento"><code class="docutils literal notranslate"><span class="pre">GestionEdicion.modificar_elemento()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion.modificar_grafo"><code class="docutils literal notranslate"><span class="pre">GestionEdicion.modificar_grafo()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion.modificar_registros"><code class="docutils literal notranslate"><span class="pre">GestionEdicion.modificar_registros()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion.nodos_registrados"><code class="docutils literal notranslate"><span class="pre">GestionEdicion.nodos_registrados()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion.relaciones_registradas"><code class="docutils literal notranslate"><span class="pre">GestionEdicion.relaciones_registradas()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_edicion.GestionEdicion.vertices_registrados"><code class="docutils literal notranslate"><span class="pre">GestionEdicion.vertices_registrados()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="control.ambitos.html#module-control.ambitos.gestion_proyecto">Módulo control.ambitos.gestion_proyecto</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_proyecto.GestionProyecto"><code class="docutils literal notranslate"><span class="pre">GestionProyecto</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_proyecto.GestionProyecto._cargar_estado_grafo"><code class="docutils literal notranslate"><span class="pre">GestionProyecto._cargar_estado_grafo()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_proyecto.GestionProyecto._cargar_estado_nodos_vertices"><code class="docutils literal notranslate"><span class="pre">GestionProyecto._cargar_estado_nodos_vertices()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_proyecto.GestionProyecto._eliminar_copiado"><code class="docutils literal notranslate"><span class="pre">GestionProyecto._eliminar_copiado()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_proyecto.GestionProyecto._guardar_estado_grafo"><code class="docutils literal notranslate"><span class="pre">GestionProyecto._guardar_estado_grafo()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_proyecto.GestionProyecto._guardar_estado_nodos_vertices"><code class="docutils literal notranslate"><span class="pre">GestionProyecto._guardar_estado_nodos_vertices()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_proyecto.GestionProyecto.cargar_proyecto_guardado"><code class="docutils literal notranslate"><span class="pre">GestionProyecto.cargar_proyecto_guardado()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_proyecto.GestionProyecto.cargar_respaldo_temporal"><code class="docutils literal notranslate"><span class="pre">GestionProyecto.cargar_respaldo_temporal()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_proyecto.GestionProyecto.crear_respaldo_temporal"><code class="docutils literal notranslate"><span class="pre">GestionProyecto.crear_respaldo_temporal()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_proyecto.GestionProyecto.eliminar_estados_temporales"><code class="docutils literal notranslate"><span class="pre">GestionProyecto.eliminar_estados_temporales()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_proyecto.GestionProyecto.eliminar_respaldo_temporal"><code class="docutils literal notranslate"><span class="pre">GestionProyecto.eliminar_respaldo_temporal()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_proyecto.GestionProyecto.enlazar_area"><code class="docutils literal notranslate"><span class="pre">GestionProyecto.enlazar_area()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_proyecto.GestionProyecto.exportar_grafico"><code class="docutils literal notranslate"><span class="pre">GestionProyecto.exportar_grafico()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_proyecto.GestionProyecto.guardar_proyecto_actual"><code class="docutils literal notranslate"><span class="pre">GestionProyecto.guardar_proyecto_actual()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_proyecto.GestionProyecto.reinicio_por_tema"><code class="docutils literal notranslate"><span class="pre">GestionProyecto.reinicio_por_tema()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="control.ambitos.html#module-control.ambitos.gestion_texto">Módulo control.ambitos.gestion_texto</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_texto.GestionTexto"><code class="docutils literal notranslate"><span class="pre">GestionTexto</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_texto.GestionTexto._agregar_nodo_a_tabla"><code class="docutils literal notranslate"><span class="pre">GestionTexto._agregar_nodo_a_tabla()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_texto.GestionTexto._gestionar_justificado"><code class="docutils literal notranslate"><span class="pre">GestionTexto._gestionar_justificado()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_texto.GestionTexto._registrar_nodos"><code class="docutils literal notranslate"><span class="pre">GestionTexto._registrar_nodos()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_texto.GestionTexto._registrar_propiedades"><code class="docutils literal notranslate"><span class="pre">GestionTexto._registrar_propiedades()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_texto.GestionTexto._registrar_vertices"><code class="docutils literal notranslate"><span class="pre">GestionTexto._registrar_vertices()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_texto.GestionTexto.actualizar_ultimos_ids"><code class="docutils literal notranslate"><span class="pre">GestionTexto.actualizar_ultimos_ids()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_texto.GestionTexto.enlazar_area"><code class="docutils literal notranslate"><span class="pre">GestionTexto.enlazar_area()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_texto.GestionTexto.extraer"><code class="docutils literal notranslate"><span class="pre">GestionTexto.extraer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="control.ambitos.html#control.ambitos.gestion_texto.GestionTexto.relacionar"><code class="docutils literal notranslate"><span class="pre">GestionTexto.relacionar()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="module-control.gestor">
+<span id="modulo-control-gestor"></span><h2>Módulo control.gestor<a class="headerlink" href="#module-control.gestor" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="control.gestor.Gestor">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">control.gestor.</span></span><span class="sig-name descname"><span class="pre">Gestor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raiz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tema</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/gestor.html#Gestor"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de coordinar la comunicación entre los módulos,
+trabajar con las tablas y distribuir las tareas de las distintas
+divisiones entre los ámbitos de gestión. Su constructor genera 
+las rutas a los recursos, los valores por defectos de los atributos 
+del diagrama y las estructuras de datos que permiten ordenar la 
+ejecución de tareas en segundo plano.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>raiz</strong> (<em>Tk</em>) – Ventana principal que controla el bucle de la aplicación.</p></li>
+<li><p><strong>tema</strong> (<em>str</em>) – El tema actual de la aplicación.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor._actualizar_imagen">
+<span class="sig-name descname"><span class="pre">_actualizar_imagen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aviso</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor._actualizar_imagen"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor._actualizar_imagen" title="Link to this definition"></a></dt>
+<dd><p>Actualiza el artefacto que muestra el diagrama y oculta
+los avisos que indicaban el inicio de las operaciones que
+modifican al diagrama, o avisa cuando no es necesario volver
+a generar el gráfico.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>area</strong> (<em>str</em>) – El área de los avisos a mostrar u ocultar.</p></li>
+<li><p><strong>aviso</strong> (<em>str</em>) – El contenido del aviso.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor._actualizar_texto">
+<span class="sig-name descname"><span class="pre">_actualizar_texto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor._actualizar_texto"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor._actualizar_texto" title="Link to this definition"></a></dt>
+<dd><p>Ubica el contenido extraído en el artefacto de texto desplazable.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor._borrar_ultima_proposicion">
+<span class="sig-name descname"><span class="pre">_borrar_ultima_proposicion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor._borrar_ultima_proposicion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor._borrar_ultima_proposicion" title="Link to this definition"></a></dt>
+<dd><p>Elimina de la tabla de proposiciones el último ingreso y remueve
+de las otras tablas los elementos que quedaron sin relación. Args
+captura la tupla vacía que recibe cuando es llamado para que se
+ejecute en segundo plano.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor._encolar_tarea">
+<span class="sig-name descname"><span class="pre">_encolar_tarea</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">llamada</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cola</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Queue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_control</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/control/gestor.html#Gestor._encolar_tarea"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor._encolar_tarea" title="Link to this definition"></a></dt>
+<dd><p>Encola una tarea para que se ejecute en segundo plano. Si no hay nada
+en ejecución, inicia la operación.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>llamada</strong> – La tarea a ejecutar.</p></li>
+<li><p><strong>type</strong> – Callable</p></li>
+<li><p><strong>cola</strong> – La cola de tareas.</p></li>
+<li><p><strong>type</strong> – queue.Queue</p></li>
+<li><p><strong>var_control</strong> – Una variable de control mutable.</p></li>
+<li><p><strong>type</strong> – list[bool]</p></li>
+<li><p><strong>args</strong> – Los argumentos de los métodos llamados.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor._existen_proposiciones">
+<span class="sig-name descname"><span class="pre">_existen_proposiciones</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor._existen_proposiciones"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor._existen_proposiciones" title="Link to this definition"></a></dt>
+<dd><p>Verifica si la tabla de proposiciones está vacía.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>El resultado de la verificación.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor._guardar_en_segundo_plano">
+<span class="sig-name descname"><span class="pre">_guardar_en_segundo_plano</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor._guardar_en_segundo_plano"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor._guardar_en_segundo_plano" title="Link to this definition"></a></dt>
+<dd><p>Guarda los cambios en el proyecto activo, cuando se usan el atajo
+de teclado. Args captura la tupla vacía que recibe cuando es llamado
+para que se ejecute en segundo plano.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor._inicio_por_cambio_en_tema">
+<span class="sig-name descname"><span class="pre">_inicio_por_cambio_en_tema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conservar_fondo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor._inicio_por_cambio_en_tema"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor._inicio_por_cambio_en_tema" title="Link to this definition"></a></dt>
+<dd><p>Delega la operación al ámbito que gestiona las tareas del proyecto.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>conservar_fondo</strong> (<em>bool</em>) – Indicación de actualizar o no el color de fondo del grafo.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor._observador">
+<span class="sig-name descname"><span class="pre">_observador</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor._observador"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor._observador" title="Link to this definition"></a></dt>
+<dd><p>Llama a la actulización de las áreas y/o artefactos correspondientes,
+cada vez que detecta que una tarea en segundo plano dió el aviso de
+haber concluido la operación.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor._ocultar_avisos">
+<span class="sig-name descname"><span class="pre">_ocultar_avisos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor._ocultar_avisos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor._ocultar_avisos" title="Link to this definition"></a></dt>
+<dd><p>Se encarga de ocultar las notificaciones que puedan estar visibles.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor._procesar_tareas">
+<span class="sig-name descname"><span class="pre">_procesar_tareas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cola</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Queue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_control</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor._procesar_tareas"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor._procesar_tareas" title="Link to this definition"></a></dt>
+<dd><p>Procesa las tareas que fueron encoladas para ser ejecutadas en segundo
+plano.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cola</strong> (<em>queue.Queue</em>) – La cola de tareas a procesar.</p></li>
+<li><p><strong>var_control</strong> (<em>list</em><em>[</em><em>bool</em><em>]</em>) – Una variable de control mutable.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.acotar_cadena">
+<span class="sig-name descname"><span class="pre">acotar_cadena</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cadena</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.acotar_cadena"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.acotar_cadena" title="Link to this definition"></a></dt>
+<dd><p>Separa la cadena en líneas de longitud aproximada (por arriba)
+a la cota.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cadena</strong> (<em>str</em>) – La cadena a separar.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>La cadena en líneas acotadas.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.actualizar_elemento">
+<span class="sig-name descname"><span class="pre">actualizar_elemento</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tipo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_elem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cambios</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.actualizar_elemento"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.actualizar_elemento" title="Link to this definition"></a></dt>
+<dd><p>Delega la operación al ámbito que gestiona las tareas de edición.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tipo</strong> (<em>str</em>) – Un indicador del tipo de elemento.</p></li>
+<li><p><strong>id_elem</strong> (<em>str</em>) – El id del elemento.</p></li>
+<li><p><strong>cambios</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – Las modificaciones en los atributos del elemento.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>La confirmación de que se inició la tarea.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.actualizar_grafo">
+<span class="sig-name descname"><span class="pre">actualizar_grafo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cambios</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.actualizar_grafo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.actualizar_grafo" title="Link to this definition"></a></dt>
+<dd><p>Delega la operación al ámbito que gestiona las tareas de edición.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cambios</strong> (<em>list</em><em>[</em><em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em><em>]</em>) – Las modifcaciones en los atributos del diagrama.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>La confirmación de que se inició la tarea, cuando existen elementos que actualizar.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.borrar_de_tabla">
+<span class="sig-name descname"><span class="pre">borrar_de_tabla</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ruta_tabla</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_elemento</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.borrar_de_tabla"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.borrar_de_tabla" title="Link to this definition"></a></dt>
+<dd><p>Elimina el elemento indicado de la tabla recibida.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ruta_tabla</strong> (<em>Path</em>) – La ruta a la tabla.</p></li>
+<li><p><strong>id_elemento</strong> (<em>str</em>) – El id del elemento</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.borrar_ultimo_ingreso">
+<span class="sig-name descname"><span class="pre">borrar_ultimo_ingreso</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.borrar_ultimo_ingreso"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.borrar_ultimo_ingreso" title="Link to this definition"></a></dt>
+<dd><p>Agrega la tarea a la cola de pendientes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.cancelar_pendientes">
+<span class="sig-name descname"><span class="pre">cancelar_pendientes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.cancelar_pendientes"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.cancelar_pendientes" title="Link to this definition"></a></dt>
+<dd><p>Cancela las tareas pendientes, frenando la ejecución del observador
+y del método encargado de ocultar los avisos visibles, a fin de evitar
+errores al reiniciar la aplicación.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.cargar_proyecto">
+<span class="sig-name descname"><span class="pre">cargar_proyecto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directorio</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.cargar_proyecto"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.cargar_proyecto" title="Link to this definition"></a></dt>
+<dd><p>Delega la operación al ámbito que gestiona las tareas del proyecto.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>directorio</strong> (<em>str</em>) – La ruta a la carpeta con los archivos del proyecto.</p></li>
+<li><p><strong>origen</strong> (<em>str</em>) – La indicación de si es un respaldo temporal o un proyecto guardado.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.cargar_respaldo">
+<span class="sig-name descname"><span class="pre">cargar_respaldo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.cargar_respaldo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.cargar_respaldo" title="Link to this definition"></a></dt>
+<dd><p>Delega en el ámbito que gestiona las tareas del proyecto el volver el
+programa al estado previo a intentar abrir un proyecto, cuando éste
+intento falla.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.datos_proyecto_activo">
+<span class="sig-name descname"><span class="pre">datos_proyecto_activo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.datos_proyecto_activo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.datos_proyecto_activo" title="Link to this definition"></a></dt>
+<dd><p>Retorna la ubicacion y el nombre del proyecto que se encuentra activado
+(abierto y que permite guardar los cambios con atajo de teclado).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Los datos del proyecto.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[str, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.editar_relacion">
+<span class="sig-name descname"><span class="pre">editar_relacion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cambios</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.editar_relacion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.editar_relacion" title="Link to this definition"></a></dt>
+<dd><p>Delega la operación al ámbito que gestiona las tareas de edición.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cambios</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>tuple</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em><em>]</em>) – Las modficaciones a la proposición.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.eliminar_justificado">
+<span class="sig-name descname"><span class="pre">eliminar_justificado</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cadena</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.eliminar_justificado"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.eliminar_justificado" title="Link to this definition"></a></dt>
+<dd><p>Remueve de la cadena que recibe los todo los caractéres escapados que
+se usan para alinear el texto.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cadena</strong> (<em>str</em>) – La cadena a limpiar.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>La cadena limpia.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.eliminar_relacion">
+<span class="sig-name descname"><span class="pre">eliminar_relacion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_rel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.eliminar_relacion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.eliminar_relacion" title="Link to this definition"></a></dt>
+<dd><p>Delega la operación al ámbito que gestiona las tareas de edición.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_rel</strong> (<em>str</em>) – El índice de la fila a eliminar de la tabla de proposiciones.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.eliminar_respaldo">
+<span class="sig-name descname"><span class="pre">eliminar_respaldo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.eliminar_respaldo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.eliminar_respaldo" title="Link to this definition"></a></dt>
+<dd><p>Cuando se abre correctamente un proyecto guardado o luego de reiniciar
+por cambio de tema, borra la carpeta de respaldo con los archivos que
+permiten restaurar el estado de la aplicación. Delega la operación al
+ámbito que gestiona las tareas del proyecto</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.eliminar_simbolo">
+<span class="sig-name descname"><span class="pre">eliminar_simbolo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cadena</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.eliminar_simbolo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.eliminar_simbolo" title="Link to this definition"></a></dt>
+<dd><p>Para prevenir errores al ingresar proposiciones, elimina de la cadena
+el símbolo utilizado como delimitador en las tablas y los saltos de línea.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cadena</strong> (<em>str</em>) – La cadena a limpiar.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>La cadena limpia.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.enfocar_sec_texto">
+<span class="sig-name descname"><span class="pre">enfocar_sec_texto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">señal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.enfocar_sec_texto"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.enfocar_sec_texto" title="Link to this definition"></a></dt>
+<dd><p>Envía al área de texto la señal con el atajo de teclado ingresado,
+cuando el foco está puesto en el área de gráfico.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.enlazar">
+<span class="sig-name descname"><span class="pre">enlazar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AreaDeTexto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edicion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AreaEdicion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proyecto</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AreaProyecto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grafico</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AreaDeGrafico</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">respaldo_pendiente</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diagrama_no_vacio</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proyecto_activo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.enlazar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.enlazar" title="Link to this definition"></a></dt>
+<dd><p>Conecta el Gestor con las instancias de las áreas de la aplicación.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>texto</strong> (<a class="reference internal" href="componentes.areas.html#componentes.areas.texto.AreaDeTexto" title="componentes.areas.texto.AreaDeTexto"><em>AreaDeTexto</em></a>) – La instancia de la clase que permite cargar un texto.</p></li>
+<li><p><strong>edicion</strong> (<a class="reference internal" href="componentes.areas.html#componentes.areas.edicion.AreaEdicion" title="componentes.areas.edicion.AreaEdicion"><em>AreaEdicion</em></a>) – La instancia de la clase que permite editar el diagrama.</p></li>
+<li><p><strong>proyecto</strong> (<a class="reference internal" href="componentes.areas.html#componentes.areas.proyecto.AreaProyecto" title="componentes.areas.proyecto.AreaProyecto"><em>AreaProyecto</em></a>) – La instancia de la clase que gestiona las opciones del proyecto.</p></li>
+<li><p><strong>grafico</strong> (<a class="reference internal" href="componentes.areas.html#componentes.areas.grafico.AreaDeGrafico" title="componentes.areas.grafico.AreaDeGrafico"><em>AreaDeGrafico</em></a>) – La instancia de la clase que muestra el diagrama.</p></li>
+<li><p><strong>respaldo_pendiente</strong> (<em>bool</em>) – Indica si se debe cargar el respaldo temporal guardado antes del reinicio por cambio de tema.</p></li>
+<li><p><strong>diagrama_no_vacio</strong> (<em>bool</em>) – Indica si se debe actualizar el artefacto del área de gráfico para que coincida con el color de fondo del grafo.</p></li>
+<li><p><strong>proyecto_activo</strong> (<em>tuple</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – Datos que permiten volver a activar el proyecto que estaba abierto, al reiniciar por cambio en tema.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.enrutar">
+<span class="sig-name descname"><span class="pre">enrutar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mensaje</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.enrutar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.enrutar" title="Link to this definition"></a></dt>
+<dd><p>Permite la comunicación entre los OptionMenus del area de edición,
+y los artefactos de las secciones y subsecciones con los que trabajan.
+Delega la operación al ámbito que gestiona las tareas de edición.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.exportar_diagrama">
+<span class="sig-name descname"><span class="pre">exportar_diagrama</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formato</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directorio</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.exportar_diagrama"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.exportar_diagrama" title="Link to this definition"></a></dt>
+<dd><p>Delega la operación al ámbito que gestiona las tareas del proyecto.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>formato</strong> (<em>str</em>) – La extensión del archivo con el diagrama.</p></li>
+<li><p><strong>directorio</strong> (<em>str</em>) – La ruta de salida.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.guardar_notas">
+<span class="sig-name descname"><span class="pre">guardar_notas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.guardar_notas"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.guardar_notas" title="Link to this definition"></a></dt>
+<dd><p>Escribe el contenido de las notas tomadas eun un txt, permitiendo
+recuperarlas cuando se abra el proyecto guardado.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>texto</strong> (<em>str</em>) – El contenido de las notas</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.guardar_proyecto">
+<span class="sig-name descname"><span class="pre">guardar_proyecto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directorio</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nombre</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.guardar_proyecto"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.guardar_proyecto" title="Link to this definition"></a></dt>
+<dd><p>Delega la operación al ámbito que gestiona las tareas del proyecto.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>directorio</strong> (<em>str</em>) – La carpeta donde se guardará.</p></li>
+<li><p><strong>nombre</strong> (<em>str</em>) – El nombre de la carpeta que contiene los archivos.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.guardar_proyecto_desde_atajo">
+<span class="sig-name descname"><span class="pre">guardar_proyecto_desde_atajo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.guardar_proyecto_desde_atajo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.guardar_proyecto_desde_atajo" title="Link to this definition"></a></dt>
+<dd><p>Ejecuta en segundo plano la operación de guardar los cambios del proyecto.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.lista_ids">
+<span class="sig-name descname"><span class="pre">lista_ids</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.lista_ids"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.lista_ids" title="Link to this definition"></a></dt>
+<dd><p>Retorna una lista con los id de los elementos registrados, ayudando
+a prevenir que, al deshacer cambios en Edición, se produzca un error
+al intentar restablecer los atributos de un elemento que no existe.
+Delega la operación al ámbito que gestiona las tareas de edición.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>elem</strong> (<em>str</em>) – El tipo de los elementos (nodo o vértice).</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>La lista de ids de los elementos registrados.</p>
+</dd>
+<dt class="field-odd">Rtye<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.lista_valores">
+<span class="sig-name descname"><span class="pre">lista_valores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tipo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.lista_valores"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.lista_valores" title="Link to this definition"></a></dt>
+<dd><p>Retorna una lista con los valores de todos los elementos registrados,
+del tipo (nodo o vértice) que recibe como argumento.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tipo</strong> (<em>str</em>) – El tipo de los elementos.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>La lista de valores de los elementos registrados.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.nodos_existentes">
+<span class="sig-name descname"><span class="pre">nodos_existentes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.nodos_existentes"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.nodos_existentes" title="Link to this definition"></a></dt>
+<dd><p>Retorna el id y valor de los nodos registrados en la tabla.
+Delega la operación al ámbito que gestiona las tareas de edición.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Los nodos registrados.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str, str | None]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.obtener_atributos">
+<span class="sig-name descname"><span class="pre">obtener_atributos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tipo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_elem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.obtener_atributos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.obtener_atributos" title="Link to this definition"></a></dt>
+<dd><p>Retorna los atributos del elemento solicitado. Delega la operación
+al ámbito que gestiona las tareas de edición.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tipo</strong> (<em>str</em>) – El tipo de elemento (nodo o vértice).</p></li>
+<li><p><strong>id_elem</strong> (<em>str</em>) – El id del elemento.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Los atributos del elemento.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[str, dict[str, str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.obtener_notas">
+<span class="sig-name descname"><span class="pre">obtener_notas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.obtener_notas"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.obtener_notas" title="Link to this definition"></a></dt>
+<dd><p>Retorna el contenido de las notas de un proyecto guardado.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>El contenido de las notas.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.obtener_texto">
+<span class="sig-name descname"><span class="pre">obtener_texto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ruta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.obtener_texto"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.obtener_texto" title="Link to this definition"></a></dt>
+<dd><p>Extrae el texto del archivo cuya recibe como argumento. Delega la
+operación al ámbito que gestiona las tareas de texto.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ruta</strong></p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>El contenido del texto.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.reiniciar">
+<span class="sig-name descname"><span class="pre">reiniciar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.reiniciar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.reiniciar" title="Link to this definition"></a></dt>
+<dd><p>Reinicia la aplicación.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.relacionar_entidades">
+<span class="sig-name descname"><span class="pre">relacionar_entidades</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proposicion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.relacionar_entidades"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.relacionar_entidades" title="Link to this definition"></a></dt>
+<dd><p>Agrega la proposición al diagrama. Delega la operación al ámbito
+que gestiona las tareas de texto.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>proposicion</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – La proposición a registrar.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Confirmación del inicio de la operación.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.relaciones_existentes">
+<span class="sig-name descname"><span class="pre">relaciones_existentes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.relaciones_existentes"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.relaciones_existentes" title="Link to this definition"></a></dt>
+<dd><p>Devuelve las proposiciones registradas. Delega la operación al ámbito
+que gestiona las tareas de edición.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Las proposiciones registradas.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[int, list[tuple[str, str]]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.respaldo_temporal">
+<span class="sig-name descname"><span class="pre">respaldo_temporal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.respaldo_temporal"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.respaldo_temporal" title="Link to this definition"></a></dt>
+<dd><p>Delega la operación al ámbito que gestiona las tareas del proyecto.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.restablecer_todo">
+<span class="sig-name descname"><span class="pre">restablecer_todo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.restablecer_todo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.restablecer_todo" title="Link to this definition"></a></dt>
+<dd><p>Vacía el contenido de las tablas y las notas, y  elimina el gráfico
+generado.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="control.gestor.Gestor.vertices_existentes">
+<span class="sig-name descname"><span class="pre">vertices_existentes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/control/gestor.html#Gestor.vertices_existentes"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#control.gestor.Gestor.vertices_existentes" title="Link to this definition"></a></dt>
+<dd><p>Retorna las proposiciones agrupadas por el vértice que las vincula.
+Delega la operación al ámbito que gestiona las tareas de edición.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Los vértices registrados y las proposiciones de las que son parte.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str, list[list[str | None]]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="componentes.secciones.subsecciones.html" class="btn btn-neutral float-left" title="Paquete componentes.secciones.subsecciones" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="control.ambitos.html" class="btn btn-neutral float-right" title="Paquete control.ambitos" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, errejotaeme.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

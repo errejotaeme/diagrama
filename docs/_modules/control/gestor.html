@@ -1,0 +1,1121 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>control.gestor &mdash; documentación de Diagrama - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=f85f4cfb"></script>
+      <script src="../../_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Diagrama
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dependencias.html">Configuración del entorno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modulos.html">Módulos y paquetes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Diagrama</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">control.gestor</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para control.gestor</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">queue</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">platform</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Any</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz</span><span class="w"> </span><span class="kn">import</span> <span class="n">comunes</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.documentos</span><span class="w"> </span><span class="kn">import</span> <span class="n">diagrama</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.control.ambitos</span><span class="w"> </span><span class="kn">import</span> <span class="n">gestion_edicion</span><span class="p">,</span> <span class="n">gestion_texto</span><span class="p">,</span> <span class="n">gestion_proyecto</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz.componentes.areas</span><span class="w"> </span><span class="kn">import</span> <span class="n">edicion</span><span class="p">,</span> <span class="n">grafico</span><span class="p">,</span> <span class="n">proyecto</span><span class="p">,</span> <span class="n">texto</span>
+
+
+<div class="viewcode-block" id="Gestor">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor">[documentos]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Gestor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Clase encargada de coordinar la comunicación entre los módulos,</span>
+<span class="sd">    trabajar con las tablas y distribuir las tareas de las distintas</span>
+<span class="sd">    divisiones entre los ámbitos de gestión. Su constructor genera </span>
+<span class="sd">    las rutas a los recursos, los valores por defectos de los atributos </span>
+<span class="sd">    del diagrama y las estructuras de datos que permiten ordenar la </span>
+<span class="sd">    ejecución de tareas en segundo plano.</span>
+
+<span class="sd">    :param raiz: Ventana principal que controla el bucle de la aplicación.</span>
+<span class="sd">    :type raiz: Tk</span>
+<span class="sd">    :param tema: El tema actual de la aplicación.</span>
+<span class="sd">    :type tema: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raiz</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">,</span> <span class="n">tema</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span> <span class="o">=</span> <span class="n">raiz</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tema</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">tema</span>
+        <span class="c1"># Áreas</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_grafico</span><span class="p">:</span> <span class="n">grafico</span><span class="o">.</span><span class="n">AreaDeGrafico</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># type: ignore</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_texto</span><span class="p">:</span> <span class="n">texto</span><span class="o">.</span><span class="n">AreaDeTexto</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># type: ignore</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_edicion</span><span class="p">:</span> <span class="n">edicion</span><span class="o">.</span><span class="n">AreaEdicion</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># type: ignore</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="p">:</span> <span class="n">proyecto</span><span class="o">.</span><span class="n">AreaProyecto</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># type: ignore</span>
+        <span class="c1"># Rutas a recursos</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_proposiciones</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;documentos&quot;</span> <span class="o">/</span> <span class="s2">&quot;recursos&quot;</span> <span class="o">/</span> <span class="s2">&quot;proposiciones.csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_propiedades_n</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;documentos&quot;</span> <span class="o">/</span> <span class="s2">&quot;recursos&quot;</span> <span class="o">/</span> <span class="s2">&quot;propiedades_n.csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_propiedades_v</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;documentos&quot;</span> <span class="o">/</span> <span class="s2">&quot;recursos&quot;</span> <span class="o">/</span> <span class="s2">&quot;propiedades_v.csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_vertices</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;documentos&quot;</span> <span class="o">/</span> <span class="s2">&quot;recursos&quot;</span> <span class="o">/</span> <span class="s2">&quot;vertices.csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_notas</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;documentos&quot;</span> <span class="o">/</span> <span class="s2">&quot;recursos&quot;</span> <span class="o">/</span> <span class="s2">&quot;notas_propias.txt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_nodos</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;documentos&quot;</span> <span class="o">/</span> <span class="s2">&quot;recursos&quot;</span> <span class="o">/</span> <span class="s2">&quot;nodos.csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_resultados</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;resultados&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+        <span class="c1"># Atributos generales del grafo</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cota</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">25</span>  <span class="c1"># Long. máx. aprox. de líneas</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">justificado</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;n&quot;</span>  <span class="c1"># Centrado</span>
+        <span class="c1"># Ambitos de gestión</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_texto</span><span class="p">:</span> <span class="n">gestion_texto</span><span class="o">.</span><span class="n">GestionTexto</span> <span class="o">=</span> <span class="n">gestion_texto</span><span class="o">.</span><span class="n">GestionTexto</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_proposiciones</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_nodos</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_vertices</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_propiedades_n</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_propiedades_v</span>    
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_edicion</span><span class="p">:</span> <span class="n">gestion_edicion</span><span class="o">.</span><span class="n">GestionEdicion</span> <span class="o">=</span> <span class="n">gestion_edicion</span><span class="o">.</span><span class="n">GestionEdicion</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_proposiciones</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_nodos</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_vertices</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_propiedades_n</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_propiedades_v</span>    
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_proyecto</span><span class="p">:</span> <span class="n">gestion_proyecto</span><span class="o">.</span><span class="n">GestionProyecto</span>  <span class="o">=</span> <span class="n">gestion_proyecto</span><span class="o">.</span><span class="n">GestionProyecto</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_proposiciones</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_nodos</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_vertices</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_propiedades_n</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_propiedades_v</span>    
+        <span class="p">)</span>
+        <span class="c1"># Valores por defecto del diagrama</span>
+        <span class="n">val_def_nodos</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_nodos</span><span class="p">)</span>
+        <span class="n">val_def_vertices</span><span class="p">:</span>  <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_vertices</span><span class="p">)</span>
+        <span class="n">val_def_grafo</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_grafo</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_valores_por_defecto</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">val_def_nodos</span><span class="p">,</span> <span class="n">val_def_vertices</span><span class="p">,</span> <span class="n">val_def_grafo</span>
+        <span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ruta_png</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="c1"># Colas para almacenar las tareas pendientes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cola_texto</span><span class="p">:</span> <span class="n">queue</span><span class="o">.</span><span class="n">Queue</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cola_grafico</span><span class="p">:</span> <span class="n">queue</span><span class="o">.</span><span class="n">Queue</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cola_edicion</span><span class="p">:</span> <span class="n">queue</span><span class="o">.</span><span class="n">Queue</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cola_proyecto</span><span class="p">:</span> <span class="n">queue</span><span class="o">.</span><span class="n">Queue</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+        <span class="c1"># Variables de control para saber si hay una tarea en ejecución</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tarea_texto</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tarea_grafico</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tarea_edicion</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tarea_proyecto</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span>
+        <span class="c1"># Comunicacion entre hilo principal y tareas en segundo plano</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actualizar</span><span class="p">:</span> <span class="n">threading</span><span class="o">.</span><span class="n">Event</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Event</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cola_avisos</span><span class="p">:</span> <span class="n">queue</span><span class="o">.</span><span class="n">Queue</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id_tarea_pendiente</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id_ocultar_avisos</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_observador</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ocultar_avisos</span><span class="p">()</span>
+
+
+
+
+<div class="viewcode-block" id="Gestor.acotar_cadena">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.acotar_cadena">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">acotar_cadena</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cadena</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Separa la cadena en líneas de longitud aproximada (por arriba)</span>
+<span class="sd">        a la cota.</span>
+<span class="sd">        </span>
+<span class="sd">        :param cadena: La cadena a separar.</span>
+<span class="sd">        :type cadena: str</span>
+<span class="sd">        :return: La cadena en líneas acotadas.</span>
+<span class="sd">        :rtype: str </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cadena</span> <span class="o">=</span> <span class="n">cadena</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cadena</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">cota</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">cadena</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">res</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">cadena</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">cota</span><span class="p">]</span>
+            <span class="n">indice</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cota</span>    
+            <span class="k">while</span> <span class="n">indice</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">cadena</span><span class="p">)</span> <span class="ow">and</span> <span class="n">cadena</span><span class="p">[</span><span class="n">indice</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot; &quot;</span><span class="p">:</span>
+                <span class="n">indice</span> <span class="o">+=</span> <span class="mi">1</span>    
+            <span class="k">if</span> <span class="n">indice</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">cadena</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">cadena</span>            
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">+</span><span class="n">cadena</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">cota</span><span class="p">:</span><span class="n">indice</span><span class="p">]</span><span class="o">+</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\\</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">justificado</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="k">return</span> <span class="n">res</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">acotar_cadena</span><span class="p">(</span><span class="n">cadena</span><span class="p">[</span><span class="n">indice</span><span class="p">:]</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span></div>
+
+            
+<div class="viewcode-block" id="Gestor.actualizar_elemento">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.actualizar_elemento">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">actualizar_elemento</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">tipo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">id_elem</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">cambios</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span> 
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delega la operación al ámbito que gestiona las tareas de edición.</span>
+<span class="sd">        </span>
+<span class="sd">        :param tipo: Un indicador del tipo de elemento.</span>
+<span class="sd">        :type tipo: str</span>
+<span class="sd">        :param id_elem: El id del elemento.</span>
+<span class="sd">        :type id_elem: str</span>
+<span class="sd">        :param cambios: Las modificaciones en los atributos del elemento.</span>
+<span class="sd">        :type cambios: dict[str, str]</span>
+<span class="sd">        :return: La confirmación de que se inició la tarea.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">tipo</span> <span class="o">==</span> <span class="s2">&quot;nodo&quot;</span><span class="p">:</span>
+            <span class="n">aux_aviso</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Aplicando los cambios al nodo con ID: </span><span class="si">{</span><span class="n">id_elem</span><span class="si">}</span><span class="s2">...&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_edicion</span><span class="o">.</span><span class="n">mostrar_aviso_nodo</span><span class="p">(</span><span class="n">aux_aviso</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">aux_aviso</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Aplicando los cambios al vértice con ID: </span><span class="si">{</span><span class="n">id_elem</span><span class="si">}</span><span class="s2">...&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_edicion</span><span class="o">.</span><span class="n">mostrar_aviso_vertice</span><span class="p">(</span><span class="n">aux_aviso</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_encolar_tarea</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_edicion</span><span class="o">.</span><span class="n">modificar_elemento</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cola_grafico</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tarea_grafico</span><span class="p">,</span>
+            <span class="n">tipo</span><span class="p">,</span>
+            <span class="n">id_elem</span><span class="p">,</span>
+            <span class="n">cambios</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+    
+<div class="viewcode-block" id="Gestor.actualizar_grafo">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.actualizar_grafo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">actualizar_grafo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cambios</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delega la operación al ámbito que gestiona las tareas de edición.</span>
+
+<span class="sd">        :param cambios: Las modifcaciones en los atributos del diagrama.</span>
+<span class="sd">        :type cambios: list[dict[str, str]]</span>
+<span class="sd">        :return: La confirmación de que se inició la tarea, cuando existen elementos que actualizar.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_existen_proposiciones</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_edicion</span><span class="o">.</span><span class="n">mostrar_aviso_grafo</span><span class="p">(</span><span class="s2">&quot;Aplicando los cambios al grafo...&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_encolar_tarea</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_edicion</span><span class="o">.</span><span class="n">modificar_grafo</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_cola_grafico</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_tarea_grafico</span><span class="p">,</span>
+                <span class="n">cambios</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="Gestor.borrar_de_tabla">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.borrar_de_tabla">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">borrar_de_tabla</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ruta_tabla</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">id_elemento</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Elimina el elemento indicado de la tabla recibida.</span>
+<span class="sd">            </span>
+<span class="sd">        :param ruta_tabla: La ruta a la tabla.</span>
+<span class="sd">        :type ruta_tabla: Path</span>
+<span class="sd">        :param id_elemento: El id del elemento</span>
+<span class="sd">        :type id_elemento: str         </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Obtengo el índice de la fila del registro a borrar</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">ruta_tabla</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">tabla</span><span class="p">:</span>
+            <span class="n">registros</span> <span class="o">=</span> <span class="n">tabla</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+            <span class="n">indice_fila</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>        
+            <span class="k">for</span> <span class="n">registro</span> <span class="ow">in</span> <span class="n">registros</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+                <span class="n">l_aux</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">registro</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mi">167</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">l_aux</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">id_elemento</span><span class="p">:</span>
+                    <span class="k">break</span>
+                <span class="n">indice_fila</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">del</span> <span class="n">registros</span><span class="p">[</span><span class="n">indice_fila</span><span class="p">]</span>
+        <span class="c1"># Escribo todas menos la fila eliminada</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">ruta_tabla</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archivo</span><span class="p">:</span>
+            <span class="n">archivo</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">registros</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gestor.borrar_ultimo_ingreso">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.borrar_ultimo_ingreso">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">borrar_ultimo_ingreso</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Agrega la tarea a la cola de pendientes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_texto</span><span class="o">.</span><span class="n">mostrar_aviso</span><span class="p">(</span><span class="s2">&quot;Borrando la última proposición...&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_encolar_tarea</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_borrar_ultima_proposicion</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cola_grafico</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tarea_grafico</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gestor.cancelar_pendientes">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.cancelar_pendientes">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cancelar_pendientes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Cancela las tareas pendientes, frenando la ejecución del observador</span>
+<span class="sd">        y del método encargado de ocultar los avisos visibles, a fin de evitar</span>
+<span class="sd">        errores al reiniciar la aplicación.        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id_tarea_pendiente</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span><span class="o">.</span><span class="n">after_cancel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id_tarea_pendiente</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id_ocultar_avisos</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span><span class="o">.</span><span class="n">after_cancel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id_ocultar_avisos</span><span class="p">)</span>   </div>
+
+        
+    
+<div class="viewcode-block" id="Gestor.cargar_proyecto">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.cargar_proyecto">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cargar_proyecto</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directorio</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">origen</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delega la operación al ámbito que gestiona las tareas del proyecto.</span>
+
+<span class="sd">        :param directorio: La ruta a la carpeta con los archivos del proyecto.</span>
+<span class="sd">        :type directorio: str</span>
+<span class="sd">        :param origen: La indicación de si es un respaldo temporal o un proyecto guardado.</span>
+<span class="sd">        :type origen: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_proyecto</span><span class="o">.</span><span class="n">cargar_proyecto_guardado</span><span class="p">(</span>
+            <span class="n">directorio</span><span class="p">,</span> <span class="n">origen</span>
+        <span class="p">)</span> </div>
+
+
+<div class="viewcode-block" id="Gestor.cargar_respaldo">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.cargar_respaldo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cargar_respaldo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delega en el ámbito que gestiona las tareas del proyecto el volver el</span>
+<span class="sd">        programa al estado previo a intentar abrir un proyecto, cuando éste</span>
+<span class="sd">        intento falla.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">mostrar_aviso</span><span class="p">(</span><span class="s2">&quot;Algo salió mal: cargando los datos anteriores...&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_encolar_tarea</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_proyecto</span><span class="o">.</span><span class="n">cargar_respaldo_temporal</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cola_proyecto</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tarea_proyecto</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gestor.datos_proyecto_activo">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.datos_proyecto_activo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">datos_proyecto_activo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[()]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retorna la ubicacion y el nombre del proyecto que se encuentra activado</span>
+<span class="sd">        (abierto y que permite guardar los cambios con atajo de teclado).</span>
+
+<span class="sd">        :return: Los datos del proyecto.</span>
+<span class="sd">        :rtype: tuple[str, str]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">obtener_proyecto_activo</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Gestor.editar_relacion">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.editar_relacion">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">editar_relacion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cambios</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delega la operación al ámbito que gestiona las tareas de edición.</span>
+
+<span class="sd">        :param cambios: Las modficaciones a la proposición.</span>
+<span class="sd">        :type cambios: dict[str, tuple[str, str]]</span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_edicion</span><span class="o">.</span><span class="n">mostrar_aviso_relacion</span><span class="p">(</span><span class="s2">&quot;Aplicando las modificaciones...&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_encolar_tarea</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_edicion</span><span class="o">.</span><span class="n">modificar_registros</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cola_edicion</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tarea_edicion</span><span class="p">,</span>
+            <span class="n">cambios</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gestor.eliminar_justificado">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.eliminar_justificado">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">eliminar_justificado</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cadena</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Remueve de la cadena que recibe los todo los caractéres escapados que</span>
+<span class="sd">        se usan para alinear el texto.</span>
+
+<span class="sd">        :param cadena: La cadena a limpiar.</span>
+<span class="sd">        :type cadena: str</span>
+<span class="sd">        :return: La cadena limpia.</span>
+<span class="sd">        :rtype:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">cadena</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">n&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">l&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">r&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span></div>
+
+
+<div class="viewcode-block" id="Gestor.eliminar_relacion">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.eliminar_relacion">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">eliminar_relacion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_rel</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delega la operación al ámbito que gestiona las tareas de edición.</span>
+
+<span class="sd">        :param id_rel: El índice de la fila a eliminar de la tabla de proposiciones.</span>
+<span class="sd">        :type id_rel: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_edicion</span><span class="o">.</span><span class="n">mostrar_aviso_relacion</span><span class="p">(</span><span class="s2">&quot;Actualizando relaciones...&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_encolar_tarea</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_edicion</span><span class="o">.</span><span class="n">borrar_relacion</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cola_edicion</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tarea_edicion</span><span class="p">,</span>
+            <span class="n">id_rel</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gestor.eliminar_respaldo">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.eliminar_respaldo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">eliminar_respaldo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> 
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Cuando se abre correctamente un proyecto guardado o luego de reiniciar</span>
+<span class="sd">        por cambio de tema, borra la carpeta de respaldo con los archivos que</span>
+<span class="sd">        permiten restaurar el estado de la aplicación. Delega la operación al</span>
+<span class="sd">        ámbito que gestiona las tareas del proyecto</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_encolar_tarea</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_proyecto</span><span class="o">.</span><span class="n">eliminar_respaldo_temporal</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cola_proyecto</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tarea_proyecto</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gestor.eliminar_simbolo">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.eliminar_simbolo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">eliminar_simbolo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cadena</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Para prevenir errores al ingresar proposiciones, elimina de la cadena</span>
+<span class="sd">        el símbolo utilizado como delimitador en las tablas y los saltos de línea.</span>
+
+<span class="sd">        :param cadena: La cadena a limpiar.</span>
+<span class="sd">        :type cadena: str</span>
+<span class="sd">        :return: La cadena limpia.</span>
+<span class="sd">        :rtype: str        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cadena</span> <span class="o">=</span> <span class="n">cadena</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cadena</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mi">167</span><span class="p">),</span> <span class="s2">&quot;&quot;</span><span class="p">)</span></div>
+
+        
+<div class="viewcode-block" id="Gestor.enfocar_sec_texto">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.enfocar_sec_texto">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">enfocar_sec_texto</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">señal</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Envía al área de texto la señal con el atajo de teclado ingresado,</span>
+<span class="sd">        cuando el foco está puesto en el área de gráfico. </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_texto</span><span class="o">.</span><span class="n">atajo</span><span class="p">(</span><span class="n">señal</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gestor.enlazar">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.enlazar">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">enlazar</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">texto</span><span class="p">:</span> <span class="n">texto</span><span class="o">.</span><span class="n">AreaDeTexto</span><span class="p">,</span>
+        <span class="n">edicion</span><span class="p">:</span> <span class="n">edicion</span><span class="o">.</span><span class="n">AreaEdicion</span><span class="p">,</span>
+        <span class="n">proyecto</span><span class="p">:</span> <span class="n">proyecto</span><span class="o">.</span><span class="n">AreaProyecto</span><span class="p">,</span>
+        <span class="n">grafico</span><span class="p">:</span> <span class="n">grafico</span><span class="o">.</span><span class="n">AreaDeGrafico</span><span class="p">,</span>
+        <span class="n">respaldo_pendiente</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+        <span class="n">diagrama_no_vacio</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+        <span class="n">proyecto_activo</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
+    <span class="p">)</span><span class="o">-&gt;</span><span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Conecta el Gestor con las instancias de las áreas de la aplicación.</span>
+
+<span class="sd">        :param texto: La instancia de la clase que permite cargar un texto.</span>
+<span class="sd">        :type texto: AreaDeTexto</span>
+<span class="sd">        :param edicion: La instancia de la clase que permite editar el diagrama.</span>
+<span class="sd">        :type edicion: AreaEdicion</span>
+<span class="sd">        :param proyecto: La instancia de la clase que gestiona las opciones del proyecto.</span>
+<span class="sd">        :type proyecto: AreaProyecto</span>
+<span class="sd">        :param grafico: La instancia de la clase que muestra el diagrama.</span>
+<span class="sd">        :type grafico: AreaDeGrafico</span>
+<span class="sd">        :param respaldo_pendiente: Indica si se debe cargar el respaldo temporal guardado antes del reinicio por cambio de tema.</span>
+<span class="sd">        :type respaldo_pendiente: bool</span>
+<span class="sd">        :param diagrama_no_vacio: Indica si se debe actualizar el artefacto del área de gráfico para que coincida con el color de fondo del grafo.</span>
+<span class="sd">        :type diagrama_no_vacio: bool</span>
+<span class="sd">        :param proyecto_activo: Datos que permiten volver a activar el proyecto que estaba abierto, al reiniciar por cambio en tema.</span>
+<span class="sd">        :type proyecto_activo: tuple[str, str]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_texto</span> <span class="o">=</span> <span class="n">texto</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_edicion</span> <span class="o">=</span> <span class="n">edicion</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span> <span class="o">=</span> <span class="n">proyecto</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_grafico</span> <span class="o">=</span> <span class="n">grafico</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_texto</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_texto</span><span class="o">.</span><span class="n">enlazar_area</span><span class="p">(</span><span class="n">grafico</span><span class="p">,</span> <span class="n">edicion</span><span class="p">,</span> <span class="n">texto</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_edicion</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_edicion</span><span class="o">.</span><span class="n">enlazar_area</span><span class="p">(</span><span class="n">edicion</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_proyecto</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_proyecto</span><span class="o">.</span><span class="n">enlazar_area</span><span class="p">(</span>
+                <span class="n">proyecto</span><span class="p">,</span> <span class="n">edicion</span><span class="p">,</span> <span class="n">grafico</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_texto</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">respaldo_pendiente</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_inicio_por_cambio_en_tema</span><span class="p">(</span><span class="n">diagrama_no_vacio</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">proyecto_activo</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">restaurar_proyecto_activo</span><span class="p">(</span><span class="n">proyecto_activo</span><span class="p">)</span></div>
+
+            
+<div class="viewcode-block" id="Gestor.enrutar">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.enrutar">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">enrutar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mensaje</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Permite la comunicación entre los OptionMenus del area de edición,</span>
+<span class="sd">        y los artefactos de las secciones y subsecciones con los que trabajan.</span>
+<span class="sd">        Delega la operación al ámbito que gestiona las tareas de edición.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_edicion</span><span class="o">.</span><span class="n">enviar</span><span class="p">(</span><span class="n">mensaje</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="Gestor.exportar_diagrama">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.exportar_diagrama">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">exportar_diagrama</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">formato</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">directorio</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delega la operación al ámbito que gestiona las tareas del proyecto.</span>
+
+<span class="sd">        :param formato: La extensión del archivo con el diagrama.</span>
+<span class="sd">        :type formato: str</span>
+<span class="sd">        :param directorio: La ruta de salida.</span>
+<span class="sd">        :type directorio: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">mostrar_aviso</span><span class="p">(</span><span class="s2">&quot;Exportando el diagrama...&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_encolar_tarea</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_proyecto</span><span class="o">.</span><span class="n">exportar_grafico</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cola_proyecto</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tarea_proyecto</span><span class="p">,</span>
+            <span class="n">formato</span><span class="p">,</span>
+            <span class="n">directorio</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gestor.guardar_notas">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.guardar_notas">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">guardar_notas</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texto</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Escribe el contenido de las notas tomadas eun un txt, permitiendo</span>
+<span class="sd">        recuperarlas cuando se abra el proyecto guardado.</span>
+
+<span class="sd">        :param texto: El contenido de las notas</span>
+<span class="sd">        :type texto: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ruta_notas</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">notas</span><span class="p">:</span>
+            <span class="n">notas</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">texto</span><span class="p">)</span>    </div>
+
+        
+<div class="viewcode-block" id="Gestor.guardar_proyecto">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.guardar_proyecto">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">guardar_proyecto</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directorio</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">nombre</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delega la operación al ámbito que gestiona las tareas del proyecto.</span>
+
+<span class="sd">        :param directorio: La carpeta donde se guardará.</span>
+<span class="sd">        :type directorio: str</span>
+<span class="sd">        :param nombre: El nombre de la carpeta que contiene los archivos.</span>
+<span class="sd">        :type nombre: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">mostrar_aviso</span><span class="p">(</span><span class="s2">&quot;Guardando el proyecto...&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_encolar_tarea</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_proyecto</span><span class="o">.</span><span class="n">guardar_proyecto_actual</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cola_proyecto</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tarea_proyecto</span><span class="p">,</span>
+            <span class="n">directorio</span><span class="p">,</span>
+            <span class="n">nombre</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gestor.guardar_proyecto_desde_atajo">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.guardar_proyecto_desde_atajo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">guardar_proyecto_desde_atajo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Ejecuta en segundo plano la operación de guardar los cambios del proyecto.</span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_encolar_tarea</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_guardar_en_segundo_plano</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cola_proyecto</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tarea_proyecto</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gestor.lista_ids">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.lista_ids">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">lista_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elem</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retorna una lista con los id de los elementos registrados, ayudando</span>
+<span class="sd">        a prevenir que, al deshacer cambios en Edición, se produzca un error</span>
+<span class="sd">        al intentar restablecer los atributos de un elemento que no existe.</span>
+<span class="sd">        Delega la operación al ámbito que gestiona las tareas de edición.</span>
+
+<span class="sd">        :param elem: El tipo de los elementos (nodo o vértice).</span>
+<span class="sd">        :type elem: str</span>
+<span class="sd">        :return: La lista de ids de los elementos registrados.</span>
+<span class="sd">        :rtye: list[str]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_edicion</span><span class="o">.</span><span class="n">ids_registrados</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gestor.lista_valores">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.lista_valores">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">lista_valores</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tipo</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retorna una lista con los valores de todos los elementos registrados,</span>
+<span class="sd">        del tipo (nodo o vértice) que recibe como argumento.</span>
+<span class="sd">            </span>
+<span class="sd">        :param tipo: El tipo de los elementos.</span>
+<span class="sd">        :type tipo: str</span>
+<span class="sd">        :return: La lista de valores de los elementos registrados.</span>
+<span class="sd">        :rtype: list[str]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">res</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">tipo</span> <span class="o">==</span> <span class="s2">&quot;nodo&quot;</span><span class="p">:</span>
+            <span class="n">tabla</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_nodos</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tabla</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_vertices</span>            
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">tabla</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archivo</span><span class="p">:</span>
+            <span class="n">registros</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">archivo</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;§&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">registro</span> <span class="ow">in</span> <span class="n">registros</span><span class="p">:</span>
+                <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">registro</span><span class="p">[</span><span class="n">tipo</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">res</span></div>
+
+
+<div class="viewcode-block" id="Gestor.nodos_existentes">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.nodos_existentes">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">nodos_existentes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retorna el id y valor de los nodos registrados en la tabla.</span>
+<span class="sd">        Delega la operación al ámbito que gestiona las tareas de edición.</span>
+
+<span class="sd">        :return: Los nodos registrados.</span>
+<span class="sd">        :rtype: dict[str, str | None]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_edicion</span><span class="o">.</span><span class="n">nodos_registrados</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Gestor.obtener_atributos">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.obtener_atributos">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">obtener_atributos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tipo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">id_elem</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retorna los atributos del elemento solicitado. Delega la operación</span>
+<span class="sd">        al ámbito que gestiona las tareas de edición.</span>
+
+<span class="sd">        :param tipo: El tipo de elemento (nodo o vértice).</span>
+<span class="sd">        :type tipo: str</span>
+<span class="sd">        :param id_elem: El id del elemento.</span>
+<span class="sd">        :type id_elem: str</span>
+<span class="sd">        :return: Los atributos del elemento.</span>
+<span class="sd">        :rtype: tuple[str, dict[str, str]]        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_edicion</span><span class="o">.</span><span class="n">atributos_de_elemento</span><span class="p">(</span><span class="n">tipo</span><span class="p">,</span> <span class="n">id_elem</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gestor.obtener_notas">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.obtener_notas">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">obtener_notas</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retorna el contenido de las notas de un proyecto guardado.</span>
+
+<span class="sd">        :return: El contenido de las notas.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ruta_notas</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">notas</span><span class="p">:</span>
+            <span class="n">contenido</span> <span class="o">=</span> <span class="n">notas</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">contenido</span></div>
+
+            
+<div class="viewcode-block" id="Gestor.obtener_texto">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.obtener_texto">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">obtener_texto</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ruta</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>   
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Extrae el texto del archivo cuya recibe como argumento. Delega la</span>
+<span class="sd">        operación al ámbito que gestiona las tareas de texto.</span>
+
+<span class="sd">        :param ruta:</span>
+<span class="sd">        :type ruta:</span>
+<span class="sd">        :return: El contenido del texto.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_encolar_tarea</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_texto</span><span class="o">.</span><span class="n">extraer</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cola_texto</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tarea_texto</span><span class="p">,</span>
+            <span class="n">ruta</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">ruta</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;Cargando texto...&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="Gestor.reiniciar">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.reiniciar">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reiniciar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Reinicia la aplicación.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cancelar_pendientes</span><span class="p">()</span>  
+        <span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Windows&quot;</span><span class="p">:</span>
+            <span class="n">python_exe</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">executable</span>  
+            <span class="n">os</span><span class="o">.</span><span class="n">execv</span><span class="p">(</span><span class="n">python_exe</span><span class="p">,</span> <span class="p">[</span><span class="n">python_exe</span><span class="p">]</span> <span class="o">+</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>  
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">execv</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gestor.relacionar_entidades">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.relacionar_entidades">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">relacionar_entidades</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proposicion</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Agrega la proposición al diagrama. Delega la operación al ámbito</span>
+<span class="sd">        que gestiona las tareas de texto.</span>
+
+<span class="sd">        :param proposicion: La proposición a registrar.</span>
+<span class="sd">        :type proposicion: list[str]</span>
+<span class="sd">        :return: Confirmación del inicio de la operación.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_texto</span><span class="o">.</span><span class="n">mostrar_aviso</span><span class="p">(</span><span class="s2">&quot;Actualizando el diagrama...&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_encolar_tarea</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_texto</span><span class="o">.</span><span class="n">relacionar</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cola_grafico</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tarea_grafico</span><span class="p">,</span>
+            <span class="n">proposicion</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>          </div>
+
+
+<div class="viewcode-block" id="Gestor.relaciones_existentes">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.relaciones_existentes">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">relaciones_existentes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Devuelve las proposiciones registradas. Delega la operación al ámbito</span>
+<span class="sd">        que gestiona las tareas de edición.</span>
+
+<span class="sd">        :return: Las proposiciones registradas.</span>
+<span class="sd">        :rtype: dict[int, list[tuple[str, str]]]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_edicion</span><span class="o">.</span><span class="n">relaciones_registradas</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Gestor.respaldo_temporal">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.respaldo_temporal">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">respaldo_temporal</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delega la operación al ámbito que gestiona las tareas del proyecto.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_proyecto</span><span class="o">.</span><span class="n">crear_respaldo_temporal</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Gestor.restablecer_todo">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.restablecer_todo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">restablecer_todo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Vacía el contenido de las tablas y las notas, y  elimina el gráfico</span>
+<span class="sd">        generado.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ruta_notas</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">notas</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_proposiciones</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>
+        <span class="p">)</span> <span class="k">as</span> <span class="n">proposiciones</span><span class="p">:</span>
+            <span class="n">escritor</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">proposiciones</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;§&quot;</span><span class="p">)</span>
+            <span class="n">escritor</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;ent1&quot;</span><span class="p">,</span> <span class="s2">&quot;rel&quot;</span><span class="p">,</span> <span class="s2">&quot;ent2&quot;</span><span class="p">,</span> <span class="s2">&quot;peso&quot;</span><span class="p">])</span>    
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_nodos</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">nodos</span><span class="p">:</span>
+            <span class="n">escritor</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">nodos</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;§&quot;</span><span class="p">)</span>
+            <span class="n">escritor</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;nodo&quot;</span><span class="p">])</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_vertices</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>
+        <span class="p">)</span> <span class="k">as</span> <span class="n">vertices</span><span class="p">:</span>
+            <span class="n">escritor</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;§&quot;</span><span class="p">)</span>
+            <span class="n">escritor</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;vertice&quot;</span><span class="p">])</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_propiedades_n</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>
+        <span class="p">)</span> <span class="k">as</span> <span class="n">propiedades_n</span><span class="p">:</span>
+            <span class="n">escritor</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">propiedades_n</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;§&quot;</span><span class="p">)</span>
+            <span class="n">encabezado</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_nodos</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="n">escritor</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">encabezado</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_propiedades_v</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>
+        <span class="p">)</span> <span class="k">as</span> <span class="n">propiedades_v</span><span class="p">:</span>
+            <span class="n">escritor</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">propiedades_v</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;§&quot;</span><span class="p">)</span>
+            <span class="n">encabezado</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_vertices</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="n">escritor</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">encabezado</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">archivo</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ruta_resultados</span><span class="p">):</span>
+            <span class="n">ruta_archivo</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ruta_resultados</span><span class="p">,</span> <span class="n">archivo</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">ruta_archivo</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">ruta_archivo</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_proyecto</span><span class="o">.</span><span class="n">eliminar_estados_temporales</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Gestor.vertices_existentes">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor.vertices_existentes">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">vertices_existentes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retorna las proposiciones agrupadas por el vértice que las vincula.</span>
+<span class="sd">        Delega la operación al ámbito que gestiona las tareas de edición.</span>
+
+<span class="sd">        :return: Los vértices registrados y las proposiciones de las que son parte.</span>
+<span class="sd">        :rtype: dict[str, list[list[str | None]]]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_edicion</span><span class="o">.</span><span class="n">vertices_registrados</span><span class="p">()</span></div>
+
+        
+<div class="viewcode-block" id="Gestor._actualizar_imagen">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor._actualizar_imagen">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_actualizar_imagen</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">area</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">aviso</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Actualiza el artefacto que muestra el diagrama y oculta</span>
+<span class="sd">        los avisos que indicaban el inicio de las operaciones que</span>
+<span class="sd">        modifican al diagrama, o avisa cuando no es necesario volver</span>
+<span class="sd">        a generar el gráfico.</span>
+<span class="sd">        </span>
+<span class="sd">        :param area: El área de los avisos a mostrar u ocultar.</span>
+<span class="sd">        :type area: str</span>
+<span class="sd">        :param aviso: El contenido del aviso.</span>
+<span class="sd">        :type aviso: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">area</span> <span class="o">==</span> <span class="s2">&quot;texto&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">aviso</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_texto</span><span class="o">.</span><span class="n">mostrar_aviso</span><span class="p">(</span><span class="n">aviso</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Solo se actualiza la imagen cuando el aviso es vacío</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_grafico</span><span class="o">.</span><span class="n">cargar_imagen</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ruta_png</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_edicion</span><span class="o">.</span><span class="n">volver_a_cargar_nodos</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_edicion</span><span class="o">.</span><span class="n">volver_a_cargar_vertices</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_edicion</span><span class="o">.</span><span class="n">volver_a_cargar_relaciones</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_texto</span><span class="o">.</span><span class="n">ocultar_aviso</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">area</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;e&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_grafico</span><span class="o">.</span><span class="n">actualizar_cuadro</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_grafico</span><span class="o">.</span><span class="n">cargar_imagen</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ruta_png</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">area</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;g&quot;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_edicion</span><span class="o">.</span><span class="n">ocultar_aviso_grafo</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="n">area</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">):</span>    
+                <span class="bp">self</span><span class="o">.</span><span class="n">_edicion</span><span class="o">.</span><span class="n">volver_a_cargar_relaciones</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_edicion</span><span class="o">.</span><span class="n">ocultar_aviso_relacion</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="n">area</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;v&quot;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_edicion</span><span class="o">.</span><span class="n">ocultar_aviso_nodo</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_edicion</span><span class="o">.</span><span class="n">ocultar_aviso_vertice</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">area</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">aviso</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">mostrar_aviso</span><span class="p">(</span><span class="n">aviso</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">ocultar_aviso</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Gestor._actualizar_texto">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor._actualizar_texto">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_actualizar_texto</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texto</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Ubica el contenido extraído en el artefacto de texto desplazable.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_texto</span><span class="o">.</span><span class="n">cargar_texto_retornado</span><span class="p">(</span><span class="n">texto</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gestor._borrar_ultima_proposicion">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor._borrar_ultima_proposicion">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_borrar_ultima_proposicion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Elimina de la tabla de proposiciones el último ingreso y remueve</span>
+<span class="sd">        de las otras tablas los elementos que quedaron sin relación. Args</span>
+<span class="sd">        captura la tupla vacía que recibe cuando es llamado para que se</span>
+<span class="sd">        ejecute en segundo plano.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Borra la última fila de la tabla de proposiciones       </span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_proposiciones</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>
+        <span class="p">)</span> <span class="k">as</span> <span class="n">proposiciones</span><span class="p">:</span>
+            <span class="n">registros</span> <span class="o">=</span> <span class="n">proposiciones</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+            <span class="c1"># Previene que se borre el encabezado</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">registros</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cola_avisos</span><span class="o">.</span><span class="n">put</span><span class="p">((</span><span class="s2">&quot;img&quot;</span><span class="p">,</span><span class="s2">&quot;texto&quot;</span><span class="p">,</span><span class="s2">&quot;No hay más proposiciones&quot;</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">actualizar</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+                <span class="k">return</span>
+        <span class="c1"># Escribir todas menos la última</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_proposiciones</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>
+        <span class="p">)</span> <span class="k">as</span> <span class="n">archivo</span><span class="p">:</span>
+            <span class="n">archivo</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">registros</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="c1"># Obtengo los ids</span>
+        <span class="n">l_aux</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">registros</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mi">167</span><span class="p">))</span>
+        <span class="n">ids</span><span class="p">:</span> <span class="nb">dict</span><span class="o">=</span><span class="p">{}</span>
+        <span class="n">ids</span><span class="p">[</span><span class="s2">&quot;ent1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">l_aux</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">ids</span><span class="p">[</span><span class="s2">&quot;rel&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">l_aux</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>      
+        <span class="n">ids</span><span class="p">[</span><span class="s2">&quot;ent2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">l_aux</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>            
+        <span class="c1"># Identifico los elementos a borrar</span>
+        <span class="n">borrar_ent1</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">borrar_rel</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">borrar_ent2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">for</span> <span class="n">registro</span> <span class="ow">in</span> <span class="n">registros</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">salir</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="ow">not</span> <span class="n">borrar_ent1</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">borrar_rel</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">borrar_ent2</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">salir</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="n">l_aux</span> <span class="o">=</span> <span class="n">registro</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mi">167</span><span class="p">))</span>
+            <span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="n">borrar_ent1</span><span class="p">:</span>
+                <span class="n">cond</span> <span class="o">=</span> <span class="p">(</span><span class="n">ids</span><span class="p">[</span><span class="s2">&quot;ent1&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">l_aux</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="n">ids</span><span class="p">[</span><span class="s2">&quot;ent1&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">l_aux</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+                    <span class="n">borrar_ent1</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="n">borrar_rel</span><span class="p">:</span>
+                <span class="n">cond</span> <span class="o">=</span> <span class="n">ids</span><span class="p">[</span><span class="s2">&quot;rel&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">l_aux</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+                    <span class="n">borrar_rel</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="n">borrar_ent2</span><span class="p">:</span>
+                <span class="n">cond</span> <span class="o">=</span> <span class="p">(</span><span class="n">ids</span><span class="p">[</span><span class="s2">&quot;ent2&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">l_aux</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="n">ids</span><span class="p">[</span><span class="s2">&quot;ent2&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">l_aux</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+                    <span class="n">borrar_ent2</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="c1"># Borro los nodos y/o relaciones aisladas</span>
+        <span class="k">if</span> <span class="n">borrar_ent1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">borrar_de_tabla</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_nodos</span><span class="p">,</span> <span class="n">ids</span><span class="p">[</span><span class="s2">&quot;ent1&quot;</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">borrar_de_tabla</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_propiedades_n</span><span class="p">,</span> <span class="n">ids</span><span class="p">[</span><span class="s2">&quot;ent1&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">borrar_rel</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">borrar_de_tabla</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_vertices</span><span class="p">,</span> <span class="n">ids</span><span class="p">[</span><span class="s2">&quot;rel&quot;</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">borrar_de_tabla</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_propiedades_v</span><span class="p">,</span> <span class="n">ids</span><span class="p">[</span><span class="s2">&quot;rel&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">borrar_ent2</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">ids</span><span class="p">[</span><span class="s2">&quot;ent2&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">ids</span><span class="p">[</span><span class="s2">&quot;ent1&quot;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">borrar_de_tabla</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_nodos</span><span class="p">,</span> <span class="n">ids</span><span class="p">[</span><span class="s2">&quot;ent2&quot;</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">borrar_de_tabla</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_propiedades_n</span><span class="p">,</span> <span class="n">ids</span><span class="p">[</span><span class="s2">&quot;ent2&quot;</span><span class="p">])</span>           
+        <span class="c1"># Obtengo la ruta al grafo generado</span>
+        <span class="n">diagramador</span> <span class="o">=</span> <span class="n">diagrama</span><span class="o">.</span><span class="n">Diagramador</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ruta_png</span> <span class="o">=</span> <span class="n">diagramador</span><span class="o">.</span><span class="n">crear_grafo</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cola_avisos</span><span class="o">.</span><span class="n">put</span><span class="p">((</span><span class="s2">&quot;img&quot;</span><span class="p">,</span><span class="s2">&quot;texto&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actualizar</span><span class="o">.</span><span class="n">set</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Gestor._encolar_tarea">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor._encolar_tarea">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_encolar_tarea</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">llamada</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
+        <span class="n">cola</span><span class="p">:</span> <span class="n">queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">,</span>
+        <span class="n">var_control</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">bool</span><span class="p">],</span>
+        <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Encola una tarea para que se ejecute en segundo plano. Si no hay nada</span>
+<span class="sd">        en ejecución, inicia la operación.</span>
+
+<span class="sd">        :param llamada: La tarea a ejecutar.</span>
+<span class="sd">        :param type: Callable</span>
+<span class="sd">        :param cola: La cola de tareas.</span>
+<span class="sd">        :param type: queue.Queue</span>
+<span class="sd">        :param var_control: Una variable de control mutable.</span>
+<span class="sd">        :param type: list[bool]</span>
+<span class="sd">        :param args: Los argumentos de los métodos llamados.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cola</span><span class="o">.</span><span class="n">put</span><span class="p">((</span><span class="n">llamada</span><span class="p">,</span> <span class="n">args</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">var_control</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="n">var_control</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_procesar_tareas</span><span class="p">,</span>
+                <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">cola</span><span class="p">,</span> <span class="n">var_control</span><span class="p">),</span>
+                <span class="n">daemon</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Gestor._existen_proposiciones">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor._existen_proposiciones">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_existen_proposiciones</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Verifica si la tabla de proposiciones está vacía.</span>
+
+<span class="sd">        :return: El resultado de la verificación.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>      
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ruta_csv_proposiciones</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>
+        <span class="p">)</span> <span class="k">as</span> <span class="n">proposiciones</span><span class="p">:</span>
+            <span class="n">registros</span> <span class="o">=</span> <span class="n">proposiciones</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">registros</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="Gestor._guardar_en_segundo_plano">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor._guardar_en_segundo_plano">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_guardar_en_segundo_plano</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Guarda los cambios en el proyecto activo, cuando se usan el atajo</span>
+<span class="sd">        de teclado. Args captura la tupla vacía que recibe cuando es llamado</span>
+<span class="sd">        para que se ejecute en segundo plano.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ubicacion</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">directorio_activado</span>
+        <span class="n">nombre</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">nombre_proyecto</span>        
+        <span class="k">if</span> <span class="n">ubicacion</span> <span class="ow">and</span> <span class="n">nombre</span><span class="p">:</span>
+            <span class="n">aviso</span> <span class="o">=</span> <span class="s2">&quot;Guardando los cambios...&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cola_avisos</span><span class="o">.</span><span class="n">put</span><span class="p">((</span><span class="s2">&quot;img&quot;</span><span class="p">,</span> <span class="s2">&quot;texto&quot;</span><span class="p">,</span> <span class="n">aviso</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">actualizar</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">guardar_proyecto</span><span class="p">(</span><span class="n">ubicacion</span><span class="p">,</span> <span class="n">nombre</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">aviso</span> <span class="o">=</span> <span class="s2">&quot;No hay un proyecto activo&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cola_avisos</span><span class="o">.</span><span class="n">put</span><span class="p">((</span><span class="s2">&quot;img&quot;</span><span class="p">,</span> <span class="s2">&quot;texto&quot;</span><span class="p">,</span> <span class="n">aviso</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">actualizar</span><span class="o">.</span><span class="n">set</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Gestor._inicio_por_cambio_en_tema">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor._inicio_por_cambio_en_tema">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_inicio_por_cambio_en_tema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conservar_fondo</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delega la operación al ámbito que gestiona las tareas del proyecto.      </span>
+<span class="sd">        </span>
+<span class="sd">        :param conservar_fondo: Indicación de actualizar o no el color de fondo del grafo.</span>
+<span class="sd">        :type conservar_fondo: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_texto</span><span class="o">.</span><span class="n">mostrar_aviso</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Aplicando el tema </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_tema</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_encolar_tarea</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gestion_proyecto</span><span class="o">.</span><span class="n">reinicio_por_tema</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cola_proyecto</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tarea_proyecto</span><span class="p">,</span>
+            <span class="n">conservar_fondo</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gestor._observador">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor._observador">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_observador</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Llama a la actulización de las áreas y/o artefactos correspondientes,</span>
+<span class="sd">        cada vez que detecta que una tarea en segundo plano dió el aviso de</span>
+<span class="sd">        haber concluido la operación.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">actualizar</span><span class="o">.</span><span class="n">is_set</span><span class="p">():</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                    <span class="n">señal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cola_avisos</span><span class="o">.</span><span class="n">get_nowait</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">señal</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;img&quot;</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_actualizar_imagen</span><span class="p">(</span><span class="n">señal</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">señal</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+                    <span class="k">if</span> <span class="n">señal</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;txt&quot;</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_actualizar_texto</span><span class="p">(</span><span class="n">señal</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">except</span> <span class="n">queue</span><span class="o">.</span><span class="n">Empty</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">actualizar</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="c1"># Programo la próxima verificación</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id_tarea_pendiente</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_observador</span><span class="p">)</span></div>
+
+                               <span class="c1"># reducir a medio segundo</span>
+
+<div class="viewcode-block" id="Gestor._ocultar_avisos">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor._ocultar_avisos">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_ocultar_avisos</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Se encarga de ocultar las notificaciones que puedan estar visibles.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_texto</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_texto</span><span class="o">.</span><span class="n">ocultar_aviso</span><span class="p">()</span>
+<span class="c1">##        if not self._edicion is None:</span>
+<span class="c1">##            self._edicion.ocultar_aviso_relacion()</span>
+<span class="c1">##            self._edicion.ocultar_aviso_nodo()</span>
+<span class="c1">##            self._edicion.ocultar_aviso_vertice()</span>
+<span class="c1">##            self._edicion.ocultar_aviso_grafo()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_proyecto</span><span class="o">.</span><span class="n">ocultar_aviso</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id_ocultar_avisos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ocultar_avisos</span><span class="p">)</span></div>
+
+      
+<div class="viewcode-block" id="Gestor._procesar_tareas">
+<a class="viewcode-back" href="../../control.html#control.gestor.Gestor._procesar_tareas">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_procesar_tareas</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cola</span><span class="p">:</span> <span class="n">queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">,</span> <span class="n">var_control</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">bool</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Procesa las tareas que fueron encoladas para ser ejecutadas en segundo</span>
+<span class="sd">        plano.</span>
+<span class="sd">        </span>
+<span class="sd">        :param cola: La cola de tareas a procesar.</span>
+<span class="sd">        :type cola: queue.Queue</span>
+<span class="sd">        :param var_control: Una variable de control mutable.</span>
+<span class="sd">        :type var_control: list[bool]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="n">cola</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">tarea</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Callable</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">cola</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+                <span class="n">metodo</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">=</span> <span class="n">tarea</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">argumentos</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">tarea</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">metodo</span><span class="p">(</span><span class="n">argumentos</span><span class="p">)</span>
+                <span class="n">cola</span><span class="o">.</span><span class="n">task_done</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error en la tarea: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">var_control</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, errejotaeme.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

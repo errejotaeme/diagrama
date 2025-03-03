@@ -1,0 +1,560 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>componentes.secciones.seccion_nodo &mdash; documentación de Diagrama - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Diagrama
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dependencias.html">Configuración del entorno (<cite>Linux</cite>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">Módulos y paquetes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Diagrama</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">componentes.secciones.seccion_nodo</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para componentes.secciones.seccion_nodo</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">queue</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">ttk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz</span><span class="w"> </span><span class="kn">import</span> <span class="n">comunes</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz.componentes.elementos</span><span class="w"> </span><span class="kn">import</span> <span class="n">emergente</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aplicacion.interfaz.componentes.secciones.subsecciones</span><span class="w"> </span><span class="kn">import</span> <span class="n">nodo</span>
+
+
+<div class="viewcode-block" id="EdicionNodo">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_nodo.EdicionNodo">[documentos]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">EdicionNodo</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Clase encargada de construir los artefactos que permiten editar</span>
+<span class="sd">    los atributos de los nodos del diagrama.</span>
+
+<span class="sd">    :param ancestro: El artefacto que contiene al marco principal del área. </span>
+<span class="sd">    :type ancestro: tk.Frame</span>
+<span class="sd">    :param gestor: La instancia de la clase encargada de gestionar la comunicación entre los módulos y la interacción con las tablas.</span>
+<span class="sd">    :type gestor: Gestor </span>
+<span class="sd">    :param raiz: Ventana principal que controla el bucle de la aplicación.</span>
+<span class="sd">    :type raiz: Tk</span>
+<span class="sd">    &quot;&quot;&quot;</span>  
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ancestro</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">,</span> <span class="n">gestor</span><span class="p">,</span> <span class="n">raiz</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor de la clase EdicionNodo.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span> <span class="o">=</span> <span class="n">gestor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span> <span class="o">=</span> <span class="n">raiz</span>       
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nodos_existentes</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Contiene el id y valor de los nodos ingresados</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nodos_ubicados</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Contiene a los marcos generados dinámicamente</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pila_atributos_nodo</span><span class="p">:</span> <span class="n">queue</span><span class="o">.</span><span class="n">LifoQueue</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">LifoQueue</span><span class="p">()</span> <span class="c1"># Permite deshacer cambios</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_sec_nodo</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>  <span class="c1"># Se ubica con una señal del ancestro</span>
+            <span class="n">ancestro</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_lista_nodos</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_sec_nodo</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_lista_nodos</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span> 
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+        <span class="p">)</span>                
+        <span class="bp">self</span><span class="o">.</span><span class="n">_marco_ids_nodos</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_lista_nodos</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_marco_ids_nodos</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_construir_encab_nodos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_marco_ids_nodos</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_construir_lista_nodos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_lista_nodos</span><span class="p">)</span>       
+        <span class="bp">self</span><span class="o">.</span><span class="n">_edicion_nodo</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>  <span class="c1"># Contiene a la parte de edicion</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_sec_nodo</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_edicion_nodo</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_encabezado_ed_nodo</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_edicion_nodo</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_encabezado_ed_nodo</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nodo_individual</span><span class="p">:</span> <span class="n">nodo</span><span class="o">.</span><span class="n">EditorNodo</span> <span class="o">=</span> <span class="n">nodo</span><span class="o">.</span><span class="n">EditorNodo</span><span class="p">(</span>  <span class="c1"># Módulo de edición de nodo</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_edicion_nodo</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raiz</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opc_nodo</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodo_individual</span><span class="o">.</span><span class="n">artefacto</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opc_nodo</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_editar_nodo</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>  <span class="c1"># Botonera superior de la sección</span>
+            <span class="n">ancestro</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_construir_botonera_ed_nodo</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_editar_nodo</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodo_individual</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span>  <span class="c1"># Notificaciones</span>
+            <span class="n">ancestro</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_aviso</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;e&quot;</span>
+        <span class="p">)</span>        
+
+<div class="viewcode-block" id="EdicionNodo.activar_seccion">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_nodo.EdicionNodo.activar_seccion">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">activar_seccion</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Obtiene los nodos existentes y los ubica en el contenedor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_eliminar_nodos_existentes</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nodos_existentes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obtener_nodos</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lista_nodos</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lista_nodos</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>            
+        <span class="bp">self</span><span class="o">.</span><span class="n">_construir_lista_nodos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_lista_nodos</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cargar_nodos</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cargar_de_nuevo</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="EdicionNodo.forma_nodo">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_nodo.EdicionNodo.forma_nodo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forma_nodo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">forma</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Recibe la opción seleccionada en el menú asociado y la manda a ingresar</span>
+<span class="sd">        al diccionario de modificaciones pendientes.</span>
+
+<span class="sd">        :param forma: La forma del nodo.</span>
+<span class="sd">        :type forma: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nodo_individual</span><span class="o">.</span><span class="n">actualizar_forma</span><span class="p">(</span><span class="n">forma</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="EdicionNodo.mostrar_aviso">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_nodo.EdicionNodo.mostrar_aviso">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mostrar_aviso</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aviso</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Actualiza la etiqueta de avisos con el texto recibido.</span>
+
+<span class="sd">        :param aviso: La notificación a mostrar.</span>
+<span class="sd">        :type aviso: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">aviso</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="EdicionNodo.ocultar_aviso">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_nodo.EdicionNodo.ocultar_aviso">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ocultar_aviso</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Oculta el aviso que esté activo.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_aviso</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="EdicionNodo.olvidar_ubicacion">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_nodo.EdicionNodo.olvidar_ubicacion">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">olvidar_ubicacion</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Oculta el módulo cuando es seleccionado otro modo de edición.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_sec_nodo</span><span class="o">.</span><span class="n">grid_forget</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_editar_nodo</span><span class="o">.</span><span class="n">grid_forget</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="EdicionNodo.reiniciar_opciones">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_nodo.EdicionNodo.reiniciar_opciones">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reiniciar_opciones</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Restablece los valores por defecto de las entradas y los menú de</span>
+<span class="sd">        opciones.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nodo_individual</span><span class="o">.</span><span class="n">reiniciar_entradas</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_id_nodo_editar</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span></div>
+
+        
+<div class="viewcode-block" id="EdicionNodo.reiniciar_pila">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_nodo.EdicionNodo.reiniciar_pila">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reiniciar_pila</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Crea una nueva pila donde almacenar los cambios, olvidando la anterior.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pila_atributos_nodo</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">LifoQueue</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="EdicionNodo.ubicar">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_nodo.EdicionNodo.ubicar">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ubicar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Hace visible el módulo cuando se lo selecciona como modo de edición.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contenedor_sec_nodo</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_botonera_editar_nodo</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+        <span class="p">)</span></div>
+
+        
+<div class="viewcode-block" id="EdicionNodo.vaciar_atributos">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_nodo.EdicionNodo.vaciar_atributos">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">vaciar_atributos</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Vacía el diccionario que almacena los cambios por aplicar.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nodo_individual</span><span class="o">.</span><span class="n">reiniciar_cambios</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="EdicionNodo._apilar_atributos_nodo">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_nodo.EdicionNodo._apilar_atributos_nodo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_apilar_atributos_nodo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_nodo</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Obtiene los atributos del nodo a partir del id y los almacena.</span>
+
+<span class="sd">        :param id_nodo: El id del nodo del cual se obtienen los atributos.</span>
+<span class="sd">        :type id_nodo: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">nodo_editado</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">obtener_atributos</span><span class="p">(</span><span class="s2">&quot;nodo&quot;</span><span class="p">,</span> <span class="n">id_nodo</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pila_atributos_nodo</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">nodo_editado</span><span class="p">)</span></div>
+
+        
+<div class="viewcode-block" id="EdicionNodo._aplicar_cambios_nodo">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_nodo.EdicionNodo._aplicar_cambios_nodo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_aplicar_cambios_nodo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instancia</span><span class="p">:</span> <span class="n">nodo</span><span class="o">.</span><span class="n">EditorNodo</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> 
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Aplica la edición realizada sobre el nodo.</span>
+<span class="sd">        </span>
+<span class="sd">        :param instancia: El módulo de edición de nodo.</span>
+<span class="sd">        :type instancia: nodo.EditorNodo</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">operacion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">id_nodo</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id_nodo_editar</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="n">id_ok</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_comprobar_id_nodo</span><span class="p">(</span><span class="n">id_nodo</span><span class="p">)</span>
+        <span class="n">valores_ingresados_ok</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">instancia</span><span class="o">.</span><span class="n">actualizar_dict_nodo</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">id_ok</span> <span class="ow">and</span> <span class="n">valores_ingresados_ok</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_apilar_atributos_nodo</span><span class="p">(</span><span class="n">id_nodo</span><span class="p">)</span>
+            <span class="n">operacion</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">actualizar_elemento</span><span class="p">(</span>
+                <span class="s2">&quot;nodo&quot;</span><span class="p">,</span> <span class="n">id_nodo</span> <span class="p">,</span> <span class="n">instancia</span><span class="o">.</span><span class="n">obtener_cambios</span><span class="p">()</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">operacion</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">reiniciar_opciones</span><span class="p">()</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">vaciar_atributos</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_desapilar_atributos_nodo</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="EdicionNodo._cargar_de_nuevo">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_nodo.EdicionNodo._cargar_de_nuevo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cargar_de_nuevo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Vuelve visible la barra de desplazamiento vertical cuando la lista</span>
+<span class="sd">        de nodos es demasiado grande.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_marco_desplazable_n</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span>
+        <span class="n">alto</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_marco_desplazable_n</span><span class="o">.</span><span class="n">winfo_height</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">alto</span> <span class="o">&gt;</span> <span class="mi">270</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_barra_n</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ns&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_barra_n</span><span class="o">.</span><span class="n">grid_forget</span><span class="p">()</span></div>
+
+            
+<div class="viewcode-block" id="EdicionNodo._cargar_nodos">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_nodo.EdicionNodo._cargar_nodos">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cargar_nodos</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Ubica los nodos existentes en el contenedor de la lista de nodos.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">fila</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>       
+        <span class="k">for</span> <span class="n">id_nodo</span><span class="p">,</span> <span class="n">tex_nodo</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodos_existentes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">marco</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_marco_desplazable_n</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+            <span class="p">)</span>
+            <span class="n">t_aux</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">id_nodo</span> <span class="o">+</span> <span class="s2">&quot; :&quot;</span>
+            <span class="n">etq_id</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span>
+                <span class="n">marco</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">t_aux</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ayuda</span>
+            <span class="p">)</span>
+            <span class="n">etq_id</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+            <span class="n">valor_nodo</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Text</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">marco</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_filas_nodo</span><span class="p">)</span>
+            <span class="n">valor_nodo</span><span class="o">.</span><span class="n">tag_config</span><span class="p">(</span><span class="s2">&quot;entidad&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">tag_entidad</span><span class="p">)</span>
+            <span class="n">valor_nodo</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">,</span> <span class="n">tex_nodo</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+            <span class="n">valor_nodo</span><span class="o">.</span><span class="n">tag_add</span><span class="p">(</span><span class="s2">&quot;entidad&quot;</span><span class="p">,</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">)</span>
+            <span class="n">valor_nodo</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">DISABLED</span><span class="p">)</span> 
+            <span class="n">valor_nodo</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">marco</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="n">fila</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_nodos_ubicados</span><span class="p">[</span><span class="n">id_nodo</span><span class="p">]</span> <span class="o">=</span> <span class="n">marco</span>
+            <span class="n">fila</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+        
+<div class="viewcode-block" id="EdicionNodo._comprobar_id_nodo">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_nodo.EdicionNodo._comprobar_id_nodo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_comprobar_id_nodo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_nodo</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Verifica que el id ingresado sea válido.</span>
+
+<span class="sd">        :return: El resultado de la verificación.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">res</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">id_nodo</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodos_existentes</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_id_nodo_editar</span><span class="o">.</span><span class="n">focus_set</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_id_nodo_editar</span><span class="o">.</span><span class="n">select_range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span></div>
+
+
+<div class="viewcode-block" id="EdicionNodo._construir_botonera_ed_nodo">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_nodo.EdicionNodo._construir_botonera_ed_nodo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_construir_botonera_ed_nodo</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">ancestro</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">,</span> <span class="n">instancia</span><span class="p">:</span> <span class="n">nodo</span><span class="o">.</span><span class="n">EditorNodo</span> 
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Construye la botonera superior de la sección.</span>
+<span class="sd">        </span>
+<span class="sd">        :param ancestro: El artefacto que contiene a la botonera.</span>
+<span class="sd">        :type ancestro: tk.Frame</span>
+<span class="sd">        :param instancia: El módulo de edición de nodo.</span>
+<span class="sd">        :type instancia: nodo.EditorNodo</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Nota emergente (ne)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_id_n</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span> 
+            <span class="n">ancestro</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;( ? )&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ayuda</span>
+        <span class="p">)</span>
+        <span class="n">tex_ne</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Ingresar un ID de los disponibles en la lista de nodos&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ne_id_n</span><span class="p">:</span> <span class="n">emergente</span><span class="o">.</span><span class="n">NotaEmergente</span> <span class="o">=</span> <span class="n">emergente</span><span class="o">.</span><span class="n">NotaEmergente</span><span class="p">(</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_id_n</span><span class="p">,</span> <span class="n">tex_ne</span>           
+        <span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_id_n</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Enter&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ne_id_n</span><span class="o">.</span><span class="n">mostrar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_id_n</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Leave&gt;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ne_id_n</span><span class="o">.</span><span class="n">ocultar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ne_id_n</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+        <span class="c1"># Nodo a editar</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_id_nodo_editar</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span>
+            <span class="n">ancestro</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;ID:&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ayuda</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_id_nodo_editar</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id_nodo_editar</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_id_nodo_editar</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span> 
+            <span class="n">ancestro</span><span class="p">,</span>
+            <span class="n">textvariable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_id_nodo_editar</span><span class="p">,</span>
+            <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_entrada</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ingr_id_nodo_editar</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+        <span class="c1"># Botones</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_aplicar_cambios_nodo</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+            <span class="n">ancestro</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Aplicar&quot;</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">_aplicar_cambios_nodo</span><span class="p">(</span><span class="n">instancia</span><span class="p">),</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_aplicar</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_aplicar_cambios_nodo</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_deshacer_nodo</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+            <span class="n">ancestro</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Deshacer&quot;</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">_deshacer_ed_nodo</span><span class="p">(),</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_btn_restablecer</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_btn_deshacer_nodo</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="EdicionNodo._construir_encab_nodos">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_nodo.EdicionNodo._construir_encab_nodos">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_construir_encab_nodos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ancestro</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Construye el encabezado de la lista de nodos.</span>
+
+<span class="sd">        :param ancestro: El artefacto que contiene al encabezado.</span>
+<span class="sd">        :type ancestro: tk.Frame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sep_ids_nodos_sup</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Separator</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Separator</span><span class="p">(</span> 
+            <span class="n">ancestro</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;horizontal&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sep_ids_nodos_sup</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+        <span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ids_nodos</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span> 
+            <span class="n">ancestro</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;LISTA DE NODOS&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_etq_ayuda</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etq_ids_nodos</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+        <span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sep_ids_nodos_inf</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Separator</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Separator</span><span class="p">(</span>
+            <span class="n">ancestro</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;horizontal&quot;</span>
+        <span class="p">)</span>     
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sep_ids_nodos_inf</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">13</span><span class="p">)</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="EdicionNodo._construir_lista_nodos">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_nodo.EdicionNodo._construir_lista_nodos">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_construir_lista_nodos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ancestro</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Construye el contenedor donde se cargan dinámicamente</span>
+<span class="sd">        los nodos existentes.</span>
+
+<span class="sd">        :param ancestro: El artefacto que contiene a la lista de nodos.</span>
+<span class="sd">        :type ancestro: tk.Frame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_estilo_lista_n</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Style</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Style</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_estilo_lista_n</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;TFrame&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_estilo_lista_n</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span>
+            <span class="s2">&quot;ListaN.TFrame&quot;</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">comunes</span><span class="o">.</span><span class="n">color_fondo_gral</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lista_nodos</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>
+            <span class="n">ancestro</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;ListaN.TFrame&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lista_nodos</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cv_nodos</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Canvas</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Canvas</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lista_nodos</span><span class="p">,</span>
+            <span class="n">width</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span>
+            <span class="n">height</span><span class="o">=</span><span class="mi">280</span><span class="p">,</span>
+            <span class="n">highlightthickness</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">comunes</span><span class="o">.</span><span class="n">atrb_contenedor_artf</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_barra_n</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Scrollbar</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Scrollbar</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lista_nodos</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;vertical&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cv_nodos</span><span class="o">.</span><span class="n">yview</span>
+        <span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_marco_desplazable_n</span><span class="p">:</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Frame</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cv_nodos</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;ListaN.TFrame&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_marco_desplazable_n</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span>
+            <span class="s2">&quot;&lt;Configure&gt;&quot;</span><span class="p">,</span>
+            <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cv_nodos</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span>
+                <span class="n">scrollregion</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cv_nodos</span><span class="o">.</span><span class="n">bbox</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cv_nodos</span><span class="o">.</span><span class="n">create_window</span><span class="p">(</span>
+            <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">window</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_marco_desplazable_n</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s2">&quot;nw&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cv_nodos</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;ew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cv_nodos</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">yscrollcommand</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_barra_n</span><span class="o">.</span><span class="n">set</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="EdicionNodo._desapilar_atributos_nodo">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_nodo.EdicionNodo._desapilar_atributos_nodo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_desapilar_atributos_nodo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[()]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Desapila la última tupla ingresada con los atributos del nodo antes</span>
+<span class="sd">        de realizar los cambios.</span>
+
+<span class="sd">        :return: La tupla con los atributos anteriores.</span>
+<span class="sd">        :rtype: tuple[str, dict[str, str]] | tuple[()]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">res</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pila_atributos_nodo</span><span class="o">.</span><span class="n">get_nowait</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">res</span>
+        <span class="k">except</span> <span class="n">queue</span><span class="o">.</span><span class="n">Empty</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">()</span></div>
+
+        
+<div class="viewcode-block" id="EdicionNodo._deshacer_ed_nodo">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_nodo.EdicionNodo._deshacer_ed_nodo">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_deshacer_ed_nodo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Obtiene los atributos anteriores y los restablece.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cambios</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[()]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_desapilar_atributos_nodo</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cambios</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">cambios</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">lista_ids</span><span class="p">(</span><span class="s2">&quot;nodo&quot;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">actualizar_elemento</span><span class="p">(</span><span class="s2">&quot;nodo&quot;</span><span class="p">,</span> <span class="n">cambios</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cambios</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">reiniciar_opciones</span><span class="p">()</span> 
+                <span class="bp">self</span><span class="o">.</span><span class="n">vaciar_atributos</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="EdicionNodo._eliminar_nodos_existentes">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_nodo.EdicionNodo._eliminar_nodos_existentes">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_eliminar_nodos_existentes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Vacía las entradas con los nodos generadas dinámicamente.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">marco</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodos_ubicados</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">marco</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nodos_ubicados</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div>
+
+                
+<div class="viewcode-block" id="EdicionNodo._obtener_nodos">
+<a class="viewcode-back" href="../../../componentes.secciones.html#componentes.secciones.seccion_nodo.EdicionNodo._obtener_nodos">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_obtener_nodos</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Devuelve los nodos registrados hasta el momento.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gestor</span><span class="o">.</span><span class="n">nodos_existentes</span><span class="p">()</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, errejotaeme.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

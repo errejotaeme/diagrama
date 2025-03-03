@@ -1,0 +1,23 @@
+Paquete documentos
+==================
+
+Contiene a las clases encargadas de extraer el texto y generar el diagrama. Además, incluye a la carpeta `recursos` donde se almacenan los archivos necesarios para generar los diagramas y guardar los proyectos.
+
+
+Módulo documentos.contenido
+---------------------------
+
+.. automodule:: documentos.contenido
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+
+Módulo documentos.diagrama
+---------------------------
+
+.. automodule:: documentos.diagrama
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:

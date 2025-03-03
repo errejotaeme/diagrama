@@ -1,0 +1,29 @@
+Paquete componentes.pantallas
+=============================
+
+Módulo componentes.pantallas.pantalla\_guardar
+----------------------------------------------
+
+.. automodule:: componentes.pantallas.pantalla_guardar
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+
+Módulo componentes.pantallas.pantalla\_notas
+--------------------------------------------
+
+.. automodule:: componentes.pantallas.pantalla_notas
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+
+Módulo componentes.pantallas.pantalla\_relacion
+-----------------------------------------------
+
+.. automodule:: componentes.pantallas.pantalla_relacion
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:

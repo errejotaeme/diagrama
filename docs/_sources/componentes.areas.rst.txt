@@ -1,0 +1,38 @@
+Paquete componentes.areas
+=========================
+
+
+Módulo componentes.areas.edicion
+--------------------------------
+
+.. automodule:: componentes.areas.edicion
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Módulo componentes.areas.grafico
+--------------------------------
+
+.. automodule:: componentes.areas.grafico
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+
+Módulo componentes.areas.proyecto
+---------------------------------
+
+.. automodule:: componentes.areas.proyecto
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+
+Módulo componentes.areas.texto
+------------------------------
+
+.. automodule:: componentes.areas.texto
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:

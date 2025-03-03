@@ -1,0 +1,260 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paquete interfaz &mdash; documentación de Diagrama - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+      <script src="_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Paquete componentes" href="componentes.html" />
+    <link rel="prev" title="Módulo main" href="main.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Diagrama
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dependencias.html">Configuración del entorno</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modulos.html">Módulos y paquetes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="main.html">Módulo main</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Paquete interfaz</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="componentes.html">Paquete componentes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-interfaz.ventana">Módulo interfaz.ventana</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#interfaz.ventana.Bucle"><code class="docutils literal notranslate"><span class="pre">Bucle</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-interfaz.diseno">Módulo interfaz.diseño</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#interfaz.diseno.Interfaz"><code class="docutils literal notranslate"><span class="pre">Interfaz</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#modulo-interfaz-comunes">Módulo interfaz.comunes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="control.html">Paquete control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentos.html">Paquete documentos</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Diagrama</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modulos.html">Módulos y paquetes</a></li>
+      <li class="breadcrumb-item active">Paquete interfaz</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/interfaz.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="paquete-interfaz">
+<h1>Paquete interfaz<a class="headerlink" href="#paquete-interfaz" title="Link to this heading"></a></h1>
+<p>Contiene a todos los artefactos que componen la interfaz de usuario.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="componentes.html">Paquete componentes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="componentes.html#subpaquetes">Subpaquetes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="componentes.areas.html">Paquete componentes.areas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="componentes.areas.html#module-componentes.areas.edicion">Módulo componentes.areas.edicion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.areas.html#module-componentes.areas.grafico">Módulo componentes.areas.grafico</a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.areas.html#module-componentes.areas.proyecto">Módulo componentes.areas.proyecto</a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.areas.html#module-componentes.areas.texto">Módulo componentes.areas.texto</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="componentes.elementos.html">Paquete componentes.elementos</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="componentes.elementos.html#module-componentes.elementos.emergente">Módulo componentes.elementos.emergente</a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.elementos.html#module-componentes.elementos.opciones">Módulo componentes.elementos.opciones</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="componentes.pantallas.html">Paquete componentes.pantallas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="componentes.pantallas.html#module-componentes.pantallas.pantalla_guardar">Módulo componentes.pantallas.pantalla_guardar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.pantallas.html#module-componentes.pantallas.pantalla_notas">Módulo componentes.pantallas.pantalla_notas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.pantallas.html#module-componentes.pantallas.pantalla_relacion">Módulo componentes.pantallas.pantalla_relacion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="componentes.secciones.html">Paquete componentes.secciones</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.subsecciones.html">Paquete componentes.secciones.subsecciones</a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.html#module-componentes.secciones.seccion_grafo">Módulo componentes.secciones.seccion_grafo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.html#module-componentes.secciones.seccion_nodo">Módulo componentes.secciones.seccion_nodo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.html#module-componentes.secciones.seccion_relacion">Módulo componentes.secciones.seccion_relacion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="componentes.secciones.html#module-componentes.secciones.seccion_vertice">Módulo componentes.secciones.seccion_vertice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="module-interfaz.ventana">
+<span id="modulo-interfaz-ventana"></span><h2>Módulo interfaz.ventana<a class="headerlink" href="#module-interfaz.ventana" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="interfaz.ventana.Bucle">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">interfaz.ventana.</span></span><span class="sig-name descname"><span class="pre">Bucle</span></span><a class="reference internal" href="_modules/interfaz/ventana.html#Bucle"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#interfaz.ventana.Bucle" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de crear el bucle de la aplicación y gestionar el cambio
+de tema.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="interfaz.ventana.Bucle._cargar_colores">
+<span class="sig-name descname"><span class="pre">_cargar_colores</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/interfaz/ventana.html#Bucle._cargar_colores"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#interfaz.ventana.Bucle._cargar_colores" title="Link to this definition"></a></dt>
+<dd><p>Establece los colores de cada tema.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interfaz.ventana.Bucle._tema_claro">
+<span class="sig-name descname"><span class="pre">_tema_claro</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/interfaz/ventana.html#Bucle._tema_claro"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#interfaz.ventana.Bucle._tema_claro" title="Link to this definition"></a></dt>
+<dd><p>Actualiza las entradas de los diccionarios que definen el estilo
+de la aplicación.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interfaz.ventana.Bucle._tema_oscuro">
+<span class="sig-name descname"><span class="pre">_tema_oscuro</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/interfaz/ventana.html#Bucle._tema_oscuro"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#interfaz.ventana.Bucle._tema_oscuro" title="Link to this definition"></a></dt>
+<dd><p>Actualiza las entradas de los diccionarios que definen el estilo
+de la aplicación.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interfaz.ventana.Bucle.cambiar_tema">
+<span class="sig-name descname"><span class="pre">cambiar_tema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">diagrama_no_vacio</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proyecto_activo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texto_respaldo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/interfaz/ventana.html#Bucle.cambiar_tema"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#interfaz.ventana.Bucle.cambiar_tema" title="Link to this definition"></a></dt>
+<dd><p>Alterna entre el tema claro y el oscuro.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>diagrama_no_vacio</strong> (<em>bool</em>) – Indica si se debe actualizar el artefacto del área de gráfico para que coincida con el color de fondo del grafo.</p></li>
+<li><p><strong>proyecto_activo</strong> (<em>tuple</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – Datos que permiten volver a activar el proyecto que estaba abierto, al reiniciar por cambio en tema.</p></li>
+<li><p><strong>texto_respaldo</strong> (<em>str</em>) – Respaldo del contenido del área de texto que se vuelve a cargar cuando se reinicia por cambio de tema.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interfaz.ventana.Bucle.empezar">
+<span class="sig-name descname"><span class="pre">empezar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/interfaz/ventana.html#Bucle.empezar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#interfaz.ventana.Bucle.empezar" title="Link to this definition"></a></dt>
+<dd><p>Crea la ventana principal, configura sus dimensiones e instancia
+a la clase encargada de construir y desplegar los elementos de la
+aplicación.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-interfaz.diseno">
+<span id="modulo-interfaz-diseno"></span><h2>Módulo interfaz.diseño<a class="headerlink" href="#module-interfaz.diseno" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="interfaz.diseno.Interfaz">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">interfaz.diseño.</span></span><span class="sig-name descname"><span class="pre">Interfaz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bucle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tema</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">respaldo_pendiente</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diagrama_no_vacio</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proyecto_activo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raiz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texto_respaldo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/interfaz/dise%C3%B1o.html#Interfaz"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#interfaz.diseno.Interfaz" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de construir los componentes básicos de la aplicación.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bucle</strong> (<a class="reference internal" href="#interfaz.ventana.Bucle" title="interfaz.ventana.Bucle"><em>Bucle</em></a>) – Instancia de la clase encargada de crear el bucle de la aplicación y gestionar el cambio de tema.</p></li>
+<li><p><strong>tema</strong> (<em>str</em>) – El tema actual de la aplicacion.</p></li>
+<li><p><strong>respaldo_pendiente</strong> (<em>bool</em>) – Indica si se debe cargar el respaldo temporal guardado antes del reinicio por cambio de tema.</p></li>
+<li><p><strong>diagrama_no_vacio</strong> (<em>bool</em>) – Indica si se debe actualizar el artefacto del área de gráfico para que coincida con el color de fondo del grafo.</p></li>
+<li><p><strong>proyecto_activo</strong> (<em>tuple</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – Datos que permiten volver a activar el proyecto que estaba abierto, al reiniciar por cambio en tema.</p></li>
+<li><p><strong>raiz</strong> (<em>Tk</em>) – Ventana principal que controla el bucle de la aplicación.</p></li>
+<li><p><strong>texto_respaldo</strong> (<em>str</em>) – Respaldo del contenido del área de texto que se vuelve a cargar cuando se reinicia por cambio de tema.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="interfaz.diseno.Interfaz.desplegar">
+<span class="sig-name descname"><span class="pre">desplegar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/interfaz/dise%C3%B1o.html#Interfaz.desplegar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#interfaz.diseno.Interfaz.desplegar" title="Link to this definition"></a></dt>
+<dd><p>Instancia y ordena los elementos en la ventana principal.
+Da inicio al bucle de la aplicación.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="modulo-interfaz-comunes">
+<h2>Módulo interfaz.comunes<a class="headerlink" href="#modulo-interfaz-comunes" title="Link to this heading"></a></h2>
+<p>Módulo que contiene las estructuras de datos usadas para dar estilo a la aplicación y el diagrama. Además almacena las opciones disponibles en los menús y algunos datos requeridos por el Gestor y el área de edición.</p>
+<span class="target" id="module-interfaz.comunes"></span></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="main.html" class="btn btn-neutral float-left" title="Módulo main" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="componentes.html" class="btn btn-neutral float-right" title="Paquete componentes" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, errejotaeme.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+Módulo diseño
+=============
+
+.. automodule:: diseño
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:

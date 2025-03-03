@@ -1,0 +1,41 @@
+subsecciones package
+====================
+
+Submodules
+----------
+
+subsecciones.grafo module
+-------------------------
+
+.. automodule:: subsecciones.grafo
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+
+subsecciones.nodo module
+------------------------
+
+.. automodule:: subsecciones.nodo
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+
+subsecciones.vertice module
+---------------------------
+
+.. automodule:: subsecciones.vertice
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+
+Module contents
+---------------
+
+.. automodule:: subsecciones
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:

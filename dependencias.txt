@@ -1,0 +1,4 @@
+PyMuPDF
+graphviz
+Pillow
+psutil

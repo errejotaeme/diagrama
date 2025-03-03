@@ -1,0 +1,838 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paquete ambitos &mdash; documentación de Diagrama - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Diagrama
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dependencias.html">Configuración del entorno (<cite>Linux</cite>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Módulos y paquetes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Diagrama</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Paquete ambitos</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/ambitos.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="paquete-ambitos">
+<h1>Paquete ambitos<a class="headerlink" href="#paquete-ambitos" title="Link to this heading"></a></h1>
+<section id="module-ambitos.gestion_edicion">
+<span id="modulo-ambitos-gestion-edicion"></span><h2>Módulo ambitos.gestion_edicion<a class="headerlink" href="#module-ambitos.gestion_edicion" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ambitos.gestion_edicion.</span></span><span class="sig-name descname"><span class="pre">GestionEdicion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gestor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proposiciones</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prop_nodos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prop_vertices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de gestionar las operaciones del área de edición.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gestor</strong> (<a class="reference internal" href="control.html#control.gestor.Gestor" title="control.gestor.Gestor"><em>Gestor</em></a>) – Gestiona la comunicación entre los módulos y la interacción con las tablas.</p></li>
+<li><p><strong>proposiciones</strong> (<em>Path</em>) – Ruta a la tabla de proposiciones.</p></li>
+<li><p><strong>nodos</strong> (<em>Path</em>) – Ruta a la tabla de nodos.</p></li>
+<li><p><strong>vertices</strong> (<em>Path</em>) – Ruta a la tabla de vértices.</p></li>
+<li><p><strong>prop_nodos</strong> (<em>Path</em>) – Ruta a la tabla con las propiedades de los nodos.</p></li>
+<li><p><strong>prop_vertices</strong> (<em>Path</em>) – Ruta a la tabla con las propiedades de los vértices.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion._actualizar_atributos_grafo">
+<span class="sig-name descname"><span class="pre">_actualizar_atributos_grafo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cambios_grafo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion._actualizar_atributos_grafo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion._actualizar_atributos_grafo" title="Link to this definition"></a></dt>
+<dd><p>Actualiza las entradas del diccionario con los atributos del grafo.
+Algunas claves pueden no existir. Utiliza un indicador que previene
+realizar la gestión del justificado en los valores de nodos y vértices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cambios_grafo</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – Las modificaciones ingresadas en edición de grafo.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion._actualizar_fila">
+<span class="sig-name descname"><span class="pre">_actualizar_fila</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tabla</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_elem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cambios</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion._actualizar_fila"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion._actualizar_fila" title="Link to this definition"></a></dt>
+<dd><p>Reemplaza en la tabla correspondiente, la fila del elemento cuyo id
+recibe como argumento, con los cambios contenidos en el diccionario.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tabla</strong> (<em>Path</em>) – La ruta a la tabla.</p></li>
+<li><p><strong>id_elem</strong> (<em>str</em>) – El id del elemento a modificar.</p></li>
+<li><p><strong>cambios</strong> (<em>dict</em><em>[</em><em>str. str</em><em>]</em>) – Los nuevos valores.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion._actualizar_peso">
+<span class="sig-name descname"><span class="pre">_actualizar_peso</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_vertice</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">peso</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion._actualizar_peso"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion._actualizar_peso" title="Link to this definition"></a></dt>
+<dd><p>Modifica en la tabla de proposiciones el peso de las relaciones que
+incluyen al vértice cuyo id recibe como argumento.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_vertice</strong> (<em>str</em>) – El id del vértice.</p></li>
+<li><p><strong>peso</strong> (<em>str</em>) – El nuevo peso de la relación.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion._actualizar_propiedades">
+<span class="sig-name descname"><span class="pre">_actualizar_propiedades</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tabla</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cambios</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion._actualizar_propiedades"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion._actualizar_propiedades" title="Link to this definition"></a></dt>
+<dd><p>Actualiza todos los registros de la tabla que recibe como argumento,
+con los cambios almacenados en el diccionario.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tabla</strong> (<em>Path</em>) – La ruta a la tabla de propiedades a modificar.</p></li>
+<li><p><strong>cambios</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – Los nuevos valores.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion._borrar_elementos_aislados">
+<span class="sig-name descname"><span class="pre">_borrar_elementos_aislados</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ids_a_borrar</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion._borrar_elementos_aislados"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion._borrar_elementos_aislados" title="Link to this definition"></a></dt>
+<dd><p>Encuentra y elimina los elementos no incluidos en alguna proposición
+de las tablas de nodos, vertices y propiedades.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ids_a_borrar</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Los candidatos a ser borrados.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion._borrar_fila_proposicion">
+<span class="sig-name descname"><span class="pre">_borrar_fila_proposicion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indice</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion._borrar_fila_proposicion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion._borrar_fila_proposicion" title="Link to this definition"></a></dt>
+<dd><p>Borra la fila indicada por el índice y devuelve los ids de los
+elementos de la proposición eliminada.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>indice</strong> (<em>str</em>) – El índice de la fila a borrar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion._editar_campo">
+<span class="sig-name descname"><span class="pre">_editar_campo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tabla</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">campo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_elem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion._editar_campo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion._editar_campo" title="Link to this definition"></a></dt>
+<dd><p>Modifica el campo de la tabla con el valor recibido, del elemento
+cuyo id también recibe como argumento.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tabla</strong> (<em>Path</em>) – La ruta a la tabla a modificar.</p></li>
+<li><p><strong>campo</strong> (<em>str</em>) – El campo que se debe modificar.</p></li>
+<li><p><strong>id_elem</strong> (<em>str</em>) – El id del elemento.</p></li>
+<li><p><strong>valor</strong> (<em>str</em>) – El nuevo valor.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion._editar_registro">
+<span class="sig-name descname"><span class="pre">_editar_registro</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tabla</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_elem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion._editar_registro"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion._editar_registro" title="Link to this definition"></a></dt>
+<dd><p>Modifica un registro de la tabla de nodos o vértices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tabla</strong> (<em>Path</em>) – La ruta a la tabla a modificar.</p></li>
+<li><p><strong>id_elem</strong> (<em>str</em>) – El id del elemento.</p></li>
+<li><p><strong>valor</strong> (<em>str</em>) – El nuevo valor.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion._escribir_en_tablas">
+<span class="sig-name descname"><span class="pre">_escribir_en_tablas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">valores</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cambios</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion._escribir_en_tablas"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion._escribir_en_tablas" title="Link to this definition"></a></dt>
+<dd><p>Actualiza las tablas de nodos, vértices y propiedades con los valores
+ingresados al modificar una relación.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>valores</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Los nuevos valores de nodos y/o vértices.</p></li>
+<li><p><strong>cambios</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>tuple</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em><em>]</em>) – Los cambios en los atributos de los elementos.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion._gestionar_justificado">
+<span class="sig-name descname"><span class="pre">_gestionar_justificado</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">valores</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion._gestionar_justificado"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion._gestionar_justificado" title="Link to this definition"></a></dt>
+<dd><p>Alinea la modificación ingresada según los valores establecidos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>valores</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – La modificación ingresada.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Las cadenas de texto alineadas según el criterio existente.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion._normalizar_tablas">
+<span class="sig-name descname"><span class="pre">_normalizar_tablas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion._normalizar_tablas"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion._normalizar_tablas" title="Link to this definition"></a></dt>
+<dd><p>Envía cada una de las tablas a un método que les aplica el criterio
+existente.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion._obtener_ids">
+<span class="sig-name descname"><span class="pre">_obtener_ids</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tabla</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion._obtener_ids"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion._obtener_ids" title="Link to this definition"></a></dt>
+<dd><p>Retorna una lista con los ids de la tabla de nodos o vértices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tabla</strong> (<em>Path</em>) – La ruta a la tabla.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>La lista de ids.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion._obtener_indice_registro">
+<span class="sig-name descname"><span class="pre">_obtener_indice_registro</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tabla</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_elem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion._obtener_indice_registro"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion._obtener_indice_registro" title="Link to this definition"></a></dt>
+<dd><p>Retorna el índice de la fila de la tabla que coincide con el id
+recibido como argumento.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tabla</strong> (<em>Path</em>) – La ruta a la tabla donde buscar.</p></li>
+<li><p><strong>id_elem</strong> (<em>str</em>) – El id del elemento.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>El índice de la fila.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion._ordenar">
+<span class="sig-name descname"><span class="pre">_ordenar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tabla</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columna</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion._ordenar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion._ordenar" title="Link to this definition"></a></dt>
+<dd><p>Aplica el justificado existente a los campos de texto de cada fila
+de la tabla recibida.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tabla</strong> (<em>Path</em>) – La ruta a la tabla a ordenar.</p></li>
+<li><p><strong>columna</strong> (<em>str</em>) – Un indicador que permite aplicar un proceso diferente según la estructura de la tabla.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion._valor_entidad">
+<span class="sig-name descname"><span class="pre">_valor_entidad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tabla</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_entidad</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion._valor_entidad"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion._valor_entidad" title="Link to this definition"></a></dt>
+<dd><p>Retorna el valor de texto del elemento cuyo id recibe como argumento,
+sin el justificado. Esto permite comparar realmente los cambios
+ingresados con los valores existentes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tabla</strong> (<em>Path</em>) – La tabla en la cual buscar.</p></li>
+<li><p><strong>id_entidad</strong> (<em>str</em>) – El id del elemento.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>El valor de texto del elemento.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion.atributos_de_elemento">
+<span class="sig-name descname"><span class="pre">atributos_de_elemento</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tipo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_elem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion.atributos_de_elemento"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion.atributos_de_elemento" title="Link to this definition"></a></dt>
+<dd><p>Retorna los atributos del nodo o vértice cuyo id recibe como argumento.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tipo</strong> (<em>str</em>) – El tipo de elemento (nodo o vértice).</p></li>
+<li><p><strong>id_elem</strong> (<em>str</em>) – El id del elemento.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Los atributos del elemento.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[str, dict[str, str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion.borrar_relacion">
+<span class="sig-name descname"><span class="pre">borrar_relacion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion.borrar_relacion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion.borrar_relacion" title="Link to this definition"></a></dt>
+<dd><p>Elimina la proposición indicada de la tabla de proposiciones,  y de
+la tabla de nodos, vértices y propiedades cuando corresponde. Luego
+actualiza la vista.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>arg_id</strong> (<em>tuple</em><em>[</em><em>str</em><em>]</em>) – El id de la proposición a eliminar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion.enlazar_area">
+<span class="sig-name descname"><span class="pre">enlazar_area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edicion</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion.enlazar_area"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion.enlazar_area" title="Link to this definition"></a></dt>
+<dd><p>Conecta la instancia de gestión con el área que trabaja.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>edicion</strong> (<a class="reference internal" href="areas.html#areas.edicion.AreaEdicion" title="areas.edicion.AreaEdicion"><em>AreaEdicion</em></a>) – La instancia de la clase que permite editar el diagrama.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion.enviar">
+<span class="sig-name descname"><span class="pre">enviar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mensaje</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion.enviar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion.enviar" title="Link to this definition"></a></dt>
+<dd><p>Envía el mensaje recibido desde los OptionMenu al área correspondiente.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mensaje</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Una lista con la referencia de la instancia y la opción elegida.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion.ids_registrados">
+<span class="sig-name descname"><span class="pre">ids_registrados</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion.ids_registrados"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion.ids_registrados" title="Link to this definition"></a></dt>
+<dd><p>Retorna una lista con los ids registrados en la tabla de nodos o
+de vértices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>elem</strong> (<em>str</em>) – El tipo de los elementos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion.modificar_elemento">
+<span class="sig-name descname"><span class="pre">modificar_elemento</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg_elem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion.modificar_elemento"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion.modificar_elemento" title="Link to this definition"></a></dt>
+<dd><p>Actualiza los atributos de nodos y vértices con los ingresados
+en la sección edición.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>arg_elem</strong> (<em>tuple</em><em>[</em><em>str</em><em>, </em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em><em>]</em>) – Los cambios en el elemento.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion.modificar_grafo">
+<span class="sig-name descname"><span class="pre">modificar_grafo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg_cambios</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion.modificar_grafo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion.modificar_grafo" title="Link to this definition"></a></dt>
+<dd><p>Escribe las modificaciones en la tabla y aplica los cambios al
+diccionario de estilos para que los nuevos ingresos tengan los
+atributos definidos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>arg_cambios</strong> (<em>tuple</em><em>[</em><em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em><em>]</em>) – Los cambios en los atributos del grafo.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion.modificar_registros">
+<span class="sig-name descname"><span class="pre">modificar_registros</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg_cambios</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion.modificar_registros"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion.modificar_registros" title="Link to this definition"></a></dt>
+<dd><p>Registra las modificaciones realizadas en la sección relación
+a los elementos de una proposición específica. Actuliza en las
+tablas los registros de los que forman parte los elementos
+modificados.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>arg_cambios</strong> (<em>tuple</em><em>[</em><em>dict</em><em>[</em><em>str</em><em>, </em><em>tuple</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em><em>]</em><em>]</em>) – Los cambios en el elemento.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion.nodos_registrados">
+<span class="sig-name descname"><span class="pre">nodos_registrados</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion.nodos_registrados"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion.nodos_registrados" title="Link to this definition"></a></dt>
+<dd><p>Retorna los nodos registrados en la tabla.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Los nodos registrados.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str, str | None]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion.relaciones_registradas">
+<span class="sig-name descname"><span class="pre">relaciones_registradas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion.relaciones_registradas"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion.relaciones_registradas" title="Link to this definition"></a></dt>
+<dd><p>Retorna el número de fila y el registro correspondiente de las
+proposiciones en la tabla junto con el valor de cada id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Las prposiciones registradas.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[int, list[tuple[str, str]]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_edicion.GestionEdicion.vertices_registrados">
+<span class="sig-name descname"><span class="pre">vertices_registrados</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/ambitos/gestion_edicion.html#GestionEdicion.vertices_registrados"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_edicion.GestionEdicion.vertices_registrados" title="Link to this definition"></a></dt>
+<dd><p>Retorna, para cada vértice registrado en la tabla, una lista de las
+proposiciones de las que forma parte.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Los vértices registrados.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str, list[list[str | None]]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-ambitos.gestion_proyecto">
+<span id="modulo-ambitos-gestion-proyecto"></span><h2>Módulo ambitos.gestion_proyecto<a class="headerlink" href="#module-ambitos.gestion_proyecto" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ambitos.gestion_proyecto.GestionProyecto">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ambitos.gestion_proyecto.</span></span><span class="sig-name descname"><span class="pre">GestionProyecto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gestor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proposiciones</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prop_nodos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prop_vertices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ambitos/gestion_proyecto.html#GestionProyecto"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_proyecto.GestionProyecto" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de gestionar las operaciones del área de proyecto.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gestor</strong> (<a class="reference internal" href="control.html#control.gestor.Gestor" title="control.gestor.Gestor"><em>Gestor</em></a>) – Gestiona la comunicación entre los módulos y la interacción con las tablas.</p></li>
+<li><p><strong>proposiciones</strong> (<em>Path</em>) – Ruta a la tabla de proposiciones.</p></li>
+<li><p><strong>nodos</strong> (<em>Path</em>) – Ruta a la tabla de nodos.</p></li>
+<li><p><strong>vertices</strong> (<em>Path</em>) – Ruta a la tabla de vértices.</p></li>
+<li><p><strong>prop_nodos</strong> (<em>Path</em>) – Ruta a la tabla con las propiedades de los nodos.</p></li>
+<li><p><strong>prop_vertices</strong> (<em>Path</em>) – Ruta a la tabla con las propiedades de los vértices.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_proyecto.GestionProyecto._cargar_estado_grafo">
+<span class="sig-name descname"><span class="pre">_cargar_estado_grafo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">archivo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_proyecto.html#GestionProyecto._cargar_estado_grafo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_proyecto.GestionProyecto._cargar_estado_grafo" title="Link to this definition"></a></dt>
+<dd><p>Obtiene los atributos generales del diagrama y actualiza el diccionario
+de estilo del grafo. Se lo llama cuando se guarda un proyecto o cuando
+se reinicia por tema.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>archivo</strong> (<em>Path</em><em> | </em><em>str</em>) – La ubicación del archivo que contiene los artibutos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_proyecto.GestionProyecto._cargar_estado_nodos_vertices">
+<span class="sig-name descname"><span class="pre">_cargar_estado_nodos_vertices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">archivo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_proyecto.html#GestionProyecto._cargar_estado_nodos_vertices"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_proyecto.GestionProyecto._cargar_estado_nodos_vertices" title="Link to this definition"></a></dt>
+<dd><p>Obtiene los atributos de nodos y vértices y actualiza sus diccionarios
+de estilo. Se lo llama cuando se guarda un proyecto o cuando se reinicia
+por tema.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>archivo</strong> (<em>Path</em><em> | </em><em>str</em>) – La ubicación del archivo que contiene los atributos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_proyecto.GestionProyecto._eliminar_copiado">
+<span class="sig-name descname"><span class="pre">_eliminar_copiado</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lista</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_proyecto.html#GestionProyecto._eliminar_copiado"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_proyecto.GestionProyecto._eliminar_copiado" title="Link to this definition"></a></dt>
+<dd><p>Ayuda a vaciar la copia de la lista de necesarios al cargar un proyecto,
+permitiendo identificar los archivos faltantes en caso de error.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lista</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Una lista con los archivos necesarios para cargar un proyecto.</p></li>
+<li><p><strong>elem</strong> (<em>str</em>) – Un elemento de la lista.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_proyecto.GestionProyecto._guardar_estado_grafo">
+<span class="sig-name descname"><span class="pre">_guardar_estado_grafo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">archivo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_proyecto.html#GestionProyecto._guardar_estado_grafo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_proyecto.GestionProyecto._guardar_estado_grafo" title="Link to this definition"></a></dt>
+<dd><p>Registra los atributos generales del grafo en un archivo cuando
+se guarda un proyecto o al reinicio por cambio tema.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>archivo</strong> (<em>Path</em><em> | </em><em>str</em>) – La ruta al archivo donde guardar los atributos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_proyecto.GestionProyecto._guardar_estado_nodos_vertices">
+<span class="sig-name descname"><span class="pre">_guardar_estado_nodos_vertices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">archivo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_proyecto.html#GestionProyecto._guardar_estado_nodos_vertices"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_proyecto.GestionProyecto._guardar_estado_nodos_vertices" title="Link to this definition"></a></dt>
+<dd><p>Registra los atributos de nodos y vértices en un archivo cuando
+se guarda un proyecto o al reinicio por cambio tema.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>archivo</strong> (<em>Path</em><em> | </em><em>str</em>) – La ruta al archivo donde guardar los atributos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_proyecto.GestionProyecto.cargar_proyecto_guardado">
+<span class="sig-name descname"><span class="pre">cargar_proyecto_guardado</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directorio</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_proyecto.html#GestionProyecto.cargar_proyecto_guardado"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_proyecto.GestionProyecto.cargar_proyecto_guardado" title="Link to this definition"></a></dt>
+<dd><p>Método llamado al cargar un proyecto, al reiniciar por cambio de tema o
+cuando no se pudo cargar un proyecto guardado y se recupera el respaldo
+con los datos del estado anterior al intento de carga.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>directorio</strong> (<em>Path</em><em> | </em><em>str</em>) – La ubicación del proyecto guardado.</p></li>
+<li><p><strong>origen</strong> (<em>str</em>) – La procedencia de los archivos a cargar.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_proyecto.GestionProyecto.cargar_respaldo_temporal">
+<span class="sig-name descname"><span class="pre">cargar_respaldo_temporal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_proyecto.html#GestionProyecto.cargar_respaldo_temporal"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_proyecto.GestionProyecto.cargar_respaldo_temporal" title="Link to this definition"></a></dt>
+<dd><p>Carga el proyecto anterior, luego de que la operación de abrir uno
+existente no haya sido existosa o al reiniciar por cambio de tema.
+Args captura la tupla vacía que recibe cuando es llamado por el
+gestor para que se ejecute en segundo plano.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_proyecto.GestionProyecto.crear_respaldo_temporal">
+<span class="sig-name descname"><span class="pre">crear_respaldo_temporal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_proyecto.html#GestionProyecto.crear_respaldo_temporal"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_proyecto.GestionProyecto.crear_respaldo_temporal" title="Link to this definition"></a></dt>
+<dd><p>Registra el estado de la aplicación antes de intentar cargar
+un proyecto o al reiniciar por cambio de tema, copiando los
+archivos a la carpeta respaldo y creando dos archivos extra
+con las propiedades del diagrama.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_proyecto.GestionProyecto.eliminar_estados_temporales">
+<span class="sig-name descname"><span class="pre">eliminar_estados_temporales</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_proyecto.html#GestionProyecto.eliminar_estados_temporales"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_proyecto.GestionProyecto.eliminar_estados_temporales" title="Link to this definition"></a></dt>
+<dd><p>Elimina los archivos de respaldo con las propiedades del diagrama.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_proyecto.GestionProyecto.eliminar_respaldo_temporal">
+<span class="sig-name descname"><span class="pre">eliminar_respaldo_temporal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_proyecto.html#GestionProyecto.eliminar_respaldo_temporal"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_proyecto.GestionProyecto.eliminar_respaldo_temporal" title="Link to this definition"></a></dt>
+<dd><p>Elimina el directorio de respaldo con las tablas y el estado
+del diagrama, que fué creado antes de cargar un proyecto o al
+cambiar el tema de la aplicación. Args captura la tupla vacía
+que recibe cuando es llamado por el gestor para que se ejecute
+en segundo plano.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_proyecto.GestionProyecto.enlazar_area">
+<span class="sig-name descname"><span class="pre">enlazar_area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proyecto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edicion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grafico</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gestion_texto</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_proyecto.html#GestionProyecto.enlazar_area"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_proyecto.GestionProyecto.enlazar_area" title="Link to this definition"></a></dt>
+<dd><p>Conecta el ámbito de gestión con otros ámbitos y áreas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>proyecto</strong> (<a class="reference internal" href="areas.html#areas.proyecto.AreaProyecto" title="areas.proyecto.AreaProyecto"><em>AreaProyecto</em></a>) – La instancia de la clase que gestiona las opciones del proyecto.</p></li>
+<li><p><strong>edicion</strong> (<a class="reference internal" href="areas.html#areas.edicion.AreaEdicion" title="areas.edicion.AreaEdicion"><em>AreaEdicion</em></a>) – La instancia de la clase que permite editar el diagrama.</p></li>
+<li><p><strong>grafico</strong> (<a class="reference internal" href="areas.html#areas.grafico.AreaDeGrafico" title="areas.grafico.AreaDeGrafico"><em>AreaDeGrafico</em></a>) – La instancia de la clase que muestra el diagrama.</p></li>
+<li><p><strong>gestion_texto</strong> (<a class="reference internal" href="#ambitos.gestion_texto.GestionTexto" title="ambitos.gestion_texto.GestionTexto"><em>GestionTexto</em></a>) – La instancia del ámbito de control de las operaciones relacionadas a la carga de textos.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_proyecto.GestionProyecto.exportar_grafico">
+<span class="sig-name descname"><span class="pre">exportar_grafico</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args_exportar</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_proyecto.html#GestionProyecto.exportar_grafico"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_proyecto.GestionProyecto.exportar_grafico" title="Link to this definition"></a></dt>
+<dd><p>Guarda el diagrama en la ubicación recibida.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args_exportar</strong> (<em>tuple</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – Contiene la extensión del archivo y la ruta de salida.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_proyecto.GestionProyecto.guardar_proyecto_actual">
+<span class="sig-name descname"><span class="pre">guardar_proyecto_actual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_proyecto.html#GestionProyecto.guardar_proyecto_actual"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_proyecto.GestionProyecto.guardar_proyecto_actual" title="Link to this definition"></a></dt>
+<dd><p>Guardar las tablas y txt necesarios para poder recuperar el proyecto.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> (<em>tuple</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – Contiene la ruta a la carpeta y el nombre con el que se guardará el proyecto.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_proyecto.GestionProyecto.reinicio_por_tema">
+<span class="sig-name descname"><span class="pre">reinicio_por_tema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_proyecto.html#GestionProyecto.reinicio_por_tema"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_proyecto.GestionProyecto.reinicio_por_tema" title="Link to this definition"></a></dt>
+<dd><p>Método encargado de configurar el estilo del gráfico cuando se cambia
+el tema. Si el booleano que recibe como argumento es verdadero,
+recupera el estilo aplicado al diagrama antes del reinicio y los
+carga en los diccionarios de estilo y en el artefacto correspondiente.
+Al final llama al método encargado de cargar los datos respaldados.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> (<em>tuple</em><em>[</em><em>bool</em><em>]</em>) – La indicación de conservar los atributos del grafo o restablecerlos al cambiar entre los temas.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-ambitos.gestion_texto">
+<span id="modulo-ambitos-gestion-texto"></span><h2>Módulo ambitos.gestion_texto<a class="headerlink" href="#module-ambitos.gestion_texto" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ambitos.gestion_texto.GestionTexto">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ambitos.gestion_texto.</span></span><span class="sig-name descname"><span class="pre">GestionTexto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gestor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proposiciones</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prop_nodos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prop_vertices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ambitos/gestion_texto.html#GestionTexto"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_texto.GestionTexto" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de gestionar las operaciones del área de texto.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gestor</strong> (<a class="reference internal" href="control.html#control.gestor.Gestor" title="control.gestor.Gestor"><em>Gestor</em></a>) – Gestiona la comunicación entre los módulos y la interacción con las tablas.</p></li>
+<li><p><strong>proposiciones</strong> (<em>Path</em>) – Ruta a la tabla de proposiciones.</p></li>
+<li><p><strong>nodos</strong> (<em>Path</em>) – Ruta a la tabla de nodos.</p></li>
+<li><p><strong>vertices</strong> (<em>Path</em>) – Ruta a la tabla de vértices.</p></li>
+<li><p><strong>prop_nodos</strong> (<em>Path</em>) – Ruta a la tabla con las propiedades de los nodos.</p></li>
+<li><p><strong>prop_vertices</strong> (<em>Path</em>) – Ruta a la tabla con las propiedades de los vértices.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_texto.GestionTexto._agregar_nodo_a_tabla">
+<span class="sig-name descname"><span class="pre">_agregar_nodo_a_tabla</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_nodo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_texto.html#GestionTexto._agregar_nodo_a_tabla"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_texto.GestionTexto._agregar_nodo_a_tabla" title="Link to this definition"></a></dt>
+<dd><p>Antes de escribir, cambia los valores por defecto por los datos ingresados
+y el id generado.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_nodo</strong> (<em>int</em><em> | </em><em>str</em>) – El id del nodo a registrar.</p></li>
+<li><p><strong>valor</strong> (<em>str</em>) – El valor del nodo a registrar.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_texto.GestionTexto._gestionar_justificado">
+<span class="sig-name descname"><span class="pre">_gestionar_justificado</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proposicion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/ambitos/gestion_texto.html#GestionTexto._gestionar_justificado"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_texto.GestionTexto._gestionar_justificado" title="Link to this definition"></a></dt>
+<dd><p>Escapa y agrega el justificado en las entidades y el vínculo para que
+la proposición se escriba sin errores en la tabla.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>proposicion</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – La proposición ingresada.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_texto.GestionTexto._registrar_nodos">
+<span class="sig-name descname"><span class="pre">_registrar_nodos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proposicion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_texto.html#GestionTexto._registrar_nodos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_texto.GestionTexto._registrar_nodos" title="Link to this definition"></a></dt>
+<dd><p>Registra las entidades ingresadas en la tabla de nodos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>proposicion</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – La proposición ingresada.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_texto.GestionTexto._registrar_propiedades">
+<span class="sig-name descname"><span class="pre">_registrar_propiedades</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proposicion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_texto.html#GestionTexto._registrar_propiedades"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_texto.GestionTexto._registrar_propiedades" title="Link to this definition"></a></dt>
+<dd><p>Registra en las tablas de propiedades de nodos y vértices los nuevos
+elementos de la proposición ingresada.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>proposicion</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – La proposición ingresada.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_texto.GestionTexto._registrar_vertices">
+<span class="sig-name descname"><span class="pre">_registrar_vertices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proposicion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_texto.html#GestionTexto._registrar_vertices"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_texto.GestionTexto._registrar_vertices" title="Link to this definition"></a></dt>
+<dd><p>Registra el vínculo ingresado en la tabla de vértices y si la
+proposición no existe, la registra en la tabla de proposiciones.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>proposicion</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – La proposición ingresada.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Indicación sobre la existencia de la proposición.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_texto.GestionTexto.actualizar_ultimos_ids">
+<span class="sig-name descname"><span class="pre">actualizar_ultimos_ids</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_texto.html#GestionTexto.actualizar_ultimos_ids"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_texto.GestionTexto.actualizar_ultimos_ids" title="Link to this definition"></a></dt>
+<dd><p>Obtiene los últimos ids de nodos y vértices cuando se carga un proyecto.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_texto.GestionTexto.enlazar_area">
+<span class="sig-name descname"><span class="pre">enlazar_area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grafico</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edicion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texto</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_texto.html#GestionTexto.enlazar_area"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_texto.GestionTexto.enlazar_area" title="Link to this definition"></a></dt>
+<dd><p>Conecta la instancia de gestión con las áreas que trabaja.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>grafico</strong> (<a class="reference internal" href="areas.html#areas.grafico.AreaDeGrafico" title="areas.grafico.AreaDeGrafico"><em>AreaDeGrafico</em></a>) – La instancia de la clase que muestra el diagrama.</p></li>
+<li><p><strong>edicion</strong> (<a class="reference internal" href="areas.html#areas.edicion.AreaEdicion" title="areas.edicion.AreaEdicion"><em>AreaEdicion</em></a>) – La instancia de la clase que permite editar el diagrama.</p></li>
+<li><p><strong>texto</strong> (<a class="reference internal" href="areas.html#areas.texto.AreaDeTexto" title="areas.texto.AreaDeTexto"><em>AreaDeTexto</em></a>) – La instancia de la clase que permite cargar un texto.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_texto.GestionTexto.extraer">
+<span class="sig-name descname"><span class="pre">extraer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg_ruta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_texto.html#GestionTexto.extraer"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_texto.GestionTexto.extraer" title="Link to this definition"></a></dt>
+<dd><p>Instancia al Extractor de contenido, obtiene y retorna el texto
+del documento (.txt, .pdf) que recibe como argumento.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>arg_ruta</strong> (<em>str</em>) – La ruta al archivo.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>El texto del documento o «-1».</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ambitos.gestion_texto.GestionTexto.relacionar">
+<span class="sig-name descname"><span class="pre">relacionar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg_proposicion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ambitos/gestion_texto.html#GestionTexto.relacionar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#ambitos.gestion_texto.GestionTexto.relacionar" title="Link to this definition"></a></dt>
+<dd><p>Verifica y escribe en las tablas la proposición ingresada. Luego
+actualiza el gráfico.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>arg_proposicion</strong> (<em>tuple</em><em>[</em><em>list</em><em>[</em><em>str</em><em>]</em><em>]</em>) – La proposición ingresada.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, errejotaeme.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

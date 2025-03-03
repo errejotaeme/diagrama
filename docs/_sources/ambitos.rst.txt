@@ -1,0 +1,29 @@
+Paquete ambitos
+===============
+
+Módulo ambitos.gestion\_edicion
+-------------------------------
+
+.. automodule:: ambitos.gestion_edicion
+   :members:
+   :private-members: 
+   :show-inheritance:
+   :undoc-members:
+
+Módulo ambitos.gestion\_proyecto
+--------------------------------
+
+.. automodule:: ambitos.gestion_proyecto
+   :members:
+   :private-members: 
+   :show-inheritance:
+   :undoc-members:
+
+Módulo ambitos.gestion\_texto
+-----------------------------
+
+.. automodule:: ambitos.gestion_texto
+   :members:
+   :private-members: 
+   :show-inheritance:
+   :undoc-members:

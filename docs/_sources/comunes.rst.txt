@@ -1,0 +1,10 @@
+Módulo comunes
+==============
+
+Módulo que contiene las estructuras de datos usadas para dar estilo a la aplicación y el diagrama, y almacenar las opciones disponibles en los menús y los datos requeridos por las áreas y secciones.
+
+.. automodule:: comunes
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:

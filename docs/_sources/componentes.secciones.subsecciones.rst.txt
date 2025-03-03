@@ -1,0 +1,29 @@
+Paquete componentes.secciones.subsecciones
+==========================================
+
+Módulo componentes.secciones.subsecciones.grafo
+-----------------------------------------------
+
+.. automodule:: componentes.secciones.subsecciones.grafo
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+
+Módulo componentes.secciones.subsecciones.nodo
+----------------------------------------------
+
+.. automodule:: componentes.secciones.subsecciones.nodo
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+
+Módulo componentes.secciones.subsecciones.vertice
+-------------------------------------------------
+
+.. automodule:: componentes.secciones.subsecciones.vertice
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:

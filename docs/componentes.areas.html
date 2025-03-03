@@ -1,0 +1,792 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paquete componentes.areas &mdash; documentación de Diagrama - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+      <script src="_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Paquete componentes.elementos" href="componentes.elementos.html" />
+    <link rel="prev" title="Paquete componentes" href="componentes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Diagrama
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dependencias.html">Configuración del entorno</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modulos.html">Módulos y paquetes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="main.html">Módulo main</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="interfaz.html">Paquete interfaz</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="componentes.html">Paquete componentes</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="componentes.html#subpaquetes">Subpaquetes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="interfaz.html#module-interfaz.ventana">Módulo interfaz.ventana</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfaz.html#module-interfaz.diseno">Módulo interfaz.diseño</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfaz.html#modulo-interfaz-comunes">Módulo interfaz.comunes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="control.html">Paquete control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentos.html">Paquete documentos</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Diagrama</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modulos.html">Módulos y paquetes</a></li>
+          <li class="breadcrumb-item"><a href="interfaz.html">Paquete interfaz</a></li>
+          <li class="breadcrumb-item"><a href="componentes.html">Paquete componentes</a></li>
+      <li class="breadcrumb-item active">Paquete componentes.areas</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/componentes.areas.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="paquete-componentes-areas">
+<h1>Paquete componentes.areas<a class="headerlink" href="#paquete-componentes-areas" title="Link to this heading"></a></h1>
+<section id="module-componentes.areas.edicion">
+<span id="modulo-componentes-areas-edicion"></span><h2>Módulo componentes.areas.edicion<a class="headerlink" href="#module-componentes.areas.edicion" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="componentes.areas.edicion.AreaEdicion">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">componentes.areas.edicion.</span></span><span class="sig-name descname"><span class="pre">AreaEdicion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Notebook</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gestor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raiz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/componentes/areas/edicion.html#AreaEdicion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.edicion.AreaEdicion" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de construir las secciones que permiten modificar
+los atributos del diagrama.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ancestro</strong> (<em>ttk.Notebook</em>) – El artefacto que contiene al marco principal del área.</p></li>
+<li><p><strong>gestor</strong> (<a class="reference internal" href="control.html#control.gestor.Gestor" title="control.gestor.Gestor"><em>Gestor</em></a>) – Gestiona la comunicación entre los módulos y la interacción con las tablas.</p></li>
+<li><p><strong>raiz</strong> (<em>Tk</em>) – Ventana principal que controla el bucle de la aplicación.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.edicion.AreaEdicion._reiniciar_opciones">
+<span class="sig-name descname"><span class="pre">_reiniciar_opciones</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/edicion.html#AreaEdicion._reiniciar_opciones"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.edicion.AreaEdicion._reiniciar_opciones" title="Link to this definition"></a></dt>
+<dd><p>Vacía las entradas y restablece los menú de opciones.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.edicion.AreaEdicion._vaciar_dicc_atributos">
+<span class="sig-name descname"><span class="pre">_vaciar_dicc_atributos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/edicion.html#AreaEdicion._vaciar_dicc_atributos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.edicion.AreaEdicion._vaciar_dicc_atributos" title="Link to this definition"></a></dt>
+<dd><p>Al navegar entre secciones, vacía los diccionarios que almacenan las
+modificaciones a realizar, para prevenir cambios no deseados.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.edicion.AreaEdicion.artefacto">
+<span class="sig-name descname"><span class="pre">artefacto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Frame</span></span></span><a class="reference internal" href="_modules/componentes/areas/edicion.html#AreaEdicion.artefacto"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.edicion.AreaEdicion.artefacto" title="Link to this definition"></a></dt>
+<dd><p>Retorna el contenedor principal de la sección.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>El marco principal de la sección.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>tk.Frame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.edicion.AreaEdicion.cambio_en_crecimiento">
+<span class="sig-name descname"><span class="pre">cambio_en_crecimiento</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mensaje</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/edicion.html#AreaEdicion.cambio_en_crecimiento"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.edicion.AreaEdicion.cambio_en_crecimiento" title="Link to this definition"></a></dt>
+<dd><p>Envía a la sección correspondiente el mensaje recibido desde el Gestor
+con la actualización en el menú de opción que está asociado a este
+método.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mensaje</strong> (<em>str</em>) – La opción seleccionada.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.edicion.AreaEdicion.cambio_en_direccion">
+<span class="sig-name descname"><span class="pre">cambio_en_direccion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mensaje</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/edicion.html#AreaEdicion.cambio_en_direccion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.edicion.AreaEdicion.cambio_en_direccion" title="Link to this definition"></a></dt>
+<dd><p>Envía a la sección correspondiente el mensaje recibido desde el Gestor
+con la actualización en el menú de opción que está asociado a este
+método.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mensaje</strong> (<em>str</em>) – La opción seleccionada.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.edicion.AreaEdicion.cambio_en_flecha_d">
+<span class="sig-name descname"><span class="pre">cambio_en_flecha_d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mensaje</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/edicion.html#AreaEdicion.cambio_en_flecha_d"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.edicion.AreaEdicion.cambio_en_flecha_d" title="Link to this definition"></a></dt>
+<dd><p>Envía a la sección correspondiente el mensaje recibido desde el Gestor
+con la actualización en el menú de opción que está asociado a este
+método.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mensaje</strong> (<em>str</em>) – La opción seleccionada.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.edicion.AreaEdicion.cambio_en_flecha_t">
+<span class="sig-name descname"><span class="pre">cambio_en_flecha_t</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mensaje</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/edicion.html#AreaEdicion.cambio_en_flecha_t"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.edicion.AreaEdicion.cambio_en_flecha_t" title="Link to this definition"></a></dt>
+<dd><p>Envía a la sección correspondiente el mensaje recibido desde el Gestor
+con la actualización en el menú de opción que está asociado a este
+método.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mensaje</strong> (<em>str</em>) – La opción seleccionada.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.edicion.AreaEdicion.cambio_en_forma_nodo">
+<span class="sig-name descname"><span class="pre">cambio_en_forma_nodo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mensaje</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/edicion.html#AreaEdicion.cambio_en_forma_nodo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.edicion.AreaEdicion.cambio_en_forma_nodo" title="Link to this definition"></a></dt>
+<dd><p>Envía a la sección correspondiente el mensaje recibido desde el Gestor
+con la actualización en el menú de opción que está asociado a este
+método.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mensaje</strong> (<em>str</em>) – La opción seleccionada.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.edicion.AreaEdicion.cambio_en_justificado">
+<span class="sig-name descname"><span class="pre">cambio_en_justificado</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mensaje</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/edicion.html#AreaEdicion.cambio_en_justificado"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.edicion.AreaEdicion.cambio_en_justificado" title="Link to this definition"></a></dt>
+<dd><p>Envía a la sección correspondiente el mensaje recibido desde el Gestor
+con la actualización en el menú de opción que está asociado a este
+método.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mensaje</strong> (<em>str</em>) – La opción seleccionada.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.edicion.AreaEdicion.cambio_en_opc">
+<span class="sig-name descname"><span class="pre">cambio_en_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mensaje</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/edicion.html#AreaEdicion.cambio_en_opc"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.edicion.AreaEdicion.cambio_en_opc" title="Link to this definition"></a></dt>
+<dd><p>Recibe desde el Gestor un mensaje con alguna de las opciones del
+menú de edición, activa la sección recibida en el mensaje y oculta
+las que corresponde.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.edicion.AreaEdicion.mostrar_aviso_grafo">
+<span class="sig-name descname"><span class="pre">mostrar_aviso_grafo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aviso</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/edicion.html#AreaEdicion.mostrar_aviso_grafo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.edicion.AreaEdicion.mostrar_aviso_grafo" title="Link to this definition"></a></dt>
+<dd><p>Actualiza la etiqueta de avisos con el texto recibido.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>aviso</strong> (<em>str</em>) – La notificación a mostrar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.edicion.AreaEdicion.mostrar_aviso_nodo">
+<span class="sig-name descname"><span class="pre">mostrar_aviso_nodo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aviso</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/edicion.html#AreaEdicion.mostrar_aviso_nodo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.edicion.AreaEdicion.mostrar_aviso_nodo" title="Link to this definition"></a></dt>
+<dd><p>Actualiza la etiqueta de avisos de la sección Nodo
+con el texto recibido.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>aviso</strong> (<em>str</em>) – La notificación a mostrar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.edicion.AreaEdicion.mostrar_aviso_relacion">
+<span class="sig-name descname"><span class="pre">mostrar_aviso_relacion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aviso</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/edicion.html#AreaEdicion.mostrar_aviso_relacion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.edicion.AreaEdicion.mostrar_aviso_relacion" title="Link to this definition"></a></dt>
+<dd><p>Actualiza la etiqueta de avisos de la sección Relación
+con el texto recibido.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>aviso</strong> (<em>str</em>) – La notificación a mostrar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.edicion.AreaEdicion.mostrar_aviso_vertice">
+<span class="sig-name descname"><span class="pre">mostrar_aviso_vertice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aviso</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/edicion.html#AreaEdicion.mostrar_aviso_vertice"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.edicion.AreaEdicion.mostrar_aviso_vertice" title="Link to this definition"></a></dt>
+<dd><p>Actualiza la etiqueta de avisos de la sección Vértice
+con el texto recibido.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>aviso</strong> (<em>str</em>) – La notificación a mostrar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.edicion.AreaEdicion.ocultar_aviso_grafo">
+<span class="sig-name descname"><span class="pre">ocultar_aviso_grafo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/edicion.html#AreaEdicion.ocultar_aviso_grafo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.edicion.AreaEdicion.ocultar_aviso_grafo" title="Link to this definition"></a></dt>
+<dd><p>Oculta el aviso que esté visible.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.edicion.AreaEdicion.ocultar_aviso_nodo">
+<span class="sig-name descname"><span class="pre">ocultar_aviso_nodo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/edicion.html#AreaEdicion.ocultar_aviso_nodo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.edicion.AreaEdicion.ocultar_aviso_nodo" title="Link to this definition"></a></dt>
+<dd><p>Oculta el aviso que esté visible en la sección Nodo.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.edicion.AreaEdicion.ocultar_aviso_relacion">
+<span class="sig-name descname"><span class="pre">ocultar_aviso_relacion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/edicion.html#AreaEdicion.ocultar_aviso_relacion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.edicion.AreaEdicion.ocultar_aviso_relacion" title="Link to this definition"></a></dt>
+<dd><p>Oculta el aviso que esté visible en la sección Relación.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.edicion.AreaEdicion.ocultar_aviso_vertice">
+<span class="sig-name descname"><span class="pre">ocultar_aviso_vertice</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/edicion.html#AreaEdicion.ocultar_aviso_vertice"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.edicion.AreaEdicion.ocultar_aviso_vertice" title="Link to this definition"></a></dt>
+<dd><p>Oculta el aviso que esté visible en la sección Vértice.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.edicion.AreaEdicion.reiniciar_edicion">
+<span class="sig-name descname"><span class="pre">reiniciar_edicion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/edicion.html#AreaEdicion.reiniciar_edicion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.edicion.AreaEdicion.reiniciar_edicion" title="Link to this definition"></a></dt>
+<dd><p>Permite restablecer los valores iniciales de las secciones de edición.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.edicion.AreaEdicion.volver_a_cargar_nodos">
+<span class="sig-name descname"><span class="pre">volver_a_cargar_nodos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/edicion.html#AreaEdicion.volver_a_cargar_nodos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.edicion.AreaEdicion.volver_a_cargar_nodos" title="Link to this definition"></a></dt>
+<dd><p>Luego de realizada una modificación en los nodos desde la sección,
+actualiza las opciones disponibles incluyendo los nuevos datos. Para
+ello, vuelve a activar la sección actual.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.edicion.AreaEdicion.volver_a_cargar_relaciones">
+<span class="sig-name descname"><span class="pre">volver_a_cargar_relaciones</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/edicion.html#AreaEdicion.volver_a_cargar_relaciones"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.edicion.AreaEdicion.volver_a_cargar_relaciones" title="Link to this definition"></a></dt>
+<dd><p>Luego de realizada una modificación en las relaciones desde la sección,
+actualiza las opciones disponibles incluyendo los nuevos datos. Para
+ello, vuelve a activar la sección actual.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.edicion.AreaEdicion.volver_a_cargar_vertices">
+<span class="sig-name descname"><span class="pre">volver_a_cargar_vertices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/edicion.html#AreaEdicion.volver_a_cargar_vertices"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.edicion.AreaEdicion.volver_a_cargar_vertices" title="Link to this definition"></a></dt>
+<dd><p>Luego de realizada una modificación en los vértices desde la sección,
+actualiza las opciones disponibles incluyendo los nuevos datos. Para
+ello, vuelve a activar la sección actual.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-componentes.areas.grafico">
+<span id="modulo-componentes-areas-grafico"></span><h2>Módulo componentes.areas.grafico<a class="headerlink" href="#module-componentes.areas.grafico" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="componentes.areas.grafico.AreaDeGrafico">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">componentes.areas.grafico.</span></span><span class="sig-name descname"><span class="pre">AreaDeGrafico</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PanedWindow</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gestor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/componentes/areas/grafico.html#AreaDeGrafico"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.grafico.AreaDeGrafico" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de hacer visible el diagrama generado con cada nueva
+proposición.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ancestro</strong> (<em>PanedWindow</em>) – El artefacto que contiene al marco principal del área.</p></li>
+<li><p><strong>gestor</strong> (<a class="reference internal" href="control.html#control.gestor.Gestor" title="control.gestor.Gestor"><em>Gestor</em></a>) – Gestiona la comunicación entre los módulos y la interacción con las tablas.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.grafico.AreaDeGrafico._desplazar">
+<span class="sig-name descname"><span class="pre">_desplazar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">señal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/grafico.html#AreaDeGrafico._desplazar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.grafico.AreaDeGrafico._desplazar" title="Link to this definition"></a></dt>
+<dd><p>Método asociado a atajos de teclado para explorar el canvas usando
+las teclas de dirección.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>señal</strong> (<em>str</em>) – El sentido del desplazamiento.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.grafico.AreaDeGrafico._enfocar">
+<span class="sig-name descname"><span class="pre">_enfocar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/grafico.html#AreaDeGrafico._enfocar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.grafico.AreaDeGrafico._enfocar" title="Link to this definition"></a></dt>
+<dd><p>Método asociado a un evento «Enter». Cuando el mouse se posa sobre
+la imagen, pone el foco en el contenedor del canvas para permitir
+explorarla con las teclas de dirección.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.grafico.AreaDeGrafico._establecer_atajos">
+<span class="sig-name descname"><span class="pre">_establecer_atajos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/grafico.html#AreaDeGrafico._establecer_atajos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.grafico.AreaDeGrafico._establecer_atajos" title="Link to this definition"></a></dt>
+<dd><p>Vincula los artefactos con los atajos de teclado.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.grafico.AreaDeGrafico._redimensionar_img">
+<span class="sig-name descname"><span class="pre">_redimensionar_img</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/grafico.html#AreaDeGrafico._redimensionar_img"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.grafico.AreaDeGrafico._redimensionar_img" title="Link to this definition"></a></dt>
+<dd><p>Método asociado a atajos de teclado que permite hacer zoom sobre
+la imagen del diagrama.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>factor</strong> (<em>float</em>) – El factor de zoom.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.grafico.AreaDeGrafico._volver">
+<span class="sig-name descname"><span class="pre">_volver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">señal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/grafico.html#AreaDeGrafico._volver"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.grafico.AreaDeGrafico._volver" title="Link to this definition"></a></dt>
+<dd><p>Método asociado a atajos de teclado. Reenvía al Gestor la señal que
+recibe como argumento, para que la transmita a la sección que
+corresponde.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>señal</strong> (<em>int</em>) – Un entero que provoca un comportamiento específico en una sección o artefacto.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.grafico.AreaDeGrafico.actualizar_cuadro">
+<span class="sig-name descname"><span class="pre">actualizar_cuadro</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/grafico.html#AreaDeGrafico.actualizar_cuadro"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.grafico.AreaDeGrafico.actualizar_cuadro" title="Link to this definition"></a></dt>
+<dd><p>Cambia el color de fondo del canvas para que coincida con
+el color de fondo del grafo cuando se editan sus atributos.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.grafico.AreaDeGrafico.artefacto">
+<span class="sig-name descname"><span class="pre">artefacto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Frame</span></span></span><a class="reference internal" href="_modules/componentes/areas/grafico.html#AreaDeGrafico.artefacto"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.grafico.AreaDeGrafico.artefacto" title="Link to this definition"></a></dt>
+<dd><p>Retorna el contenedor principal de la sección.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>El marco principal de la sección.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>tk.Frame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.grafico.AreaDeGrafico.cargar_imagen">
+<span class="sig-name descname"><span class="pre">cargar_imagen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ruta_img</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/grafico.html#AreaDeGrafico.cargar_imagen"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.grafico.AreaDeGrafico.cargar_imagen" title="Link to this definition"></a></dt>
+<dd><p>La llama el Gestor para actualizar la imagen del canvas al agregar
+una proposición, al borrar la última o al editar algún atributo del
+diagrama.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ruta_img</strong> (<em>str</em>) – La ubicación del archivo png con el grafo generado por el Diagramador.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.grafico.AreaDeGrafico.ocultar_cuadro">
+<span class="sig-name descname"><span class="pre">ocultar_cuadro</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/grafico.html#AreaDeGrafico.ocultar_cuadro"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.grafico.AreaDeGrafico.ocultar_cuadro" title="Link to this definition"></a></dt>
+<dd><p>Actuliza el color del fondo del canvas y lo vuelve invisible.
+Además, actualiza el factor de zoom para olvidar el que se aplicó
+previamente.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-componentes.areas.proyecto">
+<span id="modulo-componentes-areas-proyecto"></span><h2>Módulo componentes.areas.proyecto<a class="headerlink" href="#module-componentes.areas.proyecto" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="componentes.areas.proyecto.AreaProyecto">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">componentes.areas.proyecto.</span></span><span class="sig-name descname"><span class="pre">AreaProyecto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Notebook</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gestor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raiz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/componentes/areas/proyecto.html#AreaProyecto"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.proyecto.AreaProyecto" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de permitir guardar, exportar o cargar un proyecto.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ancestro</strong> (<em>ttk.Notebook</em>) – El artefacto que contiene al marco principal del área.</p></li>
+<li><p><strong>gestor</strong> (<a class="reference internal" href="control.html#control.gestor.Gestor" title="control.gestor.Gestor"><em>Gestor</em></a>) – Gestiona la comunicación entre los módulos y la interacción con las tablas.</p></li>
+<li><p><strong>raiz</strong> (<em>Tk</em>) – Ventana principal que controla el bucle de la aplicación.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.proyecto.AreaProyecto._cargar_atajos">
+<span class="sig-name descname"><span class="pre">_cargar_atajos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/proyecto.html#AreaProyecto._cargar_atajos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.proyecto.AreaProyecto._cargar_atajos" title="Link to this definition"></a></dt>
+<dd><p>Muestra u oculta la sección de atajos de teclado.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.proyecto.AreaProyecto._cargar_proyecto">
+<span class="sig-name descname"><span class="pre">_cargar_proyecto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/proyecto.html#AreaProyecto._cargar_proyecto"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.proyecto.AreaProyecto._cargar_proyecto" title="Link to this definition"></a></dt>
+<dd><p>Abre un proyecto guardado. Si la operación falla, restaura los datos
+previos al intento de carga.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.proyecto.AreaProyecto._crear_botonera">
+<span class="sig-name descname"><span class="pre">_crear_botonera</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/proyecto.html#AreaProyecto._crear_botonera"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.proyecto.AreaProyecto._crear_botonera" title="Link to this definition"></a></dt>
+<dd><p>Crea los artefactos que habilitan las opciones de proyecto.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.proyecto.AreaProyecto._crear_notas_emergentes">
+<span class="sig-name descname"><span class="pre">_crear_notas_emergentes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/proyecto.html#AreaProyecto._crear_notas_emergentes"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.proyecto.AreaProyecto._crear_notas_emergentes" title="Link to this definition"></a></dt>
+<dd><p>Crea las notas emergentes del área.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.proyecto.AreaProyecto._crear_seccion_atajos">
+<span class="sig-name descname"><span class="pre">_crear_seccion_atajos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/proyecto.html#AreaProyecto._crear_seccion_atajos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.proyecto.AreaProyecto._crear_seccion_atajos" title="Link to this definition"></a></dt>
+<dd><p>Construye la sección con los datos de los atajos de teclado.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.proyecto.AreaProyecto._exportar_diagrama">
+<span class="sig-name descname"><span class="pre">_exportar_diagrama</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/proyecto.html#AreaProyecto._exportar_diagrama"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.proyecto.AreaProyecto._exportar_diagrama" title="Link to this definition"></a></dt>
+<dd><p>Abre una ventana de dialogo que permite obtener la ubicacion donde
+guardar el diagrama. Luego capura la extensión seleccionada y envía
+los datos al gestor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.proyecto.AreaProyecto._pantalla_guardar">
+<span class="sig-name descname"><span class="pre">_pantalla_guardar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/proyecto.html#AreaProyecto._pantalla_guardar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.proyecto.AreaProyecto._pantalla_guardar" title="Link to this definition"></a></dt>
+<dd><p>Abre la pantalla con las opciones para guardar el proyecto.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.proyecto.AreaProyecto.actualizar_etq_proyecto">
+<span class="sig-name descname"><span class="pre">actualizar_etq_proyecto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/proyecto.html#AreaProyecto.actualizar_etq_proyecto"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.proyecto.AreaProyecto.actualizar_etq_proyecto" title="Link to this definition"></a></dt>
+<dd><p>Actualiza la etiqueta que muestra el proyecto que está activo.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.proyecto.AreaProyecto.artefacto">
+<span class="sig-name descname"><span class="pre">artefacto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Frame</span></span></span><a class="reference internal" href="_modules/componentes/areas/proyecto.html#AreaProyecto.artefacto"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.proyecto.AreaProyecto.artefacto" title="Link to this definition"></a></dt>
+<dd><p>Retorna el contenedor principal de la sección.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>El marco principal de la sección.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>tk.Frame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.proyecto.AreaProyecto.mostrar_aviso">
+<span class="sig-name descname"><span class="pre">mostrar_aviso</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aviso</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/proyecto.html#AreaProyecto.mostrar_aviso"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.proyecto.AreaProyecto.mostrar_aviso" title="Link to this definition"></a></dt>
+<dd><p>Actualiza la etiqueta de avisos con el texto recibido.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>aviso</strong> (<em>str</em>) – La notificación a mostrar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.proyecto.AreaProyecto.obtener_proyecto_activo">
+<span class="sig-name descname"><span class="pre">obtener_proyecto_activo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/componentes/areas/proyecto.html#AreaProyecto.obtener_proyecto_activo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.proyecto.AreaProyecto.obtener_proyecto_activo" title="Link to this definition"></a></dt>
+<dd><p>Devuelve los datos del proyecto activo o una tupla vacía. Se utiliza
+al reiniciar por cambio de tema.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Rteurn<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Los datos del proyecto activo.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[str, str] | tuple[()]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.proyecto.AreaProyecto.ocultar_aviso">
+<span class="sig-name descname"><span class="pre">ocultar_aviso</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/proyecto.html#AreaProyecto.ocultar_aviso"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.proyecto.AreaProyecto.ocultar_aviso" title="Link to this definition"></a></dt>
+<dd><p>Oculta el aviso que esté visible.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.proyecto.AreaProyecto.restaurar_proyecto_activo">
+<span class="sig-name descname"><span class="pre">restaurar_proyecto_activo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proyecto</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/proyecto.html#AreaProyecto.restaurar_proyecto_activo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.proyecto.AreaProyecto.restaurar_proyecto_activo" title="Link to this definition"></a></dt>
+<dd><p>Si el Gestor detectó que había un proyecto activo al reinicio por cambio
+de tema, llama al método para que carge los datos y muestre la notificación</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>proyecto</strong> (<em>tuple</em><em>[</em><em>str</em><em>, </em><em>str</em><em>] </em><em>| </em><em>tuple</em><em>[</em><em>(</em><em>)</em><em>]</em>) – Los datos del proyecto activo.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-componentes.areas.texto">
+<span id="modulo-componentes-areas-texto"></span><h2>Módulo componentes.areas.texto<a class="headerlink" href="#module-componentes.areas.texto" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="componentes.areas.texto.AreaDeTexto">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">componentes.areas.texto.</span></span><span class="sig-name descname"><span class="pre">AreaDeTexto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Notebook</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gestor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raiz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bucle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tema</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texto_respaldo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/componentes/areas/texto.html#AreaDeTexto"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.texto.AreaDeTexto" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase encargada de cargar un texto e ingresar las proposiciones
+que constituyen el diagrama.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ancestro</strong> (<em>ttk.Notebook</em>) – El artefacto que contiene al marco principal del área.</p></li>
+<li><p><strong>gestor</strong> (<a class="reference internal" href="control.html#control.gestor.Gestor" title="control.gestor.Gestor"><em>Gestor</em></a>) – La instancia de la clase encargada de gestionar la comunicación entre los módulos y la interacción con las tablas.</p></li>
+<li><p><strong>raiz</strong> (<em>Tk</em>) – Ventana principal que controla el bucle de la aplicación.</p></li>
+<li><p><strong>bucle</strong> (<a class="reference internal" href="interfaz.html#interfaz.ventana.Bucle" title="interfaz.ventana.Bucle"><em>Bucle</em></a>) – Instancia de la clase encargada de crear el bucle de la aplicación y gestionar el cambio de tema.</p></li>
+<li><p><strong>tema</strong> (<em>str</em>) – El tema actual de la aplicacion.</p></li>
+<li><p><strong>texto_respaldo</strong> (<em>str</em>) – Respaldo del contenido del área de texto que se vuelve a cargar cuando se reinicia por cambio de tema.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.texto.AreaDeTexto._abrir_notas">
+<span class="sig-name descname"><span class="pre">_abrir_notas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/texto.html#AreaDeTexto._abrir_notas"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.texto.AreaDeTexto._abrir_notas" title="Link to this definition"></a></dt>
+<dd><p>Habilita la pantalla que permite tomar notas personales del proyecto.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.texto.AreaDeTexto._actualizar_diagrama">
+<span class="sig-name descname"><span class="pre">_actualizar_diagrama</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/texto.html#AreaDeTexto._actualizar_diagrama"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.texto.AreaDeTexto._actualizar_diagrama" title="Link to this definition"></a></dt>
+<dd><p>Obtiene el texto ingresado y llama al Gestor para que actualice
+la vista del diagrama. Args captura el evento producido al presionar
+el botón relacionar.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.texto.AreaDeTexto._cadena_tema">
+<span class="sig-name descname"><span class="pre">_cadena_tema</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/componentes/areas/texto.html#AreaDeTexto._cadena_tema"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.texto.AreaDeTexto._cadena_tema" title="Link to this definition"></a></dt>
+<dd><p>Devuelve una cadena con el tema a aplicar.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.texto.AreaDeTexto._cambiar_tema">
+<span class="sig-name descname"><span class="pre">_cambiar_tema</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/texto.html#AreaDeTexto._cambiar_tema"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.texto.AreaDeTexto._cambiar_tema" title="Link to this definition"></a></dt>
+<dd><p>Obtiene los datos necesarios previo al reinicio que permite cambiar
+el tema de la aplicación.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.texto.AreaDeTexto._cancelar_reinicio">
+<span class="sig-name descname"><span class="pre">_cancelar_reinicio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/texto.html#AreaDeTexto._cancelar_reinicio"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.texto.AreaDeTexto._cancelar_reinicio" title="Link to this definition"></a></dt>
+<dd><p>Destruye la ventana. Args captura el evento producido al presionar
+el botón.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.texto.AreaDeTexto._cargar_texto">
+<span class="sig-name descname"><span class="pre">_cargar_texto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/texto.html#AreaDeTexto._cargar_texto"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.texto.AreaDeTexto._cargar_texto" title="Link to this definition"></a></dt>
+<dd><p>Carga en el área de texto desplazable el contenido extraído del
+documento seleccionado.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.texto.AreaDeTexto._confirmar_reinicio">
+<span class="sig-name descname"><span class="pre">_confirmar_reinicio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/texto.html#AreaDeTexto._confirmar_reinicio"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.texto.AreaDeTexto._confirmar_reinicio" title="Link to this definition"></a></dt>
+<dd><p>Destruye la ventana y envia al gestor la orden de reinicio.
+Args captura el evento producido al presionar el botón.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.texto.AreaDeTexto._crear_botonera">
+<span class="sig-name descname"><span class="pre">_crear_botonera</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/texto.html#AreaDeTexto._crear_botonera"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.texto.AreaDeTexto._crear_botonera" title="Link to this definition"></a></dt>
+<dd><p>Construye la botonera del área de texto.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.texto.AreaDeTexto._crear_notas_emergentes">
+<span class="sig-name descname"><span class="pre">_crear_notas_emergentes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/texto.html#AreaDeTexto._crear_notas_emergentes"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.texto.AreaDeTexto._crear_notas_emergentes" title="Link to this definition"></a></dt>
+<dd><p>Construye las notas que se mostrarán al posar el cursor sobre ciertos
+artefactos.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.texto.AreaDeTexto._crear_subsec_proposicion">
+<span class="sig-name descname"><span class="pre">_crear_subsec_proposicion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/texto.html#AreaDeTexto._crear_subsec_proposicion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.texto.AreaDeTexto._crear_subsec_proposicion" title="Link to this definition"></a></dt>
+<dd><p>Construye los artefactos que permiten el ingreso
+de proposiciones.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.texto.AreaDeTexto._crear_texto_desplazable">
+<span class="sig-name descname"><span class="pre">_crear_texto_desplazable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/texto.html#AreaDeTexto._crear_texto_desplazable"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.texto.AreaDeTexto._crear_texto_desplazable" title="Link to this definition"></a></dt>
+<dd><p>Construye el artefacto donde se carga el texto extraído
+de los documentos seleccionados.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.texto.AreaDeTexto._establecer_atajos">
+<span class="sig-name descname"><span class="pre">_establecer_atajos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/texto.html#AreaDeTexto._establecer_atajos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.texto.AreaDeTexto._establecer_atajos" title="Link to this definition"></a></dt>
+<dd><p>Vincula algunos artefactos y sus operaciones con atajos de teclado.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.texto.AreaDeTexto._reiniciar">
+<span class="sig-name descname"><span class="pre">_reiniciar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/texto.html#AreaDeTexto._reiniciar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.texto.AreaDeTexto._reiniciar" title="Link to this definition"></a></dt>
+<dd><p>Recibe la orden de reinicio y activa la ventana de dialogo.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.texto.AreaDeTexto._ventana_dialogo">
+<span class="sig-name descname"><span class="pre">_ventana_dialogo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contenido</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">titulo_ventana</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/texto.html#AreaDeTexto._ventana_dialogo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.texto.AreaDeTexto._ventana_dialogo" title="Link to this definition"></a></dt>
+<dd><p>Construye la ventana de confirmación de reinicio.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>contenido</strong> (<em>str</em>) – Mensaje a notificar.</p></li>
+<li><p><strong>titulo_ventana</strong> (<em>str</em>) – Título de la ventana.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.texto.AreaDeTexto.artefacto">
+<span class="sig-name descname"><span class="pre">artefacto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Frame</span></span></span><a class="reference internal" href="_modules/componentes/areas/texto.html#AreaDeTexto.artefacto"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.texto.AreaDeTexto.artefacto" title="Link to this definition"></a></dt>
+<dd><p>Retorna el contenedor principal de la sección.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>El marco principal de la sección.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>tk.Frame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.texto.AreaDeTexto.atajo">
+<span class="sig-name descname"><span class="pre">atajo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">señal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/componentes/areas/texto.html#AreaDeTexto.atajo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.texto.AreaDeTexto.atajo" title="Link to this definition"></a></dt>
+<dd><p>Asocia cada señal con un artefacto y comportamiento específico.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>señal</strong> (<em>int</em>) – Un entero indicando la entrada a modificar o el botón activado.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Una cadena que previene que el evento se propage a través de la jerarquía de artefactos.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.texto.AreaDeTexto.cargar_texto_retornado">
+<span class="sig-name descname"><span class="pre">cargar_texto_retornado</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/texto.html#AreaDeTexto.cargar_texto_retornado"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.texto.AreaDeTexto.cargar_texto_retornado" title="Link to this definition"></a></dt>
+<dd><p>Recibe desde el Gestor la indicación para actualizar el área de texto,
+cuando el contenido se terminó de extraer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>texto</strong> (<em>str</em>) – El contenido a cargar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.texto.AreaDeTexto.mostrar_aviso">
+<span class="sig-name descname"><span class="pre">mostrar_aviso</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aviso</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/texto.html#AreaDeTexto.mostrar_aviso"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.texto.AreaDeTexto.mostrar_aviso" title="Link to this definition"></a></dt>
+<dd><p>Actualiza la etiqueta de avisos con el texto recibido.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>aviso</strong> (<em>str</em>) – La notificación a mostrar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="componentes.areas.texto.AreaDeTexto.ocultar_aviso">
+<span class="sig-name descname"><span class="pre">ocultar_aviso</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/componentes/areas/texto.html#AreaDeTexto.ocultar_aviso"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#componentes.areas.texto.AreaDeTexto.ocultar_aviso" title="Link to this definition"></a></dt>
+<dd><p>Oculta el aviso que esté activo.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="componentes.html" class="btn btn-neutral float-left" title="Paquete componentes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="componentes.elementos.html" class="btn btn-neutral float-right" title="Paquete componentes.elementos" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, errejotaeme.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

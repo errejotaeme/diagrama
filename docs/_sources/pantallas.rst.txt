@@ -1,0 +1,29 @@
+Paquete pantallas
+=================
+
+Módulo pantallas.pantalla\_guardar
+----------------------------------
+
+.. automodule:: pantallas.pantalla_guardar
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+
+Módulo pantallas.pantalla\_notas
+--------------------------------
+
+.. automodule:: pantallas.pantalla_notas
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+
+Módulo pantallas.pantalla\_relacion
+-----------------------------------
+
+.. automodule:: pantallas.pantalla_relacion
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:

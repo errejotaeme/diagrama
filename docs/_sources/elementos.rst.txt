@@ -1,0 +1,20 @@
+Paquete elementos
+=================
+
+Módulo elementos.emergente
+--------------------------
+
+.. automodule:: elementos.emergente
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:
+
+Módulo elementos.opciones
+-------------------------
+
+.. automodule:: elementos.opciones
+   :members:
+   :private-members:
+   :show-inheritance:
+   :undoc-members:

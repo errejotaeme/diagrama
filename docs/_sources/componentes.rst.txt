@@ -1,0 +1,13 @@
+Paquete componentes
+===================
+
+Subpaquetes
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   componentes.areas
+   componentes.elementos
+   componentes.pantallas
+   componentes.secciones
