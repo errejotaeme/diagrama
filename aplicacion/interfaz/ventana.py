@@ -1,5 +1,4 @@
 import tkinter as tk
-import typing
 from aplicacion.interfaz import diseño
 from aplicacion.interfaz import comunes
 
