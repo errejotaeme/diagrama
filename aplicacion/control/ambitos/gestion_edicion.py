@@ -61,7 +61,6 @@ class GestionEdicion:
                         res_fila = fila
                         break
         else:
-            fila_res:dict = {}
             with open(
                 self._csv_prop_vertices, "r", newline="", encoding="utf-8"
             ) as propiedades:
